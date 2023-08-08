@@ -2,9 +2,10 @@ export interface ProductDto {
   id: string;
   avatar?: string;
   disabled: boolean;
-  email: string;
-  firstName: string;
-  gender?: string;
-  lastName: string;
-  role: string;
+  title: string;
+  description: string;
+  size: string;
+  availableSizes: Array<string>;
+  amount: number;
+  brand: string;
 }

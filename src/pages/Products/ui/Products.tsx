@@ -7,7 +7,6 @@ import AdminToolbar from "../../../shared/components/AdminToolbar/AdminToolbar";
 import ConfirmDialog from "../../../shared/components/ConfirmDialog/ConfirmDialog";
 import SelectToolbar from "../../../shared/components/SelectToolbar/SelectToolbar";
 import { useSnackbar } from "../../../app/providers/SnackbarProvider";
-import UserDialog from "../../../users/components/UserDialog";
 import { useAddUser } from "../../../users/hooks/useAddUser";
 import { useDeleteUsers } from "../../../users/hooks/useDeleteUsers";
 import { useUpdateUser } from "../../../users/hooks/useUpdateUser";
@@ -17,6 +16,7 @@ import { ProductsTable } from "../../../widgets/ProductsTable";
 import { PRODUCTS_MOCK } from "../../../shared/mocks/products";
 import { ProductViewModel } from "../../../widgets/ProductsTable/types/typedef";
 import { TableToolbar } from "../../../widgets/TableToolbar";
+import { ProductEditModal } from "../../../features/ProductEditModal";
 
 const Products = () => {
   const snackbar = useSnackbar();
@@ -137,7 +137,7 @@ const Products = () => {
         title={t("common.confirmation")}
       />
       {openUserDialog && (
-        <UserDialog
+        <ProductEditModal
           onAdd={handleAddUser}
           onClose={handleCloseUserDialog}
           onUpdate={handleUpdateUser}

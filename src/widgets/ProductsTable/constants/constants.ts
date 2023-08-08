@@ -4,26 +4,26 @@ export const HEAD_CELLS: Array<HeadCell> = [
   {
     id: "user",
     align: "left",
-    label: "userManagement.table.headers.product",
+    label: "productManagement.table.headers.product",
   },
   {
     id: "size",
     align: "center",
-    label: "userManagement.table.headers.size",
+    label: "productManagement.table.headers.size",
   },
   {
     id: "amount",
     align: "center",
-    label: "userManagement.table.headers.amount",
-  },
-  {
-    id: "status",
-    align: "center",
-    label: "userManagement.table.headers.status",
+    label: "productManagement.table.headers.amount",
   },
   {
     id: "brand",
     align: "center",
-    label: "userManagement.table.headers.brand",
+    label: "productManagement.table.headers.brand",
+  },
+  {
+    id: "status",
+    align: "center",
+    label: "productManagement.table.headers.status",
   },
 ];

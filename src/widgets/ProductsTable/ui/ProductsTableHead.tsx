@@ -39,7 +39,7 @@ export const ProductsTableHead: FC<ProductsTableHeadProps> = ({
           </TableCell>
         ))}
         <TableCell align="right" sx={{ py: 0 }}>
-          {t("userManagement.table.headers.actions")}
+          {t("productManagement.table.headers.actions")}
         </TableCell>
       </TableRow>
     </TableHead>
