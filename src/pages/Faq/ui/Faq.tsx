@@ -8,8 +8,8 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
-import AdminAppBar from "../../../admin/components/AdminAppBar";
-import AdminToolbar from "../../../admin/components/AdminToolbar";
+import AdminAppBar from "../../../shared/components/AdminAppBar/AdminAppBar";
+import AdminToolbar from "../../../shared/components/AdminToolbar/AdminToolbar";
 
 const questions = [
   {

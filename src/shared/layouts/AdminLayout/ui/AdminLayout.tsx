@@ -4,11 +4,12 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import QueryWrapper from "../../../components/QueryWrapper/QueryWrapper";
 import SettingsDrawer from "../../../components/SettingsDrawer/SettingsDrawer";
-import { useSettings } from "../../../../core/contexts/SettingsProvider";
+import { useSettings } from "../../../../app/providers/SettingsProvider";
 import { Sidebar } from "../../../components/Sidebar";
 import HomeIcon from "@material-ui/icons/Home";
 import PeopleIcon from "@material-ui/icons/People";
 import HelpCenterIcon from "@material-ui/icons/HelpCenter";
+import { ROUTES_ADMIN, ROUTES_BASE } from "../../../../app/routing";
 
 const AdminLayout = () => {
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -23,17 +24,17 @@ const AdminLayout = () => {
     {
       icon: HomeIcon,
       key: "admin.drawer.menu.home",
-      path: "/admin",
+      path: `/${ROUTES_BASE.ADMIN}`,
     },
     {
       icon: PeopleIcon,
       key: "admin.drawer.menu.userManagement",
-      path: "/admin/products",
+      path: `/${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.PRODUCTS}`,
     },
     {
       icon: HelpCenterIcon,
       key: "admin.drawer.menu.help",
-      path: "/admin/help",
+      path: `/${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.HELP}`,
     },
   ];
 

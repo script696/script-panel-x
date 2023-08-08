@@ -1,12 +1,12 @@
 import * as Sentry from "@sentry/react";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import AppRoutes from "./app/routing/AppRoutes";
-import AuthProvider from "./auth/contexts/AuthProvider";
+import AuthProvider from "./app/providers/AuthProvider";
 import Loader from "./shared/components/Loader/Loader";
 import QueryWrapper from "./shared/components/QueryWrapper/QueryWrapper";
-import SettingsProvider from "./core/contexts/SettingsProvider";
-import SnackbarProvider from "./core/contexts/SnackbarProvider";
+import SettingsProvider from "./app/providers/SettingsProvider";
+import SnackbarProvider from "./app/providers/SnackbarProvider";
+import { AppRoutes } from "./app/routing";
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({
