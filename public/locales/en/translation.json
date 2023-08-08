@@ -362,43 +362,43 @@
       "title": "Settings"
     }
   },
-  "userManagement": {
+  "productManagement": {
     "confirmations": {
       "delete": "Are you sure you want to delete this user?"
     },
     "form": {
+      "title": {
+        "label": "Title"
+      },
+      "brand": {
+        "label": "Brand"
+      },
+      "size": {
+        "label": "Size"
+      },
+      "amount": {
+        "label": "Amount"
+      },
+      "description": {
+        "label": "Description"
+      },
       "disabled": {
         "label": "Disabled"
-      },
-      "email": {
-        "label": "Email Address"
-      },
-      "firstName": {
-        "label": "First Name"
-      },
-      "gender": {
-        "label": "Gender",
-        "options": {
-          "f": "Female",
-          "m": "Male",
-          "n": "NC"
-        }
-      },
-      "lastName": {
-        "label": "Last Name"
-      },
-      "role": {
-        "label": "Role"
       }
     },
     "modal": {
       "add": {
         "action": "Add",
-        "title": "Add User"
+        "title": "Add Product"
       },
       "edit": {
         "action": "Edit",
-        "title": "Edit User"
+        "title": "Edit Product"
+      },
+      "tab" : {
+        "main-info" : "Main Info",
+        "description" : "Description",
+        "gallery" : "Gallery"
       }
     },
     "notifications": {

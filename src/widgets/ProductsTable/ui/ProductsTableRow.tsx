@@ -90,16 +90,17 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
           ></Avatar>
           <Box>
             <Typography component="div" variant="h6">
-              {`${product.lastName} ${product.firstName}`}
+              {product.title}
             </Typography>
             <Typography color="textSecondary" variant="body2">
-              {product.email}
+              {product.description}
             </Typography>
           </Box>
         </Box>
       </TableCell>
-      <TableCell align="center">{product.gender}</TableCell>
-      <TableCell align="center">{product.role}</TableCell>
+      <TableCell align="center">{product.size}</TableCell>
+      <TableCell align="center">{product.amount}</TableCell>
+      <TableCell align="center">{product.brand}</TableCell>
       <TableCell align="center">
         {product.disabled ? (
           <Chip label="Disabled" />
