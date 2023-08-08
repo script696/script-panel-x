@@ -8,8 +8,8 @@ import { useTranslation } from "react-i18next";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import BoxedLayout from "../../../shared/components/BoxedLayout/BoxedLayout";
-import { useSnackbar } from "../../../core/contexts/SnackbarProvider";
-import { useForgotPassword } from "../../../auth/hooks/useForgotPassword";
+import { useSnackbar } from "../../../app/providers/SnackbarProvider";
+import { useForgotPassword } from "../../../process/hooks/useForgotPassword";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();

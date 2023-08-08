@@ -15,7 +15,7 @@ import LoadingButton from "@material-ui/lab/LoadingButton";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
-import { User } from "../types/user";
+import { ProductViewModel } from "../../widgets/ProductsTable/types/typedef";
 
 const genders = [
   { label: "userManagement.form.gender.options.f", value: "F" },
@@ -25,12 +25,12 @@ const genders = [
 const roles = ["Admin", "Member"];
 
 type UserDialogProps = {
-  onAdd: (user: Partial<User>) => void;
+  onAdd: (product: Partial<ProductViewModel>) => void;
   onClose: () => void;
-  onUpdate: (user: User) => void;
+  onUpdate: (user: ProductViewModel) => void;
   open: boolean;
   processing: boolean;
-  user?: User;
+  product?: ProductViewModel;
 };
 
 const UserDialog = ({
@@ -39,15 +39,15 @@ const UserDialog = ({
   onUpdate,
   open,
   processing,
-  user,
+  product,
 }: UserDialogProps) => {
   const { t } = useTranslation();
 
-  const editMode = Boolean(user && user.id);
+  const editMode = Boolean(product && product.id);
 
-  const handleSubmit = (values: Partial<User>) => {
-    if (user && user.id) {
-      onUpdate({ ...values, id: user.id } as User);
+  const handleSubmit = (values: Partial<ProductViewModel>) => {
+    if (product && product.id) {
+      onUpdate({ ...values, id: product.id } as ProductViewModel);
     } else {
       onAdd(values);
     }
@@ -55,12 +55,12 @@ const UserDialog = ({
 
   const formik = useFormik({
     initialValues: {
-      disabled: user ? user.disabled : false,
-      email: user ? user.email : "",
-      firstName: user ? user.firstName : "",
-      gender: user ? user.gender : "F",
-      lastName: user ? user.lastName : "",
-      role: user ? user.role : "",
+      disabled: product ? product.disabled : false,
+      email: product ? product.email : "",
+      firstName: product ? product.firstName : "",
+      gender: product ? product.gender : "F",
+      lastName: product ? product.lastName : "",
+      role: product ? product.role : "",
     },
     validationSchema: Yup.object({
       email: Yup.string()

@@ -129,44 +129,6 @@
       "title": "Register"
     }
   },
-  "calendar": {
-    "confirmations": {
-      "delete": "Are you sure you want to delete this event?"
-    },
-    "form": {
-      "color": {
-        "label": "Color"
-      },
-      "description": {
-        "label": "Description"
-      },
-      "end": {
-        "label": "End Date"
-      },
-      "start": {
-        "label": "Start Date"
-      },
-      "title": {
-        "label": "Title"
-      }
-    },
-    "modal": {
-      "add": {
-        "action": "Add",
-        "title": "Add Event"
-      },
-      "edit": {
-        "action": "Edit",
-        "title": "Edit Event"
-      }
-    },
-    "notifications": {
-      "addSuccess": "{{event}} has been added!",
-      "deleteSuccess": "Event has been deleted!",
-      "updateSuccess": "{{event}} has been updated!"
-    },
-    "title": "Calendar"
-  },
   "common": {
     "backHome": "Back to Home",
     "cancel": "Cancel",
@@ -447,10 +409,11 @@
     "table": {
       "headers": {
         "actions": "Actions",
-        "gender": "Gender",
-        "role": "Role",
+        "size": "Size",
+        "amount": "Amount",
         "status": "Status",
-        "user": "User"
+        "product": "Product",
+        "brand": "Brand"
       }
     },
     "toolbar": {

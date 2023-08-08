@@ -5,9 +5,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
-import HelpCenterIcon from "@material-ui/icons/HelpCenter";
-import HomeIcon from "@material-ui/icons/Home";
-import PeopleIcon from "@material-ui/icons/People";
 import PersonIcon from "@material-ui/icons/Person";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { useTranslation } from "react-i18next";
@@ -16,11 +13,12 @@ import {
   drawerCollapsedWidth,
   drawerWidth,
 } from "../../../../app/config/layout";
-import { useAuth } from "../../../../auth/contexts/AuthProvider";
+import { useAuth } from "../../../../app/providers/AuthProvider";
 import Logo from "../../Logo/Logo";
 import { FC } from "react";
 import { SvgIconTypeMap } from "@material-ui/core";
 import { OverridableComponent } from "@material-ui/core/OverridableComponent";
+import { ROUTES_ADMIN, ROUTES_PROFILE } from "../../../../app/routing";
 
 type MenuItem = {
   icon: OverridableComponent<SvgIconTypeMap>;
@@ -59,7 +57,7 @@ export const Sidebar: FC<SidebarProps> = ({
             key={item.path}
             activeClassName="Mui-selected"
             end={true}
-            to={`/${process.env.PUBLIC_URL}${item.path}`}
+            to={item.path}
           >
             <ListItemAvatar>
               <Avatar sx={{ color: "inherit", bgcolor: "transparent" }}>
@@ -80,7 +78,7 @@ export const Sidebar: FC<SidebarProps> = ({
         <ListItem
           button
           component={NavLink}
-          to={`/${process.env.PUBLIC_URL}/admin/profile`}
+          to={`/${ROUTES_ADMIN.MAIN}/${ROUTES_ADMIN.PROFILE}/${ROUTES_PROFILE.INFORMATION}`}
         >
           <ListItemAvatar>
             <Avatar>

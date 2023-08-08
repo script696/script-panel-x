@@ -7,8 +7,8 @@ import LoadingButton from "@material-ui/lab/LoadingButton";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
-import { useUpdatePassword } from "../../../auth/hooks/useUpdatePassword";
-import { useSnackbar } from "../../../core/contexts/SnackbarProvider";
+import { useUpdatePassword } from "../../../process/hooks/useUpdatePassword";
+import { useSnackbar } from "../../../app/providers/SnackbarProvider";
 
 const ProfilePassword = () => {
   const snackbar = useSnackbar();

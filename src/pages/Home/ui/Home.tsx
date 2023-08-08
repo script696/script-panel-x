@@ -1,10 +1,10 @@
 import Grid from "@material-ui/core/Grid";
 import React from "react";
-import AdminAppBar from "../../../admin/components/AdminAppBar";
-import AdminToolbar from "../../../admin/components/AdminToolbar";
-import RecentNotifications from "../../../admin/components/RecentNotifications";
-import AchievementWidget from "../../../admin/widgets/AchievementWidget";
-import WelcomeWidget from "../../../admin/widgets/WelcomeWidget";
+import AdminAppBar from "../../../shared/components/AdminAppBar/AdminAppBar";
+import AdminToolbar from "../../../shared/components/AdminToolbar/AdminToolbar";
+import RecentNotifications from "../../../shared/components/RecentNotifications/RecentNotifications";
+import AchievementWidget from "../../../widgets/AchievementWidget/AchievementWidget";
+import WelcomeWidget from "../../../widgets/WelcomeWidget/WelcomeWidget";
 
 const Home = () => {
   return (

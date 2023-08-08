@@ -10,18 +10,13 @@ import PersonIcon from "@material-ui/icons/Person";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, Outlet } from "react-router-dom";
-import { useAuth } from "../../../auth/contexts/AuthProvider";
+import { useAuth } from "../../../app/providers/AuthProvider";
 import QueryWrapper from "../../../shared/components/QueryWrapper/QueryWrapper";
-import { useSnackbar } from "../../../core/contexts/SnackbarProvider";
-import AdminAppBar from "../../../admin/components/AdminAppBar";
-import AdminToolbar from "../../../admin/components/AdminToolbar";
-import CircleProgressWidget from "../../../admin/widgets/CircleProgressWidget";
+import { useSnackbar } from "../../../app/providers/SnackbarProvider";
+import AdminAppBar from "../../../shared/components/AdminAppBar/AdminAppBar";
+import AdminToolbar from "../../../shared/components/AdminToolbar/AdminToolbar";
 
 const profileMenuItems = [
-  {
-    key: "profile.menu.activity",
-    path: "",
-  },
   {
     key: "profile.menu.info",
     path: "./information",
@@ -84,11 +79,6 @@ const Profile = () => {
             >{`${userInfo?.firstName} ${userInfo?.lastName}`}</Typography>
             <Typography variant="body2">{userInfo?.role}</Typography>
           </Box>
-          <CircleProgressWidget
-            height={244}
-            title={t("profile.completion.title")}
-            value={75}
-          />
         </Grid>
         <Grid item xs={12} md={8} marginTop={3}>
           <Box sx={{ mb: 4 }}>
