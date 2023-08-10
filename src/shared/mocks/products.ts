@@ -3,7 +3,7 @@ import { ProductDto } from "../api/dto/product";
 export const PRODUCTS_MOCK: Array<ProductDto> = [
   {
     id: "1",
-    avatar: "/favicon.ico",
+    images: ["/img/1.jpeg", "/img/2.jpeg", "/img/4.jpeg", "/img/4.jpeg"],
     disabled: false,
     title: "Nike air Max 1",
     description: "Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys",
@@ -15,7 +15,7 @@ export const PRODUCTS_MOCK: Array<ProductDto> = [
 
   {
     id: "2",
-    avatar: "/favicon.ico",
+    images: [],
     disabled: true,
     title: "Nike air Max 1",
     description: "Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys",
@@ -27,7 +27,7 @@ export const PRODUCTS_MOCK: Array<ProductDto> = [
 
   {
     id: "3",
-    avatar: "/favicon.ico",
+    images: [],
     disabled: false,
     title: "Nike air Max 1",
     description: "Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys",
@@ -39,7 +39,7 @@ export const PRODUCTS_MOCK: Array<ProductDto> = [
 
   {
     id: "4",
-    avatar: "/favicon.ico",
+    images: [],
     disabled: false,
     title: "Nike air Max 1",
     description: "Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys",
@@ -52,20 +52,19 @@ export const PRODUCTS_MOCK: Array<ProductDto> = [
 
   {
     id: "5",
-    avatar: "/favicon.ico",
+    images: ["/img/1.jpeg", "/img/2.jpeg", "/img/4.jpeg", "/img/4.jpeg"],
     disabled: false,
     title: "Nike air Max 1",
     description: "Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys",
     size: "10",
     amount: 10,
     availableSizes: ["10", "11", "12"],
-
     brand: "Nike",
   },
 
   {
     id: "6",
-    avatar: "/favicon.ico",
+    images: ["/img/1.jpeg", "/img/2.jpeg", "/img/4.jpeg", "/img/4.jpeg"],
     disabled: false,
     title: "Nike air Max 1",
     description: "Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys",
@@ -77,7 +76,8 @@ export const PRODUCTS_MOCK: Array<ProductDto> = [
 
   {
     id: "7",
-    avatar: "/favicon.ico",
+    images: ["/img/1.jpeg", "/img/2.jpeg", "/img/4.jpeg", "/img/4.jpeg"],
+
     disabled: false,
     title: "Nike air Max 1",
     description: "Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys",
@@ -89,7 +89,7 @@ export const PRODUCTS_MOCK: Array<ProductDto> = [
 
   {
     id: "8",
-    avatar: "/favicon.ico",
+    images: ["/img/1.jpeg", "/img/2.jpeg", "/img/4.jpeg", "/img/4.jpeg"],
     disabled: false,
     title: "Nike air Max 1",
     description: "Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys Rhys",

@@ -1,31 +1,16 @@
 import DialogContent from "@material-ui/core/DialogContent";
 import TextField from "@material-ui/core/TextField";
-import { Select } from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
-import LoadingButton from "@material-ui/lab/LoadingButton";
 import React, { FC } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { ProductViewModel } from "../../../widgets/ProductsTable/types/typedef";
+import { ProductViewModel } from "../../../../widgets/ProductsTable/types/typedef";
 import { useTranslation } from "react-i18next";
+import { DataWith } from "../../../../shared/types/types";
 
-type DescriptionProps = {
-  data: MainInfoData;
-};
-
-type MainInfoData = {
-  onAdd: (product: Partial<ProductViewModel>) => void;
-  onClose: () => void;
-  onUpdate: (product: ProductViewModel) => void;
-  open: boolean;
+type DescriptionProps = DataWith<{
   processing: boolean;
-  product?: ProductViewModel;
-};
+  product?: Pick<ProductViewModel, "description">;
+}>;
 
 const Description: FC<DescriptionProps> = ({ data }) => {
   const { t } = useTranslation();
