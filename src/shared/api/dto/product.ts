@@ -1,6 +1,6 @@
 export interface ProductDto {
   id: string;
-  avatar?: string;
+  images: Array<string>;
   disabled: boolean;
   title: string;
   description: string;

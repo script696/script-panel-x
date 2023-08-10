@@ -5,7 +5,6 @@ import TableCell from "@material-ui/core/TableCell";
 import Checkbox from "@material-ui/core/Checkbox";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
-import PersonIcon from "@material-ui/icons/Person";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import IconButton from "@material-ui/core/IconButton";
@@ -38,9 +37,13 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { t } = useTranslation();
+  const { id, size, description, title, amount, brand, images } = product;
 
   const labelId = `enhanced-table-checkbox-${index}`;
   const openActions = Boolean(anchorEl);
+  const productMainPhoto = images.length
+    ? images[0]
+    : "/img/default_product.png";
 
   const handleOpenActions = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -52,7 +55,7 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
 
   const handleDelete = () => {
     handleCloseActions();
-    onDelete([product.id]);
+    onDelete([id]);
   };
 
   const handleEdit = () => {
@@ -78,29 +81,29 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
           inputProps={{
             "aria-labelledby": labelId,
           }}
-          onClick={() => onCheck(product.id)}
+          onClick={() => onCheck(id)}
         />
       </TableCell>
       <TableCell>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Avatar
-            src={"/favicon.ico"}
+            src={productMainPhoto}
             sx={{ mr: 3, width: "50px", height: "50px" }}
             variant={"rounded"}
           ></Avatar>
           <Box>
             <Typography component="div" variant="h6">
-              {product.title}
+              {title}
             </Typography>
             <Typography color="textSecondary" variant="body2">
-              {product.description}
+              {description}
             </Typography>
           </Box>
         </Box>
       </TableCell>
-      <TableCell align="center">{product.size}</TableCell>
-      <TableCell align="center">{product.amount}</TableCell>
-      <TableCell align="center">{product.brand}</TableCell>
+      <TableCell align="center">{size}</TableCell>
+      <TableCell align="center">{amount}</TableCell>
+      <TableCell align="center">{brand}</TableCell>
       <TableCell align="center">
         {product.disabled ? (
           <Chip label="Disabled" />

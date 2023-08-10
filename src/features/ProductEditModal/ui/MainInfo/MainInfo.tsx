@@ -8,25 +8,18 @@ import React, { FC } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
-import { ProductViewModel } from "../../../widgets/ProductsTable/types/typedef";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import { ProductViewModel } from "../../../../widgets/ProductsTable/types/typedef";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
-import LoadingButton from "@material-ui/lab/LoadingButton";
+import { DataWith } from "../../../../shared/types/types";
 
-type MainInfoData = {
+type MainInfoProps = DataWith<{
   onAdd: (product: Partial<ProductViewModel>) => void;
   onClose: () => void;
   onUpdate: (product: ProductViewModel) => void;
   open: boolean;
   processing: boolean;
-  product?: ProductViewModel;
-};
-
-type MainInfoProps = {
-  data: MainInfoData;
-};
+  product?: Pick<ProductViewModel, "title" | "brand" | "size" | "amount">;
+}>;
 
 const SIZES_MOCK = ["10", "11", "12"];
 
@@ -35,7 +28,6 @@ export const MainInfo: FC<MainInfoProps> = ({ data }) => {
 
   const { t } = useTranslation();
   const handleSubmit = (values: Partial<ProductViewModel>) => {
-    console.log(values);
     // if (product && product.id) {
     //   onUpdate({ ...values, id: product.id } as ProductViewModel);
     // } else {
