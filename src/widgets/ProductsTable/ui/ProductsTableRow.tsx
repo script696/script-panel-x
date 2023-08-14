@@ -42,7 +42,7 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
   const labelId = `enhanced-table-checkbox-${index}`;
   const openActions = Boolean(anchorEl);
   const productMainPhoto = images.length
-    ? images[0]
+    ? images[0].source
     : "/img/default_product.png";
 
   const handleOpenActions = (event: React.MouseEvent<HTMLButtonElement>) => {

@@ -18,7 +18,7 @@ type ConfirmDialogProps = {
   title: string;
 };
 
-const ConfirmDialog = ({
+const ConfirmDeleteModal = ({
   description,
   onClose,
   onConfirm,
@@ -63,4 +63,4 @@ const ConfirmDialog = ({
   );
 };
 
-export default ConfirmDialog;
+export default ConfirmDeleteModal;

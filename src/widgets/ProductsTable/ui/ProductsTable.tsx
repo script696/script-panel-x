@@ -8,12 +8,18 @@ import * as selectUtils from "../../../shared/utils/selectUtils";
 import { ProductsTableRow } from "./ProductsTableRow";
 import { ProductsTableHead } from "./ProductsTableHead";
 import { ProductViewModel } from "../types/typedef";
+import { checkIsRowSelected } from "../utils/checkIsRowSelected";
+import {
+  PaginationConfig,
+  usePagination,
+} from "../../../shared/hooks/usePagination";
 
 type ProductsTableProps = {
   processing: boolean;
-  onDelete: (userIds: string[]) => void;
+  onDelete: (productsIds: string[]) => void;
   onEdit: (user: ProductViewModel) => void;
   onSelectedChange: (selected: string[]) => void;
+  onPaginationChangeReq: (params: PaginationConfig) => void;
   selected: string[];
   products?: Array<ProductViewModel>;
 };
@@ -25,9 +31,12 @@ const ProductsTable: FC<ProductsTableProps> = ({
   processing,
   selected,
   products = [],
+  onPaginationChangeReq,
 }) => {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const { handleChangePage, handleChangeRowsPerPage, paginationConfig } =
+    usePagination({ onPaginationChangeReq });
+
+  const { page, rowsPerPage } = paginationConfig;
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -43,21 +52,8 @@ const ProductsTable: FC<ProductsTableProps> = ({
     onSelectedChange(newSelected);
   };
 
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  const isSelected = (id: string) => selected.indexOf(id) !== -1;
-
   if (products.length === 0) {
-    return <Empty title="No user yet" />;
+    return <Empty title="No products yet" />;
   }
 
   return (
@@ -87,7 +83,7 @@ const ProductsTable: FC<ProductsTableProps> = ({
                   onDelete={onDelete}
                   onEdit={onEdit}
                   processing={processing}
-                  selected={isSelected(user.id)}
+                  selected={checkIsRowSelected(selected, user.id)}
                   product={user}
                 />
               ))}
@@ -95,7 +91,7 @@ const ProductsTable: FC<ProductsTableProps> = ({
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[6, 8, 10]}
         component="div"
         count={products.length}
         rowsPerPage={rowsPerPage}
