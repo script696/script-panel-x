@@ -1,6 +1,5 @@
 import TextField from "@material-ui/core/TextField";
-import { Select } from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
+import { Box } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -11,49 +10,63 @@ import { useTranslation } from "react-i18next";
 import { ProductViewModel } from "../../../../widgets/ProductsTable/types/typedef";
 import DialogContent from "@material-ui/core/DialogContent";
 import { DataWith } from "../../../../shared/types/types";
+import Button from "@material-ui/core/Button";
+import LoadingButton from "@material-ui/lab/LoadingButton";
+import DialogActions from "@material-ui/core/DialogActions";
+import { ChipSelect } from "../../../../shared/components/ChipSelect";
 
 type MainInfoProps = DataWith<{
+  isEditMode: boolean;
   onAdd: (product: Partial<ProductViewModel>) => void;
   onClose: () => void;
   onUpdate: (product: ProductViewModel) => void;
   open: boolean;
   processing: boolean;
-  product?: Pick<ProductViewModel, "title" | "brand" | "size" | "amount">;
+  product?: Pick<
+    ProductViewModel,
+    "id" | "title" | "brand" | "availableSizes" | "amount"
+  >;
 }>;
 
-const SIZES_MOCK = ["10", "11", "12"];
-
 export const MainInfo: FC<MainInfoProps> = ({ data }) => {
-  const { product, processing } = data;
+  const { product, processing, onClose, isEditMode } = data;
 
   const { t } = useTranslation();
   const handleSubmit = (values: Partial<ProductViewModel>) => {
-    // if (product && product.id) {
-    //   onUpdate({ ...values, id: product.id } as ProductViewModel);
-    // } else {
-    //   onAdd(values);
-    // }
+    console.log(values);
   };
 
   const formik = useFormik({
     initialValues: {
       title: product ? product.title : "",
       brand: product ? product.brand : "",
-      size: product ? product.size : "",
+      availableSizes: [],
       amount: product ? product.amount : 0,
     },
     validationSchema: Yup.object({
       title: Yup.string().required(t("common.validations.required")),
       brand: Yup.string().required(t("common.validations.required")),
-      size: Yup.string().required(t("common.validations.required")),
+      // size: Yup.string().required(t("common.validations.required")),
       amount: Yup.number().required(t("common.validations.required")),
     }),
     onSubmit: handleSubmit,
   });
 
   return (
-    <form onSubmit={formik.handleSubmit} noValidate>
-      <DialogContent>
+    <Box
+      component={"form"}
+      onSubmit={formik.handleSubmit}
+      noValidate
+      flexGrow={1}
+      display={"flex"}
+      flexDirection={"column"}
+    >
+      <DialogContent
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         <TextField
           margin="normal"
           required
@@ -82,22 +95,6 @@ export const MainInfo: FC<MainInfoProps> = ({ data }) => {
           error={formik.touched.brand && Boolean(formik.errors.brand)}
           helperText={formik.touched.brand && formik.errors.brand}
         />
-        <Select
-          id="size"
-          name="size"
-          fullWidth
-          value={formik.values.size}
-          defaultValue={formik.values.size}
-          labelId="size-label"
-          onChange={formik.handleChange}
-          error={formik.touched.size && Boolean(formik.errors.size)}
-        >
-          {SIZES_MOCK.map((size) => (
-            <MenuItem key={size} value={size}>
-              {size}
-            </MenuItem>
-          ))}
-        </Select>
         <TextField
           margin="normal"
           required
@@ -112,6 +109,15 @@ export const MainInfo: FC<MainInfoProps> = ({ data }) => {
           error={formik.touched.amount && Boolean(formik.errors.amount)}
           helperText={formik.touched.amount && formik.errors.amount}
         />
+        <FormControl margin="normal">
+          <ChipSelect
+            id={"availableSizes"}
+            label={"Available sizes"}
+            onChange={formik.handleChange}
+            value={formik.values.availableSizes}
+          />
+        </FormControl>
+
         <FormControl component="fieldset" margin="normal">
           <FormControlLabel
             name="disabled"
@@ -123,6 +129,15 @@ export const MainInfo: FC<MainInfoProps> = ({ data }) => {
           />
         </FormControl>
       </DialogContent>
-    </form>
+      <Box sx={{ flexGrow: 1 }} />
+      <DialogActions>
+        <Button onClick={onClose}>{t("common.cancel")}</Button>
+        <LoadingButton loading={processing} type="submit" variant="contained">
+          {isEditMode
+            ? t("productManagement.modal.edit.action")
+            : t("productManagement.modal.add.action")}
+        </LoadingButton>
+      </DialogActions>
+    </Box>
   );
 };

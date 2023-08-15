@@ -6,23 +6,24 @@ import * as Yup from "yup";
 import { ProductViewModel } from "../../../../widgets/ProductsTable/types/typedef";
 import { useTranslation } from "react-i18next";
 import { DataWith } from "../../../../shared/types/types";
+import { Box } from "@material-ui/core";
+import DialogActions from "@material-ui/core/DialogActions";
+import Button from "@material-ui/core/Button";
+import LoadingButton from "@material-ui/lab/LoadingButton";
 
 type DescriptionProps = DataWith<{
+  isEditMode: boolean;
   processing: boolean;
   product?: Pick<ProductViewModel, "description">;
+  onClose: () => void;
 }>;
 
 const Description: FC<DescriptionProps> = ({ data }) => {
   const { t } = useTranslation();
-  const { product, processing } = data;
+  const { product, processing, isEditMode, onClose } = data;
 
   const handleSubmit = (values: Partial<ProductViewModel>) => {
     console.log(values);
-    // if (product && product.id) {
-    //   onUpdate({ ...values, id: product.id } as ProductViewModel);
-    // } else {
-    //   onAdd(values);
-    // }
   };
 
   const formik = useFormik({
@@ -36,7 +37,14 @@ const Description: FC<DescriptionProps> = ({ data }) => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit} noValidate>
+    <Box
+      component={"form"}
+      onSubmit={formik.handleSubmit}
+      noValidate
+      flexGrow={1}
+      display={"flex"}
+      flexDirection={"column"}
+    >
       <DialogContent>
         <TextField
           minRows={12}
@@ -57,7 +65,16 @@ const Description: FC<DescriptionProps> = ({ data }) => {
           helperText={formik.touched.description && formik.errors.description}
         />
       </DialogContent>
-    </form>
+      <Box sx={{ flexGrow: 1 }} />
+      <DialogActions>
+        <Button onClick={onClose}>{t("common.cancel")}</Button>
+        <LoadingButton loading={processing} type="submit" variant="contained">
+          {isEditMode
+            ? t("productManagement.modal.edit.action")
+            : t("productManagement.modal.add.action")}
+        </LoadingButton>
+      </DialogActions>
+    </Box>
   );
 };
 

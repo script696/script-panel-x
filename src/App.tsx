@@ -7,6 +7,8 @@ import QueryWrapper from "./shared/components/QueryWrapper/QueryWrapper";
 import SettingsProvider from "./app/providers/SettingsProvider";
 import SnackbarProvider from "./app/providers/SnackbarProvider";
 import { AppRoutes } from "./app/routing";
+// import { register } from "swiper/element/bundle";
+// register();
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({

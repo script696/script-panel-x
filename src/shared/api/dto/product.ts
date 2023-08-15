@@ -1,6 +1,8 @@
+import { GalleryImageDto } from "./common";
+
 export interface ProductDto {
   id: string;
-  images: Array<string>;
+  images: Array<GalleryImageDto>;
   disabled: boolean;
   title: string;
   description: string;
