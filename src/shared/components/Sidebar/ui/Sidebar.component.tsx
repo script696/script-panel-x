@@ -13,7 +13,7 @@ import {
   drawerCollapsedWidth,
   drawerWidth,
 } from "../../../../app/config/layout";
-import { useAuth } from "../../../../app/providers/AuthProvider";
+import { useAuth } from "../../../../app/providers/AuthProvider/AuthProvider";
 import Logo from "../../Logo/Logo";
 import { FC } from "react";
 import { SvgIconTypeMap } from "@material-ui/core";

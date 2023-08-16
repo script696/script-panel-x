@@ -1,9 +1,9 @@
 import React, { createContext, useContext } from "react";
-import { useLocalStorage } from "../../shared/hooks/useLocalStorage";
-import { useLogin } from "../../process/hooks/useLogin";
-import { useLogout } from "../../process/hooks/useLogout";
-import { useUserInfo } from "../../process/hooks/useUserInfo";
-import { UserInfo } from "../../process/types/userInfo";
+import { useLocalStorage } from "../../../shared/hooks/useLocalStorage";
+import { useLogin } from "../../../process/hooks/useLogin";
+import { useLogout } from "../../../process/hooks/useLogout";
+import { useUserInfo } from "../../../process/hooks/useUserInfo";
+import { UserInfo } from "../../../process/types/userInfo";
 
 interface AuthContextInterface {
   hasRole: (roles?: string[]) => {};

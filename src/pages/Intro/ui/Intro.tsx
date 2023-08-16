@@ -3,8 +3,8 @@ import Container from "@material-ui/core/Container";
 import { useTheme } from "@material-ui/core/styles";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
-import { useAuth } from "../../../app/providers/AuthProvider";
 import IntroLayout from "./IntroLayout";
+import { useAuth } from "../../../app/providers/AuthProvider/AuthProvider";
 
 const Intro = () => {
   const { userInfo } = useAuth();

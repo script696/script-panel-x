@@ -4,7 +4,7 @@ export interface UpdateProductMainInfoRequestDto {
   productId: string;
   title: string;
   disabled: boolean;
-  available_sizes: Array<string>;
+  availableSizes: Array<string>;
   amount: number;
   brand: string;
 }
@@ -15,7 +15,7 @@ export interface UpdateProductMainInfoResponseDto {
   description: string;
   images: Array<ImageDto>;
   disabled: boolean;
-  available_sizes: Array<string>;
+  availableSizes: Array<string>;
   amount: number;
   brand: string;
 }

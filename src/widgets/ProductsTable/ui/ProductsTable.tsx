@@ -7,21 +7,26 @@ import Empty from "../../../shared/components/Empty/Empty";
 import * as selectUtils from "../../../shared/utils/selectUtils";
 import { ProductsTableRow } from "./ProductsTableRow";
 import { ProductsTableHead } from "./ProductsTableHead";
-import { ProductViewModel } from "../types/typedef";
 import { checkIsRowSelected } from "../utils/checkIsRowSelected";
 import {
   PaginationConfig,
   usePagination,
 } from "../../../shared/hooks/usePagination";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../app/providers/StoreProvider";
+import { ProductViewModel } from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
+import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
 
 type ProductsTableProps = {
   processing: boolean;
   onDelete: (productsIds: string[]) => void;
-  onEdit: (user: ProductViewModel) => void;
+  onEdit: (product: ProductViewModel) => void;
   onSelectedChange: (selected: string[]) => void;
   onPaginationChangeReq: (params: PaginationConfig) => void;
   selected: string[];
-  products?: Array<ProductViewModel>;
+  // products?: Array<ProductViewModel>;
 };
 
 const ProductsTable: FC<ProductsTableProps> = ({
@@ -30,13 +35,18 @@ const ProductsTable: FC<ProductsTableProps> = ({
   onSelectedChange,
   processing,
   selected,
-  products = [],
   onPaginationChangeReq,
 }) => {
-  const { handleChangePage, handleChangeRowsPerPage, paginationConfig } =
-    usePagination({ onPaginationChangeReq });
+  const { productsData, isLoading, error, productTablePagination } =
+    useAppSelector((state) => state.productReducer);
+  const dispatch = useAppDispatch();
+  const { changePagination } = productsSlice.actions;
 
-  const { page, rowsPerPage } = paginationConfig;
+  const { handleChangePage, handleChangeRowsPerPage } = usePagination({
+    onChangePagination: (params) => dispatch(changePagination(params)),
+  });
+
+  const { products, total } = productsData;
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -73,29 +83,27 @@ const ProductsTable: FC<ProductsTableProps> = ({
             rowCount={products.length}
           />
           <TableBody>
-            {products
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((user, index) => (
-                <ProductsTableRow
-                  index={index}
-                  key={user.id}
-                  onCheck={handleClick}
-                  onDelete={onDelete}
-                  onEdit={onEdit}
-                  processing={processing}
-                  selected={checkIsRowSelected(selected, user.id)}
-                  product={user}
-                />
-              ))}
+            {products.map((product, index) => (
+              <ProductsTableRow
+                index={index}
+                key={product.id}
+                onCheck={handleClick}
+                onDelete={onDelete}
+                onEdit={onEdit}
+                processing={processing}
+                selected={checkIsRowSelected(selected, product.id)}
+                product={product}
+              />
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[6, 8, 10]}
         component="div"
-        count={products.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
+        count={total}
+        rowsPerPage={productTablePagination.rowsPerPage}
+        page={productTablePagination.page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />

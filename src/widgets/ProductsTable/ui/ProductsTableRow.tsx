@@ -14,13 +14,13 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { ProductViewModel } from "../types/typedef";
+import { ProductViewModel } from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
 
 type ProductsTableRowProps = {
   index: number;
   onCheck: (id: string) => void;
-  onDelete: (userIds: string[]) => void;
-  onEdit: (user: ProductViewModel) => void;
+  onDelete: (productIds: string[]) => void;
+  onEdit: (product: ProductViewModel) => void;
   processing: boolean;
   selected: boolean;
   product: ProductViewModel;
@@ -37,11 +37,11 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { t } = useTranslation();
-  const { id, size, description, title, amount, brand, images } = product;
+  const { id, description, title, amount, brand, images } = product;
 
   const labelId = `enhanced-table-checkbox-${index}`;
   const openActions = Boolean(anchorEl);
-  const productMainPhoto = images.length
+  const productMainPhoto = images?.length
     ? images[0].source
     : "/img/default_product.png";
 
@@ -101,7 +101,7 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
           </Box>
         </Box>
       </TableCell>
-      <TableCell align="center">{size}</TableCell>
+      <TableCell align="center">{10}</TableCell>
       <TableCell align="center">{amount}</TableCell>
       <TableCell align="center">{brand}</TableCell>
       <TableCell align="center">

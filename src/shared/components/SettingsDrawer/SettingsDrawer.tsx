@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import { useTranslation } from "react-i18next";
 import { drawerWidth } from "../../../app/config/layout";
-import { useSettings } from "../../../app/providers/SettingsProvider";
+import { useSettings } from "../../../app/providers/SettingsProvider/SettingsProvider";
 
 type SettingsDrawerProps = {
   onDrawerToggle: () => void;

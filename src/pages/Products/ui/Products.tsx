@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import AdminAppBar from "../../../shared/components/AdminAppBar/AdminAppBar";
 import { ProductsTable } from "../../../widgets/ProductsTable";
-import { PRODUCTS_MOCK } from "../../../shared/mocks/products";
 import { TableToolbar } from "../../../widgets/TableToolbar";
 import { ProductEditModal } from "../../../features/ProductEditModal";
 import { useSelectRows } from "../../../shared/hooks/useSelectRows";
 import ConfirmDeleteModal from "../../../shared/components/ConfirmDeleteModal/ConfirmDeleteModal";
 import { useDeleteProduct } from "../hooks/useDeleteProduct";
-import { useAddEditProduct } from "../hooks/useAddEditProduct";
 import { useProducts } from "../hooks/useProducts";
-
-// const { addUser, isAdding } = useAddUser();
-// const { deleteUsers, isDeleting } = useDeleteUsers();
-// const { data } = useGetProducts();
-// const { isUpdating, updateUser } = useUpdateProductMainInfo();
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../app/providers/StoreProvider";
+import { getProductsThunk } from "../../../app/providers/StoreProvider/reducers/products/productThunk";
+import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
+import { ProductViewModel } from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
 
 const Products = () => {
   const { t } = useTranslation();
@@ -23,6 +23,20 @@ const Products = () => {
   const { selectedRows, handleCancelSelected, handleSelectedChange } =
     useSelectRows();
 
+  const dispatch = useAppDispatch();
+  const { openEditProductModal, toggleEditProductModal } =
+    productsSlice.actions;
+
+  const { productTablePagination, ui, productToAddCandidate } = useAppSelector(
+    (state) => state.productReducer
+  );
+
+  const { isProductEditModalOpen } = ui;
+
+  useEffect(() => {
+    dispatch(getProductsThunk(productTablePagination));
+  }, [productTablePagination]);
+
   const {
     handleDeleteProduct,
     isConfirmDeleteModalOpen,
@@ -30,23 +44,35 @@ const Products = () => {
     handleOpenConfirmDeleteModal,
   } = useDeleteProduct();
 
-  const {
-    handleOpenProductEditModal,
-    handleCloseProductEditModal,
-    handleAddProduct,
-    handleUpdateProduct,
-    isProductEditOpen,
-    productCandidate,
-  } = useAddEditProduct();
+  // const {
+  //   handleOpenProductEditModal,
+  //   handleCloseProductEditModal,
+  //   handleAddProduct,
+  //   handleUpdateProduct,
+  //   isProductEditOpen,
+  //   productCandidate,
+  // } = useAddEditProduct();
 
   const { handleReqOnPaginationChange } = useProducts();
+
+  const handleAddNewProduct = () => {
+    dispatch(openEditProductModal());
+  };
+
+  const handleEditProduct = (product: ProductViewModel) => {
+    dispatch(openEditProductModal(product));
+  };
+
+  const handleCloseProductEditModal = () => {
+    dispatch(toggleEditProductModal(false));
+  };
 
   return (
     <React.Fragment>
       <AdminAppBar>
         <TableToolbar
           isLoading={processing}
-          onAddNewRow={handleOpenProductEditModal}
+          onAddNewRow={handleAddNewProduct}
           onCancelSelecting={handleCancelSelected}
           onDeleteSelected={handleOpenConfirmDeleteModal}
           selectedRows={selectedRows}
@@ -55,11 +81,10 @@ const Products = () => {
       <ProductsTable
         processing={processing}
         onDelete={handleOpenConfirmDeleteModal}
-        onEdit={handleOpenProductEditModal}
+        onEdit={handleEditProduct}
         onSelectedChange={handleSelectedChange}
         onPaginationChangeReq={handleReqOnPaginationChange}
         selected={selectedRows}
-        products={PRODUCTS_MOCK}
       />
       <ConfirmDeleteModal
         description={t("userManagement.confirmations.delete")}
@@ -69,14 +94,7 @@ const Products = () => {
         open={isConfirmDeleteModalOpen}
         title={t("common.confirmation")}
       />
-      <ProductEditModal
-        onAdd={handleAddProduct}
-        onClose={handleCloseProductEditModal}
-        onUpdate={handleUpdateProduct}
-        open={isProductEditOpen}
-        processing={processing}
-        product={productCandidate}
-      />
+      <ProductEditModal />
     </React.Fragment>
   );
 };

@@ -10,9 +10,9 @@ import PersonIcon from "@material-ui/icons/Person";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, Outlet } from "react-router-dom";
-import { useAuth } from "../../../app/providers/AuthProvider";
+import { useAuth } from "../../../app/providers/AuthProvider/AuthProvider";
 import QueryWrapper from "../../../shared/components/QueryWrapper/QueryWrapper";
-import { useSnackbar } from "../../../app/providers/SnackbarProvider";
+import { useSnackbar } from "../../../app/providers/SnackbarProvider/SnackbarProvider";
 import AdminAppBar from "../../../shared/components/AdminAppBar/AdminAppBar";
 import AdminToolbar from "../../../shared/components/AdminToolbar/AdminToolbar";
 

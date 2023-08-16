@@ -7,41 +7,33 @@ import React, { FC } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
-import { ProductViewModel } from "../../../../widgets/ProductsTable/types/typedef";
 import DialogContent from "@material-ui/core/DialogContent";
-import { DataWith } from "../../../../shared/types/types";
 import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import DialogActions from "@material-ui/core/DialogActions";
 import { ChipSelect } from "../../../../shared/components/ChipSelect";
+import { ProductMainInfo } from "../../types/typedef";
 
-type MainInfoProps = DataWith<{
-  isEditMode: boolean;
-  onAdd: (product: Partial<ProductViewModel>) => void;
+type MainInfoProps = {
   onClose: () => void;
-  onUpdate: (product: ProductViewModel) => void;
-  open: boolean;
+  onSubmit: (productMainInfo: ProductMainInfo) => void;
   processing: boolean;
-  product?: Pick<
-    ProductViewModel,
-    "id" | "title" | "brand" | "availableSizes" | "amount"
-  >;
-}>;
+  product?: ProductMainInfo;
+};
 
-export const MainInfo: FC<MainInfoProps> = ({ data }) => {
-  const { product, processing, onClose, isEditMode } = data;
+export const MainInfo: FC<MainInfoProps> = (props) => {
+  const { product, processing, onClose, onSubmit } = props;
 
   const { t } = useTranslation();
-  const handleSubmit = (values: Partial<ProductViewModel>) => {
-    console.log(values);
-  };
 
   const formik = useFormik({
     initialValues: {
+      id: product ? product.id : "",
       title: product ? product.title : "",
       brand: product ? product.brand : "",
       availableSizes: [],
       amount: product ? product.amount : 0,
+      disabled: product ? product.disabled : false,
     },
     validationSchema: Yup.object({
       title: Yup.string().required(t("common.validations.required")),
@@ -49,7 +41,7 @@ export const MainInfo: FC<MainInfoProps> = ({ data }) => {
       // size: Yup.string().required(t("common.validations.required")),
       amount: Yup.number().required(t("common.validations.required")),
     }),
-    onSubmit: handleSubmit,
+    onSubmit: onSubmit,
   });
 
   return (
@@ -133,9 +125,7 @@ export const MainInfo: FC<MainInfoProps> = ({ data }) => {
       <DialogActions>
         <Button onClick={onClose}>{t("common.cancel")}</Button>
         <LoadingButton loading={processing} type="submit" variant="contained">
-          {isEditMode
-            ? t("productManagement.modal.edit.action")
-            : t("productManagement.modal.add.action")}
+          {t("productManagement.modal.edit.action")}
         </LoadingButton>
       </DialogActions>
     </Box>

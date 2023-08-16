@@ -8,7 +8,7 @@ import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 import { useUpdatePassword } from "../../../process/hooks/useUpdatePassword";
-import { useSnackbar } from "../../../app/providers/SnackbarProvider";
+import { useSnackbar } from "../../../app/providers/SnackbarProvider/SnackbarProvider";
 
 const ProfilePassword = () => {
   const snackbar = useSnackbar();
