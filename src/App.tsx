@@ -1,14 +1,11 @@
 import * as Sentry from "@sentry/react";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import AuthProvider from "./app/providers/AuthProvider";
 import Loader from "./shared/components/Loader/Loader";
 import QueryWrapper from "./shared/components/QueryWrapper/QueryWrapper";
 import SettingsProvider from "./app/providers/SettingsProvider";
 import SnackbarProvider from "./app/providers/SnackbarProvider";
 import { AppRoutes } from "./app/routing";
-// import { register } from "swiper/element/bundle";
-// register();
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({
@@ -35,9 +32,9 @@ function App() {
         <SettingsProvider>
           <QueryWrapper>
             <SnackbarProvider>
-              <AuthProvider>
-                <AppRoutes />
-              </AuthProvider>
+              {/*<AuthProvider>*/}
+              <AppRoutes />
+              {/*</AuthProvider>*/}
             </SnackbarProvider>
           </QueryWrapper>
         </SettingsProvider>

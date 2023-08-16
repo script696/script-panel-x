@@ -21,11 +21,11 @@ const Login = () => {
   const { t } = useTranslation();
 
   const handleLogin = (email: string, password: string) => {
-    login(email, password)
-      .then(() =>
-        navigate(`/${process.env.PUBLIC_URL}/admin`, { replace: true })
-      )
-      .catch(() => snackbar.error(t("common.errors.unexpected.subTitle")));
+    navigate(`/${process.env.PUBLIC_URL}/admin`, { replace: true });
+    // login(email, password)
+    //   .then(() =>
+    //   )
+    //   .catch(() => snackbar.error(t("common.errors.unexpected.subTitle")));
   };
 
   const formik = useFormik({
@@ -112,11 +112,14 @@ const Login = () => {
               </Link>
             </Box>
             <LoadingButton
-              type="submit"
+              type="button"
               fullWidth
               loading={isLoggingIn}
               variant="contained"
               sx={{ mt: 3 }}
+              onClick={() =>
+                navigate(`/${process.env.PUBLIC_URL}/admin`, { replace: true })
+              }
             >
               {t("auth.login.submit")}
             </LoadingButton>

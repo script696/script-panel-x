@@ -13,8 +13,8 @@ import { useProducts } from "../hooks/useProducts";
 
 // const { addUser, isAdding } = useAddUser();
 // const { deleteUsers, isDeleting } = useDeleteUsers();
-// const { data } = useUsers();
-// const { isUpdating, updateUser } = useUpdateUser();
+// const { data } = useGetProducts();
+// const { isUpdating, updateUser } = useUpdateProductMainInfo();
 
 const Products = () => {
   const { t } = useTranslation();
