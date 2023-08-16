@@ -1,3 +1,3 @@
-import { GalleryImageDto } from "../../../shared/api/dto/common";
+import { ImageDto } from "../../../shared/api/dto/common";
 
-export type GalleryImage = GalleryImageDto;
+export type GalleryImage = ImageDto;
