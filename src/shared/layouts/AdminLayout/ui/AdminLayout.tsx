@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import QueryWrapper from "../../../components/QueryWrapper/QueryWrapper";
 import SettingsDrawer from "../../../components/SettingsDrawer/SettingsDrawer";
-import { useSettings } from "../../../../app/providers/SettingsProvider";
+import { useSettings } from "../../../../app/providers/SettingsProvider/SettingsProvider";
 import { Sidebar } from "../../../components/Sidebar";
 import HomeIcon from "@material-ui/icons/Home";
 import PeopleIcon from "@material-ui/icons/People";

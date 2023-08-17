@@ -11,7 +11,7 @@ export interface RemoveProductImagesResponseDto {
   description: string;
   images: Array<ImageDto>;
   disabled: boolean;
-  available_sizes: Array<string>;
+  availableSizes: Array<string>;
   amount: number;
   brand: string;
 }

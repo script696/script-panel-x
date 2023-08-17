@@ -1,19 +1,20 @@
 import { ImageDto } from "../../dto/common";
 
-export interface GetProductProductsRequestDto {
+export interface GetProductsRequestDto {
   page: number;
   rowsPerPage: number;
 }
 
-export interface GetProductProductsResponseDto {
+export interface GetProductsResponseDto {
   products: Array<{
     id: string;
     title: string;
     description: string;
     images: Array<ImageDto>;
     disabled: boolean;
-    available_sizes: Array<string>;
+    availableSizes: Array<string>;
     amount: number;
     brand: string;
   }>;
+  total: number;
 }

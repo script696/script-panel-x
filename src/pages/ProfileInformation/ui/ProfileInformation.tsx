@@ -14,7 +14,7 @@ import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 import { useUpdateProfileInfo } from "../../../admin/hooks/useUpdateProfileInfo";
-import { useSnackbar } from "../../../app/providers/SnackbarProvider";
+import { useSnackbar } from "../../../app/providers/SnackbarProvider/SnackbarProvider";
 import { useProfileInfo } from "../../../admin/hooks/useProfileInfo";
 import { ProfileInfo } from "../../../admin/types/profileInfo";
 

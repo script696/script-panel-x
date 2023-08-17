@@ -3,9 +3,10 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Loader from "./shared/components/Loader/Loader";
 import QueryWrapper from "./shared/components/QueryWrapper/QueryWrapper";
-import SettingsProvider from "./app/providers/SettingsProvider";
-import SnackbarProvider from "./app/providers/SnackbarProvider";
 import { AppRoutes } from "./app/routing";
+import SettingsProvider from "./app/providers/SettingsProvider/SettingsProvider";
+import SnackbarProvider from "./app/providers/SnackbarProvider/SnackbarProvider";
+import { StoreProvider } from "./app/providers/StoreProvider";
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({
@@ -31,11 +32,13 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <SettingsProvider>
           <QueryWrapper>
-            <SnackbarProvider>
-              {/*<AuthProvider>*/}
-              <AppRoutes />
-              {/*</AuthProvider>*/}
-            </SnackbarProvider>
+            <StoreProvider>
+              <SnackbarProvider>
+                {/*<AuthProvider>*/}
+                <AppRoutes />
+                {/*</AuthProvider>*/}
+              </SnackbarProvider>
+            </StoreProvider>
           </QueryWrapper>
         </SettingsProvider>
       </QueryClientProvider>

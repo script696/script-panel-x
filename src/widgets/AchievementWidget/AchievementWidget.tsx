@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import StarIcon from "@material-ui/icons/Star";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
-import { useAuth } from "../../app/providers/AuthProvider";
+import { useAuth } from "../../app/providers/AuthProvider/AuthProvider";
 
 const AchievementWidget = () => {
   const { userInfo } = useAuth();

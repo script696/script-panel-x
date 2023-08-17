@@ -2,7 +2,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "../../app/providers/AuthProvider";
+import { useAuth } from "../../app/providers/AuthProvider/AuthProvider";
 import { ReactComponent as WelcomeSvg } from "../../shared/assets/welcome.svg";
 import SvgContainer from "../../shared/components/SvgContainer/SvgContainer";
 

@@ -1,9 +1,9 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent } from "react";
 
 type UsePaginationParams = {
-  initialPage?: number;
-  initialRowsPerPage?: 6 | 8 | 10;
-  onPaginationChangeReq: (params: PaginationConfig) => void;
+  onChangePagination: (
+    params: { page: number } | { rowsPerPage: number }
+  ) => void;
 };
 
 export type PaginationConfig = {
@@ -12,37 +12,22 @@ export type PaginationConfig = {
 };
 
 type UsePaginationResult = {
-  paginationConfig: PaginationConfig;
   handleChangePage: (_: unknown, newPage: number) => void;
   handleChangeRowsPerPage: (e: ChangeEvent<HTMLInputElement>) => void;
 };
-
 export type UsePagination = (
   params: UsePaginationParams
 ) => UsePaginationResult;
 
-export const usePagination: UsePagination = ({
-  initialPage = 0,
-  initialRowsPerPage = 6,
-  onPaginationChangeReq,
-}) => {
-  const [paginationConfig, setPaginationConfig] = useState({
-    page: initialPage,
-    rowsPerPage: initialRowsPerPage,
-  });
-
+export const usePagination: UsePagination = ({ onChangePagination }) => {
   const handleChangePage = (_: unknown, newPage: number) => {
-    setPaginationConfig((prevState) => ({ ...prevState, page: newPage }));
+    onChangePagination({ page: newPage });
   };
 
   const handleChangeRowsPerPage = (e: ChangeEvent<HTMLInputElement>) => {
     const rowsPerPage = Number(e.target.value) as 6 | 8 | 10;
-    setPaginationConfig({ rowsPerPage, page: 0 });
+    onChangePagination({ rowsPerPage });
   };
 
-  useEffect(() => {
-    onPaginationChangeReq(paginationConfig);
-  }, [paginationConfig]);
-
-  return { handleChangePage, handleChangeRowsPerPage, paginationConfig };
+  return { handleChangePage, handleChangeRowsPerPage };
 };

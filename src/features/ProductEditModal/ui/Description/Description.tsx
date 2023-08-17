@@ -3,24 +3,23 @@ import TextField from "@material-ui/core/TextField";
 import React, { FC } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { ProductViewModel } from "../../../../widgets/ProductsTable/types/typedef";
 import { useTranslation } from "react-i18next";
 import { DataWith } from "../../../../shared/types/types";
 import { Box } from "@material-ui/core";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
+import { ProductViewModel } from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
 
-type DescriptionProps = DataWith<{
-  isEditMode: boolean;
+type DescriptionProps = {
   processing: boolean;
   product?: Pick<ProductViewModel, "description">;
   onClose: () => void;
-}>;
+};
 
-const Description: FC<DescriptionProps> = ({ data }) => {
+const Description: FC<DescriptionProps> = (props) => {
   const { t } = useTranslation();
-  const { product, processing, isEditMode, onClose } = data;
+  const { product, processing, onClose } = props;
 
   const handleSubmit = (values: Partial<ProductViewModel>) => {
     console.log(values);
@@ -69,9 +68,7 @@ const Description: FC<DescriptionProps> = ({ data }) => {
       <DialogActions>
         <Button onClick={onClose}>{t("common.cancel")}</Button>
         <LoadingButton loading={processing} type="submit" variant="contained">
-          {isEditMode
-            ? t("productManagement.modal.edit.action")
-            : t("productManagement.modal.add.action")}
+          {t("productManagement.modal.edit.action")}
         </LoadingButton>
       </DialogActions>
     </Box>

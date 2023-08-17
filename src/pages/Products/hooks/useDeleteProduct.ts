@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ProductViewModel } from "../../../widgets/ProductsTable/types/typedef";
-import { useSnackbar } from "../../../app/providers/SnackbarProvider";
+import { useSnackbar } from "../../../app/providers/SnackbarProvider/SnackbarProvider";
+import { ProductViewModel } from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
 
 export const useDeleteProduct = () => {
   const snackbar = useSnackbar();

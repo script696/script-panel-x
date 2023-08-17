@@ -17,6 +17,9 @@ import { UnderConstructionsLazy } from "../../../pages/UnderConstructions";
 import { ProductsLazy } from "../../../pages/Products";
 import { IntroLazy } from "../../../pages/Intro";
 import { ROUTES_ADMIN, ROUTES_BASE, ROUTES_PROFILE } from "../constants/routes";
+import { useAppDispatch, useAppSelector } from "../../providers/StoreProvider";
+import { useEffect } from "react";
+import { getProductsThunk } from "../../providers/StoreProvider/reducers/products/productThunk";
 
 const AppRoutes = () => {
   return (

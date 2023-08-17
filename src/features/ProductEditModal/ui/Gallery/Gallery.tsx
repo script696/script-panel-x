@@ -1,25 +1,23 @@
 import DialogContent from "@material-ui/core/DialogContent";
 import { Avatar, Box } from "@material-ui/core";
-import { ProductViewModel } from "../../../../widgets/ProductsTable/types/typedef";
 import React, { FC } from "react";
-import { DataWith } from "../../../../shared/types/types";
 import { useGalleryImages } from "../../hooks/useGalleryImages";
 import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import DialogActions from "@material-ui/core/DialogActions";
 import { useTranslation } from "react-i18next";
 import { avatarSx, boxSx, deleteButtonSx } from "./stylesSx";
+import { ProductViewModel } from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
 
-type GalleryDataProps = DataWith<{
+type GalleryDataProps = {
   onClose: () => void;
   processing: boolean;
   product?: Pick<ProductViewModel, "images">;
-  isEditMode: boolean;
-}>;
+};
 
-const Gallery: FC<GalleryDataProps> = ({ data }) => {
+const Gallery: FC<GalleryDataProps> = (props) => {
   const { t } = useTranslation();
-  const { processing, onClose, isEditMode } = data;
+  const { processing, onClose, product } = props;
 
   const handleDeleteImageRequest = (imgId: string) => {
     return Promise.resolve();
@@ -32,7 +30,7 @@ const Gallery: FC<GalleryDataProps> = ({ data }) => {
     deletedImages,
     files,
   } = useGalleryImages({
-    defaultImages: data.product?.images,
+    defaultImages: product?.images,
   });
 
   const withAddImage = [

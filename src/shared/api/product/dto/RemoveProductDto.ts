@@ -4,5 +4,5 @@ export interface RemoveProductRequestDto {
 }
 
 export interface RemoveProductResponseDto {
-  removedProductId: string;
+  id: string;
 }

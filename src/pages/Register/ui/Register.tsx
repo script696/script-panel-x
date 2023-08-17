@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import BoxedLayout from "../../../shared/components/BoxedLayout/BoxedLayout";
-import { useSnackbar } from "../../../app/providers/SnackbarProvider";
+import { useSnackbar } from "../../../app/providers/SnackbarProvider/SnackbarProvider";
 import { useRegister } from "../../../process/hooks/useRegister";
 import { UserInfo } from "../../../process/types/userInfo";
 

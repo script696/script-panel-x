@@ -1,5 +1,5 @@
 import { Navigate, Route, RouteProps } from "react-router";
-import { useAuth } from "../../../app/providers/AuthProvider";
+import { useAuth } from "../../../app/providers/AuthProvider/AuthProvider";
 
 type PrivateRouteProps = {
   roles?: string[];
