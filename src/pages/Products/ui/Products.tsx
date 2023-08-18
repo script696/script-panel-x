@@ -27,7 +27,7 @@ const Products = () => {
   const { openEditProductModal, toggleEditProductModal } =
     productsSlice.actions;
 
-  const { productTablePagination, ui, productToAddCandidate } = useAppSelector(
+  const { productTablePagination, ui, productCandidate } = useAppSelector(
     (state) => state.productReducer
   );
 

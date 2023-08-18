@@ -12,13 +12,18 @@ import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import DialogActions from "@material-ui/core/DialogActions";
 import { ChipSelect } from "../../../../shared/components/ChipSelect";
-import { ProductMainInfo } from "../../types/typedef";
+import {
+  ProductCreateMainInfo,
+  ProductEditMainInfo,
+} from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
 
 type MainInfoProps = {
   onClose: () => void;
-  onSubmit: (productMainInfo: ProductMainInfo) => void;
+  onSubmit: (
+    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo
+  ) => void;
   processing: boolean;
-  product?: ProductMainInfo;
+  product?: ProductEditMainInfo | ProductCreateMainInfo;
 };
 
 export const MainInfo: FC<MainInfoProps> = (props) => {
@@ -28,7 +33,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      id: product ? product.id : "",
+      id: product && "id" in product ? product.id : undefined,
       title: product ? product.title : "",
       brand: product ? product.brand : "",
       availableSizes: [],

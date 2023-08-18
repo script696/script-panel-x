@@ -1,19 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ProductService } from "../../../../../shared/api/product/ProductService";
-import { CreateProductRequestDto } from "../../../../../shared/api/product/dto/CreateProductDto";
-import { ProductsViewModel, ProductViewModel } from "./types/typedef";
-import { RemoveProductRequestDto } from "../../../../../shared/api/product/dto/RemoveProductDto";
-import { UpdateProductMainInfoRequestDto } from "../../../../../shared/api/product/dto/UpdateProductMainInfoDto";
-import { UpdateProductSecondaryInfoRequestDto } from "../../../../../shared/api/product/dto/UpdateProductSecondaryInfoDto";
-import { AddProductImageRequestDto } from "../../../../../shared/api/product/dto/AddProductImagesDto";
-import { RemoveProductImageRequestDto } from "../../../../../shared/api/product/dto/RemoveProductImagesDto";
-import { ProductsState } from "./productsSlice";
-import { GetProductsRequestDto } from "../../../../../shared/api/product/dto/GetProductsDto";
-import { ViewModelToApiMapper } from "./mappers/ViewModelToApiMapper";
 import {
   ProductCreateMainInfo,
   ProductEditMainInfo,
-} from "../../../../../features/ProductEditModal/types/typedef";
+  ProductsViewModel,
+  ProductViewModel,
+} from "./types/typedef";
+import { RemoveProductRequestDto } from "../../../../../shared/api/product/dto/RemoveProductDto";
+import { UpdateProductSecondaryInfoRequestDto } from "../../../../../shared/api/product/dto/UpdateProductSecondaryInfoDto";
+import { AddProductImageRequestDto } from "../../../../../shared/api/product/dto/AddProductImagesDto";
+import { RemoveProductImageRequestDto } from "../../../../../shared/api/product/dto/RemoveProductImagesDto";
+import { GetProductsRequestDto } from "../../../../../shared/api/product/dto/GetProductsDto";
+import { ViewModelToApiMapper } from "./mappers/ViewModelToApiMapper";
 
 export const getProductsThunk = createAsyncThunk<
   ProductsViewModel,
@@ -46,9 +44,7 @@ export const removeProductsThunk = createAsyncThunk<
   RemoveProductRequestDto
 >("product/remove", async (reqData, thunkAPI) => {
   try {
-    const {
-      data: { data },
-    } = await ProductService.removeProducts(reqData);
+    const { data } = await ProductService.removeProducts(reqData);
 
     return data;
   } catch (e) {
@@ -63,9 +59,7 @@ export const updateProductMainInfoThunk = createAsyncThunk<
   const mappedReqData = ViewModelToApiMapper.updateProductMainInfo(reqData);
 
   try {
-    const {
-      data: { data },
-    } = await ProductService.updateProductMainInfo(mappedReqData);
+    const { data } = await ProductService.updateProductMainInfo(mappedReqData);
 
     return data;
   } catch (e) {
@@ -78,9 +72,7 @@ export const updateProductSecondaryInfoThunk = createAsyncThunk<
   UpdateProductSecondaryInfoRequestDto
 >("product/update-secondary-info", async (reqData, thunkAPI) => {
   try {
-    const {
-      data: { data },
-    } = await ProductService.updateProductSecondaryInfo(reqData);
+    const { data } = await ProductService.updateProductSecondaryInfo(reqData);
 
     return data;
   } catch (e) {
@@ -93,9 +85,7 @@ export const addImagesThunk = createAsyncThunk<
   AddProductImageRequestDto
 >("product/add-images", async (reqData, thunkAPI) => {
   try {
-    const {
-      data: { data },
-    } = await ProductService.addImages(reqData);
+    const { data } = await ProductService.addImages(reqData);
 
     return data;
   } catch (e) {
@@ -108,9 +98,7 @@ export const removeImagesThunk = createAsyncThunk<
   RemoveProductImageRequestDto
 >("product/remove-images", async (reqData, thunkAPI) => {
   try {
-    const {
-      data: { data },
-    } = await ProductService.removeImages(reqData);
+    const { data } = await ProductService.removeImages(reqData);
 
     return data;
   } catch (e) {

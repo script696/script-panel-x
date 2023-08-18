@@ -1,5 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getProductsThunk } from "./productThunk";
+import {
+  createProductThunk,
+  getProductsThunk,
+  updateProductMainInfoThunk,
+} from "./productThunk";
 import { ProductsViewModel, ProductViewModel } from "./types/typedef";
 
 export type ProductsState = {
@@ -7,7 +11,7 @@ export type ProductsState = {
   ui: {
     isProductEditModalOpen: boolean;
   };
-  productToAddCandidate: ProductViewModel | undefined;
+  productCandidate: ProductViewModel | undefined;
   productTablePagination: { page: number; rowsPerPage: number };
   isLoading: boolean;
   error: string;
@@ -19,7 +23,7 @@ const initialState: ProductsState = {
   ui: {
     isProductEditModalOpen: false,
   },
-  productToAddCandidate: undefined,
+  productCandidate: undefined,
   isLoading: false,
   error: "",
 };
@@ -35,7 +39,7 @@ export const productsSlice = createSlice({
       state,
       { payload }: PayloadAction<ProductViewModel | undefined>
     ) => {
-      state.productToAddCandidate = payload;
+      state.productCandidate = payload;
       state.ui.isProductEditModalOpen = true;
     },
     closeEditProductModal: (state) => {
@@ -68,7 +72,6 @@ export const productsSlice = createSlice({
       state.isLoading = false;
       state.error = "";
       state.productsData = payload;
-      state.ui.isProductEditModalOpen = false;
     },
     [getProductsThunk.pending.type]: (state) => {
       state.isLoading = true;
@@ -81,6 +84,51 @@ export const productsSlice = createSlice({
       state.error = payload;
     },
     /* createProduct */
+    [createProductThunk.fulfilled.type]: (
+      state,
+      { payload }: PayloadAction<ProductViewModel>
+    ) => {
+      state.isLoading = false;
+      state.error = "";
+      state.productsData.total = state.productsData.total + 1;
+      state.ui.isProductEditModalOpen = false;
+      state.productCandidate = undefined;
+    },
+    [createProductThunk.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [createProductThunk.rejected.type]: (
+      state,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    /* updateProduct */
+    [updateProductMainInfoThunk.fulfilled.type]: (
+      state,
+      { payload }: PayloadAction<ProductViewModel>
+    ) => {
+      state.isLoading = false;
+      state.error = "";
+      state.productsData.products = state.productsData.products.map(
+        (product) => {
+          return product.id === payload.id ? payload : product;
+        }
+      );
+      state.ui.isProductEditModalOpen = false;
+      state.productCandidate = undefined;
+    },
+    [updateProductMainInfoThunk.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [updateProductMainInfoThunk.rejected.type]: (
+      state,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
   },
 });
 

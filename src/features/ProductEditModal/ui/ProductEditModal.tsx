@@ -1,7 +1,7 @@
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { useTranslation } from "react-i18next";
-import React, { FC } from "react";
+import React from "react";
 import { Box, Tabs, Tab } from "@material-ui/core";
 import { MainInfo } from "./MainInfo/MainInfo";
 import Description from "./Description/Description";
@@ -11,26 +11,26 @@ import {
   useAppSelector,
 } from "../../../app/providers/StoreProvider";
 import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
-import { ProductCreateMainInfo, ProductEditMainInfo } from "../types/typedef";
 import {
   createProductThunk,
   updateProductMainInfoThunk,
 } from "../../../app/providers/StoreProvider/reducers/products/productThunk";
+import {
+  ProductCreateMainInfo,
+  ProductEditMainInfo,
+} from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
 
 const ProductEditModal = () => {
   const { t } = useTranslation();
-
   const dispatch = useAppDispatch();
   const { toggleEditProductModal } = productsSlice.actions;
-
-  const { ui, productToAddCandidate } = useAppSelector(
+  const { ui, productCandidate } = useAppSelector(
     (state) => state.productReducer
   );
+  const [value, setValue] = React.useState(0);
 
   const { isProductEditModalOpen } = ui;
-  const mode = productToAddCandidate ? "edit" : "create";
-
-  const [value, setValue] = React.useState(0);
+  const mode = productCandidate ? "edit" : "create";
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -74,7 +74,7 @@ const ProductEditModal = () => {
         {value === 0 && (
           <MainInfo
             processing={false}
-            product={productToAddCandidate}
+            product={productCandidate}
             onClose={handleCloseModal}
             onSubmit={handleSubmitProductMainInfo}
           />
@@ -83,14 +83,14 @@ const ProductEditModal = () => {
           <Description
             processing={false}
             onClose={handleCloseModal}
-            product={productToAddCandidate}
+            product={productCandidate}
           />
         )}
         {mode === "edit" && value === 2 && (
           <Gallery
             processing={false}
             onClose={handleCloseModal}
-            product={productToAddCandidate}
+            product={productCandidate}
           />
         )}
       </Box>
