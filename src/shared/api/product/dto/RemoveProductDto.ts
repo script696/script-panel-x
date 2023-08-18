@@ -1,8 +1,8 @@
 export interface RemoveProductRequestDto {
   shopId: string;
-  productId: string;
+  productIds: Array<string>;
 }
 
 export interface RemoveProductResponseDto {
-  id: string;
+  removedProductIds: Array<string>;
 }

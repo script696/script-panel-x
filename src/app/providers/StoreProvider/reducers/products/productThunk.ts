@@ -6,7 +6,10 @@ import {
   ProductsViewModel,
   ProductViewModel,
 } from "./types/typedef";
-import { RemoveProductRequestDto } from "../../../../../shared/api/product/dto/RemoveProductDto";
+import {
+  RemoveProductRequestDto,
+  RemoveProductResponseDto,
+} from "../../../../../shared/api/product/dto/RemoveProductDto";
 import { UpdateProductSecondaryInfoRequestDto } from "../../../../../shared/api/product/dto/UpdateProductSecondaryInfoDto";
 import { AddProductImageRequestDto } from "../../../../../shared/api/product/dto/AddProductImagesDto";
 import { RemoveProductImageRequestDto } from "../../../../../shared/api/product/dto/RemoveProductImagesDto";
@@ -40,7 +43,7 @@ export const createProductThunk = createAsyncThunk<
 });
 
 export const removeProductsThunk = createAsyncThunk<
-  Pick<ProductViewModel, "id">,
+  RemoveProductResponseDto,
   RemoveProductRequestDto
 >("product/remove", async (reqData, thunkAPI) => {
   try {

@@ -53,7 +53,7 @@ const ConfirmDeleteModal = ({
         <LoadingButton
           autoFocus
           onClick={onConfirm}
-          loading={pending}
+          loading={false}
           variant="contained"
         >
           {t("common.confirm")}
