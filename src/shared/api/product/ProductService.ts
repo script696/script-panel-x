@@ -23,8 +23,6 @@ import {
   AddProductImageRequestDto,
   AddProductImagesResponseDto,
 } from "./dto/AddProductImagesDto";
-import axios from "axios";
-import { ApiSuccessResponse } from "../responses/ApiSuccessResponse";
 import {
   RemoveProductImageRequestDto,
   RemoveProductImagesResponseDto,
@@ -42,16 +40,13 @@ export class ProductService {
   }
 
   static removeProducts(data: RemoveProductRequestDto) {
-    return $apiClient.delete<ApiSuccessResponse<RemoveProductResponseDto>>(
-      "product/remove",
-      {
-        data,
-      }
-    );
+    return $apiClient.delete<RemoveProductResponseDto>("product/remove", {
+      data,
+    });
   }
 
   static updateProductMainInfo(data: UpdateProductMainInfoRequestDto) {
-    return $apiClient.put<ApiSuccessResponse<UpdateProductMainInfoResponseDto>>(
+    return $apiClient.put<UpdateProductMainInfoResponseDto>(
       "product/update-main-info",
       data
     );
@@ -60,20 +55,21 @@ export class ProductService {
   static updateProductSecondaryInfo(
     data: UpdateProductSecondaryInfoRequestDto
   ) {
-    return $apiClient.put<
-      ApiSuccessResponse<UpdateProductSecondaryInfoResponseDto>
-    >("product/update-secondary-info", data);
+    return $apiClient.put<UpdateProductSecondaryInfoResponseDto>(
+      "product/update-secondary-info",
+      data
+    );
   }
 
   static addImages(data: AddProductImageRequestDto) {
-    return $apiClient.post<ApiSuccessResponse<AddProductImagesResponseDto>>(
+    return $apiClient.post<AddProductImagesResponseDto>(
       "product/add-images",
       data
     );
   }
 
   static removeImages(data: RemoveProductImageRequestDto) {
-    return $apiClient.post<ApiSuccessResponse<RemoveProductImagesResponseDto>>(
+    return $apiClient.post<RemoveProductImagesResponseDto>(
       "product/remove-images",
       data
     );
