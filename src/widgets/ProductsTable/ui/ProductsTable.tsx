@@ -24,9 +24,7 @@ type ProductsTableProps = {
   onDelete: (productsIds: string[]) => void;
   onEdit: (product: ProductViewModel) => void;
   onSelectedChange: (selected: string[]) => void;
-  onPaginationChangeReq: (params: PaginationConfig) => void;
   selected: string[];
-  // products?: Array<ProductViewModel>;
 };
 
 const ProductsTable: FC<ProductsTableProps> = ({
@@ -35,10 +33,10 @@ const ProductsTable: FC<ProductsTableProps> = ({
   onSelectedChange,
   processing,
   selected,
-  onPaginationChangeReq,
 }) => {
-  const { productsData, isLoading, error, productTablePagination } =
-    useAppSelector((state) => state.productReducer);
+  const { productsData, productsTable } = useAppSelector(
+    (state) => state.productReducer
+  );
   const dispatch = useAppDispatch();
   const { changePagination } = productsSlice.actions;
 
@@ -47,6 +45,7 @@ const ProductsTable: FC<ProductsTableProps> = ({
   });
 
   const { products, total } = productsData;
+  const { page, rowsPerPage } = productsTable.pagination;
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -102,8 +101,8 @@ const ProductsTable: FC<ProductsTableProps> = ({
         rowsPerPageOptions={[6, 8, 10]}
         component="div"
         count={total}
-        rowsPerPage={productTablePagination.rowsPerPage}
-        page={productTablePagination.page}
+        rowsPerPage={rowsPerPage}
+        page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />

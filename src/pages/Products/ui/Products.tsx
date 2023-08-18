@@ -6,13 +6,14 @@ import { TableToolbar } from "../../../widgets/TableToolbar";
 import { ProductEditModal } from "../../../features/ProductEditModal";
 import { useSelectRows } from "../../../shared/hooks/useSelectRows";
 import ConfirmDeleteModal from "../../../shared/components/ConfirmDeleteModal/ConfirmDeleteModal";
-import { useDeleteProduct } from "../hooks/useDeleteProduct";
-import { useProducts } from "../hooks/useProducts";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../../app/providers/StoreProvider";
-import { getProductsThunk } from "../../../app/providers/StoreProvider/reducers/products/productThunk";
+import {
+  getProductsThunk,
+  removeProductsThunk,
+} from "../../../app/providers/StoreProvider/reducers/products/productThunk";
 import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
 import { ProductViewModel } from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
 
@@ -20,51 +21,51 @@ const Products = () => {
   const { t } = useTranslation();
   const processing = false;
 
-  const { selectedRows, handleCancelSelected, handleSelectedChange } =
-    useSelectRows();
-
   const dispatch = useAppDispatch();
-  const { openEditProductModal, toggleEditProductModal } =
-    productsSlice.actions;
-
-  const { productTablePagination, ui, productCandidate } = useAppSelector(
-    (state) => state.productReducer
-  );
-
-  const { isProductEditModalOpen } = ui;
-
-  useEffect(() => {
-    dispatch(getProductsThunk(productTablePagination));
-  }, [productTablePagination]);
-
   const {
-    handleDeleteProduct,
-    isConfirmDeleteModalOpen,
-    handleCloseConfirmDeleteDialog,
-    handleOpenConfirmDeleteModal,
-  } = useDeleteProduct();
+    openEditProductModal,
+    toggleDeleteProductModal,
+    deleteProducts,
+    changeSelectedRows,
+  } = productsSlice.actions;
 
-  // const {
-  //   handleOpenProductEditModal,
-  //   handleCloseProductEditModal,
-  //   handleAddProduct,
-  //   handleUpdateProduct,
-  //   isProductEditOpen,
-  //   productCandidate,
-  // } = useAddEditProduct();
+  const { productsTable, ui } = useAppSelector((state) => state.productReducer);
 
-  const { handleReqOnPaginationChange } = useProducts();
+  const { pagination, selectedRows } = productsTable;
+  const { isProductDeleteModalOpen } = ui;
+  useEffect(() => {
+    dispatch(getProductsThunk(pagination));
+  }, [pagination]);
 
   const handleAddNewProduct = () => {
     dispatch(openEditProductModal());
+  };
+
+  const handleCloseDeleteProductModel = () => {
+    dispatch(toggleDeleteProductModal(false));
   };
 
   const handleEditProduct = (product: ProductViewModel) => {
     dispatch(openEditProductModal(product));
   };
 
-  const handleCloseProductEditModal = () => {
-    dispatch(toggleEditProductModal(false));
+  const handleDeleteProducts = (productsIds: Array<string>) => {
+    dispatch(deleteProducts(productsIds));
+  };
+
+  const handleCancelSelected = () => {
+    dispatch(changeSelectedRows([]));
+  };
+
+  const handleChangeSelectedRows = (selectedRows: Array<string>) => {
+    dispatch(changeSelectedRows(selectedRows));
+  };
+
+  const handleConfirmDeleteRows = async () => {
+    await dispatch(
+      removeProductsThunk({ shopId: "1", productIds: selectedRows })
+    );
+    await dispatch(getProductsThunk(pagination));
   };
 
   return (
@@ -74,24 +75,23 @@ const Products = () => {
           isLoading={processing}
           onAddNewRow={handleAddNewProduct}
           onCancelSelecting={handleCancelSelected}
-          onDeleteSelected={handleOpenConfirmDeleteModal}
+          onDeleteSelected={handleDeleteProducts}
           selectedRows={selectedRows}
         />
       </AdminAppBar>
       <ProductsTable
         processing={processing}
-        onDelete={handleOpenConfirmDeleteModal}
+        onDelete={handleDeleteProducts}
         onEdit={handleEditProduct}
-        onSelectedChange={handleSelectedChange}
-        onPaginationChangeReq={handleReqOnPaginationChange}
+        onSelectedChange={handleChangeSelectedRows}
         selected={selectedRows}
       />
       <ConfirmDeleteModal
         description={t("userManagement.confirmations.delete")}
         pending={processing}
-        onClose={handleCloseConfirmDeleteDialog}
-        onConfirm={handleDeleteProduct}
-        open={isConfirmDeleteModalOpen}
+        onClose={handleCloseDeleteProductModel}
+        onConfirm={handleConfirmDeleteRows}
+        open={isProductDeleteModalOpen}
         title={t("common.confirmation")}
       />
       <ProductEditModal />

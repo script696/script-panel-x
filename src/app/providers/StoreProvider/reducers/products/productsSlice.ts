@@ -2,26 +2,36 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   createProductThunk,
   getProductsThunk,
+  removeProductsThunk,
   updateProductMainInfoThunk,
 } from "./productThunk";
 import { ProductsViewModel, ProductViewModel } from "./types/typedef";
+import { RemoveProductResponseDto } from "../../../../../shared/api/product/dto/RemoveProductDto";
 
 export type ProductsState = {
   productsData: ProductsViewModel;
   ui: {
     isProductEditModalOpen: boolean;
+    isProductDeleteModalOpen: boolean;
+  };
+  productsTable: {
+    pagination: { page: number; rowsPerPage: number };
+    selectedRows: Array<string>;
   };
   productCandidate: ProductViewModel | undefined;
-  productTablePagination: { page: number; rowsPerPage: number };
   isLoading: boolean;
   error: string;
 };
 
 const initialState: ProductsState = {
   productsData: { products: [], total: 0 },
-  productTablePagination: { page: 0, rowsPerPage: 3 },
   ui: {
     isProductEditModalOpen: false,
+    isProductDeleteModalOpen: false,
+  },
+  productsTable: {
+    pagination: { page: 0, rowsPerPage: 6 },
+    selectedRows: [],
   },
   productCandidate: undefined,
   isLoading: false,
@@ -32,6 +42,15 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    changeSelectedRows: (state, { payload }: PayloadAction<Array<string>>) => {
+      state.productsTable.selectedRows = payload;
+    },
+    deleteProducts: (state, { payload }: PayloadAction<Array<string>>) => {
+      state.ui.isProductDeleteModalOpen = true;
+      state.productsTable.selectedRows = state.productsTable.selectedRows.length
+        ? state.productsTable.selectedRows
+        : payload;
+    },
     toggleEditProductModal: (state, { payload }: PayloadAction<boolean>) => {
       state.ui.isProductEditModalOpen = payload;
     },
@@ -45,17 +64,20 @@ export const productsSlice = createSlice({
     closeEditProductModal: (state) => {
       state.ui.isProductEditModalOpen = false;
     },
+    toggleDeleteProductModal: (state, { payload }: PayloadAction<boolean>) => {
+      state.ui.isProductDeleteModalOpen = payload;
+      state.productsTable.selectedRows = payload
+        ? state.productsTable.selectedRows
+        : [];
+    },
     changePagination: (
       state,
       { payload }: PayloadAction<{ page: number } | { rowsPerPage: number }>
     ) => {
       if ("page" in payload) {
-        state.productTablePagination = {
-          ...state.productTablePagination,
-          page: payload.page,
-        };
+        state.productsTable.pagination.page = payload.page;
       } else {
-        state.productTablePagination = {
+        state.productsTable.pagination = {
           page: 0,
           rowsPerPage: payload.rowsPerPage,
         };
@@ -64,7 +86,6 @@ export const productsSlice = createSlice({
   },
   extraReducers: {
     /* getProducts */
-
     [getProductsThunk.fulfilled.type]: (
       state,
       { payload }: PayloadAction<ProductsViewModel>
@@ -84,10 +105,7 @@ export const productsSlice = createSlice({
       state.error = payload;
     },
     /* createProduct */
-    [createProductThunk.fulfilled.type]: (
-      state,
-      { payload }: PayloadAction<ProductViewModel>
-    ) => {
+    [createProductThunk.fulfilled.type]: (state) => {
       state.isLoading = false;
       state.error = "";
       state.productsData.total = state.productsData.total + 1;
@@ -123,6 +141,26 @@ export const productsSlice = createSlice({
       state.isLoading = true;
     },
     [updateProductMainInfoThunk.rejected.type]: (
+      state,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    /* updateProduct */
+    [removeProductsThunk.fulfilled.type]: (
+      state,
+      { payload }: PayloadAction<RemoveProductResponseDto>
+    ) => {
+      state.isLoading = false;
+      state.error = "";
+      state.ui.isProductDeleteModalOpen = false;
+      state.productsTable.selectedRows = [];
+    },
+    [removeProductsThunk.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [removeProductsThunk.rejected.type]: (
       state,
       { payload }: PayloadAction<string>
     ) => {
