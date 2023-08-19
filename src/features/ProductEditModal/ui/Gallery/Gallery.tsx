@@ -8,24 +8,26 @@ import DialogActions from "@material-ui/core/DialogActions";
 import { useTranslation } from "react-i18next";
 import { avatarSx, boxSx, deleteButtonSx } from "./stylesSx";
 import { ProductViewModel } from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
-import { AddProductImageRequestDto } from "../../../../shared/api/product/dto/AddProductImagesDto";
+import { AddProductImagesRequestDto } from "../../../../shared/api/product/dto/AddProductImagesDto";
+import { RemoveProductImageRequestDto } from "../../../../shared/api/product/dto/RemoveProductImagesDto";
 
 type GalleryDataProps = {
   onClose: () => void;
   processing: boolean;
   product?: Pick<ProductViewModel, "images" | "id">;
-  onSubmit: (data: AddProductImageRequestDto) => void;
+  onAddProductImages: (data: AddProductImagesRequestDto) => void;
+  onDeleteProductImage: (data: RemoveProductImageRequestDto) => void;
 };
 
 const Gallery: FC<GalleryDataProps> = (props) => {
   const { t } = useTranslation();
-  const { processing, onClose, product, onSubmit } = props;
+  const { onClose, product, onAddProductImages, onDeleteProductImage } = props;
 
   const {
     handleLoadImage,
     galleryImages,
     handleDeleteImg,
-    deletedImages,
+    deletedImagesCandidates,
     files,
   } = useGalleryImages({
     defaultImages: product?.images,
@@ -37,7 +39,16 @@ const Gallery: FC<GalleryDataProps> = (props) => {
 
   const handleSaveChanges = () => {
     if (!product) return;
-    onSubmit({ files, shopId: "1", productId: product.id });
+
+    if (files.length) {
+      onAddProductImages({ files, shopId: "1", productId: product.id });
+    }
+    if (deletedImagesCandidates.length) {
+      onDeleteProductImage({
+        productId: product.id,
+        imagesSources: deletedImagesCandidates,
+      });
+    }
   };
   const apiUrl = process.env["REACT_APP_API_URL"];
   return (

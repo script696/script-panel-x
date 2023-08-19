@@ -20,7 +20,7 @@ import {
   UpdateProductSecondaryInfoResponseDto,
 } from "./dto/UpdateProductSecondaryInfoDto";
 import {
-  AddProductImageRequestDto,
+  AddProductImagesRequestDto,
   AddProductImagesResponseDto,
 } from "./dto/AddProductImagesDto";
 import {
@@ -61,7 +61,7 @@ export class ProductService {
     );
   }
 
-  static addImages(data: AddProductImageRequestDto) {
+  static addImages(data: AddProductImagesRequestDto) {
     return $apiClient.post<AddProductImagesResponseDto>(
       "product/add-images",
       data,
@@ -70,9 +70,11 @@ export class ProductService {
   }
 
   static removeImages(data: RemoveProductImageRequestDto) {
-    return $apiClient.post<RemoveProductImagesResponseDto>(
+    return $apiClient.delete<RemoveProductImagesResponseDto>(
       "product/remove-images",
-      data
+      {
+        data,
+      }
     );
   }
 }

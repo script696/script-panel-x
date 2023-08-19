@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { GalleryImage } from "../types/typedef";
 
 type HandleLoadImage = (e: ChangeEvent<HTMLInputElement>) => void;
@@ -12,7 +12,7 @@ type UseGalleryImagesResult = {
   handleDeleteImg: HandleDeleteImg;
   galleryImages: Array<GalleryImage>;
   files: Array<File>;
-  deletedImages: Array<string>;
+  deletedImagesCandidates: Array<string>;
 };
 
 type UseGalleryImages = (
@@ -78,11 +78,19 @@ export const useGalleryImages: UseGalleryImages = ({ defaultImages }) => {
     }
   };
 
+  useEffect(() => {
+    return () => {
+      setGalleryImages([]);
+      setFiles([]);
+      deletedImages.current = [];
+      urlToFileNameMap.current = {};
+    };
+  }, []);
   return {
     handleLoadImage,
     galleryImages,
     files,
     handleDeleteImg,
-    deletedImages: deletedImages.current,
+    deletedImagesCandidates: deletedImages.current,
   };
 };

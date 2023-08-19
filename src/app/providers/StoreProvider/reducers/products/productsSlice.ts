@@ -3,11 +3,11 @@ import {
   addImagesThunk,
   createProductThunk,
   getProductsThunk,
+  removeImagesThunk,
   removeProductsThunk,
   updateProductMainInfoThunk,
 } from "./productThunk";
 import { ProductsViewModel, ProductViewModel } from "./types/typedef";
-import { RemoveProductResponseDto } from "../../../../../shared/api/product/dto/RemoveProductDto";
 
 export type ProductsState = {
   productsData: ProductsViewModel;
@@ -172,7 +172,6 @@ export const productsSlice = createSlice({
     ) => {
       state.isLoading = false;
       state.error = "";
-      state.ui.isProductEditModalOpen = false;
       state.productsData.products = state.productsData.products.map((product) =>
         product.id === payload.id ? payload : product
       );
@@ -181,6 +180,27 @@ export const productsSlice = createSlice({
       state.isLoading = true;
     },
     [addImagesThunk.rejected.type]: (
+      state,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    /* remove image */
+    [removeImagesThunk.fulfilled.type]: (
+      state,
+      { payload }: PayloadAction<ProductViewModel>
+    ) => {
+      state.isLoading = false;
+      state.error = "";
+      state.productsData.products = state.productsData.products.map((product) =>
+        product.id === payload.id ? payload : product
+      );
+    },
+    [removeImagesThunk.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [removeImagesThunk.rejected.type]: (
       state,
       { payload }: PayloadAction<string>
     ) => {

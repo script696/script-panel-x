@@ -11,7 +11,7 @@ import {
   RemoveProductResponseDto,
 } from "../../../../../shared/api/product/dto/RemoveProductDto";
 import { UpdateProductSecondaryInfoRequestDto } from "../../../../../shared/api/product/dto/UpdateProductSecondaryInfoDto";
-import { AddProductImageRequestDto } from "../../../../../shared/api/product/dto/AddProductImagesDto";
+import { AddProductImagesRequestDto } from "../../../../../shared/api/product/dto/AddProductImagesDto";
 import { RemoveProductImageRequestDto } from "../../../../../shared/api/product/dto/RemoveProductImagesDto";
 import { GetProductsRequestDto } from "../../../../../shared/api/product/dto/GetProductsDto";
 import { ViewModelToApiMapper } from "./mappers/ViewModelToApiMapper";
@@ -85,7 +85,7 @@ export const updateProductSecondaryInfoThunk = createAsyncThunk<
 
 export const addImagesThunk = createAsyncThunk<
   ProductViewModel,
-  AddProductImageRequestDto
+  AddProductImagesRequestDto
 >("product/add-images", async (reqData, thunkAPI) => {
   try {
     const { data } = await ProductService.addImages(reqData);

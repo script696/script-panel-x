@@ -14,47 +14,58 @@ import { productsSlice } from "../../../app/providers/StoreProvider/reducers/pro
 import {
   addImagesThunk,
   createProductThunk,
+  getProductsThunk,
+  removeImagesThunk,
   updateProductMainInfoThunk,
 } from "../../../app/providers/StoreProvider/reducers/products/productThunk";
 import {
   ProductCreateMainInfo,
   ProductEditMainInfo,
 } from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
-import { AddProductImageRequestDto } from "../../../shared/api/product/dto/AddProductImagesDto";
+import { AddProductImagesRequestDto } from "../../../shared/api/product/dto/AddProductImagesDto";
+import { RemoveProductImageRequestDto } from "../../../shared/api/product/dto/RemoveProductImagesDto";
+import { Mode } from "../types/typedef";
 
 const ProductEditModal = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { toggleEditProductModal } = productsSlice.actions;
-  const { ui, productCandidate } = useAppSelector(
+  const { ui, productCandidate, productsTable } = useAppSelector(
     (state) => state.productReducer
   );
-  const [value, setValue] = React.useState(1);
+  const [tab, setTab] = React.useState(0);
 
   const { isProductEditModalOpen } = ui;
-  const mode = productCandidate ? "edit" : "create";
+  const { pagination } = productsTable;
+  const mode: Mode = productCandidate ? "edit" : "create";
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+    setTab(newValue);
   };
 
-  const handleAddImages = (data: AddProductImageRequestDto) => {
+  const handleAddImages = (data: AddProductImagesRequestDto) => {
     dispatch(addImagesThunk(data));
+  };
+
+  const handleDeleteImages = (data: RemoveProductImageRequestDto) => {
+    dispatch(removeImagesThunk(data));
   };
 
   const handleCloseModal = () => {
     dispatch(toggleEditProductModal(false));
   };
 
-  const handleSubmitProductMainInfo = (
+  const handleSubmitProductMainInfo = async (
     productMainInfo: ProductEditMainInfo | ProductCreateMainInfo
   ) => {
     if ("id" in productMainInfo && productMainInfo.id) {
-      dispatch(updateProductMainInfoThunk(productMainInfo));
+      await dispatch(updateProductMainInfoThunk(productMainInfo));
     } else {
-      dispatch(createProductThunk(productMainInfo));
+      await dispatch(createProductThunk(productMainInfo));
     }
+    await dispatch(getProductsThunk(pagination));
   };
+
   return (
     <Dialog open={isProductEditModalOpen} onClose={handleCloseModal}>
       <Box
@@ -66,7 +77,7 @@ const ProductEditModal = () => {
           {t("productManagement.modal.edit.title")}
         </DialogTitle>
 
-        <Tabs value={value} onChange={handleChange} centered>
+        <Tabs value={tab} onChange={handleChange} centered>
           <Tab label={t("productManagement.modal.tab.main-info")} />
           <Tab
             label={t("productManagement.modal.tab.description")}
@@ -78,27 +89,29 @@ const ProductEditModal = () => {
           />
         </Tabs>
 
-        {value === 0 && (
+        {tab === 0 && (
           <MainInfo
             processing={false}
             product={productCandidate}
             onClose={handleCloseModal}
             onSubmit={handleSubmitProductMainInfo}
+            mode={mode}
           />
         )}
-        {mode === "edit" && value === 1 && (
+        {mode === "edit" && tab === 1 && (
           <Description
             processing={false}
             onClose={handleCloseModal}
             product={productCandidate}
           />
         )}
-        {mode === "edit" && value === 2 && (
+        {mode === "edit" && tab === 2 && (
           <Gallery
             processing={false}
             onClose={handleCloseModal}
             product={productCandidate}
-            onSubmit={handleAddImages}
+            onAddProductImages={handleAddImages}
+            onDeleteProductImage={handleDeleteImages}
           />
         )}
       </Box>
