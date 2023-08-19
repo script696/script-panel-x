@@ -39,20 +39,22 @@ export const useGalleryImages: UseGalleryImages = ({ defaultImages }) => {
   const handleLoadImage = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.currentTarget.files) return;
 
-    const file = e.currentTarget.files[0];
+    const files = e.currentTarget.files;
 
-    /* получаем ссылку для рендера загруженного файла */
-    const url = URL.createObjectURL(file);
+    const arrOfFiles = Array.from(files);
+
+    const filesUrl = arrOfFiles.map((file) => {
+      const fileUrl = URL.createObjectURL(file);
+
+      /* делаем сопоставление урла с именем файла, для последующего удаления (при необходимости)*/
+      urlToFileNameMap.current[fileUrl] = file.name;
+
+      return { id: "blob", source: fileUrl };
+    });
 
     /* сетим урл в массив для рендеринга и записываем сам файл в массив файлов кандидатов на добавление */
-    setGalleryImages((prevState) => [
-      ...prevState,
-      { id: "blob", source: url },
-    ]);
-    setFiles((prevState) => [...prevState, file]);
-
-    /* делаем сопоставление урла с именем файла, для последующего удаления (при необходимости)*/
-    urlToFileNameMap.current[url] = file.name;
+    setGalleryImages((prevState) => [...prevState, ...filesUrl]);
+    setFiles((prevState) => [...prevState, ...arrOfFiles]);
   };
 
   const handleDeleteImg = async (source: string) => {

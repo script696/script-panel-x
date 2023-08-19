@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
+  addImagesThunk,
   createProductThunk,
   getProductsThunk,
   removeProductsThunk,
@@ -148,10 +149,7 @@ export const productsSlice = createSlice({
       state.error = payload;
     },
     /* updateProduct */
-    [removeProductsThunk.fulfilled.type]: (
-      state,
-      { payload }: PayloadAction<RemoveProductResponseDto>
-    ) => {
+    [removeProductsThunk.fulfilled.type]: (state) => {
       state.isLoading = false;
       state.error = "";
       state.ui.isProductDeleteModalOpen = false;
@@ -161,6 +159,28 @@ export const productsSlice = createSlice({
       state.isLoading = true;
     },
     [removeProductsThunk.rejected.type]: (
+      state,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    /* add images */
+    [addImagesThunk.fulfilled.type]: (
+      state,
+      { payload }: PayloadAction<ProductViewModel>
+    ) => {
+      state.isLoading = false;
+      state.error = "";
+      state.ui.isProductEditModalOpen = false;
+      state.productsData.products = state.productsData.products.map((product) =>
+        product.id === payload.id ? payload : product
+      );
+    },
+    [addImagesThunk.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [addImagesThunk.rejected.type]: (
       state,
       { payload }: PayloadAction<string>
     ) => {

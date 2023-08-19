@@ -64,7 +64,8 @@ export class ProductService {
   static addImages(data: AddProductImageRequestDto) {
     return $apiClient.post<AddProductImagesResponseDto>(
       "product/add-images",
-      data
+      data,
+      { headers: { "Content-Type": "multipart/form-data" } }
     );
   }
 

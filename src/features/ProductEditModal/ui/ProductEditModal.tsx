@@ -12,6 +12,7 @@ import {
 } from "../../../app/providers/StoreProvider";
 import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
 import {
+  addImagesThunk,
   createProductThunk,
   updateProductMainInfoThunk,
 } from "../../../app/providers/StoreProvider/reducers/products/productThunk";
@@ -19,6 +20,7 @@ import {
   ProductCreateMainInfo,
   ProductEditMainInfo,
 } from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
+import { AddProductImageRequestDto } from "../../../shared/api/product/dto/AddProductImagesDto";
 
 const ProductEditModal = () => {
   const { t } = useTranslation();
@@ -27,13 +29,17 @@ const ProductEditModal = () => {
   const { ui, productCandidate } = useAppSelector(
     (state) => state.productReducer
   );
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(1);
 
   const { isProductEditModalOpen } = ui;
   const mode = productCandidate ? "edit" : "create";
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+  };
+
+  const handleAddImages = (data: AddProductImageRequestDto) => {
+    dispatch(addImagesThunk(data));
   };
 
   const handleCloseModal = () => {
@@ -49,7 +55,6 @@ const ProductEditModal = () => {
       dispatch(createProductThunk(productMainInfo));
     }
   };
-
   return (
     <Dialog open={isProductEditModalOpen} onClose={handleCloseModal}>
       <Box
@@ -63,12 +68,14 @@ const ProductEditModal = () => {
 
         <Tabs value={value} onChange={handleChange} centered>
           <Tab label={t("productManagement.modal.tab.main-info")} />
-          {mode === "edit" && (
-            <>
-              <Tab label={t("productManagement.modal.tab.description")} />
-              <Tab label={t("productManagement.modal.tab.gallery")} />
-            </>
-          )}
+          <Tab
+            label={t("productManagement.modal.tab.description")}
+            disabled={mode === "create"}
+          />
+          <Tab
+            label={t("productManagement.modal.tab.gallery")}
+            disabled={mode === "create"}
+          />
         </Tabs>
 
         {value === 0 && (
@@ -91,6 +98,7 @@ const ProductEditModal = () => {
             processing={false}
             onClose={handleCloseModal}
             product={productCandidate}
+            onSubmit={handleAddImages}
           />
         )}
       </Box>
