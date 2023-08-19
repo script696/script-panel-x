@@ -3,6 +3,7 @@ import { ProductService } from "../../../../../shared/api/product/ProductService
 import {
   ProductCreateMainInfo,
   ProductEditMainInfo,
+  ProductSecondaryInfo,
   ProductsViewModel,
   ProductViewModel,
 } from "./types/typedef";
@@ -10,7 +11,6 @@ import {
   RemoveProductRequestDto,
   RemoveProductResponseDto,
 } from "../../../../../shared/api/product/dto/RemoveProductDto";
-import { UpdateProductSecondaryInfoRequestDto } from "../../../../../shared/api/product/dto/UpdateProductSecondaryInfoDto";
 import { AddProductImagesRequestDto } from "../../../../../shared/api/product/dto/AddProductImagesDto";
 import { RemoveProductImageRequestDto } from "../../../../../shared/api/product/dto/RemoveProductImagesDto";
 import { GetProductsRequestDto } from "../../../../../shared/api/product/dto/GetProductsDto";
@@ -72,10 +72,14 @@ export const updateProductMainInfoThunk = createAsyncThunk<
 
 export const updateProductSecondaryInfoThunk = createAsyncThunk<
   ProductViewModel,
-  UpdateProductSecondaryInfoRequestDto
+  ProductSecondaryInfo
 >("product/update-secondary-info", async (reqData, thunkAPI) => {
   try {
-    const { data } = await ProductService.updateProductSecondaryInfo(reqData);
+    const mappedReqData = ViewModelToApiMapper.updateSecondaryMainInfo(reqData);
+
+    const { data } = await ProductService.updateProductSecondaryInfo(
+      mappedReqData
+    );
 
     return data;
   } catch (e) {

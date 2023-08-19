@@ -6,6 +6,7 @@ import {
   removeImagesThunk,
   removeProductsThunk,
   updateProductMainInfoThunk,
+  updateProductSecondaryInfoThunk,
 } from "./productThunk";
 import { ProductsViewModel, ProductViewModel } from "./types/typedef";
 
@@ -86,7 +87,8 @@ export const productsSlice = createSlice({
     },
   },
   extraReducers: {
-    /* getProducts */
+    /* Get Products */
+
     [getProductsThunk.fulfilled.type]: (
       state,
       { payload }: PayloadAction<ProductsViewModel>
@@ -105,7 +107,9 @@ export const productsSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    /* createProduct */
+
+    /* Create Product */
+
     [createProductThunk.fulfilled.type]: (state) => {
       state.isLoading = false;
       state.error = "";
@@ -123,7 +127,9 @@ export const productsSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    /* updateProduct */
+
+    /* Update Product Main Info */
+
     [updateProductMainInfoThunk.fulfilled.type]: (
       state,
       { payload }: PayloadAction<ProductViewModel>
@@ -148,7 +154,34 @@ export const productsSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    /* updateProduct */
+    /* Update Product Main Info */
+
+    [updateProductSecondaryInfoThunk.fulfilled.type]: (
+      state,
+      { payload }: PayloadAction<ProductViewModel>
+    ) => {
+      state.isLoading = false;
+      state.error = "";
+      state.productsData.products = state.productsData.products.map(
+        (product) => {
+          return product.id === payload.id ? payload : product;
+        }
+      );
+      state.ui.isProductEditModalOpen = false;
+      state.productCandidate = undefined;
+    },
+    [updateProductSecondaryInfoThunk.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [updateProductSecondaryInfoThunk.rejected.type]: (
+      state,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    /* Remove products */
+
     [removeProductsThunk.fulfilled.type]: (state) => {
       state.isLoading = false;
       state.error = "";
@@ -165,7 +198,7 @@ export const productsSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    /* add images */
+    /* Add images */
     [addImagesThunk.fulfilled.type]: (
       state,
       { payload }: PayloadAction<ProductViewModel>
@@ -186,7 +219,8 @@ export const productsSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    /* remove image */
+    /* Remove image */
+
     [removeImagesThunk.fulfilled.type]: (
       state,
       { payload }: PayloadAction<ProductViewModel>

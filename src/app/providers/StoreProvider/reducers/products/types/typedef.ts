@@ -10,6 +10,8 @@ export type ProductEditMainInfo = Omit<
   "description" | "images"
 >;
 
+export type ProductSecondaryInfo = Pick<ProductViewModel, "id" | "description">;
+
 export type ProductCreateMainInfo = Omit<
   ProductViewModel,
   "description" | "images" | "id"

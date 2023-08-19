@@ -1,7 +1,7 @@
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { useTranslation } from "react-i18next";
-import React from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Box, Tabs, Tab } from "@material-ui/core";
 import { MainInfo } from "./MainInfo/MainInfo";
 import Description from "./Description/Description";
@@ -17,10 +17,12 @@ import {
   getProductsThunk,
   removeImagesThunk,
   updateProductMainInfoThunk,
+  updateProductSecondaryInfoThunk,
 } from "../../../app/providers/StoreProvider/reducers/products/productThunk";
 import {
   ProductCreateMainInfo,
   ProductEditMainInfo,
+  ProductViewModel,
 } from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
 import { AddProductImagesRequestDto } from "../../../shared/api/product/dto/AddProductImagesDto";
 import { RemoveProductImageRequestDto } from "../../../shared/api/product/dto/RemoveProductImagesDto";
@@ -33,13 +35,13 @@ const ProductEditModal = () => {
   const { ui, productCandidate, productsTable } = useAppSelector(
     (state) => state.productReducer
   );
-  const [tab, setTab] = React.useState(0);
+  const [tab, setTab] = useState(0);
 
   const { isProductEditModalOpen } = ui;
   const { pagination } = productsTable;
   const mode: Mode = productCandidate ? "edit" : "create";
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_: unknown, newValue: number) => {
     setTab(newValue);
   };
 
@@ -64,6 +66,12 @@ const ProductEditModal = () => {
       await dispatch(createProductThunk(productMainInfo));
     }
     await dispatch(getProductsThunk(pagination));
+  };
+
+  const handleUpdateProductSecondaryInfo = (
+    data: Pick<ProductViewModel, "description" | "id">
+  ) => {
+    dispatch(updateProductSecondaryInfoThunk(data));
   };
 
   return (
@@ -98,11 +106,12 @@ const ProductEditModal = () => {
             mode={mode}
           />
         )}
-        {mode === "edit" && tab === 1 && (
+        {productCandidate && mode === "edit" && tab === 1 && (
           <Description
             processing={false}
             onClose={handleCloseModal}
             product={productCandidate}
+            onSubmit={handleUpdateProductSecondaryInfo}
           />
         )}
         {mode === "edit" && tab === 2 && (
