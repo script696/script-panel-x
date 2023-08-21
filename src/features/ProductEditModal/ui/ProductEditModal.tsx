@@ -1,78 +1,31 @@
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { useTranslation } from "react-i18next";
-import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Box, Tabs, Tab } from "@material-ui/core";
 import { MainInfo } from "./MainInfo/MainInfo";
 import Description from "./Description/Description";
 import Gallery from "./Gallery/Gallery";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../../app/providers/StoreProvider";
-import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
-import {
-  addImagesThunk,
-  createProductThunk,
-  getProductsThunk,
-  removeImagesThunk,
-  updateProductMainInfoThunk,
-  updateProductSecondaryInfoThunk,
-} from "../../../app/providers/StoreProvider/reducers/products/productThunk";
-import {
-  ProductCreateMainInfo,
-  ProductEditMainInfo,
-  ProductViewModel,
-} from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
-import { AddProductImagesRequestDto } from "../../../shared/api/product/dto/AddProductImagesDto";
-import { RemoveProductImageRequestDto } from "../../../shared/api/product/dto/RemoveProductImagesDto";
 import { Mode } from "../types/typedef";
+import { useProductEditModalRdx } from "../hooks/useProductEditModalRdx";
+import { useTabs } from "../../../shared/hooks/useTabs";
 
 const ProductEditModal = () => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const { toggleEditProductModal } = productsSlice.actions;
-  const { ui, productCandidate, productsTable } = useAppSelector(
-    (state) => state.productReducer
-  );
-  const [tab, setTab] = useState(0);
+  const { tab, handleClickTab } = useTabs();
+
+  const {
+    productsState,
+    handleAddImages,
+    handleDeleteImages,
+    handleCloseModal,
+    handleSubmitProductMainInfo,
+    handleUpdateProductSecondaryInfo,
+  } = useProductEditModalRdx();
+
+  const { productCandidate, ui } = productsState;
 
   const { isProductEditModalOpen } = ui;
-  const { pagination } = productsTable;
   const mode: Mode = productCandidate ? "edit" : "create";
-
-  const handleChange = (_: unknown, newValue: number) => {
-    setTab(newValue);
-  };
-
-  const handleAddImages = (data: AddProductImagesRequestDto) => {
-    dispatch(addImagesThunk(data));
-  };
-
-  const handleDeleteImages = (data: RemoveProductImageRequestDto) => {
-    dispatch(removeImagesThunk(data));
-  };
-
-  const handleCloseModal = () => {
-    dispatch(toggleEditProductModal(false));
-  };
-
-  const handleSubmitProductMainInfo = async (
-    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo
-  ) => {
-    if ("id" in productMainInfo && productMainInfo.id) {
-      await dispatch(updateProductMainInfoThunk(productMainInfo));
-    } else {
-      await dispatch(createProductThunk(productMainInfo));
-    }
-    await dispatch(getProductsThunk(pagination));
-  };
-
-  const handleUpdateProductSecondaryInfo = (
-    data: Pick<ProductViewModel, "description" | "id">
-  ) => {
-    dispatch(updateProductSecondaryInfoThunk(data));
-  };
 
   return (
     <Dialog open={isProductEditModalOpen} onClose={handleCloseModal}>
@@ -85,7 +38,7 @@ const ProductEditModal = () => {
           {t("productManagement.modal.edit.title")}
         </DialogTitle>
 
-        <Tabs value={tab} onChange={handleChange} centered>
+        <Tabs value={tab} onChange={handleClickTab} centered>
           <Tab label={t("productManagement.modal.tab.main-info")} />
           <Tab
             label={t("productManagement.modal.tab.description")}

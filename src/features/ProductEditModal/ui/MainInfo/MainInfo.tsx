@@ -38,7 +38,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
       id: product && "id" in product ? product.id : undefined,
       title: product ? product.title : "",
       brand: product ? product.brand : "",
-      availableSizes: [],
+      availableSizes: product ? product.availableSizes : [],
       amount: product ? product.amount : 0,
       disabled: product ? product.disabled : false,
     },
