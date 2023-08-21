@@ -8,41 +8,49 @@ import DialogActions from "@material-ui/core/DialogActions";
 import { useTranslation } from "react-i18next";
 import { avatarSx, boxSx, deleteButtonSx } from "./stylesSx";
 import { ProductViewModel } from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
+import { AddProductImagesRequestDto } from "../../../../shared/api/product/dto/AddProductImagesDto";
+import { RemoveProductImageRequestDto } from "../../../../shared/api/product/dto/RemoveProductImagesDto";
 
 type GalleryDataProps = {
   onClose: () => void;
   processing: boolean;
-  product?: Pick<ProductViewModel, "images">;
+  product?: Pick<ProductViewModel, "images" | "id">;
+  onAddProductImages: (data: AddProductImagesRequestDto) => void;
+  onDeleteProductImage: (data: RemoveProductImageRequestDto) => void;
 };
 
 const Gallery: FC<GalleryDataProps> = (props) => {
   const { t } = useTranslation();
-  const { processing, onClose, product } = props;
-
-  const handleDeleteImageRequest = (imgId: string) => {
-    return Promise.resolve();
-  };
+  const { onClose, product, onAddProductImages, onDeleteProductImage } = props;
 
   const {
     handleLoadImage,
     galleryImages,
     handleDeleteImg,
-    deletedImages,
+    deletedImagesCandidates,
     files,
   } = useGalleryImages({
     defaultImages: product?.images,
   });
-
   const withAddImage = [
     ...galleryImages,
     { source: "/img/default_product.png" },
   ];
 
   const handleSaveChanges = () => {
-    console.log(files);
-    console.log(deletedImages);
-  };
+    if (!product) return;
 
+    if (files.length) {
+      onAddProductImages({ files, shopId: "1", productId: product.id });
+    }
+    if (deletedImagesCandidates.length) {
+      onDeleteProductImage({
+        productId: product.id,
+        imagesSources: deletedImagesCandidates,
+      });
+    }
+  };
+  const apiUrl = process.env["REACT_APP_API_URL"];
   return (
     <Box
       flexGrow={1}
@@ -55,11 +63,15 @@ const Gallery: FC<GalleryDataProps> = (props) => {
           {withAddImage.map(({ source }, idx) => {
             const isLastElem = idx === withAddImage.length - 1;
 
+            const apiImgSource = source.startsWith("blob")
+              ? source
+              : `${apiUrl}/${source}`;
+
             return !isLastElem ? (
               <Box position={"relative"} sx={boxSx} key={source}>
                 <Avatar
                   id={source}
-                  src={source}
+                  src={apiImgSource}
                   style={avatarSx}
                   variant={"square"}
                 />
@@ -83,6 +95,7 @@ const Gallery: FC<GalleryDataProps> = (props) => {
               >
                 <label className={"button"}>
                   <input
+                    multiple
                     hidden
                     accept="image/*"
                     type="file"

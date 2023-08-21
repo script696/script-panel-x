@@ -38,11 +38,12 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { t } = useTranslation();
   const { id, description, title, amount, brand, images } = product;
+  const apiUrl = process.env["REACT_APP_API_URL"];
 
   const labelId = `enhanced-table-checkbox-${index}`;
   const openActions = Boolean(anchorEl);
   const productMainPhoto = images?.length
-    ? images[0].source
+    ? `${apiUrl}/${images[0].source}`
     : "/img/default_product.png";
 
   const handleOpenActions = (event: React.MouseEvent<HTMLButtonElement>) => {

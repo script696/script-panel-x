@@ -4,35 +4,37 @@ import React, { FC } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
-import { DataWith } from "../../../../shared/types/types";
 import { Box } from "@material-ui/core";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
-import { ProductViewModel } from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
+import { ProductSecondaryInfo } from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
+import { UpdateProductSecondaryInfoRequestDto } from "../../../../shared/api/product/dto/UpdateProductSecondaryInfoDto";
 
 type DescriptionProps = {
   processing: boolean;
-  product?: Pick<ProductViewModel, "description">;
+  product: ProductSecondaryInfo;
   onClose: () => void;
+  onSubmit: (data: ProductSecondaryInfo) => void;
 };
 
 const Description: FC<DescriptionProps> = (props) => {
   const { t } = useTranslation();
-  const { product, processing, onClose } = props;
+  const { product, processing, onClose, onSubmit } = props;
 
-  const handleSubmit = (values: Partial<ProductViewModel>) => {
+  const handleSubmit = (values: ProductSecondaryInfo) => {
     console.log(values);
   };
 
   const formik = useFormik({
     initialValues: {
+      id: product.id,
       description: product ? product.description : "",
     },
     validationSchema: Yup.object({
       description: Yup.string().required(t("common.validations.required")),
     }),
-    onSubmit: handleSubmit,
+    onSubmit,
   });
 
   return (

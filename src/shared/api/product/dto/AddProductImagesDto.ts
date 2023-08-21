@@ -1,8 +1,9 @@
 import { ImageDto } from "../../dto/common";
 
-export interface AddProductImageRequestDto {
+export interface AddProductImagesRequestDto {
   shopId: string;
   productId: string;
+  files: Array<File>;
 }
 
 export interface AddProductImagesResponseDto {

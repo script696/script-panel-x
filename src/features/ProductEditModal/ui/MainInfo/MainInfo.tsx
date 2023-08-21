@@ -16,8 +16,10 @@ import {
   ProductCreateMainInfo,
   ProductEditMainInfo,
 } from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
+import { Mode } from "../../types/typedef";
 
 type MainInfoProps = {
+  mode: Mode;
   onClose: () => void;
   onSubmit: (
     productMainInfo: ProductEditMainInfo | ProductCreateMainInfo
@@ -27,7 +29,7 @@ type MainInfoProps = {
 };
 
 export const MainInfo: FC<MainInfoProps> = (props) => {
-  const { product, processing, onClose, onSubmit } = props;
+  const { product, processing, onClose, onSubmit, mode } = props;
 
   const { t } = useTranslation();
 
@@ -36,7 +38,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
       id: product && "id" in product ? product.id : undefined,
       title: product ? product.title : "",
       brand: product ? product.brand : "",
-      availableSizes: [],
+      availableSizes: product ? product.availableSizes : [],
       amount: product ? product.amount : 0,
       disabled: product ? product.disabled : false,
     },
@@ -130,7 +132,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
       <DialogActions>
         <Button onClick={onClose}>{t("common.cancel")}</Button>
         <LoadingButton loading={processing} type="submit" variant="contained">
-          {t("productManagement.modal.edit.action")}
+          {mode === "edit" ? "Save" : "Create"}
         </LoadingButton>
       </DialogActions>
     </Box>
