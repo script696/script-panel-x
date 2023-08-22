@@ -14,7 +14,7 @@ type ConfirmDialogProps = {
   onClose: () => void;
   onConfirm: () => void;
   open: boolean;
-  pending: boolean;
+  isLoading: boolean;
   title: string;
 };
 
@@ -23,7 +23,7 @@ const ConfirmDeleteModal = ({
   onClose,
   onConfirm,
   open,
-  pending,
+  isLoading,
   title,
 }: ConfirmDialogProps) => {
   const { t } = useTranslation();
@@ -53,7 +53,7 @@ const ConfirmDeleteModal = ({
         <LoadingButton
           autoFocus
           onClick={onConfirm}
-          loading={false}
+          loading={isLoading}
           variant="contained"
         >
           {t("common.confirm")}

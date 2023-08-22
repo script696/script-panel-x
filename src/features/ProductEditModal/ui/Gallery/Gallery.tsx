@@ -13,7 +13,7 @@ import { RemoveProductImageRequestDto } from "../../../../shared/api/product/dto
 
 type GalleryDataProps = {
   onClose: () => void;
-  processing: boolean;
+  isLoading: boolean;
   product?: Pick<ProductViewModel, "images" | "id">;
   onAddProductImages: (data: AddProductImagesRequestDto) => void;
   onDeleteProductImage: (data: RemoveProductImageRequestDto) => void;

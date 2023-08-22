@@ -25,12 +25,12 @@ type MainInfoProps = {
   onSubmit: (
     productMainInfo: ProductEditMainInfo | ProductCreateMainInfo
   ) => void;
-  processing: boolean;
+  isLoading: boolean;
   product?: ProductEditMainInfo | ProductCreateMainInfo;
 };
 
 export const MainInfo: FC<MainInfoProps> = (props) => {
-  const { product, processing, onClose, onSubmit, mode } = props;
+  const { product, isLoading, onClose, onSubmit, mode } = props;
   const { t } = useTranslation();
   const { formik } = useMainInfoForm({ product, t, onSubmit });
 
@@ -57,7 +57,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           label={t("productManagement.form.title.label")}
           name="title"
           autoFocus
-          disabled={processing}
+          disabled={isLoading}
           value={formik.values.title}
           onChange={formik.handleChange}
           error={formik.touched.title && Boolean(formik.errors.title)}
@@ -71,7 +71,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           label={t("productManagement.form.brand.label")}
           name="brand"
           autoComplete="given-name"
-          disabled={processing}
+          disabled={isLoading}
           value={formik.values.brand}
           onChange={formik.handleChange}
           error={formik.touched.brand && Boolean(formik.errors.brand)}
@@ -85,7 +85,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           label={t("productManagement.form.amount.label")}
           name="amount"
           autoComplete="given-name"
-          disabled={processing}
+          disabled={isLoading}
           value={formik.values.amount}
           onChange={formik.handleChange}
           error={formik.touched.amount && Boolean(formik.errors.amount)}
@@ -103,7 +103,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
         <FormControl component="fieldset" margin="normal">
           <FormControlLabel
             name="disabled"
-            disabled={processing}
+            disabled={isLoading}
             onChange={formik.handleChange}
             checked={formik.values.disabled}
             control={<Checkbox />}
@@ -114,7 +114,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
       <Box sx={{ flexGrow: 1 }} />
       <DialogActions>
         <Button onClick={onClose}>{t("common.cancel")}</Button>
-        <LoadingButton loading={processing} type="submit" variant="contained">
+        <LoadingButton loading={isLoading} type="submit" variant="contained">
           {mode === "edit" ? "Save" : "Create"}
         </LoadingButton>
       </DialogActions>
