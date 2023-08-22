@@ -17,6 +17,7 @@ import {
   ProductEditMainInfo,
 } from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
 import { Mode } from "../../types/typedef";
+import { useMainInfoForm } from "../../hooks/useMainInfoForm";
 
 type MainInfoProps = {
   mode: Mode;
@@ -30,26 +31,8 @@ type MainInfoProps = {
 
 export const MainInfo: FC<MainInfoProps> = (props) => {
   const { product, processing, onClose, onSubmit, mode } = props;
-
   const { t } = useTranslation();
-
-  const formik = useFormik({
-    initialValues: {
-      id: product && "id" in product ? product.id : undefined,
-      title: product ? product.title : "",
-      brand: product ? product.brand : "",
-      availableSizes: product ? product.availableSizes : [],
-      amount: product ? product.amount : 0,
-      disabled: product ? product.disabled : false,
-    },
-    validationSchema: Yup.object({
-      title: Yup.string().required(t("common.validations.required")),
-      brand: Yup.string().required(t("common.validations.required")),
-      // size: Yup.string().required(t("common.validations.required")),
-      amount: Yup.number().required(t("common.validations.required")),
-    }),
-    onSubmit: onSubmit,
-  });
+  const { formik } = useMainInfoForm({ product, t, onSubmit });
 
   return (
     <Box
