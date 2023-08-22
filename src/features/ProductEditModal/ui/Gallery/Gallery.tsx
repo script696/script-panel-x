@@ -50,7 +50,9 @@ const Gallery: FC<GalleryDataProps> = (props) => {
       });
     }
   };
+
   const apiUrl = process.env["REACT_APP_API_URL"];
+
   return (
     <Box
       flexGrow={1}
@@ -97,7 +99,7 @@ const Gallery: FC<GalleryDataProps> = (props) => {
                   <input
                     multiple
                     hidden
-                    accept="image/*"
+                    accept=".png, .jpg, .jpeg"
                     type="file"
                     onChange={handleLoadImage}
                   />

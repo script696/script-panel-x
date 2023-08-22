@@ -1,15 +1,13 @@
 import DialogContent from "@material-ui/core/DialogContent";
 import TextField from "@material-ui/core/TextField";
 import React, { FC } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 import { Box } from "@material-ui/core";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import { ProductSecondaryInfo } from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
-import { UpdateProductSecondaryInfoRequestDto } from "../../../../shared/api/product/dto/UpdateProductSecondaryInfoDto";
+import { useDescriptionForm } from "../../hooks/useDescriptionForm";
 
 type DescriptionProps = {
   processing: boolean;
@@ -21,21 +19,7 @@ type DescriptionProps = {
 const Description: FC<DescriptionProps> = (props) => {
   const { t } = useTranslation();
   const { product, processing, onClose, onSubmit } = props;
-
-  const handleSubmit = (values: ProductSecondaryInfo) => {
-    console.log(values);
-  };
-
-  const formik = useFormik({
-    initialValues: {
-      id: product.id,
-      description: product ? product.description : "",
-    },
-    validationSchema: Yup.object({
-      description: Yup.string().required(t("common.validations.required")),
-    }),
-    onSubmit,
-  });
+  const { formik } = useDescriptionForm({ product, t, onSubmit });
 
   return (
     <Box

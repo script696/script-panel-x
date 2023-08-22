@@ -46,6 +46,11 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
     ? `${apiUrl}/${images[0].source}`
     : "/img/default_product.png";
 
+  const availableSizes =
+    product.availableSizes.length <= 2
+      ? product.availableSizes.join(" ")
+      : `${product.availableSizes.slice(2).join(" ")} ...`;
+
   const handleOpenActions = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -102,7 +107,7 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
           </Box>
         </Box>
       </TableCell>
-      <TableCell align="center">{10}</TableCell>
+      <TableCell align="center">{availableSizes}</TableCell>
       <TableCell align="center">{amount}</TableCell>
       <TableCell align="center">{brand}</TableCell>
       <TableCell align="center">
