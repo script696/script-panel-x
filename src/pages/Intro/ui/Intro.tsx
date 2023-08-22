@@ -4,10 +4,9 @@ import { useTheme } from "@material-ui/core/styles";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 import IntroLayout from "./IntroLayout";
-import { useAuth } from "../../../app/providers/AuthProvider/AuthProvider";
 
 const Intro = () => {
-  const { userInfo } = useAuth();
+  // const { userInfo } = useAuth();
   const theme = useTheme();
   const { t } = useTranslation();
 
@@ -27,19 +26,19 @@ const Intro = () => {
             }}
           />
         </Container>
-        {userInfo ? (
-          <Button component={RouterLink} to={`admin`} variant="contained">
-            {t("landing.cta.mainAuth", { name: userInfo.firstName })}
-          </Button>
-        ) : (
-          <Button
-            component={RouterLink}
-            to={`/${process.env.PUBLIC_URL}/login`}
-            variant="contained"
-          >
-            {t("landing.cta.main")}
-          </Button>
-        )}
+        {/*{userInfo ? (*/}
+        {/*  <Button component={RouterLink} to={`admin`} variant="contained">*/}
+        {/*    {t("landing.cta.mainAuth", { name: userInfo.firstName })}*/}
+        {/*  </Button>*/}
+        {/*) : (*/}
+        {/*  <Button*/}
+        {/*    component={RouterLink}*/}
+        {/*    to={`/${process.env.PUBLIC_URL}/login`}*/}
+        {/*    variant="contained"*/}
+        {/*  >*/}
+        {/*    {t("landing.cta.main")}*/}
+        {/*  </Button>*/}
+        {/*)}*/}
       </main>
     </IntroLayout>
   );

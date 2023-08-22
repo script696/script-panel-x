@@ -1,5 +1,5 @@
 import { Navigate, Route, RouteProps } from "react-router";
-import { useAuth } from "../../../app/providers/AuthProvider/AuthProvider";
+import { useAppSelector } from "../../../app/providers/StoreProvider";
 
 type PrivateRouteProps = {
   roles?: string[];
@@ -10,12 +10,15 @@ const PrivateRoute = ({
   roles,
   ...routeProps
 }: PrivateRouteProps) => {
-  const { hasRole, userInfo } = useAuth();
+  const { isAuth, isLoading, isUserFetched } = useAppSelector(
+    (state) => state.userReducer
+  );
 
-  if (true) {
-    // if (!hasRole(roles)) {
-    // return <Navigate to={`/${process.env.PUBLIC_URL}/403`} />;
-    // }
+  if (isLoading || !isUserFetched) {
+    return <div>Loading ...</div>;
+  }
+
+  if (isAuth) {
     return <Route {...routeProps} />;
   } else {
     return <Navigate to={`/${process.env.PUBLIC_URL}/login`} />;

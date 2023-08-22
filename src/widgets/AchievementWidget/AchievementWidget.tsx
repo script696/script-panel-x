@@ -6,10 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import StarIcon from "@material-ui/icons/Star";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
-import { useAuth } from "../../app/providers/AuthProvider/AuthProvider";
 
 const AchievementWidget = () => {
-  const { userInfo } = useAuth();
+  // const { userInfo } = useAuth();
   const { t } = useTranslation();
 
   return (
@@ -25,14 +24,14 @@ const AchievementWidget = () => {
         <Avatar sx={{ bgcolor: "secondary.main", mb: 3 }}>
           <StarIcon color="primary" />
         </Avatar>
-        <Typography gutterBottom variant="h5" component="div">
-          {t("admin.home.achievement.title", { name: userInfo?.firstName })}
-        </Typography>
-        <Typography marginBottom={3} variant="body2">
-          {t("admin.home.achievement.description", {
-            progress: userInfo?.progress,
-          })}
-        </Typography>
+        {/*<Typography gutterBottom variant="h5" component="div">*/}
+        {/*  {t("admin.home.achievement.title", { name: userInfo?.firstName })}*/}
+        {/*</Typography>*/}
+        {/*<Typography marginBottom={3} variant="body2">*/}
+        {/*  {t("admin.home.achievement.description", {*/}
+        {/*    progress: userInfo?.progress,*/}
+        {/*  })}*/}
+        {/*</Typography>*/}
         <Button
           color="secondary"
           component={RouterLink}

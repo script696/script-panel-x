@@ -10,7 +10,6 @@ import PersonIcon from "@material-ui/icons/Person";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, Outlet } from "react-router-dom";
-import { useAuth } from "../../../app/providers/AuthProvider/AuthProvider";
 import QueryWrapper from "../../../shared/components/QueryWrapper/QueryWrapper";
 import { useSnackbar } from "../../../app/providers/SnackbarProvider/SnackbarProvider";
 import AdminAppBar from "../../../shared/components/AdminAppBar/AdminAppBar";
@@ -28,14 +27,14 @@ const profileMenuItems = [
 ];
 
 const Profile = () => {
-  const { isLoggingOut, logout, userInfo } = useAuth();
+  // const { isLoggingOut, logout, userInfo } = useAuth();
   const snackbar = useSnackbar();
   const { t } = useTranslation();
 
   const handleLogout = () => {
-    logout().catch(() =>
-      snackbar.error(t("common.errors.unexpected.subTitle"))
-    );
+    // logout().catch(() =>
+    //   snackbar.error(t("common.errors.unexpected.subTitle"))
+    // );
   };
 
   return (
@@ -45,7 +44,7 @@ const Profile = () => {
           <Fab
             aria-label="logout"
             color="secondary"
-            disabled={isLoggingOut}
+            disabled={false}
             onClick={handleLogout}
           >
             <ExitToAppIcon />
@@ -73,11 +72,11 @@ const Profile = () => {
             >
               <PersonIcon sx={{ fontSize: 120 }} />
             </Avatar>
-            <Typography
-              component="div"
-              variant="h4"
-            >{`${userInfo?.firstName} ${userInfo?.lastName}`}</Typography>
-            <Typography variant="body2">{userInfo?.role}</Typography>
+            {/*<Typography*/}
+            {/*  component="div"*/}
+            {/*  variant="h4"*/}
+            {/*>{`${userInfo?.firstName} ${userInfo?.lastName}`}</Typography>*/}
+            {/*<Typography variant="body2">{userInfo?.role}</Typography>*/}
           </Box>
         </Grid>
         <Grid item xs={12} md={8} marginTop={3}>
