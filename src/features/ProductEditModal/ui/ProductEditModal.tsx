@@ -22,7 +22,7 @@ const ProductEditModal = () => {
     handleUpdateProductSecondaryInfo,
   } = useProductEditModalRdx();
 
-  const { productCandidate, ui } = productsState;
+  const { productCandidate, ui, isLoading } = productsState;
 
   const { isProductEditModalOpen } = ui;
   const mode: Mode = productCandidate ? "edit" : "create";
@@ -52,7 +52,7 @@ const ProductEditModal = () => {
 
         {tab === 0 && (
           <MainInfo
-            processing={false}
+            isLoading={isLoading}
             product={productCandidate}
             onClose={handleCloseModal}
             onSubmit={handleSubmitProductMainInfo}
@@ -61,7 +61,7 @@ const ProductEditModal = () => {
         )}
         {productCandidate && mode === "edit" && tab === 1 && (
           <Description
-            processing={false}
+            isLoading={isLoading}
             onClose={handleCloseModal}
             product={productCandidate}
             onSubmit={handleUpdateProductSecondaryInfo}
@@ -69,7 +69,7 @@ const ProductEditModal = () => {
         )}
         {mode === "edit" && tab === 2 && (
           <Gallery
-            processing={false}
+            isLoading={isLoading}
             onClose={handleCloseModal}
             product={productCandidate}
             onAddProductImages={handleAddImages}

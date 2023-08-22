@@ -10,7 +10,7 @@ import { ProductSecondaryInfo } from "../../../../app/providers/StoreProvider/re
 import { useDescriptionForm } from "../../hooks/useDescriptionForm";
 
 type DescriptionProps = {
-  processing: boolean;
+  isLoading: boolean;
   product: ProductSecondaryInfo;
   onClose: () => void;
   onSubmit: (data: ProductSecondaryInfo) => void;
@@ -18,7 +18,7 @@ type DescriptionProps = {
 
 const Description: FC<DescriptionProps> = (props) => {
   const { t } = useTranslation();
-  const { product, processing, onClose, onSubmit } = props;
+  const { product, isLoading, onClose, onSubmit } = props;
   const { formik } = useDescriptionForm({ product, t, onSubmit });
 
   return (
@@ -41,7 +41,7 @@ const Description: FC<DescriptionProps> = (props) => {
           label={t("productManagement.form.description.label")}
           name="description"
           autoFocus
-          disabled={processing}
+          disabled={isLoading}
           value={formik.values.description}
           onChange={formik.handleChange}
           error={
@@ -53,7 +53,7 @@ const Description: FC<DescriptionProps> = (props) => {
       <Box sx={{ flexGrow: 1 }} />
       <DialogActions>
         <Button onClick={onClose}>{t("common.cancel")}</Button>
-        <LoadingButton loading={processing} type="submit" variant="contained">
+        <LoadingButton loading={isLoading} type="submit" variant="contained">
           {t("productManagement.modal.edit.action")}
         </LoadingButton>
       </DialogActions>

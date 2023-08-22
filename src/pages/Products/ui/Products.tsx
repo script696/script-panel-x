@@ -9,7 +9,6 @@ import { useProductsRdx } from "../hooks/useProductsRdx";
 
 const Products = () => {
   const { t } = useTranslation();
-  const processing = false;
   const {
     productsState,
     handleAddNewProduct,
@@ -21,7 +20,7 @@ const Products = () => {
     handleConfirmDeleteRows,
   } = useProductsRdx();
 
-  const { productsTable, ui } = productsState;
+  const { productsTable, ui, isLoading } = productsState;
   const { selectedRows } = productsTable;
   const { isProductDeleteModalOpen } = ui;
 
@@ -29,7 +28,7 @@ const Products = () => {
     <React.Fragment>
       <AdminAppBar>
         <TableToolbar
-          isLoading={processing}
+          isLoading={isLoading}
           onAddNewRow={handleAddNewProduct}
           onCancelSelecting={handleCancelSelected}
           onDeleteSelected={handleDeleteProducts}
@@ -37,7 +36,6 @@ const Products = () => {
         />
       </AdminAppBar>
       <ProductsTable
-        processing={processing}
         onDelete={handleDeleteProducts}
         onEdit={handleEditProduct}
         onSelectedChange={handleChangeSelectedRows}
@@ -45,7 +43,7 @@ const Products = () => {
       />
       <ConfirmDeleteModal
         description={t("userManagement.confirmations.delete")}
-        pending={processing}
+        isLoading={isLoading}
         onClose={handleCloseDeleteProductModel}
         onConfirm={handleConfirmDeleteRows}
         open={isProductDeleteModalOpen}

@@ -8,10 +8,7 @@ import * as selectUtils from "../../../shared/utils/selectUtils";
 import { ProductsTableRow } from "./ProductsTableRow";
 import { ProductsTableHead } from "./ProductsTableHead";
 import { checkIsRowSelected } from "../utils/checkIsRowSelected";
-import {
-  PaginationConfig,
-  usePagination,
-} from "../../../shared/hooks/usePagination";
+import { usePagination } from "../../../shared/hooks/usePagination";
 import {
   useAppDispatch,
   useAppSelector,
@@ -20,21 +17,19 @@ import { ProductViewModel } from "../../../app/providers/StoreProvider/reducers/
 import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
 
 type ProductsTableProps = {
-  processing: boolean;
-  onDelete: (productsIds: string[]) => void;
+  onDelete: (productsIds: Array<string>) => void;
   onEdit: (product: ProductViewModel) => void;
-  onSelectedChange: (selected: string[]) => void;
-  selected: string[];
+  onSelectedChange: (selected: Array<string>) => void;
+  selected: Array<string>;
 };
 
 const ProductsTable: FC<ProductsTableProps> = ({
   onDelete,
   onEdit,
   onSelectedChange,
-  processing,
   selected,
 }) => {
-  const { productsData, productsTable } = useAppSelector(
+  const { productsData, productsTable, isLoading } = useAppSelector(
     (state) => state.productReducer
   );
   const dispatch = useAppDispatch();
@@ -89,7 +84,7 @@ const ProductsTable: FC<ProductsTableProps> = ({
                 onCheck={handleClick}
                 onDelete={onDelete}
                 onEdit={onEdit}
-                processing={processing}
+                processing={isLoading}
                 selected={checkIsRowSelected(selected, product.id)}
                 product={product}
               />
