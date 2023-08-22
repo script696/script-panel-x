@@ -8,6 +8,8 @@ import SettingsProvider from "./app/providers/SettingsProvider/SettingsProvider"
 import SnackbarProvider from "./app/providers/SnackbarProvider/SnackbarProvider";
 import { StoreProvider } from "./app/providers/StoreProvider";
 import "./app/styles/styles.css";
+import AuthProvider from "./app/providers/AuthProvider/AuthProvider";
+import { BrowserRouter } from "react-router-dom";
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({
@@ -34,9 +36,11 @@ const App = () => (
         <QueryWrapper>
           <StoreProvider>
             <SnackbarProvider>
-              {/*<AuthProvider>*/}
-              <AppRoutes />
-              {/*</AuthProvider>*/}
+              <AuthProvider>
+                <BrowserRouter>
+                  <AppRoutes />
+                </BrowserRouter>
+              </AuthProvider>
             </SnackbarProvider>
           </StoreProvider>
         </QueryWrapper>

@@ -13,7 +13,6 @@ import {
   drawerCollapsedWidth,
   drawerWidth,
 } from "../../../../app/config/layout";
-import { useAuth } from "../../../../app/providers/AuthProvider/AuthProvider";
 import Logo from "../../Logo/Logo";
 import { FC } from "react";
 import { SvgIconTypeMap } from "@material-ui/core";
@@ -41,7 +40,6 @@ export const Sidebar: FC<SidebarProps> = ({
   onSettingsToggle,
   menuItems,
 }) => {
-  const { userInfo } = useAuth();
   const { t } = useTranslation();
 
   const width = collapsed ? drawerCollapsedWidth : drawerWidth;
@@ -85,14 +83,14 @@ export const Sidebar: FC<SidebarProps> = ({
               <PersonIcon />
             </Avatar>
           </ListItemAvatar>
-          {userInfo && (
-            <ListItemText
-              primary={`${userInfo.firstName} ${userInfo.lastName}`}
-              sx={{
-                display: collapsed ? "none" : "block",
-              }}
-            />
-          )}
+          {/*{userInfo && (*/}
+          {/*  <ListItemText*/}
+          {/*    primary={`${userInfo.firstName} ${userInfo.lastName}`}*/}
+          {/*    sx={{*/}
+          {/*      display: collapsed ? "none" : "block",*/}
+          {/*    }}*/}
+          {/*  />*/}
+          {/*)}*/}
         </ListItem>
         <ListItem button onClick={onSettingsToggle}>
           <ListItemAvatar>

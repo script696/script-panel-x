@@ -10,8 +10,15 @@ import HomeIcon from "@material-ui/icons/Home";
 import PeopleIcon from "@material-ui/icons/People";
 import HelpCenterIcon from "@material-ui/icons/HelpCenter";
 import { ROUTES_ADMIN, ROUTES_BASE } from "../../../../app/routing";
+import { useAppSelector } from "../../../../app/providers/StoreProvider";
+import {
+  ADMIN_MENU_ITEMS,
+  SYSTEM_ADMIN_MENU_ITEMS,
+} from "../constants/constants";
 
 const AdminLayout = () => {
+  const { user } = useAppSelector((state) => state.userReducer);
+
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   const { collapsed, open, toggleDrawer } = useSettings();
@@ -20,23 +27,8 @@ const AdminLayout = () => {
     setSettingsOpen(!settingsOpen);
   };
 
-  const menuItems = [
-    {
-      icon: HomeIcon,
-      key: "admin.drawer.menu.home",
-      path: `/${ROUTES_BASE.ADMIN}`,
-    },
-    {
-      icon: PeopleIcon,
-      key: "admin.drawer.menu.userManagement",
-      path: `/${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.PRODUCTS}`,
-    },
-    {
-      icon: HelpCenterIcon,
-      key: "admin.drawer.menu.help",
-      path: `/${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.HELP}`,
-    },
-  ];
+  const menuItems =
+    user?.role === "admin" ? ADMIN_MENU_ITEMS : SYSTEM_ADMIN_MENU_ITEMS;
 
   return (
     <Box sx={{ display: "flex" }}>

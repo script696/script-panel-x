@@ -1,82 +1,19 @@
-import React, { createContext, useContext } from "react";
-import { useLocalStorage } from "../../../shared/hooks/useLocalStorage";
-import { useLogin } from "../../../process/hooks/useLogin";
-import { useLogout } from "../../../process/hooks/useLogout";
-import { useUserInfo } from "../../../process/hooks/useUserInfo";
-import { UserInfo } from "../../../process/types/userInfo";
-
-interface AuthContextInterface {
-  hasRole: (roles?: string[]) => {};
-  isLoggingIn: boolean;
-  isLoggingOut: boolean;
-  login: (email: string, password: string) => Promise<any>;
-  logout: () => Promise<any>;
-  userInfo?: UserInfo;
-}
-
-export const AuthContext = createContext({} as AuthContextInterface);
+import { ReactNode, useEffect, useLayoutEffect } from "react";
+import { useAppDispatch } from "../StoreProvider";
+import { refreshTokensThunk } from "../StoreProvider/reducers/user/userThunk";
 
 type AuthProviderProps = {
-  children?: React.ReactNode;
+  children: ReactNode;
 };
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [authKey, setAuthKey] = useLocalStorage<string>("authkey", "");
+  const dispatch = useAppDispatch();
 
-  const { isLoggingIn, login } = useLogin();
-  const { isLoggingOut, logout } = useLogout();
-  const { data: userInfo } = useUserInfo(authKey);
+  useLayoutEffect(() => {
+    dispatch(refreshTokensThunk());
+  }, []);
 
-  const hasRole = (roles?: string[]) => {
-    if (!roles || roles.length === 0) {
-      return true;
-    }
-    if (!userInfo) {
-      return false;
-    }
-    return roles.includes(userInfo.role);
-  };
-
-  const handleLogin = async (email: string, password: string) => {
-    return login({ email, password })
-      .then((key: string) => {
-        setAuthKey(key);
-        return key;
-      })
-      .catch((err) => {
-        throw err;
-      });
-  };
-
-  const handleLogout = async () => {
-    return logout()
-      .then((data) => {
-        setAuthKey("");
-        return data;
-      })
-      .catch((err) => {
-        throw err;
-      });
-  };
-
-  return (
-    <AuthContext.Provider
-      value={{
-        hasRole,
-        isLoggingIn,
-        isLoggingOut,
-        login: handleLogin,
-        logout: handleLogout,
-        userInfo,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  return <>{children}</>;
 };
-
-export function useAuth() {
-  return useContext(AuthContext);
-}
 
 export default AuthProvider;

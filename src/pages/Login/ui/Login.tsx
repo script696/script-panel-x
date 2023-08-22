@@ -12,13 +12,14 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import BoxedLayout from "../../../shared/components/BoxedLayout/BoxedLayout";
 import { useSnackbar } from "../../../app/providers/SnackbarProvider/SnackbarProvider";
-import { useAuth } from "../../../app/providers/AuthProvider/AuthProvider";
 
 const Login = () => {
-  const { isLoggingIn, login } = useAuth();
+  // const { isLoggingIn, login } = useAuth();
   const navigate = useNavigate();
   const snackbar = useSnackbar();
   const { t } = useTranslation();
+
+  const isLoggingIn = true;
 
   const handleLogin = (email: string, password: string) => {
     navigate(`/${process.env.PUBLIC_URL}/admin`, { replace: true });

@@ -16,7 +16,13 @@ import { NotFoundLazy } from "../../../pages/NotFound";
 import { UnderConstructionsLazy } from "../../../pages/UnderConstructions";
 import { ProductsLazy } from "../../../pages/Products";
 import { IntroLazy } from "../../../pages/Intro";
-import { ROUTES_ADMIN, ROUTES_BASE, ROUTES_PROFILE } from "../constants/routes";
+import { UsersLazy } from "../../../pages/Users";
+import {
+  ROUTES_ADMIN,
+  ROUTES_BASE,
+  ROUTES_PROFILE,
+  ROUTES_SYSTEM_ADMIN,
+} from "../constants/routes";
 import { useAppDispatch, useAppSelector } from "../../providers/StoreProvider";
 import { useEffect } from "react";
 import { getProductsThunk } from "../../providers/StoreProvider/reducers/products/productThunk";
@@ -25,6 +31,24 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path={ROUTES_BASE.MAIN} element={<IntroLazy />} />
+      <PrivateRoute
+        path={ROUTES_BASE.SYSTEM_ADMIN}
+        element={<AdminLayoutLazy />}
+      >
+        <PrivateRoute
+          path={ROUTES_SYSTEM_ADMIN.PROFILE}
+          element={<div>profile</div>}
+        />
+        <PrivateRoute
+          path={ROUTES_SYSTEM_ADMIN.USERS}
+          element={<UsersLazy />}
+        />
+        <PrivateRoute
+          path={ROUTES_SYSTEM_ADMIN.BOTS}
+          element={<div>bots</div>}
+        />
+      </PrivateRoute>
+
       <PrivateRoute path={ROUTES_BASE.ADMIN} element={<AdminLayoutLazy />}>
         <PrivateRoute path={ROUTES_ADMIN.MAIN} element={<HomeLazy />} />
         <PrivateRoute path={ROUTES_ADMIN.PRODUCTS} element={<ProductsLazy />} />

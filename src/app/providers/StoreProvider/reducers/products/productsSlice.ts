@@ -87,7 +87,7 @@ export const productsSlice = createSlice({
     },
   },
   extraReducers: {
-    /* Get Products */
+    /* Get Users */
 
     [getProductsThunk.fulfilled.type]: (
       state,
