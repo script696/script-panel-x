@@ -15,7 +15,6 @@ import { ForbiddenLazy } from "../../../pages/Forbidden";
 import { NotFoundLazy } from "../../../pages/NotFound";
 import { UnderConstructionsLazy } from "../../../pages/UnderConstructions";
 import { ProductsLazy } from "../../../pages/Products";
-import { IntroLazy } from "../../../pages/Intro";
 import { UsersLazy } from "../../../pages/Users";
 import {
   ROUTES_ADMIN,
@@ -23,14 +22,10 @@ import {
   ROUTES_PROFILE,
   ROUTES_SYSTEM_ADMIN,
 } from "../constants/routes";
-import { useAppDispatch, useAppSelector } from "../../providers/StoreProvider";
-import { useEffect } from "react";
-import { getProductsThunk } from "../../providers/StoreProvider/reducers/products/productThunk";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path={ROUTES_BASE.MAIN} element={<IntroLazy />} />
       <PrivateRoute
         path={ROUTES_BASE.SYSTEM_ADMIN}
         element={<AdminLayoutLazy />}
@@ -81,6 +76,7 @@ const AppRoutes = () => {
       />
       <Route path={ROUTES_BASE.FORBIDDEN} element={<ForbiddenLazy />} />
       <Route path={ROUTES_BASE.NOT_FOUND} element={<NotFoundLazy />} />
+      <Route path="/" element={<Navigate to={ROUTES_BASE.ADMIN} replace />} />
       <Route
         path="*"
         element={<Navigate to={`/${process.env.PUBLIC_URL}/404`} replace />}

@@ -17,7 +17,7 @@ import {
 } from "../constants/constants";
 
 const AdminLayout = () => {
-  const { user } = useAppSelector((state) => state.userReducer);
+  // const { user } = useAppSelector((state) => state.userReducer);
 
   const [settingsOpen, setSettingsOpen] = useState(false);
 
@@ -26,6 +26,8 @@ const AdminLayout = () => {
   const handleSettingsToggle = () => {
     setSettingsOpen(!settingsOpen);
   };
+
+  const user = { role: "admin" };
 
   const menuItems =
     user?.role === "admin" ? ADMIN_MENU_ITEMS : SYSTEM_ADMIN_MENU_ITEMS;

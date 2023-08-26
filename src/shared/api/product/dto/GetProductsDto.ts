@@ -1,4 +1,4 @@
-import { ImageDto } from "../../dto/common";
+import { ImageDto } from "../../typedef";
 
 export interface GetProductsRequestDto {
   page: number;
