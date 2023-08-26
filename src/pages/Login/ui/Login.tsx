@@ -12,37 +12,52 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import BoxedLayout from "../../../shared/components/BoxedLayout/BoxedLayout";
 import { useSnackbar } from "../../../app/providers/SnackbarProvider/SnackbarProvider";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../app/providers/StoreProvider";
+import { signInThunk } from "../../../app/providers/StoreProvider/reducers/auth/authThunk";
+import { SignInRequestDto } from "../../../shared/api/auth/dto/signInDto";
+import { $apiClient } from "../../../shared/api/client";
+import { getUserThunk } from "../../../app/providers/StoreProvider/reducers/user/userThunk";
+import { GetUserDto } from "../../../shared/api/users/dto/GetUserDto";
 
 const Login = () => {
+  const dispatch = useAppDispatch();
+  // const { user } = useAppSelector((state) => state.userReducer);
+
   // const { isLoggingIn, login } = useAuth();
   const navigate = useNavigate();
-  const snackbar = useSnackbar();
+  // const snackbar = useSnackbar();
+
   const { t } = useTranslation();
 
-  const isLoggingIn = true;
+  const submit = async (data: SignInRequestDto) => {
+    const { meta } = await dispatch(signInThunk(data));
+    if (meta.requestStatus !== "fulfilled") return;
+    const { payload } = await dispatch(getUserThunk());
+    const user = payload as GetUserDto | undefined;
 
-  const handleLogin = (email: string, password: string) => {
-    navigate(`/${process.env.PUBLIC_URL}/admin`, { replace: true });
-    // login(email, password)
-    //   .then(() =>
-    //   )
-    //   .catch(() => snackbar.error(t("common.errors.unexpected.subTitle")));
+    if (!user) return;
+
+    const redirectUrl =
+      user.role === "admin"
+        ? `/${process.env.PUBLIC_URL}/admin`
+        : `/${process.env.PUBLIC_URL}/system-admin`;
+
+    navigate(redirectUrl, { replace: true });
   };
 
   const formik = useFormik({
     initialValues: {
-      email: "demo@example.com",
-      password: "guWEK<'r/-47-XG3",
+      nikName: "",
+      password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string()
-        .email(t("common.validations.email"))
-        .required(t("common.validations.required")),
-      password: Yup.string()
-        .min(8, t("common.validations.min", { size: 8 }))
-        .required(t("common.validations.required")),
+      nikName: Yup.string().required(t("common.validations.required")),
+      password: Yup.string().required(t("common.validations.required")),
     }),
-    onSubmit: (values) => handleLogin(values.email, values.password),
+    onSubmit: submit,
   });
 
   return (
@@ -76,16 +91,16 @@ const Login = () => {
               variant="filled"
               required
               fullWidth
-              id="email"
+              id="nikName"
               label={t("auth.login.form.email.label")}
-              name="email"
-              autoComplete="email"
+              name="nikName"
+              autoComplete="nikName"
               autoFocus
-              disabled={isLoggingIn}
-              value={formik.values.email}
+              disabled={false}
+              value={formik.values.nikName}
               onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
+              error={formik.touched.nikName && Boolean(formik.errors.nikName)}
+              helperText={formik.touched.nikName && formik.errors.nikName}
             />
             <TextField
               margin="normal"
@@ -97,7 +112,7 @@ const Login = () => {
               type="password"
               id="password"
               autoComplete="current-password"
-              disabled={isLoggingIn}
+              disabled={false}
               value={formik.values.password}
               onChange={formik.handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}
@@ -113,14 +128,11 @@ const Login = () => {
               </Link>
             </Box>
             <LoadingButton
-              type="button"
+              type="submit"
               fullWidth
-              loading={isLoggingIn}
+              loading={false}
               variant="contained"
               sx={{ mt: 3 }}
-              onClick={() =>
-                navigate(`/${process.env.PUBLIC_URL}/admin`, { replace: true })
-              }
             >
               {t("auth.login.submit")}
             </LoadingButton>

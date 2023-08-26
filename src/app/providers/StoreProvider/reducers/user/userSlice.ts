@@ -1,52 +1,49 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { refreshTokensThunk } from "./userThunk";
+import { getUserThunk } from "./userThunk";
+import { UserViewModel } from "./types/typedef";
+import { GetUserDto } from "../../../../../shared/api/users/dto/GetUserDto";
 
 export type UserState = {
-  user: {
-    name: string;
-    role: "system-admin" | "admin" | "user";
-  } | null;
-  isAuth: boolean;
-  isLoading: boolean;
+  user: UserViewModel | null;
   isUserFetched: boolean;
+  isLoading: boolean;
   error: string;
 };
 
 const initialState: UserState = {
   user: null,
-  isAuth: false,
-  isLoading: false,
   isUserFetched: false,
+  isLoading: false,
   error: "",
 };
 
 export const userSlice = createSlice({
-  name: "user",
+  name: "users",
   initialState,
   reducers: {},
 
   extraReducers: {
-    /* Refresh image */
+    /* Get User */
 
-    [refreshTokensThunk.fulfilled.type]: (state) => {
+    [getUserThunk.fulfilled.type]: (
+      state,
+      { payload }: PayloadAction<GetUserDto>
+    ) => {
       state.isLoading = false;
       state.error = "";
-      state.isAuth = true;
+      state.user = payload;
       state.isUserFetched = true;
-      state.user = {
-        name: "Script Test",
-        role: "system-admin",
-      };
     },
-    [refreshTokensThunk.pending.type]: (state) => {
+    [getUserThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [refreshTokensThunk.rejected.type]: (
+    [getUserThunk.rejected.type]: (
       state,
       { payload }: PayloadAction<string>
     ) => {
       state.isLoading = false;
       state.error = payload;
+      state.isUserFetched = true;
     },
   },
 });
