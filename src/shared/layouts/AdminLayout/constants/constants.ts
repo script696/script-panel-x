@@ -14,7 +14,7 @@ export const ADMIN_MENU_ITEMS = [
   },
   {
     icon: CategoryIcon,
-    key: "admin.drawer.menu.userManagement",
+    key: "Products",
     path: `/${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.PRODUCTS}`,
   },
   {
@@ -27,17 +27,17 @@ export const ADMIN_MENU_ITEMS = [
 export const SYSTEM_ADMIN_MENU_ITEMS = [
   {
     icon: HomeIcon,
-    key: "system-admin.drawer.menu.home",
+    key: "home",
     path: `/${ROUTES_BASE.SYSTEM_ADMIN}/${ROUTES_SYSTEM_ADMIN.PROFILE}`,
   },
   {
     icon: PeopleIcon,
-    key: "system-admin.drawer.menu.userManagement",
+    key: "peoples",
     path: `/${ROUTES_BASE.SYSTEM_ADMIN}/${ROUTES_SYSTEM_ADMIN.USERS}`,
   },
   {
     icon: SmartToyIcon,
-    key: "system-admin.drawer.menu.userManagement",
+    key: "bots",
     path: `/${ROUTES_BASE.SYSTEM_ADMIN}/${ROUTES_SYSTEM_ADMIN.BOTS}`,
   },
 ];

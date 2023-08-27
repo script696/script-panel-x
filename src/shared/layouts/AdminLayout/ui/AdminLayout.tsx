@@ -38,7 +38,7 @@ const AdminLayout = () => {
         onDrawerToggle={toggleDrawer}
         onSettingsToggle={handleSettingsToggle}
         menuItems={menuItems}
-        userName={user?.nikName}
+        user={user}
       />
       <SettingsDrawer
         onDrawerToggle={handleSettingsToggle}

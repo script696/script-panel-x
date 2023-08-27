@@ -8,7 +8,6 @@ import { ProfileLazy } from "../../../pages/Profile";
 import { ForgotPasswordLazy } from "../../../pages/ForgotPassword";
 import { ForgotPasswordSubmitLazy } from "../../../pages/ForgotPasswordSubmit";
 import { LoginLazy } from "../../../pages/Login";
-import { RegisterLazy } from "../../../pages/Register";
 import { ForbiddenLazy } from "../../../pages/Forbidden";
 import { NotFoundLazy } from "../../../pages/NotFound";
 import { UnderConstructionsLazy } from "../../../pages/UnderConstructions";
@@ -29,16 +28,16 @@ const AppRoutes = () => {
         element={<AdminLayoutLazy />}
       >
         <PrivateRoute
-          path={ROUTES_SYSTEM_ADMIN.PROFILE}
-          element={<div>profile</div>}
-        />
-        <PrivateRoute
           path={ROUTES_SYSTEM_ADMIN.USERS}
           element={<UsersLazy />}
         />
         <PrivateRoute
           path={ROUTES_SYSTEM_ADMIN.BOTS}
           element={<div>bots</div>}
+        />
+        <PrivateRoute
+          path={ROUTES_SYSTEM_ADMIN.PROFILE}
+          element={<ProfileLazy />}
         />
       </PrivateRoute>
 
@@ -58,7 +57,6 @@ const AppRoutes = () => {
         element={<ForgotPasswordSubmitLazy />}
       />
       <Route path={ROUTES_BASE.LOGIN} element={<LoginLazy />} />
-      <Route path={ROUTES_BASE.REGISTER} element={<RegisterLazy />} />
       <Route
         path={ROUTES_BASE.UNDER_CONSTRUCTION}
         element={<UnderConstructionsLazy />}
