@@ -31,6 +31,7 @@ type SidebarProps = {
   onDrawerToggle: () => void;
   onSettingsToggle: () => void;
   menuItems: Array<MenuItem>;
+  userName?: string;
 };
 
 export const Sidebar: FC<SidebarProps> = ({
@@ -39,6 +40,7 @@ export const Sidebar: FC<SidebarProps> = ({
   onDrawerToggle,
   onSettingsToggle,
   menuItems,
+  userName,
 }) => {
   const { t } = useTranslation();
 
@@ -73,24 +75,18 @@ export const Sidebar: FC<SidebarProps> = ({
       </List>
       <Box sx={{ flexGrow: 1 }} />
       <List component="nav" sx={{ p: 2 }}>
-        <ListItem
-          button
-          component={NavLink}
-          to={`/${ROUTES_ADMIN.MAIN}/${ROUTES_ADMIN.PROFILE}/${ROUTES_PROFILE.INFORMATION}`}
-        >
+        <ListItem button component={NavLink} to={ROUTES_ADMIN.PROFILE}>
           <ListItemAvatar>
             <Avatar>
               <PersonIcon />
             </Avatar>
           </ListItemAvatar>
-          {/*{userInfo && (*/}
-          {/*  <ListItemText*/}
-          {/*    primary={`${userInfo.firstName} ${userInfo.lastName}`}*/}
-          {/*    sx={{*/}
-          {/*      display: collapsed ? "none" : "block",*/}
-          {/*    }}*/}
-          {/*  />*/}
-          {/*)}*/}
+          <ListItemText
+            primary={userName}
+            sx={{
+              display: collapsed ? "none" : "block",
+            }}
+          />
         </ListItem>
         <ListItem button onClick={onSettingsToggle}>
           <ListItemAvatar>
