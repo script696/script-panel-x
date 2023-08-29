@@ -1,8 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { createUserThunk, editUsersThunk, getUsersThunk } from "./usersThunk";
+import {
+  createUserThunk,
+  editUsersThunk,
+  getUsersThunk,
+  removeUsersThunk,
+} from "./usersThunk";
 import { UsersViewModel } from "./types/typedef";
 import { UserViewModel } from "../user/types/typedef";
-import { createProductThunk } from "../products/productThunk";
+import {
+  createProductThunk,
+  removeProductsThunk,
+} from "../products/productThunk";
 
 export type UserState = {
   usersData: { users: Array<UsersViewModel>; total: number };
@@ -134,6 +142,24 @@ export const usersSlice = createSlice({
       state.isLoading = true;
     },
     [editUsersThunk.rejected.type]: (
+      state,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    /* Remove Users */
+
+    [removeUsersThunk.fulfilled.type]: (state) => {
+      state.isLoading = false;
+      state.error = "";
+      state.ui.isUserDeleteModalOpen = false;
+      state.usersTable.selectedRows = [];
+    },
+    [removeUsersThunk.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [removeUsersThunk.rejected.type]: (
       state,
       { payload }: PayloadAction<string>
     ) => {

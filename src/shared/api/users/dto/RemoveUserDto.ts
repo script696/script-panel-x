@@ -1,5 +1,5 @@
 export interface RemoveUserRequestDto {
-  id: string;
+  usersIds: Array<string>;
 }
 
 export interface RemoveUserResponseDto {

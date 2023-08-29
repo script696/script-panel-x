@@ -9,7 +9,10 @@ import {
 } from "../../../app/providers/StoreProvider";
 import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
 import { useEffect } from "react";
-import { getUsersThunk } from "../../../app/providers/StoreProvider/reducers/users/usersThunk";
+import {
+  getUsersThunk,
+  removeUsersThunk,
+} from "../../../app/providers/StoreProvider/reducers/users/usersThunk";
 import { UserViewModel } from "../../../app/providers/StoreProvider/reducers/user/types/typedef";
 import { usersSlice } from "../../../app/providers/StoreProvider/reducers/users/usersSlice";
 
@@ -52,11 +55,8 @@ export const useUsersRdx = () => {
   };
 
   const handleConfirmDeleteRows = async () => {
-    console.log(selectedRows, "selectedRows");
-    // await dispatch(
-    //   removeProductsThunk({ shopId: "1", productIds: selectedRows })
-    // );
-    // await dispatch(getProductsThunk(pagination));
+    await dispatch(removeUsersThunk({ usersIds: selectedRows }));
+    await dispatch(getUsersThunk(pagination));
   };
 
   useEffect(() => {
