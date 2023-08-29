@@ -5,12 +5,9 @@ import { FaqLazy } from "../../../pages/Faq";
 import { HelpCenterLazy } from "../../../pages/HelpCenter";
 import { HomeLazy } from "../../../pages/Home";
 import { ProfileLazy } from "../../../pages/Profile";
-import { ProfileInformationLazy } from "../../../pages/ProfileInformation";
-import { ProfilePasswordLazy } from "../../../pages/ProfilePassword";
 import { ForgotPasswordLazy } from "../../../pages/ForgotPassword";
 import { ForgotPasswordSubmitLazy } from "../../../pages/ForgotPasswordSubmit";
 import { LoginLazy } from "../../../pages/Login";
-import { RegisterLazy } from "../../../pages/Register";
 import { ForbiddenLazy } from "../../../pages/Forbidden";
 import { NotFoundLazy } from "../../../pages/NotFound";
 import { UnderConstructionsLazy } from "../../../pages/UnderConstructions";
@@ -31,16 +28,16 @@ const AppRoutes = () => {
         element={<AdminLayoutLazy />}
       >
         <PrivateRoute
-          path={ROUTES_SYSTEM_ADMIN.PROFILE}
-          element={<div>profile</div>}
-        />
-        <PrivateRoute
           path={ROUTES_SYSTEM_ADMIN.USERS}
           element={<UsersLazy />}
         />
         <PrivateRoute
           path={ROUTES_SYSTEM_ADMIN.BOTS}
           element={<div>bots</div>}
+        />
+        <PrivateRoute
+          path={ROUTES_SYSTEM_ADMIN.PROFILE}
+          element={<ProfileLazy />}
         />
       </PrivateRoute>
 
@@ -49,16 +46,7 @@ const AppRoutes = () => {
         <PrivateRoute path={ROUTES_ADMIN.PRODUCTS} element={<ProductsLazy />} />
         <PrivateRoute path={ROUTES_ADMIN.FAQ} element={<FaqLazy />} />
         <PrivateRoute path={ROUTES_ADMIN.HELP} element={<HelpCenterLazy />} />
-        <PrivateRoute path={ROUTES_ADMIN.PROFILE} element={<ProfileLazy />}>
-          <PrivateRoute
-            path={ROUTES_PROFILE.INFORMATION}
-            element={<ProfileInformationLazy />}
-          />
-          <PrivateRoute
-            path={ROUTES_PROFILE.PASSWORD}
-            element={<ProfilePasswordLazy />}
-          />
-        </PrivateRoute>
+        <PrivateRoute path={ROUTES_ADMIN.PROFILE} element={<ProfileLazy />} />
       </PrivateRoute>
       <Route
         path={ROUTES_BASE.FORGOT_PASSWORD}
@@ -69,7 +57,6 @@ const AppRoutes = () => {
         element={<ForgotPasswordSubmitLazy />}
       />
       <Route path={ROUTES_BASE.LOGIN} element={<LoginLazy />} />
-      <Route path={ROUTES_BASE.REGISTER} element={<RegisterLazy />} />
       <Route
         path={ROUTES_BASE.UNDER_CONSTRUCTION}
         element={<UnderConstructionsLazy />}

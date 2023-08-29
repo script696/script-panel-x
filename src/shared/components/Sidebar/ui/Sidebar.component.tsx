@@ -17,7 +17,10 @@ import Logo from "../../Logo/Logo";
 import { FC } from "react";
 import { SvgIconTypeMap } from "@material-ui/core";
 import { OverridableComponent } from "@material-ui/core/OverridableComponent";
-import { ROUTES_ADMIN, ROUTES_PROFILE } from "../../../../app/routing";
+import {
+  ROUTES_ADMIN,
+  ROUTES_SYSTEM_ADMIN,
+} from "../../../../app/routing/constants/routes";
 
 type MenuItem = {
   icon: OverridableComponent<SvgIconTypeMap>;
@@ -31,6 +34,7 @@ type SidebarProps = {
   onDrawerToggle: () => void;
   onSettingsToggle: () => void;
   menuItems: Array<MenuItem>;
+  user: { nikName: string; role: string } | null;
 };
 
 export const Sidebar: FC<SidebarProps> = ({
@@ -39,10 +43,13 @@ export const Sidebar: FC<SidebarProps> = ({
   onDrawerToggle,
   onSettingsToggle,
   menuItems,
+  user,
 }) => {
   const { t } = useTranslation();
 
   const width = collapsed ? drawerCollapsedWidth : drawerWidth;
+
+  const { nikName, role } = user || {};
 
   const drawer = (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100%" }}>
@@ -76,21 +83,23 @@ export const Sidebar: FC<SidebarProps> = ({
         <ListItem
           button
           component={NavLink}
-          to={`/${ROUTES_ADMIN.MAIN}/${ROUTES_ADMIN.PROFILE}/${ROUTES_PROFILE.INFORMATION}`}
+          to={
+            role === "admin"
+              ? ROUTES_ADMIN.PROFILE
+              : ROUTES_SYSTEM_ADMIN.PROFILE
+          }
         >
           <ListItemAvatar>
             <Avatar>
               <PersonIcon />
             </Avatar>
           </ListItemAvatar>
-          {/*{userInfo && (*/}
-          {/*  <ListItemText*/}
-          {/*    primary={`${userInfo.firstName} ${userInfo.lastName}`}*/}
-          {/*    sx={{*/}
-          {/*      display: collapsed ? "none" : "block",*/}
-          {/*    }}*/}
-          {/*  />*/}
-          {/*)}*/}
+          <ListItemText
+            primary={nikName}
+            sx={{
+              display: collapsed ? "none" : "block",
+            }}
+          />
         </ListItem>
         <ListItem button onClick={onSettingsToggle}>
           <ListItemAvatar>
