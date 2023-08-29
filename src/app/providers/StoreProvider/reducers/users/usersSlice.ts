@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { editUsersThunk, getUsersThunk } from "./usersThunk";
+import { createUserThunk, editUsersThunk, getUsersThunk } from "./usersThunk";
 import { UsersViewModel } from "./types/typedef";
 import { UserViewModel } from "../user/types/typedef";
+import { createProductThunk } from "../products/productThunk";
 
 export type UserState = {
   usersData: { users: Array<UsersViewModel>; total: number };
@@ -73,6 +74,26 @@ export const usersSlice = createSlice({
   },
 
   extraReducers: {
+    /* Create User */
+
+    [createUserThunk.fulfilled.type]: (state) => {
+      state.isLoading = false;
+      state.error = "";
+      state.usersData.total = state.usersData.total + 1;
+      state.ui.isUserEditModalOpen = false;
+      state.userCandidate = undefined;
+    },
+    [createUserThunk.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [createUserThunk.rejected.type]: (
+      state,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+
     /* Get Users */
 
     [getUsersThunk.fulfilled.type]: (

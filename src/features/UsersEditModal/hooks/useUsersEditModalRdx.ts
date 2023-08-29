@@ -23,7 +23,11 @@ import {
   UserCreateMainInfo,
   UserEditMainInfo,
 } from "../../../app/providers/StoreProvider/reducers/user/types/typedef";
-import { editUsersThunk } from "../../../app/providers/StoreProvider/reducers/users/usersThunk";
+import {
+  createUserThunk,
+  editUsersThunk,
+} from "../../../app/providers/StoreProvider/reducers/users/usersThunk";
+import { checkIsUserMainInfo } from "../guards/checkIsUserMainInfo";
 
 export const useUsersEditModalRdx = () => {
   const dispatch = useAppDispatch();
@@ -38,8 +42,10 @@ export const useUsersEditModalRdx = () => {
   const handleSubmitUserMainInfo = async (
     userMainInfo: UserEditMainInfo | UserCreateMainInfo
   ) => {
-    if ("id" in userMainInfo) {
-      dispatch(editUsersThunk(userMainInfo));
+    if (checkIsUserMainInfo(userMainInfo)) {
+      dispatch(createUserThunk(userMainInfo));
+    } else {
+      console.log("edit");
     }
   };
 

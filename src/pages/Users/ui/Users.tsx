@@ -13,7 +13,7 @@ const Users = () => {
   const { t } = useTranslation();
   const {
     usersState,
-    handleAddNewProduct,
+    handleAddNewUser,
     handleCloseDeleteProductModel,
     handleEditUser,
     handleDeleteUsers,
@@ -31,7 +31,7 @@ const Users = () => {
       <AdminAppBar>
         <TableToolbar
           isLoading={isLoading}
-          onAddNewRow={handleAddNewProduct}
+          onAddNewRow={handleAddNewUser}
           onCancelSelecting={handleCancelSelected}
           onDeleteSelected={handleDeleteUsers}
           selectedRows={selectedRows}

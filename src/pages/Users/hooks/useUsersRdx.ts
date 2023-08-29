@@ -27,8 +27,8 @@ export const useUsersRdx = () => {
   const { usersTable } = usersState;
   const { pagination, selectedRows } = usersTable;
 
-  const handleAddNewProduct = () => {
-    // dispatch(openEditProductModal());
+  const handleAddNewUser = () => {
+    dispatch(openEditUserModal());
   };
 
   const handleCloseDeleteProductModel = () => {
@@ -65,7 +65,7 @@ export const useUsersRdx = () => {
 
   return {
     usersState,
-    handleAddNewProduct,
+    handleAddNewUser,
     handleCloseDeleteProductModel,
     handleEditUser,
     handleDeleteUsers,
