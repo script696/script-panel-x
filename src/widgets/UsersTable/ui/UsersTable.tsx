@@ -14,10 +14,11 @@ import {
   useAppSelector,
 } from "../../../app/providers/StoreProvider";
 import { UsersViewModel } from "../../../app/providers/StoreProvider/reducers/users/types/typedef";
+import { UserViewModel } from "../../../app/providers/StoreProvider/reducers/user/types/typedef";
 
 type ProductsTableProps = {
   onDelete: (productsIds: Array<string>) => void;
-  onEdit: (user: any) => void;
+  onEdit: (user: UserViewModel) => void;
   onSelectedChange: (selected: Array<string>) => void;
   selected: Array<string>;
 };
@@ -28,21 +29,15 @@ const UsersTable: FC<ProductsTableProps> = ({
   onSelectedChange,
   selected,
 }) => {
-  const { usersData, isLoading, usersTable } = useAppSelector(
+  const { usersData, isLoading } = useAppSelector(
     (state) => state.usersReducer
   );
   const dispatch = useAppDispatch();
-  // const { changePagination } = productsSlice.actions;
 
-  // const { handleChangePage, handleChangeRowsPerPage } = usePagination({
-  //   onChangePagination: (params) => dispatch(changePagination(params)),
-  // });
+  const { users } = usersData;
 
-  const { users, total } = usersData;
-  const { page, rowsPerPage } = usersTable.pagination;
-
-  const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked) {
+  const handleSelectAllClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
       const newSelecteds = selectUtils.selectAll(users);
       onSelectedChange(newSelecteds);
       return;
@@ -91,15 +86,6 @@ const UsersTable: FC<ProductsTableProps> = ({
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[6, 8, 10]}
-        component="div"
-        count={total}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={() => console.log("click")}
-        onRowsPerPageChange={() => console.log("click")}
-      />
     </React.Fragment>
   );
 };

@@ -49,9 +49,7 @@ export const useProductsRdx = () => {
   };
 
   const handleConfirmDeleteRows = async () => {
-    await dispatch(
-      removeProductsThunk({ shopId: "1", productIds: selectedRows })
-    );
+    await dispatch(removeProductsThunk({ productIds: selectedRows }));
     await dispatch(getProductsThunk(pagination));
   };
 

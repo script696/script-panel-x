@@ -154,7 +154,7 @@ export const productsSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    /* Update Product Main Info */
+    /* Update Product Secondary Info */
 
     [updateProductSecondaryInfoThunk.fulfilled.type]: (
       state,

@@ -1,3 +1,3 @@
-import { GetProductsResponseDto } from "../../../../../../shared/api/product/dto/GetProductsDto";
+import { User } from "../../../../../../shared/api/users/dto/User";
 
-export type UsersViewModel = { id: string; nickname: string; shopName: string };
+export type UsersViewModel = User;

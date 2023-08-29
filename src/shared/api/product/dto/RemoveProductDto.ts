@@ -1,5 +1,4 @@
 export interface RemoveProductRequestDto {
-  shopId: string;
   productIds: Array<string>;
 }
 

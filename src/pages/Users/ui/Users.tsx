@@ -5,8 +5,9 @@ import { ProductsTable } from "../../../widgets/ProductsTable";
 import { TableToolbar } from "../../../widgets/TableToolbar";
 import { ProductEditModal } from "../../../features/ProductEditModal";
 import ConfirmDeleteModal from "../../../shared/components/ConfirmDeleteModal/ConfirmDeleteModal";
-import { useProductsRdx } from "../hooks/useProductsRdx";
+import { useUsersRdx } from "../hooks/useUsersRdx";
 import UsersTable from "../../../widgets/UsersTable/ui/UsersTable";
+import { UsersEditModal } from "../../../features/UsersEditModal";
 
 const Users = () => {
   const { t } = useTranslation();
@@ -14,16 +15,16 @@ const Users = () => {
     usersState,
     handleAddNewProduct,
     handleCloseDeleteProductModel,
-    handleEditProduct,
-    handleDeleteProducts,
+    handleEditUser,
+    handleDeleteUsers,
     handleCancelSelected,
     handleChangeSelectedRows,
     handleConfirmDeleteRows,
-  } = useProductsRdx();
+  } = useUsersRdx();
 
-  const { usersTable, isLoading } = usersState;
+  const { usersTable, isLoading, ui } = usersState;
   const { selectedRows } = usersTable;
-  // const { isProductDeleteModalOpen } = ui;
+  const { isUserDeleteModalOpen } = ui;
 
   return (
     <React.Fragment>
@@ -32,13 +33,13 @@ const Users = () => {
           isLoading={isLoading}
           onAddNewRow={handleAddNewProduct}
           onCancelSelecting={handleCancelSelected}
-          onDeleteSelected={handleDeleteProducts}
+          onDeleteSelected={handleDeleteUsers}
           selectedRows={selectedRows}
         />
       </AdminAppBar>
       <UsersTable
-        onDelete={handleDeleteProducts}
-        onEdit={handleEditProduct}
+        onDelete={handleDeleteUsers}
+        onEdit={handleEditUser}
         onSelectedChange={handleChangeSelectedRows}
         selected={selectedRows}
       />
@@ -47,10 +48,10 @@ const Users = () => {
         isLoading={isLoading}
         onClose={handleCloseDeleteProductModel}
         onConfirm={handleConfirmDeleteRows}
-        open={false}
+        open={isUserDeleteModalOpen}
         title={t("common.confirmation")}
       />
-      <ProductEditModal />
+      <UsersEditModal />
     </React.Fragment>
   );
 };
