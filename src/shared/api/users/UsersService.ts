@@ -6,6 +6,10 @@ import {
   RemoveUserRequestDto,
   RemoveUserResponseDto,
 } from "./dto/RemoveUserDto";
+import {
+  CreateUserRequestDto,
+  CreateUserResponseDto,
+} from "./dto/CreateUserDto";
 
 export class UsersService {
   static getUser() {
@@ -14,6 +18,10 @@ export class UsersService {
 
   static getAllUsers(params: GetUsersRequestDto) {
     return $apiClient.get<GetUsersResponseDto>("users/get-users", { params });
+  }
+
+  static createUser(reqData: CreateUserRequestDto) {
+    return $apiClient.post<CreateUserResponseDto>("users/create", reqData);
   }
 
   static editUsers(data: EditUserRequestDto) {

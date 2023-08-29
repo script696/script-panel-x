@@ -65,6 +65,34 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           error={formik.touched.nikName && Boolean(formik.errors.nikName)}
           helperText={formik.touched.nikName && formik.errors.nikName}
         />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="password"
+          label={"Password"}
+          name="password"
+          autoFocus
+          disabled={isLoading}
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="botName"
+          label={"botName"}
+          name="botName"
+          autoFocus
+          disabled={isLoading}
+          value={formik.values.botName}
+          onChange={formik.handleChange}
+          error={formik.touched.botName && Boolean(formik.errors.botName)}
+          helperText={formik.touched.botName && formik.errors.botName}
+        />
       </DialogContent>
       <Box sx={{ flexGrow: 1 }} />
       <DialogActions>
