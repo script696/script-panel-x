@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getUsersThunk } from "./usersThunk";
+import { editUsersThunk, getUsersThunk } from "./usersThunk";
 import { UsersViewModel } from "./types/typedef";
+import { UserViewModel } from "../user/types/typedef";
 
 export type UserState = {
   usersData: { users: Array<UsersViewModel>; total: number };
@@ -8,19 +9,31 @@ export type UserState = {
     pagination: { page: number; rowsPerPage: number };
     selectedRows: Array<string>;
   };
+  ui: {
+    isUserEditModalOpen: boolean;
+    isUserDeleteModalOpen: boolean;
+  };
+  userCandidate: UserViewModel | undefined;
+
   isLoading: boolean;
   error: string;
 };
 
 const initialState: UserState = {
   usersData: {
-    users: [{ id: "1", nickname: "Script", shopName: "Script shop" }],
-    total: 1,
+    users: [],
+    total: 0,
   },
   usersTable: {
     pagination: { page: 0, rowsPerPage: 6 },
     selectedRows: [],
   },
+  ui: {
+    isUserEditModalOpen: false,
+    isUserDeleteModalOpen: false,
+  },
+  userCandidate: undefined,
+
   isLoading: false,
   error: "",
 };
@@ -28,20 +41,78 @@ const initialState: UserState = {
 export const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    changeSelectedRows: (state, { payload }: PayloadAction<Array<string>>) => {
+      state.usersTable.selectedRows = payload;
+    },
+    toggleEditUserModal: (state, { payload }: PayloadAction<boolean>) => {
+      state.ui.isUserEditModalOpen = payload;
+    },
+    openEditUserModal: (
+      state,
+      { payload }: PayloadAction<UserViewModel | undefined>
+    ) => {
+      state.userCandidate = payload;
+      state.ui.isUserEditModalOpen = true;
+    },
+    closeEditUserModal: (state) => {
+      state.ui.isUserEditModalOpen = false;
+    },
+    deleteUsers: (state, { payload }: PayloadAction<Array<string>>) => {
+      state.ui.isUserDeleteModalOpen = true;
+      state.usersTable.selectedRows = state.usersTable.selectedRows.length
+        ? state.usersTable.selectedRows
+        : payload;
+    },
+    toggleDeleteUserModal: (state, { payload }: PayloadAction<boolean>) => {
+      state.ui.isUserDeleteModalOpen = payload;
+      state.usersTable.selectedRows = payload
+        ? state.usersTable.selectedRows
+        : [];
+    },
+  },
 
   extraReducers: {
-    /* Refresh image */
+    /* Get Users */
 
-    [getUsersThunk.fulfilled.type]: (state) => {
+    [getUsersThunk.fulfilled.type]: (
+      state,
+      {
+        payload,
+      }: PayloadAction<{ users: Array<UsersViewModel>; total: number }>
+    ) => {
       state.isLoading = false;
       state.error = "";
-      state.usersData = { users: [], total: 0 };
+      state.usersData = payload;
     },
     [getUsersThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
     [getUsersThunk.rejected.type]: (
+      state,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    /* Update Users Info */
+
+    [editUsersThunk.fulfilled.type]: (
+      state,
+      { payload }: PayloadAction<UserViewModel>
+    ) => {
+      state.isLoading = false;
+      state.error = "";
+      state.usersData.users = state.usersData.users.map((user) => {
+        return user.id === payload.id ? payload : user;
+      });
+      state.ui.isUserEditModalOpen = false;
+      state.userCandidate = undefined;
+    },
+    [editUsersThunk.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [editUsersThunk.rejected.type]: (
       state,
       { payload }: PayloadAction<string>
     ) => {

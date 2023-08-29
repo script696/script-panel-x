@@ -9,14 +9,17 @@ import {
 } from "../../../app/providers/StoreProvider";
 import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
 import { useEffect } from "react";
+import { getUsersThunk } from "../../../app/providers/StoreProvider/reducers/users/usersThunk";
+import { UserViewModel } from "../../../app/providers/StoreProvider/reducers/user/types/typedef";
+import { usersSlice } from "../../../app/providers/StoreProvider/reducers/users/usersSlice";
 
-export const useProductsRdx = () => {
-  // const {
-  //   openEditProductModal,
-  //   toggleDeleteProductModal,
-  //   deleteProducts,
-  //   changeSelectedRows,
-  // } = productsSlice.actions;
+export const useUsersRdx = () => {
+  const {
+    openEditUserModal,
+    toggleDeleteUserModal,
+    deleteUsers,
+    changeSelectedRows,
+  } = usersSlice.actions;
 
   const usersState = useAppSelector((state) => state.usersReducer);
   const dispatch = useAppDispatch();
@@ -29,26 +32,27 @@ export const useProductsRdx = () => {
   };
 
   const handleCloseDeleteProductModel = () => {
-    // dispatch(toggleDeleteProductModal(false));
+    dispatch(toggleDeleteUserModal(false));
   };
 
-  const handleEditProduct = (product: ProductViewModel) => {
-    // dispatch(openEditProductModal(product));
+  const handleEditUser = (user: UserViewModel) => {
+    dispatch(openEditUserModal(user));
   };
 
-  const handleDeleteProducts = (productsIds: Array<string>) => {
-    // dispatch(deleteProducts(productsIds));
+  const handleDeleteUsers = (usersIds: Array<string>) => {
+    dispatch(deleteUsers(usersIds));
   };
 
   const handleCancelSelected = () => {
-    // dispatch(changeSelectedRows([]));
+    dispatch(changeSelectedRows([]));
   };
 
   const handleChangeSelectedRows = (selectedRows: Array<string>) => {
-    // dispatch(changeSelectedRows(selectedRows));
+    dispatch(changeSelectedRows(selectedRows));
   };
 
   const handleConfirmDeleteRows = async () => {
+    console.log(selectedRows, "selectedRows");
     // await dispatch(
     //   removeProductsThunk({ shopId: "1", productIds: selectedRows })
     // );
@@ -56,15 +60,15 @@ export const useProductsRdx = () => {
   };
 
   useEffect(() => {
-    // dispatch(getProductsThunk(pagination));
+    dispatch(getUsersThunk(pagination));
   }, [pagination]);
 
   return {
     usersState,
     handleAddNewProduct,
     handleCloseDeleteProductModel,
-    handleEditProduct,
-    handleDeleteProducts,
+    handleEditUser,
+    handleDeleteUsers,
     handleCancelSelected,
     handleChangeSelectedRows,
     handleConfirmDeleteRows,

@@ -1,7 +1,6 @@
 import { ImageDto } from "../../typedef";
 
 export interface AddProductImagesRequestDto {
-  shopId: string;
   productId: string;
   files: Array<File>;
 }

@@ -3,7 +3,7 @@ import { GetUserDto } from "../../../../../shared/api/users/dto/GetUserDto";
 import { UsersService } from "../../../../../shared/api/users/UsersService";
 
 export const getUserThunk = createAsyncThunk<GetUserDto>(
-  "users/get",
+  "user/get",
   async (_, thunkAPI) => {
     try {
       const { data } = await UsersService.getUser();

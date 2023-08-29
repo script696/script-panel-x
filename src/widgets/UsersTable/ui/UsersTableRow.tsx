@@ -38,19 +38,11 @@ export const UsersTableRow: FC<ProductsTableRowProps> = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { t } = useTranslation();
-  const { id, nickname, shopName } = user;
+  const { id, nikName, bot } = user;
   const apiUrl = process.env["REACT_APP_API_URL"];
 
   const labelId = `enhanced-table-checkbox-${index}`;
   const openActions = Boolean(anchorEl);
-  // const productMainPhoto = images?.length
-  //   ? `${apiUrl}/${images[0].source}`
-  //   : "/img/default_product.png";
-
-  // const availableSizes =
-  //   product.availableSizes.length <= 2
-  //     ? product.availableSizes.join(" ")
-  //     : `${product.availableSizes.slice(2).join(" ")} ...`;
 
   const handleOpenActions = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -69,7 +61,6 @@ export const UsersTableRow: FC<ProductsTableRowProps> = ({
     handleCloseActions();
     onEdit(user);
   };
-  console.log(shopName, "shopName");
   return (
     <TableRow
       aria-checked={selected}
@@ -91,8 +82,8 @@ export const UsersTableRow: FC<ProductsTableRowProps> = ({
           onClick={() => onCheck(id)}
         />
       </TableCell>
-      <TableCell align="center">{nickname}</TableCell>
-      <TableCell align="center">{shopName}</TableCell>
+      <TableCell align="center">{nikName}</TableCell>
+      <TableCell align="center">{bot.name}</TableCell>
       <TableCell
         align="right"
         sx={{ borderTopRightRadius: "1rem", borderBottomRightRadius: "1rem" }}

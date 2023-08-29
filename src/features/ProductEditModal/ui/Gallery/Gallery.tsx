@@ -41,7 +41,7 @@ const Gallery: FC<GalleryDataProps> = (props) => {
     if (!product) return;
 
     if (files.length) {
-      onAddProductImages({ files, shopId: "1", productId: product.id });
+      onAddProductImages({ files, productId: product.id });
     }
     if (deletedImagesCandidates.length) {
       onDeleteProductImage({
