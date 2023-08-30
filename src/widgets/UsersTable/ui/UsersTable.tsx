@@ -1,16 +1,13 @@
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableContainer from "@material-ui/core/TableContainer";
-import TablePagination from "@material-ui/core/TablePagination";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import Empty from "../../../shared/components/Empty/Empty";
 import * as selectUtils from "../../../shared/utils/selectUtils";
 import { UsersTableRow } from "./UsersTableRow";
 import { UsersTableHead } from "./UsersTableHead";
 import { checkIsRowSelected } from "../utils/checkIsRowSelected";
-import { usePagination } from "../../../shared/hooks/usePagination";
-import { useAppDispatch, useAppSelector } from "../../../app/store";
-import { UsersViewModel } from "../../../app/store/reducers/users/types/typedef";
+import { useAppSelector } from "../../../app/store";
 import { UserViewModel } from "../../../app/store/reducers/user/types/typedef";
 
 type ProductsTableProps = {
@@ -29,13 +26,12 @@ const UsersTable: FC<ProductsTableProps> = ({
   const { usersData, isLoading } = useAppSelector(
     (state) => state.usersReducer
   );
-  const dispatch = useAppDispatch();
 
   const { users } = usersData;
 
   const handleSelectAllClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      const newSelecteds = selectUtils.selectAll(users);
+      const newSelecteds = selectUtils.selectAll<UserViewModel>(users);
       onSelectedChange(newSelecteds);
       return;
     }
@@ -43,7 +39,7 @@ const UsersTable: FC<ProductsTableProps> = ({
   };
 
   const handleClick = (id: string) => {
-    let newSelected: string[] = selectUtils.selectOne(selected, id);
+    const newSelected: string[] = selectUtils.selectOne(selected, id);
     onSelectedChange(newSelected);
   };
 

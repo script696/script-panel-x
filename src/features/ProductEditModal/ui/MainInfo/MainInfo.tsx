@@ -4,8 +4,6 @@ import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import React, { FC } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";

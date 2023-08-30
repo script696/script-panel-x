@@ -1,10 +1,4 @@
-import { ProductViewModel } from "../../../app/store/reducers/products/types/typedef";
-import {
-  getProductsThunk,
-  removeProductsThunk,
-} from "../../../app/store/reducers/products/productThunk";
 import { useAppDispatch, useAppSelector } from "../../../app/store";
-import { productsSlice } from "../../../app/store/reducers/products/productsSlice";
 import { useEffect } from "react";
 import {
   getUsersThunk,

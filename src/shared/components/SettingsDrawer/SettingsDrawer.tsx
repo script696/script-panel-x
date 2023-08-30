@@ -29,7 +29,7 @@ const SettingsDrawer = ({ onDrawerToggle, open }: SettingsDrawerProps) => {
   } = useSettings();
   const { i18n, t } = useTranslation();
 
-  const handleDirectionChange = (_: any, direction: "ltr" | "rtl") => {
+  const handleDirectionChange = (_: unknown, direction: "ltr" | "rtl") => {
     changeDirection(direction);
   };
 
@@ -37,11 +37,11 @@ const SettingsDrawer = ({ onDrawerToggle, open }: SettingsDrawerProps) => {
     i18n.changeLanguage((event.target as HTMLInputElement).value);
   };
 
-  const handleModeChange = (_: any, mode: string) => {
+  const handleModeChange = (_: unknown, mode: string) => {
     changeMode(mode);
   };
 
-  const handleSidebarChange = (_: any, collapsed: boolean) => {
+  const handleSidebarChange = (_: unknown, collapsed: boolean) => {
     changeCollapsed(collapsed);
   };
 

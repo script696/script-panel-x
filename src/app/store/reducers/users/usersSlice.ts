@@ -7,10 +7,6 @@ import {
 } from "./usersThunk";
 import { UsersViewModel } from "./types/typedef";
 import { UserViewModel } from "../user/types/typedef";
-import {
-  createProductThunk,
-  removeProductsThunk,
-} from "../products/productThunk";
 
 export type UserState = {
   usersData: { users: Array<UsersViewModel>; total: number };

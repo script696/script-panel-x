@@ -1,12 +1,17 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { TFunction } from "i18next";
+import {
+  UserCreateMainInfo,
+  UserEditMainInfo,
+  UserViewModel,
+} from "../../../app/store/reducers/user/types/typedef";
 
 type UseMainInfoFormParams = {
   mode: "edit" | "create";
-  user: any;
+  user?: UserViewModel;
   t: TFunction;
-  onSubmit: (userMainInfo: any) => void;
+  onSubmit: (userMainInfo: UserEditMainInfo | UserCreateMainInfo) => void;
 };
 
 export const useMainInfoForm = ({

@@ -1,3 +1,3 @@
 import { User } from "./User";
 
-export interface GetUserDto extends User {}
+export type GetUserDto = User

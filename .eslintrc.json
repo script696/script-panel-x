@@ -1,0 +1,38 @@
+{
+  "overrides": [{"files":  ["**/*.stories.*"]}],
+  "parser": "@typescript-eslint/parser",
+  "root": true,
+  "ignorePatterns": [".eslintrc.json", "tailwind.config.js", "jest.setup.js"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "info",
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "varsIgnorePattern": "_",
+        "argsIgnorePattern": "_"
+      }
+    ],
+    "react/display-name": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/no-anonymous-default-export": "off"
+  }
+}

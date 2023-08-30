@@ -14,7 +14,7 @@ const QueryWrapper = ({ children }: QueryWrapperProps) => {
 
   return (
     <ErrorBoundary
-      onReset={() => console.log("reset")}
+      onReset={() => console.info("reset")}
       fallbackRender={({ resetErrorBoundary }) => (
         <Result
           extra={

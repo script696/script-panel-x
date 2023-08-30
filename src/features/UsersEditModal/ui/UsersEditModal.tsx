@@ -1,6 +1,5 @@
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { useTranslation } from "react-i18next";
 import { Box, Tabs, Tab } from "@material-ui/core";
 import { MainInfo } from "./MainInfo/MainInfo";
 import { Mode } from "../types/typedef";
@@ -8,7 +7,6 @@ import { useUsersEditModalRdx } from "../hooks/useUsersEditModalRdx";
 import { useTabs } from "../../../shared/hooks/useTabs";
 
 const UsersEditModal = () => {
-  const { t } = useTranslation();
   const { tab, handleClickTab } = useTabs();
 
   const { usersState, handleCloseModal, handleSubmitUserMainInfo } =

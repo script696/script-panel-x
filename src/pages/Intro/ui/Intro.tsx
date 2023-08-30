@@ -1,14 +1,9 @@
-import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import { useTheme } from "@material-ui/core/styles";
-import { useTranslation } from "react-i18next";
-import { Link as RouterLink } from "react-router-dom";
 import IntroLayout from "./IntroLayout";
 
 const Intro = () => {
-  // const { userInfo } = useAuth();
   const theme = useTheme();
-  const { t } = useTranslation();
 
   return (
     <IntroLayout>
