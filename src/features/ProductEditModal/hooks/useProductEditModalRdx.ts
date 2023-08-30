@@ -1,6 +1,6 @@
-import { useAppDispatch, useAppSelector } from "../../../app/store";
-import { productsSlice } from "../../../app/store/reducers/products/productsSlice";
-import { AddProductImagesRequestDto } from "../../../shared/api/product/dto/AddProductImagesDto";
+import { useAppDispatch, useAppSelector } from "app/store";
+import { productsSlice } from "app/store/reducers/products/productsSlice";
+import { AddProductImagesRequestDto } from "shared/api/product/dto/AddProductImagesDto";
 import {
   addImagesThunk,
   createProductThunk,
@@ -8,13 +8,13 @@ import {
   removeImagesThunk,
   updateProductMainInfoThunk,
   updateProductSecondaryInfoThunk,
-} from "../../../app/store/reducers/products/productThunk";
-import { RemoveProductImageRequestDto } from "../../../shared/api/product/dto/RemoveProductImagesDto";
+} from "app/store/reducers/products/productThunk";
+import { RemoveProductImageRequestDto } from "shared/api/product/dto/RemoveProductImagesDto";
 import {
   ProductCreateMainInfo,
   ProductEditMainInfo,
   ProductViewModel,
-} from "../../../app/store/reducers/products/types/typedef";
+} from "app/store/reducers/products/types/typedef";
 
 export const useProductEditModalRdx = () => {
   const dispatch = useAppDispatch();

@@ -1,4 +1,4 @@
-import { EditUserRequestDto } from "../../../../../shared/api/users/dto/EditUserDto";
+import { EditUserRequestDto } from "shared/api/users/dto/EditUserDto";
 
 export class ViewModelToApiMapper {
   static editUsers(viewModel: EditUserRequestDto): EditUserRequestDto {

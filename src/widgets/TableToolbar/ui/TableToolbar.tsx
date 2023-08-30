@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import AdminToolbar from "../../../shared/components/AdminToolbar/AdminToolbar";
+import AdminToolbar from "shared/components/AdminToolbar/AdminToolbar";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import SelectToolbar from "../../../shared/components/SelectToolbar/SelectToolbar";
+import SelectToolbar from "shared/components/SelectToolbar/SelectToolbar";
 import { useTranslation } from "react-i18next";
 
 type TableToolbarProps = {

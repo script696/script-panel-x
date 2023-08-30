@@ -24,7 +24,7 @@ const SnackbarProvider = ({ children }: SnackbarProviderProps) => {
 
   const handleClose = (
     event: React.SyntheticEvent | React.MouseEvent,
-    reason?: string
+    reason?: string,
   ) => {
     if (reason === "clickaway") {
       return;

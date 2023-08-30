@@ -1,10 +1,10 @@
 import HomeIcon from "@material-ui/icons/Home";
-import { ROUTES_ADMIN, ROUTES_BASE } from "../../../../app/routing";
+import { ROUTES_ADMIN, ROUTES_BASE } from "app/routing";
 import PeopleIcon from "@material-ui/icons/People";
 import HelpCenterIcon from "@material-ui/icons/HelpCenter";
 import CategoryIcon from "@material-ui/icons/Category";
 import SmartToyIcon from "@material-ui/icons/SmartToy";
-import { ROUTES_SYSTEM_ADMIN } from "../../../../app/routing/constants/routes";
+import { ROUTES_SYSTEM_ADMIN } from "app/routing/constants/routes";
 
 export const ADMIN_MENU_ITEMS = [
   {

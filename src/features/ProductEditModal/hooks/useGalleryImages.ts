@@ -16,7 +16,7 @@ type UseGalleryImagesResult = {
 };
 
 type UseGalleryImages = (
-  params: UseGalleryImagesParams
+  params: UseGalleryImagesParams,
 ) => UseGalleryImagesResult;
 
 /**
@@ -24,7 +24,7 @@ type UseGalleryImages = (
  */
 export const useGalleryImages: UseGalleryImages = ({ defaultImages }) => {
   const [galleryImages, setGalleryImages] = useState<Array<GalleryImage>>(
-    defaultImages ?? []
+    defaultImages ?? [],
   );
   const [files, setFiles] = useState<Array<File>>([]);
   const deletedImages = useRef<Array<string>>([]);
@@ -64,16 +64,16 @@ export const useGalleryImages: UseGalleryImages = ({ defaultImages }) => {
       /* если файл новый необходимо удалить его из массива для рендеринга и массива файлов кандидатов на добавление*/
       const deleteFileName = urlToFileNameMap.current[source];
       setFiles((prevState) =>
-        prevState.filter((file) => file.name !== deleteFileName)
+        prevState.filter((file) => file.name !== deleteFileName),
       );
       setGalleryImages((prevState) =>
-        prevState.filter((image) => image.source !== source)
+        prevState.filter((image) => image.source !== source),
       );
     } else {
       /* если файл не новый необходимо добавить его в массив кандидатов на удаление */
       deletedImages.current.push(source);
       setGalleryImages((prevState) =>
-        prevState.filter((image) => image.source !== source)
+        prevState.filter((image) => image.source !== source),
       );
     }
   };

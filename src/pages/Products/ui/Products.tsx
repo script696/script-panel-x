@@ -1,10 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import AdminAppBar from "../../../shared/components/AdminAppBar/AdminAppBar";
-import { ProductsTable } from "../../../widgets/ProductsTable";
-import { TableToolbar } from "../../../widgets/TableToolbar";
-import { ProductEditModal } from "../../../features/ProductEditModal";
-import ConfirmDeleteModal from "../../../shared/components/ConfirmDeleteModal/ConfirmDeleteModal";
+import AdminAppBar from "shared/components/AdminAppBar/AdminAppBar";
+import { ProductsTable } from "widgets/ProductsTable";
+import { TableToolbar } from "widgets/TableToolbar";
+import { ProductEditModal } from "features/ProductEditModal";
+import ConfirmDeleteModal from "shared/components/ConfirmDeleteModal/ConfirmDeleteModal";
 import { useProductsRdx } from "../hooks/useProductsRdx";
 
 const Products = () => {

@@ -1,16 +1,16 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import PrivateRoute from "../../../shared/components/PrivateRoute/PrivateRoute";
-import { AdminLayoutLazy } from "../../../shared/layouts/AdminLayout";
-import { FaqLazy } from "../../../pages/Faq";
-import { HelpCenterLazy } from "../../../pages/HelpCenter";
-import { HomeLazy } from "../../../pages/Home";
-import { ProfileLazy } from "../../../pages/Profile";
-import { LoginLazy } from "../../../pages/Login";
-import { ForbiddenLazy } from "../../../pages/Forbidden";
-import { NotFoundLazy } from "../../../pages/NotFound";
-import { UnderConstructionsLazy } from "../../../pages/UnderConstructions";
-import { ProductsLazy } from "../../../pages/Products";
-import { UsersLazy } from "../../../pages/Users";
+import PrivateRoute from "shared/components/PrivateRoute/PrivateRoute";
+import { AdminLayoutLazy } from "shared/layouts/AdminLayout";
+import { FaqLazy } from "pages/Faq";
+import { HelpCenterLazy } from "pages/HelpCenter";
+import { HomeLazy } from "pages/Home";
+import { ProfileLazy } from "pages/Profile";
+import { LoginLazy } from "pages/Login";
+import { ForbiddenLazy } from "pages/Forbidden";
+import { NotFoundLazy } from "pages/NotFound";
+import { UnderConstructionsLazy } from "pages/UnderConstructions";
+import { ProductsLazy } from "pages/Products";
+import { UsersLazy } from "pages/Users";
 import {
   ROUTES_ADMIN,
   ROUTES_BASE,

@@ -12,7 +12,7 @@ import {
   UserCreateMainInfo,
   UserEditMainInfo,
   UserViewModel,
-} from "../../../../app/store/reducers/user/types/typedef";
+} from "app/store/reducers/user/types/typedef";
 
 type MainInfoProps = {
   mode: Mode;

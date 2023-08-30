@@ -9,10 +9,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
-import {
-  drawerCollapsedWidth,
-  drawerWidth,
-} from "../../../../app/config/layout";
+import { drawerCollapsedWidth, drawerWidth } from "app/config/layout";
 import Logo from "../../Logo/Logo";
 import { FC } from "react";
 import { SvgIconTypeMap } from "@material-ui/core";
@@ -20,7 +17,7 @@ import { OverridableComponent } from "@material-ui/core/OverridableComponent";
 import {
   ROUTES_ADMIN,
   ROUTES_SYSTEM_ADMIN,
-} from "../../../../app/routing/constants/routes";
+} from "app/routing/constants/routes";
 
 type MenuItem = {
   icon: OverridableComponent<SvgIconTypeMap>;

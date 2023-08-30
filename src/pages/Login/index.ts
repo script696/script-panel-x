@@ -1,1 +1,3 @@
-import {lazy} from "react";export const LoginLazy = lazy(() => import("./ui/Login"));
+import { lazy } from "react";
+
+export const LoginLazy = lazy(() => import("./ui/Login"));

@@ -15,9 +15,9 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 import { ReactComponent as HelpSvg } from "../../../shared/assets/help.svg";
-import SvgContainer from "../../../shared/components/SvgContainer/SvgContainer";
-import AdminAppBar from "../../../shared/components/AdminAppBar/AdminAppBar";
-import AdminToolbar from "../../../shared/components/AdminToolbar/AdminToolbar";
+import SvgContainer from "shared/components/SvgContainer/SvgContainer";
+import AdminAppBar from "shared/components/AdminAppBar/AdminAppBar";
+import AdminToolbar from "shared/components/AdminToolbar/AdminToolbar";
 
 const HelpCenter = () => {
   const { t } = useTranslation();

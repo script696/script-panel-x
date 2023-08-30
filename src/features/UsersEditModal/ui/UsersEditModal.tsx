@@ -4,7 +4,7 @@ import { Box, Tabs, Tab } from "@material-ui/core";
 import { MainInfo } from "./MainInfo/MainInfo";
 import { Mode } from "../types/typedef";
 import { useUsersEditModalRdx } from "../hooks/useUsersEditModalRdx";
-import { useTabs } from "../../../shared/hooks/useTabs";
+import { useTabs } from "shared/hooks/useTabs";
 
 const UsersEditModal = () => {
   const { tab, handleClickTab } = useTabs();

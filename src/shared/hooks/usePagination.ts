@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 
 type UsePaginationParams = {
   onChangePagination: (
-    params: { page: number } | { rowsPerPage: number }
+    params: { page: number } | { rowsPerPage: number },
   ) => void;
 };
 
@@ -16,7 +16,7 @@ type UsePaginationResult = {
   handleChangeRowsPerPage: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 export type UsePagination = (
-  params: UsePaginationParams
+  params: UsePaginationParams,
 ) => UsePaginationResult;
 
 export const usePagination: UsePagination = ({ onChangePagination }) => {

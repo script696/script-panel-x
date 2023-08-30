@@ -1,11 +1,11 @@
-import { useAppDispatch, useAppSelector } from "../../../app/store";
+import { useAppDispatch, useAppSelector } from "app/store";
 import { useEffect } from "react";
 import {
   getUsersThunk,
   removeUsersThunk,
-} from "../../../app/store/reducers/users/usersThunk";
-import { UserViewModel } from "../../../app/store/reducers/user/types/typedef";
-import { usersSlice } from "../../../app/store/reducers/users/usersSlice";
+} from "app/store/reducers/users/usersThunk";
+import { UserViewModel } from "app/store/reducers/user/types/typedef";
+import { usersSlice } from "app/store/reducers/users/usersSlice";
 
 export const useUsersRdx = () => {
   const {

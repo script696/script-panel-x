@@ -55,7 +55,7 @@ export const usersSlice = createSlice({
     },
     openEditUserModal: (
       state,
-      { payload }: PayloadAction<UserViewModel | undefined>
+      { payload }: PayloadAction<UserViewModel | undefined>,
     ) => {
       state.userCandidate = payload;
       state.ui.isUserEditModalOpen = true;
@@ -92,7 +92,7 @@ export const usersSlice = createSlice({
     },
     [createUserThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;
@@ -104,7 +104,7 @@ export const usersSlice = createSlice({
       state,
       {
         payload,
-      }: PayloadAction<{ users: Array<UsersViewModel>; total: number }>
+      }: PayloadAction<{ users: Array<UsersViewModel>; total: number }>,
     ) => {
       state.isLoading = false;
       state.error = "";
@@ -115,7 +115,7 @@ export const usersSlice = createSlice({
     },
     [getUsersThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;
@@ -124,7 +124,7 @@ export const usersSlice = createSlice({
 
     [editUsersThunk.fulfilled.type]: (
       state,
-      { payload }: PayloadAction<UserViewModel>
+      { payload }: PayloadAction<UserViewModel>,
     ) => {
       state.isLoading = false;
       state.error = "";
@@ -139,7 +139,7 @@ export const usersSlice = createSlice({
     },
     [editUsersThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;
@@ -157,7 +157,7 @@ export const usersSlice = createSlice({
     },
     [removeUsersThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;

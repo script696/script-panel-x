@@ -5,9 +5,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import SettingsIcon from "@material-ui/icons/Settings";
 import React, { useState } from "react";
-import Logo from "../../../shared/components/Logo/Logo";
-import SettingsDrawer from "../../../shared/components/SettingsDrawer/SettingsDrawer";
-import Footer from "../../../widgets/Footer/Footer";
+import Logo from "shared/components/Logo/Logo";
+import SettingsDrawer from "shared/components/SettingsDrawer/SettingsDrawer";
+import Footer from "widgets/Footer/Footer";
 
 type LandingLayoutProps = {
   children: React.ReactNode;

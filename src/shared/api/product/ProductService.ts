@@ -48,16 +48,16 @@ export class ProductService {
   static updateProductMainInfo(data: UpdateProductMainInfoRequestDto) {
     return $apiClient.put<UpdateProductMainInfoResponseDto>(
       "product/update-main-info",
-      data
+      data,
     );
   }
 
   static updateProductSecondaryInfo(
-    data: UpdateProductSecondaryInfoRequestDto
+    data: UpdateProductSecondaryInfoRequestDto,
   ) {
     return $apiClient.put<UpdateProductSecondaryInfoResponseDto>(
       "product/update-secondary-info",
-      data
+      data,
     );
   }
 
@@ -65,7 +65,7 @@ export class ProductService {
     return $apiClient.post<AddProductImagesResponseDto>(
       "product/add-images",
       data,
-      { headers: { "Content-Type": "multipart/form-data" } }
+      { headers: { "Content-Type": "multipart/form-data" } },
     );
   }
 
@@ -74,7 +74,7 @@ export class ProductService {
       "product/remove-images",
       {
         data,
-      }
+      },
     );
   }
 }
