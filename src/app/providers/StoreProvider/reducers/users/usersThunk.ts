@@ -16,6 +16,7 @@ import {
   CreateUserRequestDto,
   CreateUserResponseDto,
 } from "../../../../../shared/api/users/dto/CreateUserDto";
+import { ViewModelToApiMapper } from "./mappers/ViewModelToApiMapper";
 
 export const createUserThunk = createAsyncThunk<
   CreateUserResponseDto,
@@ -46,10 +47,11 @@ export const getUsersThunk = createAsyncThunk<
 export const editUsersThunk = createAsyncThunk<
   EditUserResponseDto,
   EditUserRequestDto
->("users/edit", async (reqParams, thunkAPI) => {
+>("users/edit", async (reqData, thunkAPI) => {
   try {
-    const { data } = await UsersService.editUsers(reqParams);
+    const mappedData = ViewModelToApiMapper.editUsers(reqData);
 
+    const { data } = await UsersService.editUsers(mappedData);
     return data;
   } catch (e) {
     return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
