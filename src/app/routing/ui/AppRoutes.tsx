@@ -5,8 +5,6 @@ import { FaqLazy } from "../../../pages/Faq";
 import { HelpCenterLazy } from "../../../pages/HelpCenter";
 import { HomeLazy } from "../../../pages/Home";
 import { ProfileLazy } from "../../../pages/Profile";
-import { ForgotPasswordLazy } from "../../../pages/ForgotPassword";
-import { ForgotPasswordSubmitLazy } from "../../../pages/ForgotPasswordSubmit";
 import { LoginLazy } from "../../../pages/Login";
 import { ForbiddenLazy } from "../../../pages/Forbidden";
 import { NotFoundLazy } from "../../../pages/NotFound";
@@ -16,7 +14,6 @@ import { UsersLazy } from "../../../pages/Users";
 import {
   ROUTES_ADMIN,
   ROUTES_BASE,
-  ROUTES_PROFILE,
   ROUTES_SYSTEM_ADMIN,
 } from "../constants/routes";
 
@@ -48,14 +45,6 @@ const AppRoutes = () => {
         <PrivateRoute path={ROUTES_ADMIN.HELP} element={<HelpCenterLazy />} />
         <PrivateRoute path={ROUTES_ADMIN.PROFILE} element={<ProfileLazy />} />
       </PrivateRoute>
-      <Route
-        path={ROUTES_BASE.FORGOT_PASSWORD}
-        element={<ForgotPasswordLazy />}
-      />
-      <Route
-        path={ROUTES_BASE.FORGOT_PASSWORD_SUBMIT}
-        element={<ForgotPasswordSubmitLazy />}
-      />
       <Route path={ROUTES_BASE.LOGIN} element={<LoginLazy />} />
       <Route
         path={ROUTES_BASE.UNDER_CONSTRUCTION}

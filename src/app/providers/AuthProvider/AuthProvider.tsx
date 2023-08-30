@@ -13,7 +13,6 @@ type AuthProviderProps = {
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const dispatch = useAppDispatch();
-  const { setUserAuth } = authSlice.actions;
 
   const initApp = async () => {
     const { meta } = await dispatch(checkAuthThunk());
@@ -23,7 +22,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useLayoutEffect(() => {
     initApp();
-    // dispatch(getUserThunk());
   }, []);
 
   return <>{children}</>;

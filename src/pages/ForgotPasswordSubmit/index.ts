@@ -1,1 +1,0 @@
-import {lazy} from "react";export const ForgotPasswordSubmitLazy = lazy(() => import("./ui/ForgotPasswordSubmit"));
