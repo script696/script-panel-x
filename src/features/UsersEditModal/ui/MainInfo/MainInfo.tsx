@@ -21,6 +21,7 @@ import { useMainInfoForm } from "../../hooks/useMainInfoForm";
 import {
   UserCreateMainInfo,
   UserEditMainInfo,
+  UserViewModel,
 } from "../../../../app/providers/StoreProvider/reducers/user/types/typedef";
 
 type MainInfoProps = {
@@ -28,13 +29,13 @@ type MainInfoProps = {
   onClose: () => void;
   onSubmit: (userMainInfo: UserEditMainInfo | UserCreateMainInfo) => void;
   isLoading: boolean;
-  user?: any;
+  user?: UserViewModel;
 };
 
 export const MainInfo: FC<MainInfoProps> = (props) => {
   const { user, isLoading, onClose, onSubmit, mode } = props;
   const { t } = useTranslation();
-  const { formik } = useMainInfoForm({ user, t, onSubmit });
+  const { formik } = useMainInfoForm({ user, t, onSubmit, mode });
 
   return (
     <Box
@@ -69,6 +70,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           margin="normal"
           required
           fullWidth
+          type={"password"}
           id="password"
           label={"Password"}
           name="password"

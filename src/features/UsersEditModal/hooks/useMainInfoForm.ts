@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import { TFunction } from "i18next";
 
 type UseMainInfoFormParams = {
+  mode: "edit" | "create";
   user: any;
   t: TFunction;
   onSubmit: (userMainInfo: any) => void;
@@ -12,13 +13,14 @@ export const useMainInfoForm = ({
   user,
   t,
   onSubmit,
+  mode,
 }: UseMainInfoFormParams) => {
   const formik = useFormik({
     initialValues: {
       id: user && "id" in user ? user.id : undefined,
       nikName: user ? user.nikName : "",
-      password: "",
-      botName: user ? user.bot.botName : "",
+      password: mode === "edit" ? "****" : "",
+      botName: user ? user.bot.name : "",
     },
     validationSchema: Yup.object({
       nikName: Yup.string()
