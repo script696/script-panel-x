@@ -1,5 +1,5 @@
 import { Navigate, Route, RouteProps } from "react-router";
-import { useAppSelector } from "../../../app/providers/StoreProvider";
+import { useAppSelector } from "../../../app/store";
 
 type PrivateRouteProps = {
   roles?: string[];

@@ -1,10 +1,7 @@
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../../app/providers/StoreProvider";
+import { useAppDispatch, useAppSelector } from "../../../app/store";
 import { SignInRequestDto } from "../../../shared/api/auth/dto/signInDto";
-import { signInThunk } from "../../../app/providers/StoreProvider/reducers/auth/authThunk";
-import { getUserThunk } from "../../../app/providers/StoreProvider/reducers/user/userThunk";
+import { signInThunk } from "../../../app/store/reducers/auth/authThunk";
+import { getUserThunk } from "../../../app/store/reducers/user/userThunk";
 import { GetUserDto } from "../../../shared/api/users/dto/GetUserDto";
 import { useNavigate } from "react-router-dom";
 

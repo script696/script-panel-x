@@ -1,7 +1,7 @@
 import {
   UserCreateMainInfo,
   UserEditMainInfo,
-} from "../../../app/providers/StoreProvider/reducers/user/types/typedef";
+} from "../../../app/store/reducers/user/types/typedef";
 
 export const checkIsUserCreateMainInfo = (
   data: UserEditMainInfo | UserCreateMainInfo

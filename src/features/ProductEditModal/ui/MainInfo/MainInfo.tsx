@@ -15,7 +15,7 @@ import { ChipSelect } from "../../../../shared/components/ChipSelect";
 import {
   ProductCreateMainInfo,
   ProductEditMainInfo,
-} from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
+} from "../../../../app/store/reducers/products/types/typedef";
 import { Mode } from "../../types/typedef";
 import { useMainInfoForm } from "../../hooks/useMainInfoForm";
 

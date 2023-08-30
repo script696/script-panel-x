@@ -1,6 +1,6 @@
 import axios from "axios";
-import { store } from "../../app/providers/StoreProvider/config/store";
-import { logoutThunk } from "../../app/providers/StoreProvider/reducers/auth/authThunk";
+import { store } from "../../app/store/config/store";
+import { logoutThunk } from "../../app/store/reducers/auth/authThunk";
 
 const baseURL = process.env["REACT_APP_API_URL"];
 

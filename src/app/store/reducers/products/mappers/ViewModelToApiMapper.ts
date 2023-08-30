@@ -1,6 +1,6 @@
-import { UpdateProductMainInfoRequestDto } from "../../../../../../shared/api/product/dto/UpdateProductMainInfoDto";
+import { UpdateProductMainInfoRequestDto } from "../../../../../shared/api/product/dto/UpdateProductMainInfoDto";
 import { ProductEditMainInfo, ProductSecondaryInfo } from "../types/typedef";
-import { UpdateProductSecondaryInfoRequestDto } from "../../../../../../shared/api/product/dto/UpdateProductSecondaryInfoDto";
+import { UpdateProductSecondaryInfoRequestDto } from "../../../../../shared/api/product/dto/UpdateProductSecondaryInfoDto";
 
 export class ViewModelToApiMapper {
   static updateProductMainInfo(

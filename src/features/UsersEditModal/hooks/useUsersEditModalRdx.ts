@@ -1,17 +1,14 @@
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../../app/providers/StoreProvider";
-import { usersSlice } from "../../../app/providers/StoreProvider/reducers/users/usersSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/store";
+import { usersSlice } from "../../../app/store/reducers/users/usersSlice";
 import {
   UserCreateMainInfo,
   UserEditMainInfo,
-} from "../../../app/providers/StoreProvider/reducers/user/types/typedef";
+} from "../../../app/store/reducers/user/types/typedef";
 import {
   createUserThunk,
   editUsersThunk,
   getUsersThunk,
-} from "../../../app/providers/StoreProvider/reducers/users/usersThunk";
+} from "../../../app/store/reducers/users/usersThunk";
 import { checkIsUserCreateMainInfo } from "../guards/checkIsUserMainInfo";
 
 export const useUsersEditModalRdx = () => {

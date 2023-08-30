@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getUserThunk } from "./userThunk";
 import { UserViewModel } from "./types/typedef";
-import { GetUserDto } from "../../../../../shared/api/users/dto/GetUserDto";
+import { GetUserDto } from "../../../../shared/api/users/dto/GetUserDto";
 
 export type UserState = {
   user: UserViewModel | null;

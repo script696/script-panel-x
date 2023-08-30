@@ -10,7 +10,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import PeopleIcon from "@material-ui/icons/People";
 import HelpCenterIcon from "@material-ui/icons/HelpCenter";
 import { ROUTES_ADMIN, ROUTES_BASE } from "../../../../app/routing";
-import { useAppSelector } from "../../../../app/providers/StoreProvider";
+import { useAppSelector } from "../../../../app/store";
 import {
   ADMIN_MENU_ITEMS,
   SYSTEM_ADMIN_MENU_ITEMS,

@@ -1,20 +1,17 @@
-import { ProductViewModel } from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
+import { ProductViewModel } from "../../../app/store/reducers/products/types/typedef";
 import {
   getProductsThunk,
   removeProductsThunk,
-} from "../../../app/providers/StoreProvider/reducers/products/productThunk";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../../app/providers/StoreProvider";
-import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
+} from "../../../app/store/reducers/products/productThunk";
+import { useAppDispatch, useAppSelector } from "../../../app/store";
+import { productsSlice } from "../../../app/store/reducers/products/productsSlice";
 import { useEffect } from "react";
 import {
   getUsersThunk,
   removeUsersThunk,
-} from "../../../app/providers/StoreProvider/reducers/users/usersThunk";
-import { UserViewModel } from "../../../app/providers/StoreProvider/reducers/user/types/typedef";
-import { usersSlice } from "../../../app/providers/StoreProvider/reducers/users/usersSlice";
+} from "../../../app/store/reducers/users/usersThunk";
+import { UserViewModel } from "../../../app/store/reducers/user/types/typedef";
+import { usersSlice } from "../../../app/store/reducers/users/usersSlice";
 
 export const useUsersRdx = () => {
   const {

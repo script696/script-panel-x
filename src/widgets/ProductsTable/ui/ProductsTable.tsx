@@ -9,12 +9,9 @@ import { ProductsTableRow } from "./ProductsTableRow";
 import { ProductsTableHead } from "./ProductsTableHead";
 import { checkIsRowSelected } from "../utils/checkIsRowSelected";
 import { usePagination } from "../../../shared/hooks/usePagination";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../../app/providers/StoreProvider";
-import { ProductViewModel } from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
-import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/store";
+import { ProductViewModel } from "../../../app/store/reducers/products/types/typedef";
+import { productsSlice } from "../../../app/store/reducers/products/productsSlice";
 
 type ProductsTableProps = {
   onDelete: (productsIds: Array<string>) => void;

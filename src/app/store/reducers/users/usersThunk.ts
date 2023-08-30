@@ -1,21 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { UsersService } from "../../../../../shared/api/users/UsersService";
+import { UsersService } from "../../../../shared/api/users/UsersService";
 import {
   GetUsersRequestDto,
   GetUsersResponseDto,
-} from "../../../../../shared/api/users/dto/GetUsersDto";
+} from "../../../../shared/api/users/dto/GetUsersDto";
 import {
   EditUserRequestDto,
   EditUserResponseDto,
-} from "../../../../../shared/api/users/dto/EditUserDto";
+} from "../../../../shared/api/users/dto/EditUserDto";
 import {
   RemoveUserRequestDto,
   RemoveUserResponseDto,
-} from "../../../../../shared/api/users/dto/RemoveUserDto";
+} from "../../../../shared/api/users/dto/RemoveUserDto";
 import {
   CreateUserRequestDto,
   CreateUserResponseDto,
-} from "../../../../../shared/api/users/dto/CreateUserDto";
+} from "../../../../shared/api/users/dto/CreateUserDto";
 import { ViewModelToApiMapper } from "./mappers/ViewModelToApiMapper";
 
 export const createUserThunk = createAsyncThunk<
