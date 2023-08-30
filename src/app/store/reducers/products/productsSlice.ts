@@ -58,7 +58,7 @@ export const productsSlice = createSlice({
     },
     openEditProductModal: (
       state,
-      { payload }: PayloadAction<ProductViewModel | undefined>
+      { payload }: PayloadAction<ProductViewModel | undefined>,
     ) => {
       state.productCandidate = payload;
       state.ui.isProductEditModalOpen = true;
@@ -74,7 +74,7 @@ export const productsSlice = createSlice({
     },
     changePagination: (
       state,
-      { payload }: PayloadAction<{ page: number } | { rowsPerPage: number }>
+      { payload }: PayloadAction<{ page: number } | { rowsPerPage: number }>,
     ) => {
       if ("page" in payload) {
         state.productsTable.pagination.page = payload.page;
@@ -91,7 +91,7 @@ export const productsSlice = createSlice({
 
     [getProductsThunk.fulfilled.type]: (
       state,
-      { payload }: PayloadAction<ProductsViewModel>
+      { payload }: PayloadAction<ProductsViewModel>,
     ) => {
       state.isLoading = false;
       state.error = "";
@@ -102,7 +102,7 @@ export const productsSlice = createSlice({
     },
     [getProductsThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;
@@ -122,7 +122,7 @@ export const productsSlice = createSlice({
     },
     [createProductThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;
@@ -132,14 +132,14 @@ export const productsSlice = createSlice({
 
     [updateProductMainInfoThunk.fulfilled.type]: (
       state,
-      { payload }: PayloadAction<ProductViewModel>
+      { payload }: PayloadAction<ProductViewModel>,
     ) => {
       state.isLoading = false;
       state.error = "";
       state.productsData.products = state.productsData.products.map(
         (product) => {
           return product.id === payload.id ? payload : product;
-        }
+        },
       );
       state.ui.isProductEditModalOpen = false;
       state.productCandidate = undefined;
@@ -149,7 +149,7 @@ export const productsSlice = createSlice({
     },
     [updateProductMainInfoThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;
@@ -158,14 +158,14 @@ export const productsSlice = createSlice({
 
     [updateProductSecondaryInfoThunk.fulfilled.type]: (
       state,
-      { payload }: PayloadAction<ProductViewModel>
+      { payload }: PayloadAction<ProductViewModel>,
     ) => {
       state.isLoading = false;
       state.error = "";
       state.productsData.products = state.productsData.products.map(
         (product) => {
           return product.id === payload.id ? payload : product;
-        }
+        },
       );
       state.ui.isProductEditModalOpen = false;
       state.productCandidate = undefined;
@@ -175,7 +175,7 @@ export const productsSlice = createSlice({
     },
     [updateProductSecondaryInfoThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;
@@ -193,7 +193,7 @@ export const productsSlice = createSlice({
     },
     [removeProductsThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;
@@ -201,12 +201,12 @@ export const productsSlice = createSlice({
     /* Add images */
     [addImagesThunk.fulfilled.type]: (
       state,
-      { payload }: PayloadAction<ProductViewModel>
+      { payload }: PayloadAction<ProductViewModel>,
     ) => {
       state.isLoading = false;
       state.error = "";
-      state.productsData.products = state.productsData.products.map((product) =>
-        product.id === payload.id ? payload : product
+      state.productsData.products = state.productsData.products.map(
+        (product) => (product.id === payload.id ? payload : product),
       );
     },
     [addImagesThunk.pending.type]: (state) => {
@@ -214,7 +214,7 @@ export const productsSlice = createSlice({
     },
     [addImagesThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;
@@ -223,12 +223,12 @@ export const productsSlice = createSlice({
 
     [removeImagesThunk.fulfilled.type]: (
       state,
-      { payload }: PayloadAction<ProductViewModel>
+      { payload }: PayloadAction<ProductViewModel>,
     ) => {
       state.isLoading = false;
       state.error = "";
-      state.productsData.products = state.productsData.products.map((product) =>
-        product.id === payload.id ? payload : product
+      state.productsData.products = state.productsData.products.map(
+        (product) => (product.id === payload.id ? payload : product),
       );
     },
     [removeImagesThunk.pending.type]: (state) => {
@@ -236,7 +236,7 @@ export const productsSlice = createSlice({
     },
     [removeImagesThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;

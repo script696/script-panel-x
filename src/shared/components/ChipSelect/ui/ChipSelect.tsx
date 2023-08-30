@@ -7,7 +7,7 @@ import {
   Select,
   SelectProps,
 } from "@material-ui/core";
-import { PRODUCT_US_SIZES } from "../../../../features/ProductEditModal/constants/constants";
+import { PRODUCT_US_SIZES } from "features/ProductEditModal/constants/constants";
 import MenuItem from "@material-ui/core/MenuItem";
 import { MENU_PROPS } from "../constants/constants";
 

@@ -7,9 +7,9 @@ import LoadingButton from "@material-ui/lab/LoadingButton";
 import DialogActions from "@material-ui/core/DialogActions";
 import { useTranslation } from "react-i18next";
 import { avatarSx, boxSx, deleteButtonSx } from "./stylesSx";
-import { ProductViewModel } from "../../../../app/store/reducers/products/types/typedef";
-import { AddProductImagesRequestDto } from "../../../../shared/api/product/dto/AddProductImagesDto";
-import { RemoveProductImageRequestDto } from "../../../../shared/api/product/dto/RemoveProductImagesDto";
+import { ProductViewModel } from "app/store/reducers/products/types/typedef";
+import { AddProductImagesRequestDto } from "shared/api/product/dto/AddProductImagesDto";
+import { RemoveProductImageRequestDto } from "shared/api/product/dto/RemoveProductImagesDto";
 
 type GalleryDataProps = {
   onClose: () => void;

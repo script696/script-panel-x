@@ -10,7 +10,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { UsersViewModel } from "../../../app/store/reducers/users/types/typedef";
+import { UsersViewModel } from "app/store/reducers/users/types/typedef";
 
 type ProductsTableRowProps = {
   index: number;

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ProductService } from "../../../../shared/api/product/ProductService";
+import { ProductService } from "shared/api/product/ProductService";
 import {
   ProductCreateMainInfo,
   ProductEditMainInfo,
@@ -10,10 +10,10 @@ import {
 import {
   RemoveProductRequestDto,
   RemoveProductResponseDto,
-} from "../../../../shared/api/product/dto/RemoveProductDto";
-import { AddProductImagesRequestDto } from "../../../../shared/api/product/dto/AddProductImagesDto";
-import { RemoveProductImageRequestDto } from "../../../../shared/api/product/dto/RemoveProductImagesDto";
-import { GetProductsRequestDto } from "../../../../shared/api/product/dto/GetProductsDto";
+} from "shared/api/product/dto/RemoveProductDto";
+import { AddProductImagesRequestDto } from "shared/api/product/dto/AddProductImagesDto";
+import { RemoveProductImageRequestDto } from "shared/api/product/dto/RemoveProductImagesDto";
+import { GetProductsRequestDto } from "shared/api/product/dto/GetProductsDto";
 import { ViewModelToApiMapper } from "./mappers/ViewModelToApiMapper";
 
 export const getProductsThunk = createAsyncThunk<

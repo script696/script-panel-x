@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { SignInRequestDto } from "../../../shared/api/auth/dto/signInDto";
+import { SignInRequestDto } from "shared/api/auth/dto/signInDto";
 import { useTranslation } from "react-i18next";
 
 type useLoginFormParams = {

@@ -3,15 +3,15 @@ import TableBody from "@material-ui/core/TableBody";
 import TableContainer from "@material-ui/core/TableContainer";
 import TablePagination from "@material-ui/core/TablePagination";
 import React, { FC } from "react";
-import Empty from "../../../shared/components/Empty/Empty";
-import * as selectUtils from "../../../shared/utils/selectUtils";
+import Empty from "shared/components/Empty/Empty";
+import * as selectUtils from "shared/utils/selectUtils";
 import { ProductsTableRow } from "./ProductsTableRow";
 import { ProductsTableHead } from "./ProductsTableHead";
 import { checkIsRowSelected } from "../utils/checkIsRowSelected";
-import { usePagination } from "../../../shared/hooks/usePagination";
-import { useAppDispatch, useAppSelector } from "../../../app/store";
-import { ProductViewModel } from "../../../app/store/reducers/products/types/typedef";
-import { productsSlice } from "../../../app/store/reducers/products/productsSlice";
+import { usePagination } from "shared/hooks/usePagination";
+import { useAppDispatch, useAppSelector } from "app/store";
+import { ProductViewModel } from "app/store/reducers/products/types/typedef";
+import { productsSlice } from "app/store/reducers/products/productsSlice";
 
 type ProductsTableProps = {
   onDelete: (productsIds: Array<string>) => void;

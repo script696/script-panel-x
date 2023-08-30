@@ -8,7 +8,7 @@ import typography from "./typography";
 
 export const createTheme = (
   direction: "ltr" | "rtl",
-  mode: "dark" | "light"
+  mode: "dark" | "light",
 ) => {
   const palette = mode === "dark" ? darkPalette : lightPalette;
 
@@ -27,6 +27,6 @@ export const createTheme = (
     {
       components: createThemeComponents(baseTheme),
     },
-    baseTheme
+    baseTheme,
   );
 };

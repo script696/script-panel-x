@@ -7,7 +7,7 @@ import Description from "./Description/Description";
 import Gallery from "./Gallery/Gallery";
 import { Mode } from "../types/typedef";
 import { useProductEditModalRdx } from "../hooks/useProductEditModalRdx";
-import { useTabs } from "../../../shared/hooks/useTabs";
+import { useTabs } from "shared/hooks/useTabs";
 
 const ProductEditModal = () => {
   const { t } = useTranslation();

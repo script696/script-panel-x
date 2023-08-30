@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import QueryWrapper from "../../../components/QueryWrapper/QueryWrapper";
 import SettingsDrawer from "../../../components/SettingsDrawer/SettingsDrawer";
-import { useSettings } from "../../../../app/providers/SettingsProvider/SettingsProvider";
-import { Sidebar } from "../../../components/Sidebar";
-import { useAppSelector } from "../../../../app/store";
+import { useSettings } from "app/providers/SettingsProvider/SettingsProvider";
+import { Sidebar } from "shared/components/Sidebar";
+import { useAppSelector } from "app/store";
 import {
   ADMIN_MENU_ITEMS,
   SYSTEM_ADMIN_MENU_ITEMS,

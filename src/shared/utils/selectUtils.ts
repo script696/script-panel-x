@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 export const selectAll = <T extends Record<string, any>>(
   list: Array<T>,
-  key = "id"
+  key = "id",
 ) => list.map((item) => item[key]);
 
 export const selectOne = (selected: Array<string>, id: string) => {
@@ -17,7 +17,7 @@ export const selectOne = (selected: Array<string>, id: string) => {
   } else if (selectedIndex > 0) {
     newSelected = newSelected.concat(
       selected.slice(0, selectedIndex),
-      selected.slice(selectedIndex + 1)
+      selected.slice(selectedIndex + 1),
     );
   }
 

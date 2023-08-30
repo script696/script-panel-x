@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import { useTranslation } from "react-i18next";
-import BoxedLayout from "../../../shared/components/BoxedLayout/BoxedLayout";
+import BoxedLayout from "shared/components/BoxedLayout/BoxedLayout";
 import { useLoginRdx } from "../hooks/useLoginRdx";
 import { useLoginForm } from "../hooks/useLoginForm";
 

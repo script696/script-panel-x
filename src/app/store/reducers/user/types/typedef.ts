@@ -1,4 +1,4 @@
-import { GetUserDto } from "../../../../../shared/api/users/dto/GetUserDto";
+import { GetUserDto } from "shared/api/users/dto/GetUserDto";
 
 export type UserViewModel = GetUserDto;
 

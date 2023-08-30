@@ -2,13 +2,13 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableContainer from "@material-ui/core/TableContainer";
 import React, { FC } from "react";
-import Empty from "../../../shared/components/Empty/Empty";
-import * as selectUtils from "../../../shared/utils/selectUtils";
+import Empty from "shared/components/Empty/Empty";
+import * as selectUtils from "shared/utils/selectUtils";
 import { UsersTableRow } from "./UsersTableRow";
 import { UsersTableHead } from "./UsersTableHead";
 import { checkIsRowSelected } from "../utils/checkIsRowSelected";
-import { useAppSelector } from "../../../app/store";
-import { UserViewModel } from "../../../app/store/reducers/user/types/typedef";
+import { useAppSelector } from "app/store";
+import { UserViewModel } from "app/store/reducers/user/types/typedef";
 
 type ProductsTableProps = {
   onDelete: (productsIds: Array<string>) => void;

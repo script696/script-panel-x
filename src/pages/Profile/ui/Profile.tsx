@@ -4,12 +4,12 @@ import Fab from "@material-ui/core/Fab";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import PersonIcon from "@material-ui/icons/Person";
 import React from "react";
-import AdminAppBar from "../../../shared/components/AdminAppBar/AdminAppBar";
-import AdminToolbar from "../../../shared/components/AdminToolbar/AdminToolbar";
-import { useAppDispatch, useAppSelector } from "../../../app/store";
-import { logoutThunk } from "../../../app/store/reducers/auth/authThunk";
+import AdminAppBar from "shared/components/AdminAppBar/AdminAppBar";
+import AdminToolbar from "shared/components/AdminToolbar/AdminToolbar";
+import { useAppDispatch, useAppSelector } from "app/store";
+import { logoutThunk } from "app/store/reducers/auth/authThunk";
 import { useNavigate } from "react-router-dom";
-import { ROUTES_BASE } from "../../../app/routing";
+import { ROUTES_BASE } from "app/routing";
 import { Typography } from "@material-ui/core";
 
 const Profile = () => {

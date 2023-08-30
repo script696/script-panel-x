@@ -1,8 +1,8 @@
 import Button from "@material-ui/core/Button";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
-import { ReactComponent as ForbiddenSvg } from "../../../shared/assets/403.svg";
-import Result from "../../../shared/components/ResultImage/ResultImage";
+import { ReactComponent as ForbiddenSvg } from "shared/assets/403.svg";
+import Result from "shared/components/ResultImage/ResultImage";
 
 const Forbidden = () => {
   const { t } = useTranslation();

@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { AuthService } from "../../../../shared/api/auth/AuthService";
+import { AuthService } from "shared/api/auth/AuthService";
 import {
   CreateUserResponseDto,
   SignInRequestDto,
-} from "../../../../shared/api/auth/dto/signInDto";
-import { CheckAuthResponseDto } from "../../../../shared/api/auth/dto/checkAuthDto";
+} from "shared/api/auth/dto/signInDto";
+import { CheckAuthResponseDto } from "shared/api/auth/dto/checkAuthDto";
 
 export const checkAuthThunk = createAsyncThunk<CheckAuthResponseDto>(
   "auth/sign-in",

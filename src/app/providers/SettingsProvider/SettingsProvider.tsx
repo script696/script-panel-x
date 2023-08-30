@@ -9,8 +9,8 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { useLocalStorage } from "../../../shared/hooks/useLocalStorage";
-import { createTheme } from "../../theme";
+import { useLocalStorage } from "shared/hooks/useLocalStorage";
+import { createTheme } from "app/theme";
 
 interface SettingsContextInterface {
   collapsed: boolean;
