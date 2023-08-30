@@ -9,12 +9,9 @@ import { UsersTableRow } from "./UsersTableRow";
 import { UsersTableHead } from "./UsersTableHead";
 import { checkIsRowSelected } from "../utils/checkIsRowSelected";
 import { usePagination } from "../../../shared/hooks/usePagination";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../../app/providers/StoreProvider";
-import { UsersViewModel } from "../../../app/providers/StoreProvider/reducers/users/types/typedef";
-import { UserViewModel } from "../../../app/providers/StoreProvider/reducers/user/types/typedef";
+import { useAppDispatch, useAppSelector } from "../../../app/store";
+import { UsersViewModel } from "../../../app/store/reducers/users/types/typedef";
+import { UserViewModel } from "../../../app/store/reducers/user/types/typedef";
 
 type ProductsTableProps = {
   onDelete: (productsIds: Array<string>) => void;

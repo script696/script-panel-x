@@ -2,7 +2,6 @@ import Button from "@material-ui/core/Button";
 import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useTranslation } from "react-i18next";
-import { useQueryErrorResetBoundary } from "react-query";
 import Loader from "../Loader/Loader";
 import Result from "../ResultImage/ResultImage";
 
@@ -11,12 +10,11 @@ type QueryWrapperProps = {
 };
 
 const QueryWrapper = ({ children }: QueryWrapperProps) => {
-  const { reset } = useQueryErrorResetBoundary();
   const { t } = useTranslation();
 
   return (
     <ErrorBoundary
-      onReset={reset}
+      onReset={() => console.log("reset")}
       fallbackRender={({ resetErrorBoundary }) => (
         <Result
           extra={

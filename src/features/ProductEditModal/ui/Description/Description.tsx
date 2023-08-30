@@ -6,7 +6,7 @@ import { Box } from "@material-ui/core";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
-import { ProductSecondaryInfo } from "../../../../app/providers/StoreProvider/reducers/products/types/typedef";
+import { ProductSecondaryInfo } from "../../../../app/store/reducers/products/types/typedef";
 import { useDescriptionForm } from "../../hooks/useDescriptionForm";
 
 type DescriptionProps = {

@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import {
   ProductCreateMainInfo,
   ProductEditMainInfo,
-} from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
+} from "../../../app/store/reducers/products/types/typedef";
 import { TFunction } from "i18next";
 
 type UseMainInfoFormParams = {

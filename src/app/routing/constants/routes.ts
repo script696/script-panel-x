@@ -2,10 +2,7 @@ export const ROUTES_BASE = {
   MAIN: "/",
   ADMIN: "admin",
   SYSTEM_ADMIN: "system-admin",
-  FORGOT_PASSWORD: "forgot-password",
-  FORGOT_PASSWORD_SUBMIT: "forgot-password-submit",
   LOGIN: "login",
-  REGISTER: "register",
   UNDER_CONSTRUCTION: "under-construction",
 
   FORBIDDEN: "403",

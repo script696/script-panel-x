@@ -4,7 +4,7 @@ import {
   ProductCreateMainInfo,
   ProductEditMainInfo,
   ProductSecondaryInfo,
-} from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
+} from "../../../app/store/reducers/products/types/typedef";
 import { TFunction } from "i18next";
 
 type useDescriptionFormParams = {

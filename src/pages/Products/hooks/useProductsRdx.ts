@@ -1,13 +1,10 @@
-import { ProductViewModel } from "../../../app/providers/StoreProvider/reducers/products/types/typedef";
+import { ProductViewModel } from "../../../app/store/reducers/products/types/typedef";
 import {
   getProductsThunk,
   removeProductsThunk,
-} from "../../../app/providers/StoreProvider/reducers/products/productThunk";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../../app/providers/StoreProvider";
-import { productsSlice } from "../../../app/providers/StoreProvider/reducers/products/productsSlice";
+} from "../../../app/store/reducers/products/productThunk";
+import { useAppDispatch, useAppSelector } from "../../../app/store";
+import { productsSlice } from "../../../app/store/reducers/products/productsSlice";
 import { useEffect } from "react";
 
 export const useProductsRdx = () => {

@@ -1,19 +1,13 @@
-import { ReactNode, useEffect, useLayoutEffect } from "react";
-import { useAppDispatch } from "../StoreProvider";
-import { getUserThunk } from "../StoreProvider/reducers/user/userThunk";
-import { authSlice } from "../StoreProvider/reducers/auth/authSlice";
-import { $apiClient } from "../../../shared/api/client";
-import {
-  checkAuthThunk,
-  logoutThunk,
-} from "../StoreProvider/reducers/auth/authThunk";
+import { ReactNode, useLayoutEffect } from "react";
+import { getUserThunk } from "../../store/reducers/user/userThunk";
+import { checkAuthThunk } from "../../store/reducers/auth/authThunk";
+import { useAppDispatch } from "../../store";
 type AuthProviderProps = {
   children: ReactNode;
 };
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const dispatch = useAppDispatch();
-  const { setUserAuth } = authSlice.actions;
 
   const initApp = async () => {
     const { meta } = await dispatch(checkAuthThunk());
@@ -23,7 +17,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useLayoutEffect(() => {
     initApp();
-    // dispatch(getUserThunk());
   }, []);
 
   return <>{children}</>;
