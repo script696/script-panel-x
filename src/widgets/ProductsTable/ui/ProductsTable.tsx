@@ -2,7 +2,7 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableContainer from "@material-ui/core/TableContainer";
 import TablePagination from "@material-ui/core/TablePagination";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import Empty from "../../../shared/components/Empty/Empty";
 import * as selectUtils from "../../../shared/utils/selectUtils";
 import { ProductsTableRow } from "./ProductsTableRow";
@@ -49,7 +49,7 @@ const ProductsTable: FC<ProductsTableProps> = ({
   };
 
   const handleClick = (id: string) => {
-    let newSelected: string[] = selectUtils.selectOne(selected, id);
+    const newSelected: string[] = selectUtils.selectOne(selected, id);
     onSelectedChange(newSelected);
   };
 

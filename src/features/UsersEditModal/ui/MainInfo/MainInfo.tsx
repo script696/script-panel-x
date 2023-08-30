@@ -1,21 +1,11 @@
 import TextField from "@material-ui/core/TextField";
 import { Box } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import React, { FC } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import DialogActions from "@material-ui/core/DialogActions";
-import { ChipSelect } from "../../../../shared/components/ChipSelect";
-import {
-  ProductCreateMainInfo,
-  ProductEditMainInfo,
-} from "../../../../app/store/reducers/products/types/typedef";
 import { Mode } from "../../types/typedef";
 import { useMainInfoForm } from "../../hooks/useMainInfoForm";
 import {

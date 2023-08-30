@@ -3,10 +3,6 @@ import { useTranslation } from "react-i18next";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import Checkbox from "@material-ui/core/Checkbox";
-import Box from "@material-ui/core/Box";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
-import Chip from "@material-ui/core/Chip";
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Menu from "@material-ui/core/Menu";
@@ -14,7 +10,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { ProductViewModel } from "../../../app/store/reducers/products/types/typedef";
 import { UsersViewModel } from "../../../app/store/reducers/users/types/typedef";
 
 type ProductsTableRowProps = {
@@ -39,7 +34,6 @@ export const UsersTableRow: FC<ProductsTableRowProps> = ({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { t } = useTranslation();
   const { id, nikName, bot } = user;
-  const apiUrl = process.env["REACT_APP_API_URL"];
 
   const labelId = `enhanced-table-checkbox-${index}`;
   const openActions = Boolean(anchorEl);

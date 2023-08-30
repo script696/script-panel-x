@@ -2,13 +2,11 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
 import StarIcon from "@material-ui/icons/Star";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 
 const AchievementWidget = () => {
-  // const { userInfo } = useAuth();
   const { t } = useTranslation();
 
   return (

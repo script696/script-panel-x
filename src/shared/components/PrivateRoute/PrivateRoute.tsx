@@ -5,16 +5,10 @@ type PrivateRouteProps = {
   roles?: string[];
 } & RouteProps;
 
-const PrivateRoute = ({
-  children,
-  roles,
-  ...routeProps
-}: PrivateRouteProps) => {
+const PrivateRoute = ({ ...routeProps }: PrivateRouteProps) => {
   const { isAuth, isLoading, isChecked } = useAppSelector(
     (state) => state.authReducer
   );
-  const { isUserFetched } = useAppSelector((state) => state.userReducer);
-  console.log(isAuth, isLoading, isUserFetched);
 
   if (isLoading || !isChecked) {
     return <div>Loading ...</div>;

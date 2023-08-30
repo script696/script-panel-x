@@ -5,4 +5,4 @@ export interface EditUserRequestDto extends Pick<User, "id" | "nikName"> {
   botName: string;
 }
 
-export interface EditUserResponseDto extends User {}
+export type EditUserResponseDto = User

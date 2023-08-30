@@ -6,10 +6,6 @@ import QueryWrapper from "../../../components/QueryWrapper/QueryWrapper";
 import SettingsDrawer from "../../../components/SettingsDrawer/SettingsDrawer";
 import { useSettings } from "../../../../app/providers/SettingsProvider/SettingsProvider";
 import { Sidebar } from "../../../components/Sidebar";
-import HomeIcon from "@material-ui/icons/Home";
-import PeopleIcon from "@material-ui/icons/People";
-import HelpCenterIcon from "@material-ui/icons/HelpCenter";
-import { ROUTES_ADMIN, ROUTES_BASE } from "../../../../app/routing";
 import { useAppSelector } from "../../../../app/store";
 import {
   ADMIN_MENU_ITEMS,

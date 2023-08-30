@@ -1,7 +1,10 @@
-export const selectAll = (list: any, key = "id") =>
-  list.map((item: any) => item[key]);
+// eslint-disable-next-line
+export const selectAll = <T extends Record<string, any>>(
+  list: Array<T>,
+  key = "id"
+) => list.map((item) => item[key]);
 
-export const selectOne = (selected: any, id: string) => {
+export const selectOne = (selected: Array<string>, id: string) => {
   const selectedIndex = selected.indexOf(id);
   let newSelected: string[] = [];
 

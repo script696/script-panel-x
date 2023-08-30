@@ -63,7 +63,7 @@ export const createThemeComponents = (theme: Theme) => ({
     styleOverrides: {
       root: {
         padding: "16px 24px",
-        textTransform: "none" as any,
+        textTransform: "none" as const,
       },
       label: {
         fontWeight: theme.typography.fontWeightMedium,
@@ -143,7 +143,7 @@ export const createThemeComponents = (theme: Theme) => ({
       root: {
         boxShadow: "none",
         lineHeight: "inherit",
-        textTransform: "none" as any,
+        textTransform: "none" as const,
         "&.MuiFab-secondary": {
           color: theme.palette.text.primary,
         },
@@ -247,7 +247,7 @@ export const createThemeComponents = (theme: Theme) => ({
   },
   MuiRadio: {
     defaultProps: {
-      color: "primary" as "primary",
+      color: "primary" as const,
     },
   },
   MuiTab: {
@@ -258,7 +258,7 @@ export const createThemeComponents = (theme: Theme) => ({
         maxWidth: "initial !important",
         minHeight: "initial !important",
         minWidth: "initial !important",
-        textTransform: "none" as any,
+        textTransform: "none" as const,
         "&.Mui-selected": {
           backgroundColor: theme.palette.background.paper,
           color: theme.palette.text.primary,
@@ -297,7 +297,7 @@ export const createThemeComponents = (theme: Theme) => ({
         color: theme.palette.text.secondary,
         borderRadius: "12px !important",
         border: "none",
-        textTransform: "none" as any,
+        textTransform: "none" as const,
         "&.Mui-selected": {
           backgroundColor: theme.palette.background.paper,
           color: theme.palette.text.primary,

@@ -1,10 +1,6 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {
-  ProductCreateMainInfo,
-  ProductEditMainInfo,
-  ProductSecondaryInfo,
-} from "../../../app/store/reducers/products/types/typedef";
+import { ProductSecondaryInfo } from "../../../app/store/reducers/products/types/typedef";
 import { TFunction } from "i18next";
 
 type useDescriptionFormParams = {
