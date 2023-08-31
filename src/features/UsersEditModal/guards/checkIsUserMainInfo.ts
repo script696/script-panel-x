@@ -4,7 +4,7 @@ import {
 } from "app/store/reducers/user/types/typedef";
 
 export const checkIsUserCreateMainInfo = (
-  data: UserEditMainInfo | UserCreateMainInfo
+  data: UserEditMainInfo | UserCreateMainInfo,
 ): data is UserCreateMainInfo => {
   return (
     "id" in data &&

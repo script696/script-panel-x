@@ -33,5 +33,5 @@ $apiClient.interceptors.response.use(
       }
     }
     throw error;
-  }
+  },
 );

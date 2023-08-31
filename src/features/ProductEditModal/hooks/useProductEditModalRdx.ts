@@ -21,6 +21,7 @@ export const useProductEditModalRdx = () => {
 
   const { toggleEditProductModal } = productsSlice.actions;
   const productsState = useAppSelector((state) => state.productReducer);
+  const { user } = useAppSelector((state) => state.userReducer);
 
   const handleAddImages = (data: AddProductImagesRequestDto) => {
     dispatch(addImagesThunk(data));
@@ -35,18 +36,25 @@ export const useProductEditModalRdx = () => {
   };
 
   const handleSubmitProductMainInfo = async (
-    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo
+    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo,
   ) => {
+    if (!user) return;
+
     if ("id" in productMainInfo && productMainInfo.id) {
       await dispatch(updateProductMainInfoThunk(productMainInfo));
     } else {
       await dispatch(createProductThunk(productMainInfo));
     }
-    await dispatch(getProductsThunk(productsState.productsTable.pagination));
+    await dispatch(
+      getProductsThunk({
+        ...productsState.productsTable.pagination,
+        botName: user.bot.name,
+      }),
+    );
   };
 
   const handleUpdateProductSecondaryInfo = (
-    data: Pick<ProductViewModel, "description" | "id">
+    data: Pick<ProductViewModel, "description" | "id">,
   ) => {
     dispatch(updateProductSecondaryInfoThunk(data));
   };

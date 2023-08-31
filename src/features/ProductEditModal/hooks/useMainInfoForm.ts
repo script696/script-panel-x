@@ -10,7 +10,7 @@ type UseMainInfoFormParams = {
   product: ProductEditMainInfo | ProductCreateMainInfo | undefined;
   t: TFunction;
   onSubmit: (
-    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo
+    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo,
   ) => void;
 };
 

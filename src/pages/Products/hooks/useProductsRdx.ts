@@ -16,6 +16,7 @@ export const useProductsRdx = () => {
   } = productsSlice.actions;
 
   const productsState = useAppSelector((state) => state.productReducer);
+  const { user } = useAppSelector((state) => state.userReducer);
   const dispatch = useAppDispatch();
 
   const { productsTable } = productsState;
@@ -46,12 +47,14 @@ export const useProductsRdx = () => {
   };
 
   const handleConfirmDeleteRows = async () => {
+    if (!user) return;
     await dispatch(removeProductsThunk({ productIds: selectedRows }));
-    await dispatch(getProductsThunk(pagination));
+    await dispatch(getProductsThunk({ ...pagination, botName: user.bot.name }));
   };
 
   useEffect(() => {
-    dispatch(getProductsThunk(pagination));
+    if (!user) return;
+    dispatch(getProductsThunk({ ...pagination, botName: user.bot.name }));
   }, [pagination]);
 
   return {

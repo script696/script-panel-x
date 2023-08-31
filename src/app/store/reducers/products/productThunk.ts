@@ -77,9 +77,8 @@ export const updateProductSecondaryInfoThunk = createAsyncThunk<
   try {
     const mappedReqData = ViewModelToApiMapper.updateSecondaryMainInfo(reqData);
 
-    const { data } = await ProductService.updateProductSecondaryInfo(
-      mappedReqData
-    );
+    const { data } =
+      await ProductService.updateProductSecondaryInfo(mappedReqData);
 
     return data;
   } catch (e) {

@@ -27,7 +27,7 @@ export const userSlice = createSlice({
 
     [getUserThunk.fulfilled.type]: (
       state,
-      { payload }: PayloadAction<GetUserDto>
+      { payload }: PayloadAction<GetUserDto>,
     ) => {
       state.isLoading = false;
       state.error = "";
@@ -39,7 +39,7 @@ export const userSlice = createSlice({
     },
     [getUserThunk.rejected.type]: (
       state,
-      { payload }: PayloadAction<string>
+      { payload }: PayloadAction<string>,
     ) => {
       state.isLoading = false;
       state.error = payload;

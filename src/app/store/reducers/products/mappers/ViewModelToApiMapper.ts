@@ -4,7 +4,7 @@ import { UpdateProductSecondaryInfoRequestDto } from "shared/api/product/dto/Upd
 
 export class ViewModelToApiMapper {
   static updateProductMainInfo(
-    viewModel: ProductEditMainInfo
+    viewModel: ProductEditMainInfo,
   ): UpdateProductMainInfoRequestDto {
     return {
       ...viewModel,
@@ -13,7 +13,7 @@ export class ViewModelToApiMapper {
   }
 
   static updateSecondaryMainInfo(
-    viewModel: ProductSecondaryInfo
+    viewModel: ProductSecondaryInfo,
   ): UpdateProductSecondaryInfoRequestDto {
     return {
       ...viewModel,

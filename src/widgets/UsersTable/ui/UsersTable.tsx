@@ -24,7 +24,7 @@ const UsersTable: FC<ProductsTableProps> = ({
   selected,
 }) => {
   const { usersData, isLoading } = useAppSelector(
-    (state) => state.usersReducer
+    (state) => state.usersReducer,
   );
 
   const { users } = usersData;

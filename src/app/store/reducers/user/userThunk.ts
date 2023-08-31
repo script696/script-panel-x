@@ -12,5 +12,5 @@ export const getUserThunk = createAsyncThunk<GetUserDto>(
     } catch (e) {
       return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
     }
-  }
+  },
 );

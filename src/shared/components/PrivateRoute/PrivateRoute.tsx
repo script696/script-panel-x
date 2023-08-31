@@ -7,7 +7,7 @@ type PrivateRouteProps = {
 
 const PrivateRoute = ({ ...routeProps }: PrivateRouteProps) => {
   const { isAuth, isLoading, isChecked } = useAppSelector(
-    (state) => state.authReducer
+    (state) => state.authReducer,
   );
 
   if (isLoading || !isChecked) {
