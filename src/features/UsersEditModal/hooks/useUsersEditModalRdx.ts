@@ -22,7 +22,7 @@ export const useUsersEditModalRdx = () => {
   };
 
   const handleSubmitUserMainInfo = async (
-    userMainInfo: UserEditMainInfo | UserCreateMainInfo
+    userMainInfo: UserEditMainInfo | UserCreateMainInfo,
   ) => {
     if (checkIsUserCreateMainInfo(userMainInfo)) {
       await dispatch(createUserThunk(userMainInfo));

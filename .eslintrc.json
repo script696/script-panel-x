@@ -13,7 +13,7 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     "no-console": [
-      "error",
+      "warn",
       {
         "allow": [
           "info",

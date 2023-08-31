@@ -41,7 +41,7 @@ const SettingsProvider = ({ children }: SettingsProviderProps) => {
 
   const theme = useMemo(
     () => createTheme(direction as "ltr" | "rtl", mode as "dark" | "light"),
-    [direction, mode]
+    [direction, mode],
   );
 
   const changeCollapsed = (collapsed: boolean) => {

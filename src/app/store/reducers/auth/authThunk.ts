@@ -16,7 +16,7 @@ export const checkAuthThunk = createAsyncThunk<CheckAuthResponseDto>(
     } catch (e) {
       return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
     }
-  }
+  },
 );
 
 export const signInThunk = createAsyncThunk<
@@ -42,5 +42,5 @@ export const logoutThunk = createAsyncThunk<CreateUserResponseDto>(
     } catch (e) {
       return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
     }
-  }
+  },
 );

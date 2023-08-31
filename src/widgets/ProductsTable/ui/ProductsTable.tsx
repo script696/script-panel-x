@@ -27,7 +27,7 @@ const ProductsTable: FC<ProductsTableProps> = ({
   selected,
 }) => {
   const { productsData, productsTable, isLoading } = useAppSelector(
-    (state) => state.productReducer
+    (state) => state.productReducer,
   );
   const dispatch = useAppDispatch();
   const { changePagination } = productsSlice.actions;

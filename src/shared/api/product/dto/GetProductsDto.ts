@@ -3,6 +3,7 @@ import { ImageDto } from "../../typedef";
 export interface GetProductsRequestDto {
   page: number;
   rowsPerPage: number;
+  botName: string;
 }
 
 export interface GetProductsResponseDto {
