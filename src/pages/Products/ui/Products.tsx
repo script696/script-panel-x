@@ -42,7 +42,7 @@ const Products = () => {
         selected={selectedRows}
       />
       <ConfirmDeleteModal
-        description={t("userManagement.confirmations.delete")}
+        description={t("admin.products.delete-modal.confirm-delete")}
         isLoading={isLoading}
         onClose={handleCloseDeleteProductModel}
         onConfirm={handleConfirmDeleteRows}

@@ -1,0 +1,143 @@
+{
+  "admin": {
+    "sidebar": {
+      "menu": {
+        "home": "Главная",
+        "products": "Продукты",
+        "help": "Помощь",
+        "settings": "Настройки"
+      }
+    },
+    "products" : {
+      "toolbar" : {
+        "title" : "Таблица товаров"
+      },
+      "table-head" : {
+        "title" : "Название",
+        "price" : "Цена",
+        "discount" : "Скидка",
+        "sizes" : "Размеры",
+        "amount" : "Кол-во",
+        "brand" : "Бренд",
+        "status" : "Статус",
+        "actions" : "Действия"
+      },
+      "delete-modal" : {
+        "confirm-delete" : "Вы действительно хотите удалить данный продукт ?"
+      },
+      "edit-modal" : {
+        "title-edit" : "Редактировать продукт",
+        "title-create" : "Создать продукт",
+        "tab-main-info" : "Главная ин-фа",
+        "tab-description" : "Описание",
+        "tab-gallery" : "Галерея товара"
+      },
+      "form-labels" : {
+        "title" : "Название",
+        "brand" : "Бренд",
+        "price" : "Цена",
+        "discount" : "Скидка",
+        "currency" : "Валюта",
+        "amount" : "Кол-во",
+        "sizes" : "Размеры",
+        "disabled" : "Заблокирован"
+      }
+
+    }
+  },
+  "system-admin": {
+    "sidebar": {
+      "menu": {
+        "home": "Главная",
+        "users": "Пользователи",
+        "settings": "Настройки"
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "form": {
+        "email": {
+          "label": "E-mail Адресс"
+        },
+        "password": {
+          "label": "Пароль"
+        }
+      },
+      "submit": "Логин",
+      "title": "Логин"
+    }
+  },
+  "common": {
+    "backHome": "Назад",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "confirmation": "Подтверждение",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "errors": {
+      "forbidden": {
+        "subTitle": "У вас нет прав для доступа к этой с странице"
+      },
+      "notFound": {
+        "subTitle": "Страница не найдена..",
+        "title": "Упс!"
+      },
+      "unexpected": {
+        "subTitle": "Что-то пошло не так! Свяжитесь со службой поддержки",
+        "title": "Упс!"
+      },
+      "underConstructions": {
+        "subTitle": "Прямо сейчас мы работаем над этой страницей",
+        "title": "В разработке!"
+      }
+    },
+    "reset": "Отмена",
+    "retry": "Попробуйте еще раз",
+    "selected": "Выбрано",
+    "snackbar": {
+      "error": "Ошибка",
+      "success": "Успех"
+    },
+    "today": "Сегодня",
+    "update": "Обновление",
+    "validations": {
+      "email": "Неправильный email адрес",
+      "max": "Должно быть {{size}} символов или меньше",
+      "min": "Должно быть {{size}} символов или больше",
+      "passwordMatch": "пароли не совпадают",
+      "required": "Обязательное поле"
+    }
+  },
+  "settings-drawer": {
+      "direction": {
+        "label": "Направление",
+        "options": {
+          "ltr": "LTR",
+          "rtl": "RTL"
+        }
+      },
+      "language": {
+        "label": "Язык",
+        "options": {
+          "en": "English",
+          "ru": "Русский"
+        }
+      },
+      "mode": {
+        "label": "Тема",
+        "options": {
+          "dark": "Темная",
+          "light": "Светлая"
+        }
+      },
+      "sidebar": {
+        "label": "Сайдбар",
+        "options": {
+          "collapsed": "Свернутый",
+          "full": "Полный"
+        }
+      },
+      "title": "Настройки"
+  }
+}
