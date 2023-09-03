@@ -27,6 +27,9 @@ export const useMainInfoForm = ({
       availableSizes: product ? product.availableSizes : [],
       amount: product ? product.amount : 0,
       disabled: product ? product.disabled : false,
+      price: product ? product.price : 0,
+      discount: product ? product.discount : 0,
+      currency: product ? product.currency : "$",
     },
     validationSchema: Yup.object({
       title: Yup.string()

@@ -1,4 +1,4 @@
-export interface ImageDto {
+export interface ImageApi {
   id: string;
   source: string;
 }

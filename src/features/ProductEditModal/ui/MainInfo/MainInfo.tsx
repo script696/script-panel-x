@@ -1,5 +1,5 @@
 import TextField from "@material-ui/core/TextField";
-import { Box } from "@material-ui/core";
+import { Box, InputLabel, Select } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -16,6 +16,9 @@ import {
 } from "app/store/reducers/products/types/typedef";
 import { Mode } from "../../types/typedef";
 import { useMainInfoForm } from "../../hooks/useMainInfoForm";
+import { MENU_PROPS } from "shared/components/ChipSelect/constants/constants";
+import { AVAILABLE_CURRENCY } from "features/ProductEditModal/constants/constants";
+import MenuItem from "@material-ui/core/MenuItem";
 
 type MainInfoProps = {
   mode: Mode;
@@ -52,7 +55,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           required
           fullWidth
           id="title"
-          label={t("productManagement.form.title.label")}
+          label={t("admin.products.form-labels.title")}
           name="title"
           autoFocus
           disabled={isLoading}
@@ -66,7 +69,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           required
           fullWidth
           id="brand"
-          label={t("productManagement.form.brand.label")}
+          label={t("admin.products.form-labels.brand")}
           name="brand"
           autoComplete="given-name"
           disabled={isLoading}
@@ -79,8 +82,55 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           margin="normal"
           required
           fullWidth
+          id="price"
+          label={t("admin.products.form-labels.price")}
+          name="price"
+          autoComplete="given-name"
+          disabled={isLoading}
+          value={formik.values.price}
+          onChange={formik.handleChange}
+          error={formik.touched.price && Boolean(formik.errors.price)}
+          helperText={formik.touched.price && formik.errors.price}
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="discount"
+          label={t("admin.products.form-labels.discount")}
+          name="discount"
+          autoComplete="given-name"
+          disabled={isLoading}
+          value={formik.values.discount}
+          onChange={formik.handleChange}
+          error={formik.touched.discount && Boolean(formik.errors.discount)}
+          helperText={formik.touched.discount && formik.errors.discount}
+        />
+        <FormControl margin="normal">
+          <InputLabel id={"currency-label"}>
+            {t("admin.products.form-labels.currency")}
+          </InputLabel>
+          <Select
+            id={"currency"}
+            label={t("admin.products.form-labels.currency")}
+            name={"currency"}
+            onChange={formik.handleChange}
+            value={formik.values.currency}
+            MenuProps={MENU_PROPS}
+          >
+            {AVAILABLE_CURRENCY.map((name) => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <TextField
+          margin="normal"
+          required
+          fullWidth
           id="amount"
-          label={t("productManagement.form.amount.label")}
+          label={t("admin.products.form-labels.amount")}
           name="amount"
           autoComplete="given-name"
           disabled={isLoading}
@@ -92,7 +142,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
         <FormControl margin="normal">
           <ChipSelect
             id={"availableSizes"}
-            label={"Available sizes"}
+            label={t("admin.products.form-labels.sizes")}
             onChange={formik.handleChange}
             value={formik.values.availableSizes}
           />
@@ -105,7 +155,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
             onChange={formik.handleChange}
             checked={formik.values.disabled}
             control={<Checkbox />}
-            label={t("productManagement.form.disabled.label")}
+            label={t("admin.products.form-labels.disabled")}
           />
         </FormControl>
       </DialogContent>

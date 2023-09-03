@@ -9,9 +9,8 @@ import { ProductsTableRow } from "./ProductsTableRow";
 import { ProductsTableHead } from "./ProductsTableHead";
 import { checkIsRowSelected } from "../utils/checkIsRowSelected";
 import { usePagination } from "shared/hooks/usePagination";
-import { useAppDispatch, useAppSelector } from "app/store";
 import { ProductViewModel } from "app/store/reducers/products/types/typedef";
-import { productsSlice } from "app/store/reducers/products/productsSlice";
+import { useProductTableRdx } from "widgets/ProductsTable/hooks/useProductTableRdx";
 
 type ProductsTableProps = {
   onDelete: (productsIds: Array<string>) => void;
@@ -26,16 +25,11 @@ const ProductsTable: FC<ProductsTableProps> = ({
   onSelectedChange,
   selected,
 }) => {
-  const { productsData, productsTable, isLoading } = useAppSelector(
-    (state) => state.productReducer,
-  );
-  const dispatch = useAppDispatch();
-  const { changePagination } = productsSlice.actions;
-
+  const { productsState, handleChangePagination } = useProductTableRdx();
   const { handleChangePage, handleChangeRowsPerPage } = usePagination({
-    onChangePagination: (params) => dispatch(changePagination(params)),
+    onChangePagination: (params) => handleChangePagination(params),
   });
-
+  const { productsData, productsTable, isLoading } = productsState;
   const { products, total } = productsData;
   const { page, rowsPerPage } = productsTable.pagination;
 

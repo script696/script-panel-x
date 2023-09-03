@@ -105,7 +105,7 @@ export const Sidebar: FC<SidebarProps> = ({
             </Avatar>
           </ListItemAvatar>
           <ListItemText
-            primary={t("admin.drawer.menu.settings")}
+            primary={t("admin.sidebar.menu.settings")}
             sx={{
               display: collapsed ? "none" : "block",
             }}

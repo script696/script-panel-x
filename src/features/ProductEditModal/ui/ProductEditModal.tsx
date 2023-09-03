@@ -35,17 +35,19 @@ const ProductEditModal = () => {
         flexDirection={"column"}
       >
         <DialogTitle id="product-dialog-title">
-          {t("productManagement.modal.edit.title")}
+          {mode === "edit"
+            ? t("admin.products.edit-modal.title-edit")
+            : t("admin.products.edit-modal.title-create")}
         </DialogTitle>
 
         <Tabs value={tab} onChange={handleClickTab} centered>
-          <Tab label={t("productManagement.modal.tab.main-info")} />
+          <Tab label={t("admin.products.edit-modal.tab-main-info")} />
           <Tab
-            label={t("productManagement.modal.tab.description")}
+            label={t("admin.products.edit-modal.tab-description")}
             disabled={mode === "create"}
           />
           <Tab
-            label={t("productManagement.modal.tab.gallery")}
+            label={t("admin.products.edit-modal.tab-gallery")}
             disabled={mode === "create"}
           />
         </Tabs>

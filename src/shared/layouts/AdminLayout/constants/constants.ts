@@ -3,23 +3,22 @@ import { ROUTES_ADMIN, ROUTES_BASE } from "app/routing";
 import PeopleIcon from "@material-ui/icons/People";
 import HelpCenterIcon from "@material-ui/icons/HelpCenter";
 import CategoryIcon from "@material-ui/icons/Category";
-import SmartToyIcon from "@material-ui/icons/SmartToy";
 import { ROUTES_SYSTEM_ADMIN } from "app/routing/constants/routes";
 
 export const ADMIN_MENU_ITEMS = [
   {
     icon: HomeIcon,
-    key: "admin.drawer.menu.home",
+    key: "admin.sidebar.menu.home",
     path: `/${ROUTES_BASE.ADMIN}`,
   },
   {
     icon: CategoryIcon,
-    key: "Products",
+    key: "admin.sidebar.menu.products",
     path: `/${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.PRODUCTS}`,
   },
   {
     icon: HelpCenterIcon,
-    key: "admin.drawer.menu.help",
+    key: "admin.sidebar.menu.help",
     path: `/${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.HELP}`,
   },
 ];
@@ -27,17 +26,12 @@ export const ADMIN_MENU_ITEMS = [
 export const SYSTEM_ADMIN_MENU_ITEMS = [
   {
     icon: HomeIcon,
-    key: "home",
+    key: "system-admin.sidebar.menu.home",
     path: `/${ROUTES_BASE.SYSTEM_ADMIN}/${ROUTES_SYSTEM_ADMIN.PROFILE}`,
   },
   {
     icon: PeopleIcon,
-    key: "peoples",
+    key: "system-admin.sidebar.menu.users",
     path: `/${ROUTES_BASE.SYSTEM_ADMIN}/${ROUTES_SYSTEM_ADMIN.USERS}`,
-  },
-  {
-    icon: SmartToyIcon,
-    key: "bots",
-    path: `/${ROUTES_BASE.SYSTEM_ADMIN}/${ROUTES_SYSTEM_ADMIN.BOTS}`,
   },
 ];

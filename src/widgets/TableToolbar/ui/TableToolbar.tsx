@@ -26,7 +26,7 @@ const TableToolbar: FC<TableToolbarProps> = ({
   return (
     <React.Fragment>
       {!isTableRowSelected ? (
-        <AdminToolbar title={t("userManagement.toolbar.title")}>
+        <AdminToolbar title={t("admin.products.toolbar.title")}>
           <Fab
             aria-label="logout"
             color="primary"

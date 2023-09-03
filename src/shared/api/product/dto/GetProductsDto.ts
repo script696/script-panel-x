@@ -1,4 +1,4 @@
-import { ImageDto } from "../../typedef";
+import { ProductApi } from "shared/api/product/typedef";
 
 export interface GetProductsRequestDto {
   page: number;
@@ -7,15 +7,6 @@ export interface GetProductsRequestDto {
 }
 
 export interface GetProductsResponseDto {
-  products: Array<{
-    id: string;
-    title: string;
-    description: string;
-    images: Array<ImageDto>;
-    disabled: boolean;
-    availableSizes: Array<string>;
-    amount: number;
-    brand: string;
-  }>;
+  products: Array<ProductApi>;
   total: number;
 }

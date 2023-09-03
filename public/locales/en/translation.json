@@ -1,94 +1,60 @@
 {
   "admin": {
-    "drawer": {
+    "sidebar": {
       "menu": {
-        "calendar": "Calendar",
-        "dashboard": "Dashboard",
-        "help": "Help",
         "home": "Home",
-        "projects": "Projects",
-        "settings": "Settings",
-        "userManagement": "Users"
+        "products": "Products",
+        "help": "Help",
+        "settings": "Settings"
       }
     },
-    "header": {
-      "notifications": {
-        "empty": {
-          "title": "Your notification list is empty"
-        },
-        "seeAll": "See all notifications"
+    "products" : {
+      "toolbar" : {
+        "title" : "Products Table"
+      },
+      "table-head" : {
+        "title" : "Title",
+        "price" : "Price",
+        "discount" : "Discount",
+        "sizes" : "Sizes",
+        "amount" : "Amount",
+        "brand" : "Brand",
+        "status" : "Status",
+        "actions" : "Actions"
+      },
+      "delete-modal" : {
+        "confirm-delete" : "Are you sure to delete this product ?"
+      },
+      "edit-modal" : {
+        "title-edit" : "Edit Product",
+        "title-create" : "Create Product",
+        "tab-main-info" : "Main Info",
+        "tab-description" : "Description",
+        "tab-gallery" : "Product Gallery"
+      },
+      "form-labels" : {
+        "title" : "Title",
+        "brand" : "Brand",
+        "price" : "Price",
+        "discount" : "Discount",
+        "currency" : "Currency",
+        "amount" : "Amount",
+        "sizes" : "Sizes",
+        "disabled" : "Disabled"
       }
-    },
-    "home": {
-      "achievement": {
-        "action": "View Profile",
-        "description": "You have completed {{progress}}% of your profile. Your current progress is great.",
-        "title": "Congratulations {{name}}"
-      },
-      "followers": {
-        "units": {
-          "likes": "Likes",
-          "love": "Love",
-          "smiles": "Smiles"
-        }
-      },
-      "meeting": {
-        "title": "Meetings"
-      },
-      "targets": {
-        "income": "Income",
-        "followers": "Followers",
-        "title": "Targets",
-        "views": "Views"
-      },
-      "views": {
-        "action": "View Dashboard",
-        "unit": "Views"
-      },
-      "welcome": {
-        "message": "This page is designed to give some important information about the application. Let's make someting together!",
-        "subTitle": "Welcome back!",
-        "title": "Hi {{name}},"
+    }
+  },
+  "system-admin": {
+    "sidebar": {
+      "menu": {
+        "home": "Home",
+        "users": "Users",
+        "settings": "Settings"
       }
     }
   },
   "auth": {
-    "forgotPassword": {
-      "form": {
-        "action": "Send Confirmation",
-        "back": "Back to login",
-        "email": {
-          "label": "E-mail Address"
-        }
-      },
-      "notifications": {
-        "success": "Email has been sent!"
-      },
-      "subTitle": "To get a validation code, enter the e-mail address associated to your account.",
-      "title": "Get validation code"
-    },
-    "forgotPasswordSubmit": {
-      "form": {
-        "action": "Reset Password",
-        "back": "Back to login",
-        "code": {
-          "label": "Code"
-        },
-        "confirmPassword": {
-          "label": "Confirm Password"
-        },
-        "newPassword": {
-          "label": "New Password"
-        }
-      },
-      "notifications": {
-        "success": "Your password has been changed!"
-      },
-      "subTitle": "Enter the code you received by mail and choose a new password.",
-      "title": "Change your password"
-    },
     "login": {
-      "forgotPasswordLink": "Forgot password?",
       "form": {
         "email": {
           "label": "E-mail Address"
@@ -97,36 +63,8 @@
           "label": "Password"
         }
       },
-      "newAccountLink": "Don't have an account? Sign Up!",
       "submit": "Sign in",
       "title": "Sign in"
-    },
-    "register": {
-      "back": "Back to login",
-      "form": {
-        "email": {
-          "label": "E-mail Address"
-        },
-        "firstName": {
-          "label": "First Name"
-        },
-        "gender": {
-          "label": "Gender",
-          "options": {
-            "f": "F",
-            "m": "M",
-            "n": "NC"
-          }
-        },
-        "lastName": {
-          "label": "Last Name"
-        }
-      },
-      "notifications": {
-        "success": "Your account has been created successfully!"
-      },
-      "submit": "Register",
-      "title": "Register"
     }
   },
   "common": {
@@ -170,167 +108,7 @@
       "required": "Required"
     }
   },
-  "dashboard": {
-    "activity": {
-      "title": "Activity"
-    },
-    "budget": {
-      "legend": {
-        "unit": "Budget ($K)"
-      },
-      "title": "Budget"
-    },
-    "orderProgress": {
-      "title": "Orders"
-    },
-    "overview": {
-      "orders": "Orders",
-      "sales": "Sales",
-      "users": "Users",
-      "visits": "Visits"
-    },
-    "progress": {
-      "title": "Progress"
-    },
-    "salesByAge": {
-      "title": "Sales by Age"
-    },
-    "salesByCategory": {
-      "legend": {
-        "books": "Books",
-        "movies": "Movies & TV",
-        "software": "Software"
-      },
-      "title": "Sales by Category"
-    },
-    "salesHistory": {
-      "title": "Sales History",
-      "unit": "$ today"
-    },
-    "salesProgress": {
-      "title": "Sales"
-    },
-    "teams": {
-      "columns": {
-        "progress": "Progress",
-        "team": "Team",
-        "value": "Value"
-      },
-      "title": "Teams Progress"
-    },
-    "users": {
-      "title": "Recent Users"
-    },
-    "visitProgress": {
-      "title": "Visits"
-    },
-    "title": "Dashboard"
-  },
-  "faq": {
-    "noAnswerLink": "Can't find it here? Check out our Help Center.",
-    "questions": {
-      "title1": "What is React Admin?",
-      "answer1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortiseget.",
-      "title2": "How does it work?",
-      "answer2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortiseget.",
-      "title3": "What are the features available?",
-      "answer3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortiseget.",
-      "title4": "Who is maintaining the project?",
-      "answer4": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortiseget.",
-      "title5": "What is the license of the project?",
-      "answer5": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortiseget.",
-      "title6": "How can I contribute to the project?",
-      "answer6": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortiseget."
-    },
-    "title": "Frequently Asked Questions"
-  },
-  "help": {
-    "menu": {
-      "contact": "Contact",
-      "faq": "FAQ",
-      "guide": "Guide",
-      "support": "Support"
-    },
-    "title": "Help Center"
-  },
-  "landing": {
-    "cta": {
-      "main": "Sign in",
-      "mainAuth": "Continue as {{name}}",
-      "secondary": "Source code"
-    },
-    "features": {
-      "more": "More on Github",
-      "title": "Main Features"
-    },
-    "title": "Free and open-source admin application made with React and Material-UI"
-  },
-  "notifications": {
-    "newComment": "<bold>{{user}}</bold> has written a new comment on your profile",
-    "unreadMessages": "You have <bold>{{quantity}}</bold> unread messages"
-  },
-  "profile": {
-    "activity": {
-      "empty": "Logs of your activity will show up here!",
-      "logs": {
-        "eventAdded": "<bold>You</bold> added a new event: <bold>{{resource}}</bold>",
-        "eventUpdated": "<bold>You</bold> updated event: <bold>{{resource}}</bold>",
-        "userAdded": "<bold>You</bold> added a new user: <bold>{{resource}}</bold>",
-        "userDeleted": "<bold>You</bold> deleted user: <bold>{{resource}}</bold>",
-        "userUpdated": "<bold>You</bold> updated user: <bold>{{resource}}</bold>"
-      }
-    },
-    "completion": {
-      "title": "Profile Completion"
-    },
-    "info": {
-      "form": {
-        "email": {
-          "label": "Email Address"
-        },
-        "firstName": {
-          "label": "First Name"
-        },
-        "gender": {
-          "label": "Gender",
-          "options": {
-            "f": "Female",
-            "m": "Male",
-            "n": "NC"
-          }
-        },
-        "lastName": {
-          "label": "Last Name"
-        }
-      },
-      "title": "Update profile"
-    },
-    "menu": {
-      "activity": "Activity",
-      "info": "Information",
-      "password": "Password"
-    },
-    "notifications": {
-      "informationUpdated": "Information updated!",
-      "passwordChanged": "Password changed!"
-    },
-    "password": {
-      "form": {
-        "current": {
-          "label": "Current Password"
-        },
-        "confirm": {
-          "label": "Confirm Password"
-        },
-        "new": {
-          "label": "New Password"
-        }
-      },
-      "title": "Change your password"
-    }
-  },
-  "settings": {
-    "drawer": {
+  "settings-drawer": {
       "direction": {
         "label": "Direction",
         "options": {
@@ -338,13 +116,13 @@
           "rtl": "RTL"
         }
       },
-      "language": {
-        "label": "Language",
-        "options": {
-          "en": "English",
-          "fr": "Français"
-        }
-      },
+    "language": {
+      "label": "Language",
+      "options": {
+        "en": "English",
+        "ru": "Русский"
+      }
+    },
       "mode": {
         "label": "Mode",
         "options": {
@@ -360,64 +138,5 @@
         }
       },
       "title": "Settings"
-    }
-  },
-  "productManagement": {
-    "confirmations": {
-      "delete": "Are you sure you want to delete this user?"
-    },
-    "form": {
-      "title": {
-        "label": "Title"
-      },
-      "brand": {
-        "label": "Brand"
-      },
-      "size": {
-        "label": "Size"
-      },
-      "amount": {
-        "label": "Amount"
-      },
-      "description": {
-        "label": "Description"
-      },
-      "disabled": {
-        "label": "Disabled"
-      }
-    },
-    "modal": {
-      "add": {
-        "action": "Add",
-        "title": "Add Product"
-      },
-      "edit": {
-        "action": "Edit",
-        "title": "Edit Product"
-      },
-      "tab" : {
-        "main-info" : "Main Info",
-        "description" : "Description",
-        "gallery" : "Gallery"
-      }
-    },
-    "notifications": {
-      "addSuccess": "{{user}} has been added!",
-      "deleteSuccess": "User(s) have been deleted!",
-      "updateSuccess": "{{user}} has been updated!"
-    },
-    "table": {
-      "headers": {
-        "actions": "Actions",
-        "size": "Size",
-        "amount": "Amount",
-        "status": "Status",
-        "product": "Product",
-        "brand": "Brand"
-      }
-    },
-    "toolbar": {
-      "title": "Users"
-    }
   }
 }

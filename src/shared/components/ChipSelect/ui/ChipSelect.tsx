@@ -16,8 +16,9 @@ type ChipSelectProps = SelectProps<Array<string>>;
 const ChipSelect: FC<ChipSelectProps> = ({ onChange, value, id, label }) => {
   return (
     <>
-      <InputLabel id={`${id}-label`}>Available Sizes</InputLabel>
+      <InputLabel id={`${id}-label`}>{label}</InputLabel>
       <Select
+        label={label}
         fullWidth
         labelId={`${id}-label`}
         id={id}

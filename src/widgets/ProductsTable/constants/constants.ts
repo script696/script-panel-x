@@ -2,28 +2,38 @@ import { HeadCell } from "../types/typedef";
 
 export const HEAD_CELLS: Array<HeadCell> = [
   {
-    id: "user",
+    id: "title",
     align: "left",
-    label: "productManagement.table.headers.product",
+    label: "admin.products.table-head.title",
+  },
+  {
+    id: "price",
+    align: "center",
+    label: "admin.products.table-head.price",
+  },
+  {
+    id: "discount",
+    align: "center",
+    label: "admin.products.table-head.discount",
   },
   {
     id: "size",
     align: "center",
-    label: "productManagement.table.headers.size",
+    label: "admin.products.table-head.sizes",
   },
   {
     id: "amount",
     align: "center",
-    label: "productManagement.table.headers.amount",
+    label: "admin.products.table-head.amount",
   },
   {
     id: "brand",
     align: "center",
-    label: "productManagement.table.headers.brand",
+    label: "admin.products.table-head.brand",
   },
   {
     id: "status",
     align: "center",
-    label: "productManagement.table.headers.status",
+    label: "admin.products.table-head.status",
   },
 ];
