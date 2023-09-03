@@ -36,7 +36,7 @@ export const useProductEditModalRdx = () => {
   };
 
   const handleSubmitProductMainInfo = async (
-    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo,
+    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo
   ) => {
     if (!user) return;
 
@@ -49,12 +49,12 @@ export const useProductEditModalRdx = () => {
       getProductsThunk({
         ...productsState.productsTable.pagination,
         botName: user.bot.name,
-      }),
+      })
     );
   };
 
   const handleUpdateProductSecondaryInfo = (
-    data: Pick<ProductViewModel, "description" | "id">,
+    data: Pick<ProductViewModel, "description" | "id">
   ) => {
     dispatch(updateProductSecondaryInfoThunk(data));
   };

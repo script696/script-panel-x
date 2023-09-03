@@ -1,5 +1,5 @@
 import TextField from "@material-ui/core/TextField";
-import { Box } from "@material-ui/core";
+import { Box, Select } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -16,12 +16,15 @@ import {
 } from "app/store/reducers/products/types/typedef";
 import { Mode } from "../../types/typedef";
 import { useMainInfoForm } from "../../hooks/useMainInfoForm";
+import { MENU_PROPS } from "shared/components/ChipSelect/constants/constants";
+import { AVAILABLE_CURRENCY } from "features/ProductEditModal/constants/constants";
+import MenuItem from "@material-ui/core/MenuItem";
 
 type MainInfoProps = {
   mode: Mode;
   onClose: () => void;
   onSubmit: (
-    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo,
+    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo
   ) => void;
   isLoading: boolean;
   product?: ProductEditMainInfo | ProductCreateMainInfo;
@@ -75,6 +78,50 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           error={formik.touched.brand && Boolean(formik.errors.brand)}
           helperText={formik.touched.brand && formik.errors.brand}
         />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="price"
+          label={"price"}
+          name="price"
+          autoComplete="given-name"
+          disabled={isLoading}
+          value={formik.values.price}
+          onChange={formik.handleChange}
+          error={formik.touched.price && Boolean(formik.errors.price)}
+          helperText={formik.touched.price && formik.errors.price}
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="discount"
+          label={"discount"}
+          name="discount"
+          autoComplete="given-name"
+          disabled={isLoading}
+          value={formik.values.discount}
+          onChange={formik.handleChange}
+          error={formik.touched.discount && Boolean(formik.errors.discount)}
+          helperText={formik.touched.discount && formik.errors.discount}
+        />
+        <FormControl margin="normal">
+          <Select
+            id={"currency"}
+            label={"Currency"}
+            name={"currency"}
+            onChange={formik.handleChange}
+            value={formik.values.currency}
+            MenuProps={MENU_PROPS}
+          >
+            {AVAILABLE_CURRENCY.map((name) => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         <TextField
           margin="normal"
           required
