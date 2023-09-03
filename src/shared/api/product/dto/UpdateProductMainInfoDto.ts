@@ -1,4 +1,4 @@
-import { ImageDto } from "../../typedef";
+import { ProductApi } from "shared/api/product/typedef";
 
 export interface UpdateProductMainInfoRequestDto {
   productId: string;
@@ -9,13 +9,4 @@ export interface UpdateProductMainInfoRequestDto {
   brand: string;
 }
 
-export interface UpdateProductMainInfoResponseDto {
-  id: string;
-  title: string;
-  description: string;
-  images: Array<ImageDto>;
-  disabled: boolean;
-  availableSizes: Array<string>;
-  amount: number;
-  brand: string;
-}
+export interface UpdateProductMainInfoResponseDto extends ProductApi {}

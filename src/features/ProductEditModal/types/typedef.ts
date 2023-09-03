@@ -1,5 +1,5 @@
-import { ImageDto } from "../../../shared/api/typedef";
+import { ImageApi } from "shared/api/typedef";
 
-export type GalleryImage = ImageDto;
+export type GalleryImage = ImageApi;
 
 export type Mode = "edit" | "create";

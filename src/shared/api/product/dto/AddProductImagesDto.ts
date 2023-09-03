@@ -1,17 +1,8 @@
-import { ImageDto } from "../../typedef";
+import { ProductApi } from "shared/api/product/typedef";
 
 export interface AddProductImagesRequestDto {
   productId: string;
   files: Array<File>;
 }
 
-export interface AddProductImagesResponseDto {
-  id: string;
-  title: string;
-  description: string;
-  images: Array<ImageDto>;
-  disabled: boolean;
-  availableSizes: Array<string>;
-  amount: number;
-  brand: string;
-}
+export interface AddProductImagesResponseDto extends ProductApi {}
