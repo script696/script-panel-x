@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
@@ -15,6 +15,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { ProductViewModel } from "app/store/reducers/products/types/typedef";
+import { mapProductToView } from "widgets/ProductsTable/utils/productViewMapper";
+import { useTableRowActions } from "widgets/ProductsTable/hooks/useTableRowActions";
 
 type ProductsTableRowProps = {
   index: number;
@@ -35,53 +37,25 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
   selected,
   product,
 }) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { t } = useTranslation();
-  const {
-    id,
-    description,
-    title,
-    amount,
-    brand,
-    images,
-    price,
-    discount,
-    currency,
-  } = product;
-
-  const apiUrl = process.env["REACT_APP_API_URL"];
+  const { id, description, title, amount, brand } = product;
 
   const labelId = `enhanced-table-checkbox-${index}`;
-  const openActions = Boolean(anchorEl);
-  const productMainPhoto = images?.length
-    ? `${apiUrl}/${images[0].source}`
-    : "/img/default_product.png";
 
-  const availableSizes =
-    product.availableSizes.length <= 2
-      ? product.availableSizes.join(" ")
-      : `${product.availableSizes.slice(2).join(" ")} ...`;
-
-  const priceWithCurrency = price + currency;
-  const discountWithCurrency = discount + currency;
-
-  const handleOpenActions = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleCloseActions = () => {
-    setAnchorEl(null);
-  };
-
-  const handleDelete = () => {
-    handleCloseActions();
-    onDelete([id]);
-  };
-
-  const handleEdit = () => {
-    handleCloseActions();
-    onEdit(product);
-  };
+  const {
+    productMainPhoto,
+    availableSizes,
+    priceWithCurrency,
+    discountWithCurrency,
+  } = mapProductToView(product);
+  const {
+    anchorEl,
+    openActions,
+    handleOpenActions,
+    handleCloseActions,
+    handleDelete,
+    handleEdit,
+  } = useTableRowActions({ onEdit, onDelete, product });
 
   return (
     <TableRow

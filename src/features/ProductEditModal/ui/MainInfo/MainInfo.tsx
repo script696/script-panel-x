@@ -24,7 +24,7 @@ type MainInfoProps = {
   mode: Mode;
   onClose: () => void;
   onSubmit: (
-    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo
+    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo,
   ) => void;
   isLoading: boolean;
   product?: ProductEditMainInfo | ProductCreateMainInfo;
