@@ -7,6 +7,16 @@ export const HEAD_CELLS: Array<HeadCell> = [
     label: "productManagement.table.headers.product",
   },
   {
+    id: "price",
+    align: "center",
+    label: "price",
+  },
+  {
+    id: "discount",
+    align: "center",
+    label: "discount",
+  },
+  {
     id: "size",
     align: "center",
     label: "productManagement.table.headers.size",

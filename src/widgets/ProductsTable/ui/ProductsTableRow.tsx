@@ -37,7 +37,18 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { t } = useTranslation();
-  const { id, description, title, amount, brand, images } = product;
+  const {
+    id,
+    description,
+    title,
+    amount,
+    brand,
+    images,
+    price,
+    discount,
+    currency,
+  } = product;
+
   const apiUrl = process.env["REACT_APP_API_URL"];
 
   const labelId = `enhanced-table-checkbox-${index}`;
@@ -50,6 +61,9 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
     product.availableSizes.length <= 2
       ? product.availableSizes.join(" ")
       : `${product.availableSizes.slice(2).join(" ")} ...`;
+
+  const priceWithCurrency = price + currency;
+  const discountWithCurrency = discount + currency;
 
   const handleOpenActions = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -107,6 +121,8 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
           </Box>
         </Box>
       </TableCell>
+      <TableCell align="center">{priceWithCurrency}</TableCell>
+      <TableCell align="center">{discountWithCurrency}</TableCell>
       <TableCell align="center">{availableSizes}</TableCell>
       <TableCell align="center">{amount}</TableCell>
       <TableCell align="center">{brand}</TableCell>
