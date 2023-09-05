@@ -8,6 +8,18 @@
         "settings": "Настройки"
       }
     },
+    "bot" : {
+      "toolbar" : {
+        "title" : "Ваш бот"
+      },
+      "constructor" : {
+        "main-info" : {
+          "title" : "Главная информация",
+          "hello-text" : "Текст приветствия",
+          "shop-name" : "Название магазина"
+        }
+      }
+    },
     "products" : {
       "toolbar" : {
         "title" : "Таблица товаров"

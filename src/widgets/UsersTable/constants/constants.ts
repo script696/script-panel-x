@@ -4,11 +4,11 @@ export const HEAD_CELLS: Array<HeadCell> = [
   {
     id: "nickname",
     align: "center",
-    label: "User Nickname",
+    label: "system-admin.users.table-head.nickname",
   },
   {
     id: "shopName",
     align: "center",
-    label: "Shop Name",
+    label: "system-admin.users.table-head.botName",
   },
 ];

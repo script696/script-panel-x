@@ -8,6 +8,18 @@
         "settings": "Settings"
       }
     },
+    "bot" : {
+      "toolbar" : {
+        "title" : "Your Bot"
+      },
+      "constructor" : {
+        "main-info" : {
+          "title" : "Bot main info",
+          "hello-text" : "Hello text",
+          "shop-name" : "Shop name"
+        }
+      }
+    },
     "products" : {
       "toolbar" : {
         "title" : "Products Table"
@@ -50,6 +62,13 @@
         "home": "Home",
         "users": "Users",
         "settings": "Settings"
+      }
+    },
+    "users" : {
+      "table-head" : {
+        "nickname" : "User nickname",
+        "botName" : "Bot name",
+        "actions" : "Actions"
       }
     }
   },
