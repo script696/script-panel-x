@@ -1,14 +1,7 @@
 import { useAppDispatch, useAppSelector } from "app/store";
 import { usersSlice } from "app/store/reducers/users/usersSlice";
-import {
-  UserCreateMainInfo,
-  UserEditMainInfo,
-} from "app/store/reducers/user/types/typedef";
-import {
-  createUserThunk,
-  editUsersThunk,
-  getUsersThunk,
-} from "app/store/reducers/users/usersThunk";
+import { UserCreateMainInfo, UserEditMainInfo } from "app/store/reducers/user/types/typedef";
+import { createUserThunk, editUsersThunk, getUsersThunk } from "app/store/reducers/users/usersThunk";
 import { checkIsUserCreateMainInfo } from "../guards/checkIsUserMainInfo";
 
 export const useUsersEditModalRdx = () => {
@@ -21,9 +14,7 @@ export const useUsersEditModalRdx = () => {
     dispatch(toggleEditUserModal(false));
   };
 
-  const handleSubmitUserMainInfo = async (
-    userMainInfo: UserEditMainInfo | UserCreateMainInfo,
-  ) => {
+  const handleSubmitUserMainInfo = async (userMainInfo: UserEditMainInfo | UserCreateMainInfo) => {
     if (checkIsUserCreateMainInfo(userMainInfo)) {
       await dispatch(createUserThunk(userMainInfo));
       await dispatch(getUsersThunk({ page: 0, rowsPerPage: 8 }));

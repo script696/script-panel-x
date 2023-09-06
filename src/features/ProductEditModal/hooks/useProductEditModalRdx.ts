@@ -35,9 +35,7 @@ export const useProductEditModalRdx = () => {
     dispatch(toggleEditProductModal(false));
   };
 
-  const handleSubmitProductMainInfo = async (
-    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo,
-  ) => {
+  const handleSubmitProductMainInfo = async (productMainInfo: ProductEditMainInfo | ProductCreateMainInfo) => {
     if (!user) return;
 
     if ("id" in productMainInfo && productMainInfo.id) {
@@ -53,9 +51,7 @@ export const useProductEditModalRdx = () => {
     );
   };
 
-  const handleUpdateProductSecondaryInfo = (
-    data: Pick<ProductViewModel, "description" | "id">,
-  ) => {
+  const handleUpdateProductSecondaryInfo = (data: Pick<ProductViewModel, "description" | "id">) => {
     dispatch(updateProductSecondaryInfoThunk(data));
   };
 

@@ -15,17 +15,13 @@ type UseGalleryImagesResult = {
   deletedImagesCandidates: Array<string>;
 };
 
-type UseGalleryImages = (
-  params: UseGalleryImagesParams,
-) => UseGalleryImagesResult;
+type UseGalleryImages = (params: UseGalleryImagesParams) => UseGalleryImagesResult;
 
 /**
  * Хук предназначен для управления галлереей изображений
  */
 export const useGalleryImages: UseGalleryImages = ({ defaultImages }) => {
-  const [galleryImages, setGalleryImages] = useState<Array<GalleryImage>>(
-    defaultImages ?? [],
-  );
+  const [galleryImages, setGalleryImages] = useState<Array<GalleryImage>>(defaultImages ?? []);
   const [files, setFiles] = useState<Array<File>>([]);
   const deletedImages = useRef<Array<string>>([]);
 
@@ -63,18 +59,12 @@ export const useGalleryImages: UseGalleryImages = ({ defaultImages }) => {
     if (isDeleteImageNew) {
       /* если файл новый необходимо удалить его из массива для рендеринга и массива файлов кандидатов на добавление*/
       const deleteFileName = urlToFileNameMap.current[source];
-      setFiles((prevState) =>
-        prevState.filter((file) => file.name !== deleteFileName),
-      );
-      setGalleryImages((prevState) =>
-        prevState.filter((image) => image.source !== source),
-      );
+      setFiles((prevState) => prevState.filter((file) => file.name !== deleteFileName));
+      setGalleryImages((prevState) => prevState.filter((image) => image.source !== source));
     } else {
       /* если файл не новый необходимо добавить его в массив кандидатов на удаление */
       deletedImages.current.push(source);
-      setGalleryImages((prevState) =>
-        prevState.filter((image) => image.source !== source),
-      );
+      setGalleryImages((prevState) => prevState.filter((image) => image.source !== source));
     }
   };
 

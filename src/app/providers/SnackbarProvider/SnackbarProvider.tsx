@@ -22,10 +22,7 @@ const SnackbarProvider = ({ children }: SnackbarProviderProps) => {
   const [title, setTitle] = useState("");
   const [severity, setSeverity] = useState<Color | undefined>(undefined);
 
-  const handleClose = (
-    event: React.SyntheticEvent | React.MouseEvent,
-    reason?: string,
-  ) => {
+  const handleClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
     if (reason === "clickaway") {
       return;
     }

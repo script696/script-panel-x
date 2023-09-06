@@ -14,10 +14,7 @@ import Logo from "../../Logo/Logo";
 import { FC } from "react";
 import { SvgIconTypeMap } from "@material-ui/core";
 import { OverridableComponent } from "@material-ui/core/OverridableComponent";
-import {
-  ROUTES_ADMIN,
-  ROUTES_SYSTEM_ADMIN,
-} from "app/routing/constants/routes";
+import { ROUTES_ADMIN, ROUTES_SYSTEM_ADMIN } from "app/routing/constants/routes";
 
 type MenuItem = {
   icon: OverridableComponent<SvgIconTypeMap>;
@@ -53,14 +50,7 @@ export const Sidebar: FC<SidebarProps> = ({
       <Logo sx={{ display: "flex", p: 4 }} />
       <List component="nav" sx={{ px: 2 }}>
         {menuItems.map((item) => (
-          <ListItem
-            button
-            component={NavLink}
-            key={item.path}
-            activeClassName="Mui-selected"
-            end={true}
-            to={item.path}
-          >
+          <ListItem button component={NavLink} key={item.path} activeClassName="Mui-selected" end={true} to={item.path}>
             <ListItemAvatar>
               <Avatar sx={{ color: "inherit", bgcolor: "transparent" }}>
                 <item.icon />
@@ -77,15 +67,7 @@ export const Sidebar: FC<SidebarProps> = ({
       </List>
       <Box sx={{ flexGrow: 1 }} />
       <List component="nav" sx={{ p: 2 }}>
-        <ListItem
-          button
-          component={NavLink}
-          to={
-            role === "admin"
-              ? ROUTES_ADMIN.PROFILE
-              : ROUTES_SYSTEM_ADMIN.PROFILE
-          }
-        >
+        <ListItem button component={NavLink} to={role === "admin" ? ROUTES_ADMIN.PROFILE : ROUTES_SYSTEM_ADMIN.PROFILE}>
           <ListItemAvatar>
             <Avatar>
               <PersonIcon />

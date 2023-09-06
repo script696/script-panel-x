@@ -1,12 +1,6 @@
 import { $apiClient } from "../client";
-import {
-  GetBotRequestDto,
-  GetBotResponseDto,
-} from "shared/api/bot/dto/GetBotDto";
-import {
-  UpdateBotRequestDto,
-  UpdateBotResponseDto,
-} from "shared/api/bot/dto/UpdateBotDto";
+import { GetBotRequestDto, GetBotResponseDto } from "shared/api/bot/dto/GetBotDto";
+import { UpdateBotRequestDto, UpdateBotResponseDto } from "shared/api/bot/dto/UpdateBotDto";
 
 export class BotService {
   static getBot(params: GetBotRequestDto) {

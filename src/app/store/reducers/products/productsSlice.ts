@@ -56,10 +56,7 @@ export const productsSlice = createSlice({
     toggleEditProductModal: (state, { payload }: PayloadAction<boolean>) => {
       state.ui.isProductEditModalOpen = payload;
     },
-    openEditProductModal: (
-      state,
-      { payload }: PayloadAction<ProductViewModel | undefined>,
-    ) => {
+    openEditProductModal: (state, { payload }: PayloadAction<ProductViewModel | undefined>) => {
       state.productCandidate = payload;
       state.ui.isProductEditModalOpen = true;
     },
@@ -68,14 +65,9 @@ export const productsSlice = createSlice({
     },
     toggleDeleteProductModal: (state, { payload }: PayloadAction<boolean>) => {
       state.ui.isProductDeleteModalOpen = payload;
-      state.productsTable.selectedRows = payload
-        ? state.productsTable.selectedRows
-        : [];
+      state.productsTable.selectedRows = payload ? state.productsTable.selectedRows : [];
     },
-    changePagination: (
-      state,
-      { payload }: PayloadAction<{ page: number } | { rowsPerPage: number }>,
-    ) => {
+    changePagination: (state, { payload }: PayloadAction<{ page: number } | { rowsPerPage: number }>) => {
       if ("page" in payload) {
         state.productsTable.pagination.page = payload.page;
       } else {
@@ -89,10 +81,7 @@ export const productsSlice = createSlice({
   extraReducers: {
     /* Get Users */
 
-    [getProductsThunk.fulfilled.type]: (
-      state,
-      { payload }: PayloadAction<ProductsViewModel>,
-    ) => {
+    [getProductsThunk.fulfilled.type]: (state, { payload }: PayloadAction<ProductsViewModel>) => {
       state.isLoading = false;
       state.error = "";
       state.productsData = payload;
@@ -100,10 +89,7 @@ export const productsSlice = createSlice({
     [getProductsThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [getProductsThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [getProductsThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
     },
@@ -120,63 +106,44 @@ export const productsSlice = createSlice({
     [createProductThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [createProductThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [createProductThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
     },
 
     /* Update Product Main Info */
 
-    [updateProductMainInfoThunk.fulfilled.type]: (
-      state,
-      { payload }: PayloadAction<ProductViewModel>,
-    ) => {
+    [updateProductMainInfoThunk.fulfilled.type]: (state, { payload }: PayloadAction<ProductViewModel>) => {
       state.isLoading = false;
       state.error = "";
-      state.productsData.products = state.productsData.products.map(
-        (product) => {
-          return product.id === payload.id ? payload : product;
-        },
-      );
+      state.productsData.products = state.productsData.products.map((product) => {
+        return product.id === payload.id ? payload : product;
+      });
       state.ui.isProductEditModalOpen = false;
       state.productCandidate = undefined;
     },
     [updateProductMainInfoThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [updateProductMainInfoThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [updateProductMainInfoThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
     },
     /* Update Product Secondary Info */
 
-    [updateProductSecondaryInfoThunk.fulfilled.type]: (
-      state,
-      { payload }: PayloadAction<ProductViewModel>,
-    ) => {
+    [updateProductSecondaryInfoThunk.fulfilled.type]: (state, { payload }: PayloadAction<ProductViewModel>) => {
       state.isLoading = false;
       state.error = "";
-      state.productsData.products = state.productsData.products.map(
-        (product) => {
-          return product.id === payload.id ? payload : product;
-        },
-      );
+      state.productsData.products = state.productsData.products.map((product) => {
+        return product.id === payload.id ? payload : product;
+      });
       state.ui.isProductEditModalOpen = false;
       state.productCandidate = undefined;
     },
     [updateProductSecondaryInfoThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [updateProductSecondaryInfoThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [updateProductSecondaryInfoThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
     },
@@ -191,53 +158,38 @@ export const productsSlice = createSlice({
     [removeProductsThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [removeProductsThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [removeProductsThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
     },
     /* Add images */
-    [addImagesThunk.fulfilled.type]: (
-      state,
-      { payload }: PayloadAction<ProductViewModel>,
-    ) => {
+    [addImagesThunk.fulfilled.type]: (state, { payload }: PayloadAction<ProductViewModel>) => {
       state.isLoading = false;
       state.error = "";
-      state.productsData.products = state.productsData.products.map(
-        (product) => (product.id === payload.id ? payload : product),
+      state.productsData.products = state.productsData.products.map((product) =>
+        product.id === payload.id ? payload : product,
       );
     },
     [addImagesThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [addImagesThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [addImagesThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
     },
     /* Remove image */
 
-    [removeImagesThunk.fulfilled.type]: (
-      state,
-      { payload }: PayloadAction<ProductViewModel>,
-    ) => {
+    [removeImagesThunk.fulfilled.type]: (state, { payload }: PayloadAction<ProductViewModel>) => {
       state.isLoading = false;
       state.error = "";
-      state.productsData.products = state.productsData.products.map(
-        (product) => (product.id === payload.id ? payload : product),
+      state.productsData.products = state.productsData.products.map((product) =>
+        product.id === payload.id ? payload : product,
       );
     },
     [removeImagesThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [removeImagesThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [removeImagesThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
     },

@@ -63,10 +63,7 @@ export const UsersTableRow: FC<ProductsTableRowProps> = ({
       selected={selected}
       sx={{ "& td": { bgcolor: "background.paper", border: 0 } }}
     >
-      <TableCell
-        padding="checkbox"
-        sx={{ borderTopLeftRadius: "1rem", borderBottomLeftRadius: "1rem" }}
-      >
+      <TableCell padding="checkbox" sx={{ borderTopLeftRadius: "1rem", borderBottomLeftRadius: "1rem" }}>
         <Checkbox
           color="primary"
           checked={selected}
@@ -78,10 +75,7 @@ export const UsersTableRow: FC<ProductsTableRowProps> = ({
       </TableCell>
       <TableCell align="center">{nikName}</TableCell>
       <TableCell align="center">{bot.name}</TableCell>
-      <TableCell
-        align="right"
-        sx={{ borderTopRightRadius: "1rem", borderBottomRightRadius: "1rem" }}
-      >
+      <TableCell align="right" sx={{ borderTopRightRadius: "1rem", borderBottomRightRadius: "1rem" }}>
         <IconButton
           id="user-row-menu-button"
           aria-label="user actions"

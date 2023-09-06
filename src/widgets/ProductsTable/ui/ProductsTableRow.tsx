@@ -42,20 +42,10 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
 
   const labelId = `enhanced-table-checkbox-${index}`;
 
-  const {
-    productMainPhoto,
-    availableSizes,
-    priceWithCurrency,
-    discountWithCurrency,
-  } = mapProductToView(product);
-  const {
-    anchorEl,
-    openActions,
-    handleOpenActions,
-    handleCloseActions,
-    handleDelete,
-    handleEdit,
-  } = useTableRowActions({ onEdit, onDelete, product });
+  const { productMainPhoto, availableSizes, priceWithCurrency, discountWithCurrency } = mapProductToView(product);
+  const { anchorEl, openActions, handleOpenActions, handleCloseActions, handleDelete, handleEdit } = useTableRowActions(
+    { onEdit, onDelete, product },
+  );
 
   return (
     <TableRow
@@ -65,10 +55,7 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
       selected={selected}
       sx={{ "& td": { bgcolor: "background.paper", border: 0 } }}
     >
-      <TableCell
-        padding="checkbox"
-        sx={{ borderTopLeftRadius: "1rem", borderBottomLeftRadius: "1rem" }}
-      >
+      <TableCell padding="checkbox" sx={{ borderTopLeftRadius: "1rem", borderBottomLeftRadius: "1rem" }}>
         <Checkbox
           color="primary"
           checked={selected}
@@ -80,11 +67,7 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
       </TableCell>
       <TableCell>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Avatar
-            src={productMainPhoto}
-            sx={{ mr: 3, width: "50px", height: "50px" }}
-            variant={"rounded"}
-          ></Avatar>
+          <Avatar src={productMainPhoto} sx={{ mr: 3, width: "50px", height: "50px" }} variant={"rounded"}></Avatar>
           <Box>
             <Typography component="div" variant="h6">
               {title}
@@ -101,16 +84,9 @@ export const ProductsTableRow: FC<ProductsTableRowProps> = ({
       <TableCell align="center">{amount}</TableCell>
       <TableCell align="center">{brand}</TableCell>
       <TableCell align="center">
-        {product.disabled ? (
-          <Chip label="Disabled" />
-        ) : (
-          <Chip color="primary" label="Active" />
-        )}
+        {product.disabled ? <Chip label="Disabled" /> : <Chip color="primary" label="Active" />}
       </TableCell>
-      <TableCell
-        align="right"
-        sx={{ borderTopRightRadius: "1rem", borderBottomRightRadius: "1rem" }}
-      >
+      <TableCell align="right" sx={{ borderTopRightRadius: "1rem", borderBottomRightRadius: "1rem" }}>
         <IconButton
           id="user-row-menu-button"
           aria-label="user actions"

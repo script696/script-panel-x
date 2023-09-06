@@ -65,10 +65,7 @@ const HelpCenter = () => {
         </Grid>
         <Grid item xs={6} lg={3}>
           <Card>
-            <CardActionArea
-              component={RouterLink}
-              to={`/${process.env.PUBLIC_URL}/admin/faq`}
-            >
+            <CardActionArea component={RouterLink} to={`/${process.env.PUBLIC_URL}/admin/faq`}>
               <CardHeader
                 avatar={
                   <Avatar aria-label="FAQ icon">
@@ -109,10 +106,7 @@ const HelpCenter = () => {
         </Grid>
         <Grid item xs={6} lg={3}>
           <Card>
-            <CardActionArea
-              component="a"
-              href={`mailto:${process.env.REACT_APP_CONTACT_MAIL}`}
-            >
+            <CardActionArea component="a" href={`mailto:${process.env.REACT_APP_CONTACT_MAIL}`}>
               <CardHeader
                 avatar={
                   <Avatar aria-label="Mail icon">

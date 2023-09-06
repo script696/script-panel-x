@@ -28,12 +28,7 @@ const Profile = () => {
     <React.Fragment>
       <AdminAppBar>
         <AdminToolbar>
-          <Fab
-            aria-label="logout"
-            color="secondary"
-            disabled={false}
-            onClick={handleLogout}
-          >
+          <Fab aria-label="logout" color="secondary" disabled={false} onClick={handleLogout}>
             <ExitToAppIcon />
           </Fab>
         </AdminToolbar>

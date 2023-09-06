@@ -17,15 +17,15 @@ export const getBotThunk = createAsyncThunk<BotViewModel, GetBotRequestDto>(
   },
 );
 
-export const updateBotThunk = createAsyncThunk<
-  BotViewModel,
-  UpdateBotRequestDto
->("bot/update", async (reqParams, thunkAPI) => {
-  try {
-    const { data } = await BotService.updateBot(reqParams);
+export const updateBotThunk = createAsyncThunk<BotViewModel, UpdateBotRequestDto>(
+  "bot/update",
+  async (reqParams, thunkAPI) => {
+    try {
+      const { data } = await BotService.updateBot(reqParams);
 
-    return data;
-  } catch (e) {
-    return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
-  }
-});
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+    }
+  },
+);

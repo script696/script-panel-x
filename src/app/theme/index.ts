@@ -6,10 +6,7 @@ import shape from "./shape";
 import transitions from "./transitions";
 import typography from "./typography";
 
-export const createTheme = (
-  direction: "ltr" | "rtl",
-  mode: "dark" | "light",
-) => {
+export const createTheme = (direction: "ltr" | "rtl", mode: "dark" | "light") => {
   const palette = mode === "dark" ? darkPalette : lightPalette;
 
   // Create base theme

@@ -58,17 +58,11 @@ const Faq = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography color="text.secondary">
-                {t(question.answer)}
-              </Typography>
+              <Typography color="text.secondary">{t(question.answer)}</Typography>
             </AccordionDetails>
           </Accordion>
         ))}
-        <Link
-          component={RouterLink}
-          to={`/${process.env.PUBLIC_URL}/admin/help`}
-          variant="body2"
-        >
+        <Link component={RouterLink} to={`/${process.env.PUBLIC_URL}/admin/help`} variant="body2">
           {t("faq.noAnswerLink")}
         </Link>
       </Container>

@@ -27,13 +27,7 @@ const TableToolbar: FC<TableToolbarProps> = ({
     <React.Fragment>
       {!isTableRowSelected ? (
         <AdminToolbar title={t("admin.products.toolbar.title")}>
-          <Fab
-            aria-label="logout"
-            color="primary"
-            disabled={isLoading}
-            onClick={onAddNewRow}
-            size="small"
-          >
+          <Fab aria-label="logout" color="primary" disabled={isLoading} onClick={onAddNewRow} size="small">
             <AddIcon />
           </Fab>
         </AdminToolbar>

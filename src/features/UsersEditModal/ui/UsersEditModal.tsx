@@ -9,8 +9,7 @@ import { useTabs } from "shared/hooks/useTabs";
 const UsersEditModal = () => {
   const { tab, handleClickTab } = useTabs();
 
-  const { usersState, handleCloseModal, handleSubmitUserMainInfo } =
-    useUsersEditModalRdx();
+  const { usersState, handleCloseModal, handleSubmitUserMainInfo } = useUsersEditModalRdx();
 
   const { userCandidate, ui, isLoading } = usersState;
 
@@ -19,11 +18,7 @@ const UsersEditModal = () => {
 
   return (
     <Dialog open={isUserEditModalOpen} onClose={handleCloseModal}>
-      <Box
-        width={{ md: "500px", height: "80vh" }}
-        display={"flex"}
-        flexDirection={"column"}
-      >
+      <Box width={{ md: "500px", height: "80vh" }} display={"flex"} flexDirection={"column"}>
         <DialogTitle id="product-dialog-title">CreateUser</DialogTitle>
 
         <Tabs value={tab} onChange={handleClickTab} centered>

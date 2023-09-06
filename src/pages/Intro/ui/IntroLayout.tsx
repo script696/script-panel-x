@@ -28,18 +28,10 @@ const IntroLayout = ({ children }: LandingLayoutProps) => {
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
             {process.env.REACT_APP_NAME}
           </Typography>
-          <IconButton
-            color="default"
-            aria-label="settings"
-            component="span"
-            onClick={handleSettingsToggle}
-          >
+          <IconButton color="default" aria-label="settings" component="span" onClick={handleSettingsToggle}>
             <SettingsIcon />
           </IconButton>
-          <SettingsDrawer
-            onDrawerToggle={handleSettingsToggle}
-            open={settingsOpen}
-          />
+          <SettingsDrawer onDrawerToggle={handleSettingsToggle} open={settingsOpen} />
         </Toolbar>
       </AppBar>
       <main>{children}</main>

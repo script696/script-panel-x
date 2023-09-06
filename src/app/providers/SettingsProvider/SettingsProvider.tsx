@@ -2,13 +2,7 @@ import { ThemeProvider as MuiThemeProvider } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { useLocalStorage } from "shared/hooks/useLocalStorage";
 import { createTheme } from "app/theme";
 
@@ -39,10 +33,7 @@ const SettingsProvider = ({ children }: SettingsProviderProps) => {
     document.body.dir = direction;
   }, [direction]);
 
-  const theme = useMemo(
-    () => createTheme(direction as "ltr" | "rtl", mode as "dark" | "light"),
-    [direction, mode],
-  );
+  const theme = useMemo(() => createTheme(direction as "ltr" | "rtl", mode as "dark" | "light"), [direction, mode]);
 
   const changeCollapsed = (collapsed: boolean) => {
     if (typeof collapsed === "boolean") {

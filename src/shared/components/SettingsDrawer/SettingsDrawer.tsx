@@ -19,14 +19,7 @@ type SettingsDrawerProps = {
 };
 
 const SettingsDrawer = ({ onDrawerToggle, open }: SettingsDrawerProps) => {
-  const {
-    changeCollapsed,
-    changeDirection,
-    changeMode,
-    collapsed,
-    direction,
-    mode,
-  } = useSettings();
+  const { changeCollapsed, changeDirection, changeMode, collapsed, direction, mode } = useSettings();
   const { i18n, t } = useTranslation();
 
   const handleDirectionChange = (_: unknown, direction: "ltr" | "rtl") => {
@@ -71,12 +64,7 @@ const SettingsDrawer = ({ onDrawerToggle, open }: SettingsDrawerProps) => {
         </IconButton>
       </Box>
       <Box sx={{ pl: 2, pr: 2 }}>
-        <Typography
-          gutterBottom
-          id="settings-language"
-          marginTop={3}
-          variant="h6"
-        >
+        <Typography gutterBottom id="settings-language" marginTop={3} variant="h6">
           {t("settings-drawer.language.label")}
         </Typography>
         <FormControl>
@@ -86,73 +74,30 @@ const SettingsDrawer = ({ onDrawerToggle, open }: SettingsDrawerProps) => {
             onChange={handleLanguageChange}
             value={i18n.language}
           >
-            <FormControlLabel
-              value="en"
-              control={<Radio />}
-              label={t("settings-drawer.language.options.en")}
-            />
-            <FormControlLabel
-              value="ru"
-              control={<Radio />}
-              label={t("settings-drawer.language.options.ru")}
-            />
+            <FormControlLabel value="en" control={<Radio />} label={t("settings-drawer.language.options.en")} />
+            <FormControlLabel value="ru" control={<Radio />} label={t("settings-drawer.language.options.ru")} />
           </RadioGroup>
         </FormControl>
         <Typography gutterBottom id="settings-mode" marginTop={3} variant="h6">
           {t("settings-drawer.mode.label")}
         </Typography>
-        <ToggleButtonGroup
-          color="primary"
-          value={mode}
-          exclusive
-          fullWidth
-          onChange={handleModeChange}
-        >
-          <ToggleButton value="light">
-            {t("settings-drawer.mode.options.light")}
-          </ToggleButton>
-          <ToggleButton value="dark">
-            {t("settings-drawer.mode.options.dark")}
-          </ToggleButton>
+        <ToggleButtonGroup color="primary" value={mode} exclusive fullWidth onChange={handleModeChange}>
+          <ToggleButton value="light">{t("settings-drawer.mode.options.light")}</ToggleButton>
+          <ToggleButton value="dark">{t("settings-drawer.mode.options.dark")}</ToggleButton>
         </ToggleButtonGroup>
         <Typography gutterBottom id="settings-mode" marginTop={3} variant="h6">
           {t("settings-drawer.direction.label")}
         </Typography>
-        <ToggleButtonGroup
-          color="primary"
-          value={direction}
-          exclusive
-          fullWidth
-          onChange={handleDirectionChange}
-        >
-          <ToggleButton value="ltr">
-            {t("settings-drawer.direction.options.ltr")}
-          </ToggleButton>
-          <ToggleButton value="rtl">
-            {t("settings-drawer.direction.options.rtl")}
-          </ToggleButton>
+        <ToggleButtonGroup color="primary" value={direction} exclusive fullWidth onChange={handleDirectionChange}>
+          <ToggleButton value="ltr">{t("settings-drawer.direction.options.ltr")}</ToggleButton>
+          <ToggleButton value="rtl">{t("settings-drawer.direction.options.rtl")}</ToggleButton>
         </ToggleButtonGroup>
-        <Typography
-          gutterBottom
-          id="settings-sidebar"
-          marginTop={3}
-          variant="h6"
-        >
+        <Typography gutterBottom id="settings-sidebar" marginTop={3} variant="h6">
           {t("settings-drawer.sidebar.label")}
         </Typography>
-        <ToggleButtonGroup
-          color="primary"
-          value={collapsed}
-          exclusive
-          fullWidth
-          onChange={handleSidebarChange}
-        >
-          <ToggleButton value={true}>
-            {t("settings-drawer.sidebar.options.collapsed")}
-          </ToggleButton>
-          <ToggleButton value={false}>
-            {t("settings-drawer.sidebar.options.full")}
-          </ToggleButton>
+        <ToggleButtonGroup color="primary" value={collapsed} exclusive fullWidth onChange={handleSidebarChange}>
+          <ToggleButton value={true}>{t("settings-drawer.sidebar.options.collapsed")}</ToggleButton>
+          <ToggleButton value={false}>{t("settings-drawer.sidebar.options.full")}</ToggleButton>
         </ToggleButtonGroup>
       </Box>
     </Drawer>

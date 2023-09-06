@@ -8,11 +8,7 @@ import LoadingButton from "@material-ui/lab/LoadingButton";
 import DialogActions from "@material-ui/core/DialogActions";
 import { Mode } from "../../types/typedef";
 import { useMainInfoForm } from "../../hooks/useMainInfoForm";
-import {
-  UserCreateMainInfo,
-  UserEditMainInfo,
-  UserViewModel,
-} from "app/store/reducers/user/types/typedef";
+import { UserCreateMainInfo, UserEditMainInfo, UserViewModel } from "app/store/reducers/user/types/typedef";
 
 type MainInfoProps = {
   mode: Mode;

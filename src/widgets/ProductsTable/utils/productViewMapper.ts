@@ -5,9 +5,7 @@ export const mapProductToView = (product: ProductViewModel) => {
 
   const { images, price, discount, currency } = product;
 
-  const productMainPhoto = images?.length
-    ? `${apiUrl}/${images[0].source}`
-    : "/img/default_product.png";
+  const productMainPhoto = images?.length ? `${apiUrl}/${images[0].source}` : "/img/default_product.png";
 
   const availableSizes =
     product.availableSizes.length <= 2

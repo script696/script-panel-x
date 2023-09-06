@@ -34,12 +34,7 @@ const Login = () => {
           <Typography component="h1" variant="h5">
             {t("auth.login.title")}
           </Typography>
-          <Box
-            component="form"
-            marginTop={3}
-            noValidate
-            onSubmit={formik.handleSubmit}
-          >
+          <Box component="form" marginTop={3} noValidate onSubmit={formik.handleSubmit}>
             <TextField
               margin="normal"
               variant="filled"
@@ -72,13 +67,7 @@ const Login = () => {
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
             />
-            <LoadingButton
-              type="submit"
-              fullWidth
-              loading={isLoading}
-              variant="contained"
-              sx={{ mt: 3 }}
-            >
+            <LoadingButton type="submit" fullWidth loading={isLoading} variant="contained" sx={{ mt: 3 }}>
               {t("auth.login.submit")}
             </LoadingButton>
           </Box>
