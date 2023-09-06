@@ -1,36 +1,30 @@
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { TFunction } from "i18next";
 import { BotViewModel } from "app/store/reducers/bot/types/typedef";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { COLOR_THEME_FORM_DEFAULT_VALUES } from "features/BotColorThemeConstructor/constants/constants";
 
 type useBotMainInfoFormParams = {
-  botMainInfo?: BotViewModel["mainInfo"];
-  t: TFunction;
-  onSubmit: (botMainInfo: BotViewModel["mainInfo"]) => void;
+  botColorTheme?: BotViewModel["colorTheme"];
+  onSubmit: (botColorTheme: BotViewModel["colorTheme"]) => void;
 };
 
-export const useColorThemeForm = ({
-  botMainInfo,
-  t,
-  onSubmit,
-}: useBotMainInfoFormParams) => {
-  const formik = useFormik({
-    initialValues: {
-      helloText: botMainInfo?.helloText ?? "",
-      shopName: botMainInfo?.shopName ?? "",
-    },
-    validationSchema: Yup.object({
-      helloText: Yup.string()
-        .min(4)
-        .max(200)
-        .required(t("common.validations.required")),
-      shopName: Yup.string()
-        .min(4)
-        .max(200)
-        .required(t("common.validations.required")),
-    }),
-    onSubmit,
-  });
+export const useColorThemeForm = ({ botColorTheme, onSubmit }: useBotMainInfoFormParams) => {
+  const [colorThemeForm, setColorThemeForm] = useState<Record<keyof BotViewModel["colorTheme"], string>>(
+    botColorTheme ?? COLOR_THEME_FORM_DEFAULT_VALUES,
+  );
 
-  return { formik };
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await onSubmit(colorThemeForm);
+  };
+
+  const handleChangeColor = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget;
+    setColorThemeForm((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const resetForm = () => {
+    setColorThemeForm(botColorTheme ?? COLOR_THEME_FORM_DEFAULT_VALUES);
+  };
+
+  return { handleSubmit, handleChangeColor, colorThemeForm, resetForm };
 };

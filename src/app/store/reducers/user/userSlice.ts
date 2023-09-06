@@ -25,10 +25,7 @@ export const userSlice = createSlice({
   extraReducers: {
     /* Get User */
 
-    [getUserThunk.fulfilled.type]: (
-      state,
-      { payload }: PayloadAction<GetUserDto>,
-    ) => {
+    [getUserThunk.fulfilled.type]: (state, { payload }: PayloadAction<GetUserDto>) => {
       state.isLoading = false;
       state.error = "";
       state.user = payload;
@@ -37,10 +34,7 @@ export const userSlice = createSlice({
     [getUserThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [getUserThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [getUserThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
       state.isUserFetched = true;

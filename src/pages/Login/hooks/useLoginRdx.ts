@@ -19,9 +19,7 @@ export const useLoginRdx = () => {
     if (!user) return;
 
     const redirectUrl =
-      user.role === "admin"
-        ? `/${process.env.PUBLIC_URL}/admin`
-        : `/${process.env.PUBLIC_URL}/system-admin`;
+      user.role === "admin" ? `/${process.env.PUBLIC_URL}/admin` : `/${process.env.PUBLIC_URL}/system-admin`;
 
     navigate(redirectUrl, { replace: true });
   };

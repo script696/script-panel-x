@@ -29,27 +29,15 @@ const ProductEditModal = () => {
 
   return (
     <Dialog open={isProductEditModalOpen} onClose={handleCloseModal}>
-      <Box
-        width={{ md: "500px", height: "80vh" }}
-        display={"flex"}
-        flexDirection={"column"}
-      >
+      <Box width={{ md: "500px", height: "80vh" }} display={"flex"} flexDirection={"column"}>
         <DialogTitle id="product-dialog-title">
-          {mode === "edit"
-            ? t("admin.products.edit-modal.title-edit")
-            : t("admin.products.edit-modal.title-create")}
+          {mode === "edit" ? t("admin.products.edit-modal.title-edit") : t("admin.products.edit-modal.title-create")}
         </DialogTitle>
 
         <Tabs value={tab} onChange={handleClickTab} centered>
           <Tab label={t("admin.products.edit-modal.tab-main-info")} />
-          <Tab
-            label={t("admin.products.edit-modal.tab-description")}
-            disabled={mode === "create"}
-          />
-          <Tab
-            label={t("admin.products.edit-modal.tab-gallery")}
-            disabled={mode === "create"}
-          />
+          <Tab label={t("admin.products.edit-modal.tab-description")} disabled={mode === "create"} />
+          <Tab label={t("admin.products.edit-modal.tab-gallery")} disabled={mode === "create"} />
         </Tabs>
 
         {tab === 0 && (

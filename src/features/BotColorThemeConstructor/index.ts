@@ -1,1 +1,1 @@
-export {default as BotColorConstructor} from './ui/BotColorConstructor'
+export { default as BotColorConstructor } from "./ui/BotColorConstructor";

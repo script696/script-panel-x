@@ -23,19 +23,10 @@ const Gallery: FC<GalleryDataProps> = (props) => {
   const { t } = useTranslation();
   const { onClose, product, onAddProductImages, onDeleteProductImage } = props;
 
-  const {
-    handleLoadImage,
-    galleryImages,
-    handleDeleteImg,
-    deletedImagesCandidates,
-    files,
-  } = useGalleryImages({
+  const { handleLoadImage, galleryImages, handleDeleteImg, deletedImagesCandidates, files } = useGalleryImages({
     defaultImages: product?.images,
   });
-  const withAddImage = [
-    ...galleryImages,
-    { source: "/img/default_product.png" },
-  ];
+  const withAddImage = [...galleryImages, { source: "/img/default_product.png" }];
 
   const handleSaveChanges = () => {
     if (!product) return;
@@ -54,29 +45,17 @@ const Gallery: FC<GalleryDataProps> = (props) => {
   const apiUrl = process.env["REACT_APP_API_URL"];
 
   return (
-    <Box
-      flexGrow={1}
-      display={"flex"}
-      flexDirection={"column"}
-      overflow={"hidden"}
-    >
+    <Box flexGrow={1} display={"flex"} flexDirection={"column"} overflow={"hidden"}>
       <DialogContent>
         <Box display={"flex"} flexDirection={"column"} rowGap={3}>
           {withAddImage.map(({ source }, idx) => {
             const isLastElem = idx === withAddImage.length - 1;
 
-            const apiImgSource = source.startsWith("blob")
-              ? source
-              : `${apiUrl}/${source}`;
+            const apiImgSource = source.startsWith("blob") ? source : `${apiUrl}/${source}`;
 
             return !isLastElem ? (
               <Box position={"relative"} sx={boxSx} key={source}>
-                <Avatar
-                  id={source}
-                  src={apiImgSource}
-                  style={avatarSx}
-                  variant={"square"}
-                />
+                <Avatar id={source} src={apiImgSource} style={avatarSx} variant={"square"} />
                 <LoadingButton
                   className={"test"}
                   sx={deleteButtonSx}
@@ -90,25 +69,10 @@ const Gallery: FC<GalleryDataProps> = (props) => {
                 </LoadingButton>
               </Box>
             ) : (
-              <Button
-                type={"button"}
-                variant={"text"}
-                sx={{ cursor: "pointer" }}
-              >
+              <Button type={"button"} variant={"text"} sx={{ cursor: "pointer" }}>
                 <label className={"button"}>
-                  <input
-                    multiple
-                    hidden
-                    accept=".png, .jpg, .jpeg"
-                    type="file"
-                    onChange={handleLoadImage}
-                  />
-                  <Avatar
-                    id={source}
-                    src={source}
-                    style={avatarSx}
-                    variant={"square"}
-                  />
+                  <input multiple hidden accept=".png, .jpg, .jpeg" type="file" onChange={handleLoadImage} />
+                  <Avatar id={source} src={source} style={avatarSx} variant={"square"} />
                 </label>
               </Button>
             );
@@ -118,11 +82,7 @@ const Gallery: FC<GalleryDataProps> = (props) => {
       <Box sx={{ flexGrow: 1 }} />
       <DialogActions>
         <Button onClick={onClose}>{t("common.cancel")}</Button>
-        <LoadingButton
-          type="button"
-          variant="contained"
-          onClick={handleSaveChanges}
-        >
+        <LoadingButton type="button" variant="contained" onClick={handleSaveChanges}>
           Save changes
         </LoadingButton>
       </DialogActions>

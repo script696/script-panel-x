@@ -13,12 +13,7 @@ interface SelectToolbarProps {
   selected: string[];
 }
 
-const SelectToolbar = ({
-  onCancel,
-  onDelete,
-  processing,
-  selected,
-}: SelectToolbarProps) => {
+const SelectToolbar = ({ onCancel, onDelete, processing, selected }: SelectToolbarProps) => {
   const { t } = useTranslation();
 
   const numSelected = selected.length;
@@ -33,11 +28,7 @@ const SelectToolbar = ({
 
       {numSelected > 0 && (
         <Tooltip title={t("common.delete") as string}>
-          <Fab
-            color="secondary"
-            disabled={processing}
-            onClick={() => onDelete(selected)}
-          >
+          <Fab color="secondary" disabled={processing} onClick={() => onDelete(selected)}>
             <DeleteIcon />
           </Fab>
         </Tooltip>

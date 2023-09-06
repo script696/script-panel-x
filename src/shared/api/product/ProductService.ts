@@ -1,32 +1,14 @@
 import { $apiClient } from "../client";
-import {
-  GetProductsRequestDto,
-  GetProductsResponseDto,
-} from "./dto/GetProductsDto";
-import {
-  CreateProductRequestDto,
-  CreateProductResponseDto,
-} from "./dto/CreateProductDto";
-import {
-  RemoveProductRequestDto,
-  RemoveProductResponseDto,
-} from "./dto/RemoveProductDto";
-import {
-  UpdateProductMainInfoRequestDto,
-  UpdateProductMainInfoResponseDto,
-} from "./dto/UpdateProductMainInfoDto";
+import { GetProductsRequestDto, GetProductsResponseDto } from "./dto/GetProductsDto";
+import { CreateProductRequestDto, CreateProductResponseDto } from "./dto/CreateProductDto";
+import { RemoveProductRequestDto, RemoveProductResponseDto } from "./dto/RemoveProductDto";
+import { UpdateProductMainInfoRequestDto, UpdateProductMainInfoResponseDto } from "./dto/UpdateProductMainInfoDto";
 import {
   UpdateProductSecondaryInfoRequestDto,
   UpdateProductSecondaryInfoResponseDto,
 } from "./dto/UpdateProductSecondaryInfoDto";
-import {
-  AddProductImagesRequestDto,
-  AddProductImagesResponseDto,
-} from "./dto/AddProductImagesDto";
-import {
-  RemoveProductImageRequestDto,
-  RemoveProductImagesResponseDto,
-} from "./dto/RemoveProductImagesDto";
+import { AddProductImagesRequestDto, AddProductImagesResponseDto } from "./dto/AddProductImagesDto";
+import { RemoveProductImageRequestDto, RemoveProductImagesResponseDto } from "./dto/RemoveProductImagesDto";
 
 export class ProductService {
   static getProducts(params: GetProductsRequestDto) {
@@ -46,35 +28,22 @@ export class ProductService {
   }
 
   static updateProductMainInfo(data: UpdateProductMainInfoRequestDto) {
-    return $apiClient.put<UpdateProductMainInfoResponseDto>(
-      "product/update-main-info",
-      data,
-    );
+    return $apiClient.put<UpdateProductMainInfoResponseDto>("product/update-main-info", data);
   }
 
-  static updateProductSecondaryInfo(
-    data: UpdateProductSecondaryInfoRequestDto,
-  ) {
-    return $apiClient.put<UpdateProductSecondaryInfoResponseDto>(
-      "product/update-secondary-info",
-      data,
-    );
+  static updateProductSecondaryInfo(data: UpdateProductSecondaryInfoRequestDto) {
+    return $apiClient.put<UpdateProductSecondaryInfoResponseDto>("product/update-secondary-info", data);
   }
 
   static addImages(data: AddProductImagesRequestDto) {
-    return $apiClient.post<AddProductImagesResponseDto>(
-      "product/add-images",
-      data,
-      { headers: { "Content-Type": "multipart/form-data" } },
-    );
+    return $apiClient.post<AddProductImagesResponseDto>("product/add-images", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
   }
 
   static removeImages(data: RemoveProductImageRequestDto) {
-    return $apiClient.delete<RemoveProductImagesResponseDto>(
-      "product/remove-images",
-      {
-        data,
-      },
-    );
+    return $apiClient.delete<RemoveProductImagesResponseDto>("product/remove-images", {
+      data,
+    });
   }
 }

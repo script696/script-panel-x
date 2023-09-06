@@ -7,11 +7,7 @@ type UseTableRowActionsParams = {
   product: ProductViewModel;
 };
 
-export const useTableRowActions = ({
-  onEdit,
-  onDelete,
-  product,
-}: UseTableRowActionsParams) => {
+export const useTableRowActions = ({ onEdit, onDelete, product }: UseTableRowActionsParams) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const openActions = Boolean(anchorEl);
 

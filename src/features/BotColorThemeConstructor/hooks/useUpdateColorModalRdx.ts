@@ -6,14 +6,12 @@ type useUpdateMainInfoModalRdxParams = {
   onCloseModal: () => void;
 };
 
-export const useUpdateColorModalRdx = ({
-  onCloseModal,
-}: useUpdateMainInfoModalRdxParams) => {
+export const useUpdateColorModalRdx = ({ onCloseModal }: useUpdateMainInfoModalRdxParams) => {
   const dispatch = useAppDispatch();
   const { isLoading } = useAppSelector((state) => state.botReducer);
 
-  const handleSubmit = async (bot: BotViewModel["mainInfo"]) => {
-    await dispatch(updateBotThunk(bot));
+  const handleSubmit = async (botColorTheme: BotViewModel["colorTheme"]) => {
+    await dispatch(updateBotThunk({ colorTheme: botColorTheme }));
     onCloseModal();
   };
 

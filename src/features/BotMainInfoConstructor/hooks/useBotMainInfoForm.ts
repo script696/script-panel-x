@@ -9,25 +9,15 @@ type useBotMainInfoFormParams = {
   onSubmit: (botMainInfo: BotViewModel["mainInfo"]) => void;
 };
 
-export const useBotMainInfoForm = ({
-  botMainInfo,
-  t,
-  onSubmit,
-}: useBotMainInfoFormParams) => {
+export const useBotMainInfoForm = ({ botMainInfo, t, onSubmit }: useBotMainInfoFormParams) => {
   const formik = useFormik({
     initialValues: {
       helloText: botMainInfo?.helloText ?? "",
       shopName: botMainInfo?.shopName ?? "",
     },
     validationSchema: Yup.object({
-      helloText: Yup.string()
-        .min(4)
-        .max(200)
-        .required(t("common.validations.required")),
-      shopName: Yup.string()
-        .min(4)
-        .max(200)
-        .required(t("common.validations.required")),
+      helloText: Yup.string().min(4).max(200).required(t("common.validations.required")),
+      shopName: Yup.string().min(4).max(200).required(t("common.validations.required")),
     }),
     onSubmit,
   });

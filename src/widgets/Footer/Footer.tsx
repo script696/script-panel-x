@@ -8,11 +8,7 @@ const Footer = () => {
     <Box sx={{ p: 6 }} component="footer">
       <Typography variant="body2" color="text.secondary" align="center">
         {"© "}
-        <Link
-          color="inherit"
-          component={RouterLink}
-          to={`/${process.env.PUBLIC_URL}/`}
-        >
+        <Link color="inherit" component={RouterLink} to={`/${process.env.PUBLIC_URL}/`}>
           {process.env.REACT_APP_NAME}
         </Link>{" "}
         {new Date().getFullYear()}

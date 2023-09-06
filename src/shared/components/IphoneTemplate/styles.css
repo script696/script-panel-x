@@ -75,23 +75,11 @@
   width: 6px;
 }
 .device-iphone-x .device-header::after {
-  background: radial-gradient(
-    circle at bottom left,
-    transparent 0,
-    transparent 75%,
-    #222 75%,
-    #222 100%
-  );
+  background: radial-gradient(circle at bottom left, transparent 0, transparent 75%, #222 75%, #222 100%);
   left: -6px;
 }
 .device-iphone-x .device-header::before {
-  background: radial-gradient(
-    circle at bottom right,
-    transparent 0,
-    transparent 75%,
-    #222 75%,
-    #222 100%
-  );
+  background: radial-gradient(circle at bottom right, transparent 0, transparent 75%, #222 75%, #222 100%);
   right: -6px;
 }
 .device-iphone-x .device-sensors::after,

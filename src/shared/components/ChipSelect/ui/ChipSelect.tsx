@@ -1,12 +1,5 @@
 import React, { FC } from "react";
-import {
-  Box,
-  Chip,
-  InputLabel,
-  OutlinedInput,
-  Select,
-  SelectProps,
-} from "@material-ui/core";
+import { Box, Chip, InputLabel, OutlinedInput, Select, SelectProps } from "@material-ui/core";
 import { PRODUCT_US_SIZES } from "features/ProductEditModal/constants/constants";
 import MenuItem from "@material-ui/core/MenuItem";
 import { MENU_PROPS } from "../constants/constants";
@@ -27,10 +20,7 @@ const ChipSelect: FC<ChipSelectProps> = ({ onChange, value, id, label }) => {
         onChange={onChange}
         input={<OutlinedInput id={id} label={label} name={id} />}
         renderValue={(selected) => (
-          <Box
-            sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}
-            width={"100%"}
-          >
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }} width={"100%"}>
             {selected.map((value) => (
               <Chip key={value} label={value} />
             ))}

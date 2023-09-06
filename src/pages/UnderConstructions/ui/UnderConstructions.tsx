@@ -10,12 +10,7 @@ const UnderConstructions = () => {
   return (
     <Result
       extra={
-        <Button
-          color="secondary"
-          component={RouterLink}
-          to={`/${process.env.PUBLIC_URL}/admin`}
-          variant="contained"
-        >
+        <Button color="secondary" component={RouterLink} to={`/${process.env.PUBLIC_URL}/admin`} variant="contained">
           {t("common.backHome")}
         </Button>
       }

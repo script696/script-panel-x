@@ -34,14 +34,7 @@ type ResultProps = {
   title: string;
 };
 
-const Result = ({
-  extra,
-  image,
-  maxWidth = "xs",
-  status,
-  subTitle,
-  title,
-}: ResultProps) => {
+const Result = ({ extra, image, maxWidth = "xs", status, subTitle, title }: ResultProps) => {
   return (
     <Container maxWidth={maxWidth}>
       <Box sx={{ textAlign: "center", px: 3, py: 8 }}>

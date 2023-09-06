@@ -18,14 +18,7 @@ type ConfirmDialogProps = {
   title: string;
 };
 
-const ConfirmDeleteModal = ({
-  description,
-  onClose,
-  onConfirm,
-  open,
-  isLoading,
-  title,
-}: ConfirmDialogProps) => {
+const ConfirmDeleteModal = ({ description, onClose, onConfirm, open, isLoading, title }: ConfirmDialogProps) => {
   const { t } = useTranslation();
 
   return (
@@ -42,20 +35,11 @@ const ConfirmDeleteModal = ({
         <DialogTitle id="confirm-dialog-title" sx={{ pb: 1, pt: 0 }}>
           {title}
         </DialogTitle>
-        {description && (
-          <DialogContentText id="confirm-dialog-description">
-            {description}
-          </DialogContentText>
-        )}
+        {description && <DialogContentText id="confirm-dialog-description">{description}</DialogContentText>}
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>{t("common.cancel")}</Button>
-        <LoadingButton
-          autoFocus
-          onClick={onConfirm}
-          loading={isLoading}
-          variant="contained"
-        >
+        <LoadingButton autoFocus onClick={onConfirm} loading={isLoading} variant="contained">
           {t("common.confirm")}
         </LoadingButton>
       </DialogActions>
