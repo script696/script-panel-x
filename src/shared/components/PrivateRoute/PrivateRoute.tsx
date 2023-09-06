@@ -6,9 +6,7 @@ type PrivateRouteProps = {
 } & RouteProps;
 
 const PrivateRoute = ({ ...routeProps }: PrivateRouteProps) => {
-  const { isAuth, isLoading, isChecked } = useAppSelector(
-    (state) => state.authReducer,
-  );
+  const { isAuth, isLoading, isChecked } = useAppSelector((state) => state.authReducer);
 
   if (isLoading || !isChecked) {
     return <div>Loading ...</div>;

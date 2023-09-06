@@ -10,10 +10,7 @@ import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import DialogActions from "@material-ui/core/DialogActions";
 import { ChipSelect } from "shared/components/ChipSelect";
-import {
-  ProductCreateMainInfo,
-  ProductEditMainInfo,
-} from "app/store/reducers/products/types/typedef";
+import { ProductCreateMainInfo, ProductEditMainInfo } from "app/store/reducers/products/types/typedef";
 import { Mode } from "../../types/typedef";
 import { useMainInfoForm } from "../../hooks/useMainInfoForm";
 import { MENU_PROPS } from "shared/components/ChipSelect/constants/constants";
@@ -23,9 +20,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 type MainInfoProps = {
   mode: Mode;
   onClose: () => void;
-  onSubmit: (
-    productMainInfo: ProductEditMainInfo | ProductCreateMainInfo,
-  ) => void;
+  onSubmit: (productMainInfo: ProductEditMainInfo | ProductCreateMainInfo) => void;
   isLoading: boolean;
   product?: ProductEditMainInfo | ProductCreateMainInfo;
 };
@@ -107,9 +102,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           helperText={formik.touched.discount && formik.errors.discount}
         />
         <FormControl margin="normal">
-          <InputLabel id={"currency-label"}>
-            {t("admin.products.form-labels.currency")}
-          </InputLabel>
+          <InputLabel id={"currency-label"}>{t("admin.products.form-labels.currency")}</InputLabel>
           <Select
             id={"currency"}
             label={t("admin.products.form-labels.currency")}

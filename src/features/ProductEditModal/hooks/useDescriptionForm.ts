@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { ProductSecondaryInfo } from "../../../app/store/reducers/products/types/typedef";
+import { ProductSecondaryInfo } from "app/store/reducers/products/types/typedef";
 import { TFunction } from "i18next";
 
 type useDescriptionFormParams = {
@@ -9,21 +9,14 @@ type useDescriptionFormParams = {
   onSubmit: (productMainInfo: ProductSecondaryInfo) => void;
 };
 
-export const useDescriptionForm = ({
-  product,
-  t,
-  onSubmit,
-}: useDescriptionFormParams) => {
+export const useDescriptionForm = ({ product, t, onSubmit }: useDescriptionFormParams) => {
   const formik = useFormik({
     initialValues: {
       id: product.id,
       description: product.description,
     },
     validationSchema: Yup.object({
-      description: Yup.string()
-        .min(10)
-        .max(200)
-        .required(t("common.validations.required")),
+      description: Yup.string().min(10).max(200).required(t("common.validations.required")),
     }),
     onSubmit,
   });

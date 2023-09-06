@@ -6,9 +6,7 @@ export const useProductTableRdx = () => {
   const { changePagination } = productsSlice.actions;
   const productsState = useAppSelector((state) => state.productReducer);
 
-  const handleChangePagination = (
-    params: { page: number } | { rowsPerPage: number },
-  ) => {
+  const handleChangePagination = (params: { page: number } | { rowsPerPage: number }) => {
     dispatch(changePagination(params));
   };
 

@@ -22,10 +22,7 @@ export const botSlice = createSlice({
   extraReducers: {
     /* Get Bot */
 
-    [getBotThunk.fulfilled.type]: (
-      state,
-      { payload }: PayloadAction<BotViewModel>,
-    ) => {
+    [getBotThunk.fulfilled.type]: (state, { payload }: PayloadAction<BotViewModel>) => {
       state.isLoading = false;
       state.error = "";
       state.bot = payload;
@@ -33,19 +30,13 @@ export const botSlice = createSlice({
     [getBotThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [getBotThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [getBotThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
     },
     /* update Bot */
 
-    [updateBotThunk.fulfilled.type]: (
-      state,
-      { payload }: PayloadAction<BotViewModel>,
-    ) => {
+    [updateBotThunk.fulfilled.type]: (state, { payload }: PayloadAction<BotViewModel>) => {
       state.isLoading = false;
       state.error = "";
       state.bot = payload;
@@ -53,10 +44,7 @@ export const botSlice = createSlice({
     [updateBotThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [updateBotThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [updateBotThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
     },

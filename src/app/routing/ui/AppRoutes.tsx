@@ -11,31 +11,15 @@ import { NotFoundLazy } from "pages/NotFound";
 import { UnderConstructionsLazy } from "pages/UnderConstructions";
 import { ProductsLazy } from "pages/Products";
 import { UsersLazy } from "pages/Users";
-import {
-  ROUTES_ADMIN,
-  ROUTES_BASE,
-  ROUTES_SYSTEM_ADMIN,
-} from "../constants/routes";
+import { ROUTES_ADMIN, ROUTES_BASE, ROUTES_SYSTEM_ADMIN } from "../constants/routes";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <PrivateRoute
-        path={ROUTES_BASE.SYSTEM_ADMIN}
-        element={<AdminLayoutLazy />}
-      >
-        <PrivateRoute
-          path={ROUTES_SYSTEM_ADMIN.USERS}
-          element={<UsersLazy />}
-        />
-        <PrivateRoute
-          path={ROUTES_SYSTEM_ADMIN.BOTS}
-          element={<div>bots</div>}
-        />
-        <PrivateRoute
-          path={ROUTES_SYSTEM_ADMIN.PROFILE}
-          element={<ProfileLazy />}
-        />
+      <PrivateRoute path={ROUTES_BASE.SYSTEM_ADMIN} element={<AdminLayoutLazy />}>
+        <PrivateRoute path={ROUTES_SYSTEM_ADMIN.USERS} element={<UsersLazy />} />
+        <PrivateRoute path={ROUTES_SYSTEM_ADMIN.BOTS} element={<div>bots</div>} />
+        <PrivateRoute path={ROUTES_SYSTEM_ADMIN.PROFILE} element={<ProfileLazy />} />
       </PrivateRoute>
 
       <PrivateRoute path={ROUTES_BASE.ADMIN} element={<AdminLayoutLazy />}>
@@ -46,17 +30,11 @@ const AppRoutes = () => {
         <PrivateRoute path={ROUTES_ADMIN.PROFILE} element={<ProfileLazy />} />
       </PrivateRoute>
       <Route path={ROUTES_BASE.LOGIN} element={<LoginLazy />} />
-      <Route
-        path={ROUTES_BASE.UNDER_CONSTRUCTION}
-        element={<UnderConstructionsLazy />}
-      />
+      <Route path={ROUTES_BASE.UNDER_CONSTRUCTION} element={<UnderConstructionsLazy />} />
       <Route path={ROUTES_BASE.FORBIDDEN} element={<ForbiddenLazy />} />
       <Route path={ROUTES_BASE.NOT_FOUND} element={<NotFoundLazy />} />
       <Route path="/" element={<Navigate to={ROUTES_BASE.ADMIN} replace />} />
-      <Route
-        path="*"
-        element={<Navigate to={`/${process.env.PUBLIC_URL}/404`} replace />}
-      />
+      <Route path="*" element={<Navigate to={`/${process.env.PUBLIC_URL}/404`} replace />} />
     </Routes>
   );
 };

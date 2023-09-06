@@ -19,12 +19,7 @@ type ProductsTableProps = {
   selected: Array<string>;
 };
 
-const ProductsTable: FC<ProductsTableProps> = ({
-  onDelete,
-  onEdit,
-  onSelectedChange,
-  selected,
-}) => {
+const ProductsTable: FC<ProductsTableProps> = ({ onDelete, onEdit, onSelectedChange, selected }) => {
   const { productsState, handleChangePagination } = useProductTableRdx();
   const { handleChangePage, handleChangeRowsPerPage } = usePagination({
     onChangePagination: (params) => handleChangePagination(params),

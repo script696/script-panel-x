@@ -44,9 +44,7 @@ const Description: FC<DescriptionProps> = (props) => {
           disabled={isLoading}
           value={formik.values.description}
           onChange={formik.handleChange}
-          error={
-            formik.touched.description && Boolean(formik.errors.description)
-          }
+          error={formik.touched.description && Boolean(formik.errors.description)}
           helperText={formik.touched.description && formik.errors.description}
         />
       </DialogContent>

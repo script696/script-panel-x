@@ -36,10 +36,7 @@ export const authSlice = createSlice({
     [checkAuthThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [checkAuthThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [checkAuthThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
       state.isAuth = false;
@@ -57,10 +54,7 @@ export const authSlice = createSlice({
     [signInThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [signInThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [signInThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
       state.isAuth = false;
@@ -76,10 +70,7 @@ export const authSlice = createSlice({
     [logoutThunk.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [logoutThunk.rejected.type]: (
-      state,
-      { payload }: PayloadAction<string>,
-    ) => {
+    [logoutThunk.rejected.type]: (state, { payload }: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = payload;
       state.isAuth = false;

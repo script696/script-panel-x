@@ -24,17 +24,11 @@ const BoxedLayout = ({ children }: BoxedLayoutProps) => {
 
   return (
     <React.Fragment>
-      <GlobalStyles
-        styles={{ body: { backgroundColor: theme.palette.background.paper } }}
-      />
+      <GlobalStyles styles={{ body: { backgroundColor: theme.palette.background.paper } }} />
       <AppBar color="transparent" position="relative">
         <Toolbar>
           <Box sx={{ flexGrow: 1 }} />
-          <IconButton
-            aria-label="settings"
-            component="span"
-            onClick={handleSettingsToggle}
-          >
+          <IconButton aria-label="settings" component="span" onClick={handleSettingsToggle}>
             <SettingsIcon />
           </IconButton>
         </Toolbar>
@@ -50,10 +44,7 @@ const BoxedLayout = ({ children }: BoxedLayoutProps) => {
           <Logo sx={{ mb: 2 }} />
           {children}
           <Box>
-            <SettingsDrawer
-              onDrawerToggle={handleSettingsToggle}
-              open={settingsOpen}
-            />
+            <SettingsDrawer onDrawerToggle={handleSettingsToggle} open={settingsOpen} />
           </Box>
         </Box>
       </Container>

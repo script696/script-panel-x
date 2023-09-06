@@ -2,14 +2,8 @@ import { $apiClient } from "../client";
 import { GetUserDto } from "./dto/GetUserDto";
 import { GetUsersRequestDto, GetUsersResponseDto } from "./dto/GetUsersDto";
 import { EditUserRequestDto, EditUserResponseDto } from "./dto/EditUserDto";
-import {
-  RemoveUserRequestDto,
-  RemoveUserResponseDto,
-} from "./dto/RemoveUserDto";
-import {
-  CreateUserRequestDto,
-  CreateUserResponseDto,
-} from "./dto/CreateUserDto";
+import { RemoveUserRequestDto, RemoveUserResponseDto } from "./dto/RemoveUserDto";
+import { CreateUserRequestDto, CreateUserResponseDto } from "./dto/CreateUserDto";
 
 export class UsersService {
   static getUser() {

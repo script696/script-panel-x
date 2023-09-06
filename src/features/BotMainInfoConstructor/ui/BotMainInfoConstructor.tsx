@@ -19,26 +19,18 @@ const BotMainInfoConstructor: FC<MainInfoProps> = ({ mainInfo }) => {
     <EditableRow title={"Main Info"} onEdit={handleOpen}>
       <Box display={"flex"} flexDirection={"column"} rowGap={1}>
         <Box display={"flex"} columnGap={3}>
-          <Typography variant={"h6"}>
-            {t("admin.bot.constructor.main-info.hello-text")}
-          </Typography>
+          <Typography variant={"h6"}>{t("admin.bot.constructor.main-info.hello-text")}</Typography>
           <Typography variant={"h6"}>-</Typography>
           <Typography variant={"h5"}>{helloText}</Typography>
         </Box>{" "}
         <Box display={"flex"} columnGap={3}>
-          <Typography variant={"h6"}>
-            {t("admin.bot.constructor.main-info.shop-name")}
-          </Typography>
+          <Typography variant={"h6"}>{t("admin.bot.constructor.main-info.shop-name")}</Typography>
           <Typography variant={"h6"}>-</Typography>
           <Typography variant={"h5"}>{shopName}</Typography>
         </Box>
       </Box>
 
-      <UpdateMainInfoModal
-        isProductEditModalOpen={isModalOpen}
-        onCloseModal={handleClose}
-        botMainInfo={mainInfo}
-      />
+      <UpdateMainInfoModal isProductEditModalOpen={isModalOpen} onCloseModal={handleClose} botMainInfo={mainInfo} />
     </EditableRow>
   );
 };

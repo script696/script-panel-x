@@ -17,15 +17,8 @@ type ProductsTableProps = {
   selected: Array<string>;
 };
 
-const UsersTable: FC<ProductsTableProps> = ({
-  onDelete,
-  onEdit,
-  onSelectedChange,
-  selected,
-}) => {
-  const { usersData, isLoading } = useAppSelector(
-    (state) => state.usersReducer,
-  );
+const UsersTable: FC<ProductsTableProps> = ({ onDelete, onEdit, onSelectedChange, selected }) => {
+  const { usersData, isLoading } = useAppSelector((state) => state.usersReducer);
 
   const { users } = usersData;
 

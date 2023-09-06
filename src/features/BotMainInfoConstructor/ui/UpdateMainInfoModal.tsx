@@ -17,11 +17,7 @@ type UpdateMainInfoModalProps = {
   botMainInfo?: BotViewModel["mainInfo"];
 };
 
-const UpdateMainInfoModal: FC<UpdateMainInfoModalProps> = ({
-  isProductEditModalOpen,
-  onCloseModal,
-  botMainInfo,
-}) => {
+const UpdateMainInfoModal: FC<UpdateMainInfoModalProps> = ({ isProductEditModalOpen, onCloseModal, botMainInfo }) => {
   const { handleSubmit, isLoading } = useUpdateMainInfoModalRdx({
     onCloseModal,
   });
@@ -35,9 +31,7 @@ const UpdateMainInfoModal: FC<UpdateMainInfoModalProps> = ({
 
   return (
     <Dialog open={isProductEditModalOpen} onClose={onCloseModal}>
-      <DialogTitle id="bot-dialog-title">
-        {t("admin.bot.constructor.main-info.title")}
-      </DialogTitle>
+      <DialogTitle id="bot-dialog-title">{t("admin.bot.constructor.main-info.title")}</DialogTitle>
       <Box
         component={"form"}
         onSubmit={formik.handleSubmit}

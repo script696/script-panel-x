@@ -12,11 +12,7 @@ type ProductsTableHeadProps = {
   rowCount: number;
 };
 
-export const ProductsTableHead: FC<ProductsTableHeadProps> = ({
-  onSelectAllClick,
-  numSelected,
-  rowCount,
-}) => {
+export const ProductsTableHead: FC<ProductsTableHeadProps> = ({ onSelectAllClick, numSelected, rowCount }) => {
   const { t } = useTranslation();
 
   return (
