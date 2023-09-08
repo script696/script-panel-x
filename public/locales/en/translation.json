@@ -8,6 +8,7 @@
         "settings": "Settings"
       }
     },
+
     "bot" : {
       "toolbar" : {
         "title" : "Your Bot"
@@ -57,7 +58,13 @@
         "sizes" : "Sizes",
         "disabled" : "Disabled"
       }
+    },
+    "help-center" : {
+      "title" : "Help center",
+      "faq" : "FAQ",
+      "contact" : "Contact"
     }
+
   },
   "system-admin": {
     "sidebar": {
@@ -160,5 +167,34 @@
         }
       },
       "title": "Settings"
+  },
+  "faq" : {
+    "title" : "Project FAQ",
+    "questions" : {
+      "question_1" : {
+        "title" : "What kind of project is this?",
+        "answer" : "The project is a space where owners of bots (Telegram stores) can manage their bots, and Telegram users can view their products in Telegram"
+      },
+      "question_2" : {
+        "title" : "What roles are there in this project?",
+        "answer" : "This project has the role of system administrator, administrator and user.\nThe system administrator creates administrators (owners of telegram bots).\nAdministrators manage their bots and products.\nUsers view bots on Telegram"
+      },
+      "question_3" : {
+        "title" : "Can I get my own bot?",
+        "answer" : "Yes, for this you need to send a request in telegram - https://t.me/script696://t.me/script696"
+      },
+      "question_4" : {
+        "title" : "How many active bots are there at the moment?",
+        "answer" : "At the moment there are two test bots xomi and alpha."
+      },
+      "question_5" : {
+        "title" : "Is it possible to test the functionality of bots?",
+        "answer" : "Yes! You can try yourself as an administrator by logging in with the name xomi or alpha, password 1111"
+      },
+      "question_6" : {
+        "title" : "Is it possible to take part in the development?",
+        "answer" : "Yes, for this you need to send a request in telegram - https://t.me/script696://t.me/script696"
+      }
+    }
   }
 }
