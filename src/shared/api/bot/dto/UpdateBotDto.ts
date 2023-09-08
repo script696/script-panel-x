@@ -13,6 +13,10 @@ export interface UpdateBotRequestDto {
     secondaryColor: string;
     alternateColor: string;
   };
+  logo?: {
+    source: string;
+    size: number;
+  };
 }
 
 export interface UpdateBotResponseDto extends BotApi {}

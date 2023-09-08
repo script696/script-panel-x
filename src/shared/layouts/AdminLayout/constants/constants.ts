@@ -8,8 +8,8 @@ import { ROUTES_SYSTEM_ADMIN } from "app/routing/constants/routes";
 export const ADMIN_MENU_ITEMS = [
   {
     icon: HomeIcon,
-    key: "admin.sidebar.menu.home",
-    path: `/${ROUTES_BASE.ADMIN}`,
+    key: "admin.sidebar.menu.bot",
+    path: `/${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.BOT}`,
   },
   {
     icon: CategoryIcon,

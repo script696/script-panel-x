@@ -11,4 +11,5 @@ export interface BotApi {
     secondaryColor: string;
     alternateColor: string;
   };
+  logo: { source: string; size: number };
 }

@@ -3,7 +3,7 @@ import PrivateRoute from "shared/components/PrivateRoute/PrivateRoute";
 import { AdminLayoutLazy } from "shared/layouts/AdminLayout";
 import { FaqLazy } from "pages/Faq";
 import { HelpCenterLazy } from "pages/HelpCenter";
-import { HomeLazy } from "pages/Home";
+import { BotLazy } from "pages/Bot";
 import { ProfileLazy } from "pages/Profile";
 import { LoginLazy } from "pages/Login";
 import { ForbiddenLazy } from "pages/Forbidden";
@@ -23,7 +23,7 @@ const AppRoutes = () => {
       </PrivateRoute>
 
       <PrivateRoute path={ROUTES_BASE.ADMIN} element={<AdminLayoutLazy />}>
-        <PrivateRoute path={ROUTES_ADMIN.MAIN} element={<HomeLazy />} />
+        <PrivateRoute path={ROUTES_ADMIN.BOT} element={<BotLazy />} />
         <PrivateRoute path={ROUTES_ADMIN.PRODUCTS} element={<ProductsLazy />} />
         <PrivateRoute path={ROUTES_ADMIN.FAQ} element={<FaqLazy />} />
         <PrivateRoute path={ROUTES_ADMIN.HELP} element={<HelpCenterLazy />} />
@@ -33,7 +33,7 @@ const AppRoutes = () => {
       <Route path={ROUTES_BASE.UNDER_CONSTRUCTION} element={<UnderConstructionsLazy />} />
       <Route path={ROUTES_BASE.FORBIDDEN} element={<ForbiddenLazy />} />
       <Route path={ROUTES_BASE.NOT_FOUND} element={<NotFoundLazy />} />
-      <Route path="/" element={<Navigate to={ROUTES_BASE.ADMIN} replace />} />
+      <Route path="/" element={<Navigate to={`${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.BOT}`} replace />} />
       <Route path="*" element={<Navigate to={`/${process.env.PUBLIC_URL}/404`} replace />} />
     </Routes>
   );

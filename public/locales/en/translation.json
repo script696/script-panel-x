@@ -2,7 +2,7 @@
   "admin": {
     "sidebar": {
       "menu": {
-        "home": "Home",
+        "bot": "Bot",
         "products": "Products",
         "help": "Help",
         "settings": "Settings"
@@ -17,6 +17,9 @@
           "title" : "Bot main info",
           "hello-text" : "Hello text",
           "shop-name" : "Shop name"
+        },
+        "logo" : {
+          "title" : "Logo"
         }
       }
     },
