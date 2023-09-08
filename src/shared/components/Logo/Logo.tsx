@@ -1,5 +1,5 @@
 import Box, { BoxProps } from "@material-ui/core/Box";
-import { ReactComponent as LogoSvg } from "../../assets/logo.svg";
+import { ReactComponent as LogoSvg } from "shared/assets/paper-plane.svg";
 
 type LogoProps = {
   size?: number;

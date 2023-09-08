@@ -1,5 +1,5 @@
-import { ReactComponent as EmptySvg } from "../../assets/empty.svg";
 import Result from "../ResultImage/ResultImage";
+import EmptySvg from "@material-ui/icons/BrowserNotSupportedOutlined";
 
 type EmptyProps = {
   message?: string;

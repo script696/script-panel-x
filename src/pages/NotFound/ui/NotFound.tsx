@@ -2,7 +2,7 @@ import Button from "@material-ui/core/Button";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 import Result from "shared/components/ResultImage/ResultImage";
-import { ReactComponent as NotFoundSvg } from "shared/assets/404.svg";
+import SearchOffOutlinedIcon from "@material-ui/icons/SearchOffOutlined";
 
 const NotFound = () => {
   const { t } = useTranslation();
@@ -14,7 +14,7 @@ const NotFound = () => {
           {t("common.backHome")}
         </Button>
       }
-      image={<NotFoundSvg />}
+      image={<SearchOffOutlinedIcon />}
       maxWidth="sm"
       subTitle={t("common.errors.notFound.subTitle")}
       title={t("common.errors.notFound.title")}
