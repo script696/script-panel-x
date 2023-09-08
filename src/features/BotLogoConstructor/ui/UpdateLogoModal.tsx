@@ -16,11 +16,13 @@ type UpdateLogoModalProps = {
   isModalOpen: boolean;
   onCloseModal: () => void;
   botLogo: BotViewModel["logo"];
+  reloadBotFrame: () => void;
 };
 
-const UpdateLogoModal: FC<UpdateLogoModalProps> = ({ isModalOpen, onCloseModal, botLogo }) => {
+const UpdateLogoModal: FC<UpdateLogoModalProps> = ({ isModalOpen, onCloseModal, botLogo, reloadBotFrame }) => {
   const { handleSubmit, isLoading } = useUpdateLogoModalRdx({
     onCloseModal,
+    reloadBotFrame,
   });
   const { t } = useTranslation();
 

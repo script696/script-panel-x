@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Box, Grid, Typography } from "@material-ui/core";
 import { useModal } from "shared/hooks/useModal";
 import EditableRow from "shared/components/EditableRow/EditableRow";
@@ -6,7 +6,11 @@ import UpdateColorModal from "./UpdateColorModal";
 import { BG_TO_LABEL_MAP, COLOR_THEME_FORM_DEFAULT_VALUES } from "../constants/constants";
 import { useAppSelector } from "app/store";
 
-const BotColorThemeConstructor = () => {
+type BotColorThemeConstructorProps = {
+  reloadBotFrame: () => void;
+};
+
+const BotColorThemeConstructor: FC<BotColorThemeConstructorProps> = ({ reloadBotFrame }) => {
   const { isModalOpen, handleOpen, handleClose } = useModal();
   const { bot } = useAppSelector((state) => state.botReducer);
 
@@ -52,7 +56,12 @@ const BotColorThemeConstructor = () => {
           </Grid>
         </Grid>
       </Box>
-      <UpdateColorModal isModalOpen={isModalOpen} onCloseModal={handleClose} botColorTheme={colorTheme} />
+      <UpdateColorModal
+        isModalOpen={isModalOpen}
+        onCloseModal={handleClose}
+        botColorTheme={colorTheme}
+        reloadBotFrame={reloadBotFrame}
+      />
     </EditableRow>
   );
 };
