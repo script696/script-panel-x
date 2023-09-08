@@ -1,19 +1,23 @@
 import { Box } from "@material-ui/core";
-import React from "react";
+import React, { FC } from "react";
 import { BotMainInfoConstructor } from "features/BotMainInfoConstructor";
 import { BotColorConstructor } from "features/BotColorThemeConstructor";
 import { useBotConstructorRdx } from "../hooks/useBotConstructorRdx";
 import BotLogoConstructor from "features/BotLogoConstructor/ui/BotLogoConstructor";
 
-const BotConstructor = () => {
+type BotConstructorProps = {
+  reloadBotFrame: () => void;
+};
+
+const BotConstructor: FC<BotConstructorProps> = ({ reloadBotFrame }) => {
   const { botState } = useBotConstructorRdx();
   const { bot } = botState;
 
   return (
     <Box display={"flex"} flexDirection={"column"} gap={3}>
-      <BotMainInfoConstructor mainInfo={bot?.mainInfo} />
-      <BotLogoConstructor />
-      <BotColorConstructor />
+      <BotMainInfoConstructor mainInfo={bot?.mainInfo} reloadBotFrame={reloadBotFrame} />
+      <BotLogoConstructor reloadBotFrame={reloadBotFrame} />
+      <BotColorConstructor reloadBotFrame={reloadBotFrame} />
     </Box>
   );
 };

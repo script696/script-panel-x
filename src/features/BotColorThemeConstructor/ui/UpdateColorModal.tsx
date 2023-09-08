@@ -15,16 +15,21 @@ type UpdateColorModalProps = {
   isModalOpen: boolean;
   onCloseModal: () => void;
   botColorTheme?: BotViewModel["colorTheme"];
+  reloadBotFrame: () => void;
 };
 
-const UpdateColorModal: FC<UpdateColorModalProps> = ({ isModalOpen, onCloseModal, botColorTheme }) => {
+const UpdateColorModal: FC<UpdateColorModalProps> = ({ isModalOpen, onCloseModal, botColorTheme, reloadBotFrame }) => {
   const { t } = useTranslation();
 
   const { handleSubmit: onSubmit, isLoading } = useUpdateColorModalRdx({
     onCloseModal,
   });
 
-  const { handleSubmit, handleChangeColor, colorThemeForm, resetForm } = useColorThemeForm({ botColorTheme, onSubmit });
+  const { handleSubmit, handleChangeColor, colorThemeForm, resetForm } = useColorThemeForm({
+    botColorTheme,
+    onSubmit,
+    reloadBotFrame,
+  });
 
   const handleCloseModal = () => {
     resetForm();

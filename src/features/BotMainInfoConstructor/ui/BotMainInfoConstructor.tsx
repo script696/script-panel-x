@@ -8,9 +8,10 @@ import { useTranslation } from "react-i18next";
 
 type MainInfoProps = {
   mainInfo?: BotViewModel["mainInfo"];
+  reloadBotFrame: () => void;
 };
 
-const BotMainInfoConstructor: FC<MainInfoProps> = ({ mainInfo }) => {
+const BotMainInfoConstructor: FC<MainInfoProps> = ({ mainInfo, reloadBotFrame }) => {
   const { t } = useTranslation();
   const { helloText, shopName } = mainInfo || {};
   const { isModalOpen, handleOpen, handleClose } = useModal();
@@ -30,7 +31,12 @@ const BotMainInfoConstructor: FC<MainInfoProps> = ({ mainInfo }) => {
         </Box>
       </Box>
 
-      <UpdateMainInfoModal isProductEditModalOpen={isModalOpen} onCloseModal={handleClose} botMainInfo={mainInfo} />
+      <UpdateMainInfoModal
+        isProductEditModalOpen={isModalOpen}
+        onCloseModal={handleClose}
+        botMainInfo={mainInfo}
+        reloadBotFrame={reloadBotFrame}
+      />
     </EditableRow>
   );
 };

@@ -15,11 +15,18 @@ type UpdateMainInfoModalProps = {
   isProductEditModalOpen: boolean;
   onCloseModal: () => void;
   botMainInfo?: BotViewModel["mainInfo"];
+  reloadBotFrame: () => void;
 };
 
-const UpdateMainInfoModal: FC<UpdateMainInfoModalProps> = ({ isProductEditModalOpen, onCloseModal, botMainInfo }) => {
+const UpdateMainInfoModal: FC<UpdateMainInfoModalProps> = ({
+  isProductEditModalOpen,
+  onCloseModal,
+  botMainInfo,
+  reloadBotFrame,
+}) => {
   const { handleSubmit, isLoading } = useUpdateMainInfoModalRdx({
     onCloseModal,
+    reloadBotFrame,
   });
   const { t } = useTranslation();
 

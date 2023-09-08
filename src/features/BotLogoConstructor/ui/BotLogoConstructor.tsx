@@ -7,7 +7,11 @@ import UpdateLogoModal from "features/BotLogoConstructor/ui/UpdateLogoModal";
 import { useAppSelector } from "app/store";
 import { LOGO_FORM_DEFAULT_VALUES } from "features/BotLogoConstructor/constants/constants";
 
-const BotLogoConstructor: FC = () => {
+type BotLogoConstructorProps = {
+  reloadBotFrame: () => void;
+};
+
+const BotLogoConstructor: FC<BotLogoConstructorProps> = ({ reloadBotFrame }) => {
   const { isModalOpen, handleOpen, handleClose } = useModal();
 
   const { bot } = useAppSelector((state) => state.botReducer);
@@ -20,7 +24,12 @@ const BotLogoConstructor: FC = () => {
         <Typography variant={"h6"}>-</Typography>
         <img src={logo.source} style={{ maxHeight: "50px" }} alt={"bot logo"} />
       </Box>
-      <UpdateLogoModal isModalOpen={isModalOpen} onCloseModal={handleClose} botLogo={logo} />
+      <UpdateLogoModal
+        isModalOpen={isModalOpen}
+        onCloseModal={handleClose}
+        botLogo={logo}
+        reloadBotFrame={reloadBotFrame}
+      />
     </EditableRow>
   );
 };
