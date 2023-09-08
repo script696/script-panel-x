@@ -2,9 +2,9 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { ReactComponent as ErrorSvg } from "../../assets/error.svg";
-import { ReactComponent as SuccessSvg } from "../../assets/success.svg";
 import SvgContainer from "../SvgContainer/SvgContainer";
+import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
+import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 
 type ResultImageProps = {
   customImage?: React.ReactNode;
@@ -16,9 +16,9 @@ const ResultImage = ({ customImage, status }: ResultImageProps) => {
 
   if (!image) {
     if (status === "error") {
-      image = <ErrorSvg />;
+      image = <ErrorOutlineOutlinedIcon />;
     } else if (status === "success") {
-      image = <SuccessSvg />;
+      image = <CheckCircleOutlineOutlinedIcon />;
     }
   }
 

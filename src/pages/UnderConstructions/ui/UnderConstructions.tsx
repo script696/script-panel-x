@@ -2,7 +2,7 @@ import Button from "@material-ui/core/Button";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 import Result from "../../../shared/components/ResultImage/ResultImage";
-import { ReactComponent as ConstructionsSvg } from "../../../shared/assets/constructions.svg";
+import ConstructionsSvg from "@material-ui/icons/HandymanOutlined";
 
 const UnderConstructions = () => {
   const { t } = useTranslation();

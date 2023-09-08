@@ -6,8 +6,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import { useTranslation } from "react-i18next";
-import { ReactComponent as ConfirmSvg } from "../../assets/confirm.svg";
 import SvgContainer from "../SvgContainer/SvgContainer";
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 type ConfirmDialogProps = {
   description?: string;
@@ -30,7 +30,7 @@ const ConfirmDeleteModal = ({ description, onClose, onConfirm, open, isLoading, 
     >
       <DialogContent sx={{ textAlign: "center" }}>
         <SvgContainer>
-          <ConfirmSvg style={{ maxWidth: 280, width: "100%" }} />
+          <DeleteOutlineOutlinedIcon style={{ maxWidth: 280, width: "100%" }} />
         </SvgContainer>
         <DialogTitle id="confirm-dialog-title" sx={{ pb: 1, pt: 0 }}>
           {title}
