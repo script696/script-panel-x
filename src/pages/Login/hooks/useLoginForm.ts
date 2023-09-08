@@ -3,11 +3,13 @@ import * as Yup from "yup";
 import { SignInRequestDto } from "shared/api/auth/dto/signInDto";
 import { useTranslation } from "react-i18next";
 
-type useLoginFormParams = {
+export type LoginFormValues = { nikName: string; password: string };
+
+type UseLoginFormParams = {
   onSubmit: (data: SignInRequestDto) => Promise<void>;
 };
 
-export const useLoginForm = ({ onSubmit }: useLoginFormParams) => {
+export const useLoginForm = ({ onSubmit }: UseLoginFormParams) => {
   const { t } = useTranslation();
 
   const formik = useFormik({
@@ -22,5 +24,9 @@ export const useLoginForm = ({ onSubmit }: useLoginFormParams) => {
     onSubmit,
   });
 
-  return { formik };
+  const forceSetFormValue = (formValues: LoginFormValues) => {
+    formik.setValues(formValues);
+  };
+
+  return { formik, forceSetFormValue };
 };

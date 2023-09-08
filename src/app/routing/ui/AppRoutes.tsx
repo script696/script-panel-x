@@ -34,7 +34,7 @@ const AppRoutes = () => {
       <Route path={ROUTES_BASE.FORBIDDEN} element={<ForbiddenLazy />} />
       <Route path={ROUTES_BASE.NOT_FOUND} element={<NotFoundLazy />} />
       <Route path="/" element={<Navigate to={`${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.BOT}`} replace />} />
-      <Route path="*" element={<Navigate to={`/${process.env.PUBLIC_URL}/404`} replace />} />
+      {/*<Route path="*" element={<Navigate to={`/${process.env.PUBLIC_URL}/404`} replace />} />*/}
     </Routes>
   );
 };
