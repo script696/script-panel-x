@@ -11,6 +11,7 @@ export const ROUTES_BASE = {
 
 export const ROUTES_ADMIN = {
   MAIN: "/",
+  BOT: "bot",
   PRODUCTS: "products",
   FAQ: "faq",
   HELP: "help",

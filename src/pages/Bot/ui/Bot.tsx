@@ -6,7 +6,7 @@ import AdminAppBar from "shared/components/AdminAppBar/AdminAppBar";
 import { Grid, Typography } from "@material-ui/core";
 import { BotConstructor } from "widgets/BotConstructor";
 
-const Home = () => {
+const Bot = () => {
   const { t } = useTranslation();
 
   return (
@@ -16,7 +16,7 @@ const Home = () => {
       </AdminAppBar>
 
       <Grid container spacing={1} sx={{ mt: 3 }}>
-        <Grid item xs={6}>
+        <Grid item xs={6} display={"flex"} justifyContent={"center"} alignItems={"center"}>
           <IphoneTemplate>
             <iframe
               src={"http://localhost:4000?botName=Nikita"}
@@ -29,7 +29,7 @@ const Home = () => {
           </IphoneTemplate>
         </Grid>
         <Grid item xs={6}>
-          <Typography variant={"h2"} align={"center"} mb={5}>
+          <Typography variant={"h2"} align={"center"} mb={1}>
             Control your bot !
           </Typography>
           <BotConstructor />
@@ -39,4 +39,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Bot;

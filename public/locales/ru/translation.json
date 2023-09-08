@@ -2,7 +2,7 @@
   "admin": {
     "sidebar": {
       "menu": {
-        "home": "Главная",
+        "bot": "Бот",
         "products": "Продукты",
         "help": "Помощь",
         "settings": "Настройки"
