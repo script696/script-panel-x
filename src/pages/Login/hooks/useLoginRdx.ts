@@ -4,6 +4,7 @@ import { signInThunk } from "app/store/reducers/auth/authThunk";
 import { getUserThunk } from "app/store/reducers/user/userThunk";
 import { GetUserDto } from "shared/api/users/dto/GetUserDto";
 import { useNavigate } from "react-router-dom";
+import { ROUTES_ADMIN, ROUTES_BASE } from "app/routing";
 
 export const useLoginRdx = () => {
   const dispatch = useAppDispatch();
@@ -19,7 +20,7 @@ export const useLoginRdx = () => {
     if (!user) return;
 
     const redirectUrl =
-      user.role === "admin" ? `/${process.env.PUBLIC_URL}/admin` : `/${process.env.PUBLIC_URL}/system-admin`;
+      user.role === "admin" ? `/${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.BOT}` : `/${process.env.PUBLIC_URL}/system-admin`;
 
     navigate(redirectUrl, { replace: true });
   };

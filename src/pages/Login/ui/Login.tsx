@@ -8,11 +8,12 @@ import { useTranslation } from "react-i18next";
 import BoxedLayout from "shared/components/BoxedLayout/BoxedLayout";
 import { useLoginRdx } from "../hooks/useLoginRdx";
 import { useLoginForm } from "../hooks/useLoginForm";
+import LoginTabs from "widgets/LoginTabs/ui/LoginTabs";
 
 const Login = () => {
   const { t } = useTranslation();
   const { handleSubmitLogin, isLoading } = useLoginRdx();
-  const { formik } = useLoginForm({ onSubmit: handleSubmitLogin });
+  const { formik, forceSetFormValue } = useLoginForm({ onSubmit: handleSubmitLogin });
 
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
@@ -21,14 +22,13 @@ const Login = () => {
         xs={false}
         sm={4}
         md={7}
-        sx={{
-          backgroundImage: "url(./img/startup.svg)",
-          backgroundRepeat: "no-repeat",
-          bgcolor: "background.default",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+        sx={{ bgcolor: "background.default" }}
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        <LoginTabs forceSetFormValue={forceSetFormValue} />
+      </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} square>
         <BoxedLayout>
           <Typography component="h1" variant="h5">
@@ -41,7 +41,7 @@ const Login = () => {
               required
               fullWidth
               id="nikName"
-              label={t("auth.login.form.email.label")}
+              label={t("auth.login.form.nickname.label")}
               name="nikName"
               autoComplete="nikName"
               autoFocus

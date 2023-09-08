@@ -84,9 +84,17 @@
   },
   "auth": {
     "login": {
+      "tabs" : {
+        "tab_1" : "Roles",
+        "tab_2" : "FAQ"
+      },
+      "bot-list" : {
+        "title" : "Choose one of the test bots or send request to create your own.",
+        "req-bot" : "Want your own?"
+      },
       "form": {
-        "email": {
-          "label": "E-mail Address"
+        "nickname": {
+          "label": "Nickname"
         },
         "password": {
           "label": "Password"
@@ -97,6 +105,8 @@
     }
   },
   "common": {
+    "choose_me" : "Choose me!",
+    "send_req" : "Send request!",
     "backHome": "Back to Home",
     "cancel": "Cancel",
     "confirm": "Confirm",
