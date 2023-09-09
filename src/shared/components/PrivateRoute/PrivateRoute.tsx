@@ -1,22 +1,22 @@
 import { Navigate, Route, RouteProps } from "react-router";
 import { useAppSelector } from "app/store";
+import Loader from "../Loader/Loader";
 
 type PrivateRouteProps = {
-  roles?: string[];
+  requiredRole?: "admin" | "system-admin";
 } & RouteProps;
 
-const PrivateRoute = ({ ...routeProps }: PrivateRouteProps) => {
-  const { isAuth, isLoading, isChecked } = useAppSelector((state) => state.authReducer);
-
+const PrivateRoute = ({ requiredRole, ...routeProps }: PrivateRouteProps) => {
+  const { isAuth, isLoading, isChecked, role } = useAppSelector((state) => state.authReducer);
   if (isLoading || !isChecked) {
-    return <div>Loading ...</div>;
+    return <Loader />;
   }
 
-  if (isAuth) {
-    return <Route {...routeProps} />;
-  } else {
+  if (!isAuth || (requiredRole && role !== requiredRole)) {
     return <Navigate to={`/${process.env.PUBLIC_URL}/login`} />;
   }
+
+  return <Route {...routeProps} />;
 };
 
 export default PrivateRoute;

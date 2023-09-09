@@ -3,6 +3,6 @@ export interface SignInRequestDto {
   password: string;
 }
 
-export interface CreateUserResponseDto {
-  status: "success";
+export interface SignInResponseDto {
+  role: "admin" | "system-admin";
 }
