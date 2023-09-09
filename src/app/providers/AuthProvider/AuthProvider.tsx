@@ -9,25 +9,13 @@ type AuthProviderProps = {
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const dispatch = useAppDispatch();
-  /**
-   * TODO
-   * Сделать нормальную последовательную цепь запросов
-   */
+
   const initApp = async () => {
-    const { meta } = await dispatch(checkAuthThunk());
-    if (meta.requestStatus !== "fulfilled") return;
-    const { payload } = await dispatch(getUserThunk());
-    if (
-      payload !== null &&
-      typeof payload === "object" &&
-      "bot" in payload &&
-      payload.bot !== undefined &&
-      payload.bot !== null &&
-      typeof payload.bot === "object" &&
-      "name" in payload.bot
-    ) {
-      await dispatch(getBotThunk({ botName: payload.bot.name as string }));
-    }
+    const checkAuthRes = await dispatch(checkAuthThunk()).unwrap();
+    if (!checkAuthRes) return;
+    const getUserRes = await dispatch(getUserThunk()).unwrap();
+    if (!getUserRes) return;
+    await dispatch(getBotThunk({ botName: getUserRes.bot.name }));
   };
 
   useLayoutEffect(() => {

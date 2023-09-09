@@ -5,6 +5,7 @@ export type UserState = {
   isAuth: boolean;
   isChecked: boolean;
   isLoading: boolean;
+  role?: "admin" | "system-admin";
   error: string;
 };
 
@@ -12,25 +13,23 @@ const initialState: UserState = {
   isAuth: false,
   isChecked: false,
   isLoading: false,
+  role: undefined,
   error: "",
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {
-    setUserAuth: (state, { payload }: PayloadAction<boolean>) => {
-      state.isAuth = payload;
-    },
-  },
+  reducers: {},
 
   extraReducers: {
     /*Check Auth*/
 
-    [checkAuthThunk.fulfilled.type]: (state) => {
+    [checkAuthThunk.fulfilled.type]: (state, { payload }: PayloadAction<{ role: "admin" | "system-admin" }>) => {
       state.isLoading = false;
       state.error = "";
       state.isAuth = true;
+      state.role = payload.role;
       state.isChecked = true;
     },
     [checkAuthThunk.pending.type]: (state) => {
@@ -45,10 +44,11 @@ export const authSlice = createSlice({
 
     /*Sign In*/
 
-    [signInThunk.fulfilled.type]: (state) => {
+    [signInThunk.fulfilled.type]: (state, { payload }: PayloadAction<{ role: "admin" | "system-admin" }>) => {
       state.isLoading = false;
       state.error = "";
       state.isAuth = true;
+      state.role = payload.role;
       state.isChecked = true;
     },
     [signInThunk.pending.type]: (state) => {

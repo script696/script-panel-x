@@ -1,6 +1,6 @@
 import { $apiClient } from "../client";
 
-import { CreateUserResponseDto, SignInRequestDto } from "./dto/signInDto";
+import { SignInRequestDto, SignInResponseDto } from "./dto/signInDto";
 import { CheckAuthResponseDto } from "./dto/checkAuthDto";
 import { logoutDto } from "./dto/logoutDto";
 
@@ -10,7 +10,7 @@ export class AuthService {
   }
 
   static signIn(data: SignInRequestDto) {
-    return $apiClient.post<CreateUserResponseDto>("auth/sign-in", data);
+    return $apiClient.post<SignInResponseDto>("auth/sign-in", data);
   }
 
   static logout() {

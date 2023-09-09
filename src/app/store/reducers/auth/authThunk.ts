@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AuthService } from "shared/api/auth/AuthService";
-import { CreateUserResponseDto, SignInRequestDto } from "shared/api/auth/dto/signInDto";
+import { SignInResponseDto, SignInRequestDto } from "shared/api/auth/dto/signInDto";
 import { CheckAuthResponseDto } from "shared/api/auth/dto/checkAuthDto";
+import { logoutDto } from "shared/api/auth/dto/logoutDto";
 
 export const checkAuthThunk = createAsyncThunk<CheckAuthResponseDto>("auth/sign-in", async (_, thunkAPI) => {
   try {
@@ -13,7 +14,7 @@ export const checkAuthThunk = createAsyncThunk<CheckAuthResponseDto>("auth/sign-
   }
 });
 
-export const signInThunk = createAsyncThunk<CreateUserResponseDto, SignInRequestDto>(
+export const signInThunk = createAsyncThunk<SignInResponseDto, SignInRequestDto>(
   "auth/sign-in",
   async (reqData, thunkAPI) => {
     try {
@@ -26,7 +27,7 @@ export const signInThunk = createAsyncThunk<CreateUserResponseDto, SignInRequest
   },
 );
 
-export const logoutThunk = createAsyncThunk<CreateUserResponseDto>("auth/logout", async (_, thunkAPI) => {
+export const logoutThunk = createAsyncThunk<logoutDto>("auth/logout", async (_, thunkAPI) => {
   try {
     const { data } = await AuthService.logout();
 

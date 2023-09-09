@@ -1,3 +1,3 @@
 export interface CheckAuthResponseDto {
-  status: "success";
+  role: "admin" | "system-admin";
 }

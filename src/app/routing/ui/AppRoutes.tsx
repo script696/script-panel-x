@@ -16,13 +16,12 @@ import { ROUTES_ADMIN, ROUTES_BASE, ROUTES_SYSTEM_ADMIN } from "../constants/rou
 const AppRoutes = () => {
   return (
     <Routes>
-      <PrivateRoute path={ROUTES_BASE.SYSTEM_ADMIN} element={<AdminLayoutLazy />}>
+      <PrivateRoute path={ROUTES_BASE.SYSTEM_ADMIN} element={<AdminLayoutLazy />} requiredRole={"system-admin"}>
         <PrivateRoute path={ROUTES_SYSTEM_ADMIN.USERS} element={<UsersLazy />} />
-        <PrivateRoute path={ROUTES_SYSTEM_ADMIN.BOTS} element={<div>bots</div>} />
         <PrivateRoute path={ROUTES_SYSTEM_ADMIN.PROFILE} element={<ProfileLazy />} />
       </PrivateRoute>
 
-      <PrivateRoute path={ROUTES_BASE.ADMIN} element={<AdminLayoutLazy />}>
+      <PrivateRoute path={ROUTES_BASE.ADMIN} element={<AdminLayoutLazy />} requiredRole={"admin"}>
         <PrivateRoute path={ROUTES_ADMIN.BOT} element={<BotLazy />} />
         <PrivateRoute path={ROUTES_ADMIN.PRODUCTS} element={<ProductsLazy />} />
         <PrivateRoute path={ROUTES_ADMIN.FAQ} element={<FaqLazy />} />
@@ -34,7 +33,7 @@ const AppRoutes = () => {
       <Route path={ROUTES_BASE.FORBIDDEN} element={<ForbiddenLazy />} />
       <Route path={ROUTES_BASE.NOT_FOUND} element={<NotFoundLazy />} />
       <Route path="/" element={<Navigate to={`${ROUTES_BASE.ADMIN}/${ROUTES_ADMIN.BOT}`} replace />} />
-      {/*<Route path="*" element={<Navigate to={`/${process.env.PUBLIC_URL}/404`} replace />} />*/}
+      <Route path="*" element={<Navigate to={ROUTES_BASE.NOT_FOUND} replace />} />
     </Routes>
   );
 };
