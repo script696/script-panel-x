@@ -15,6 +15,7 @@ import AdminAppBar from "shared/components/AdminAppBar/AdminAppBar";
 import AdminToolbar from "shared/components/AdminToolbar/AdminToolbar";
 import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
 import { Box } from "@material-ui/core";
+import { AUTHOR_TG_URL } from "shared/constants/author";
 
 const HelpCenter = () => {
   const { t } = useTranslation();
@@ -50,7 +51,7 @@ const HelpCenter = () => {
         </Grid>
         <Grid item xs={6}>
           <Card>
-            <CardActionArea component="a" href={`https://t.me/script696`} target={"_blank"}>
+            <CardActionArea component="a" href={AUTHOR_TG_URL} target={"_blank"}>
               <CardHeader
                 avatar={
                   <Avatar aria-label="Mail icon">

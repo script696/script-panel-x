@@ -7,6 +7,7 @@ import { LoginFormValues } from "pages/Login/hooks/useLoginForm";
 import BotList from "widgets/LoginTabs/ui/BotList";
 import { ALPHA_BOT_CRED, XOMI_BOT_CRED } from "widgets/LoginTabs/constants/constants";
 import { useTranslation } from "react-i18next";
+import { AUTHOR_TG_URL } from "shared/constants/author";
 
 type LoginTabsProps = {
   forceSetFormValue: (data: LoginFormValues) => void;
@@ -21,7 +22,7 @@ const LoginTabs: FC<LoginTabsProps> = ({ forceSetFormValue }) => {
       const testBotCred = testBot === "xomi" ? XOMI_BOT_CRED : ALPHA_BOT_CRED;
       forceSetFormValue(testBotCred);
     } else {
-      window.open("https://t.me/script696", "_blank");
+      window.open(AUTHOR_TG_URL, "_blank");
     }
   };
 
