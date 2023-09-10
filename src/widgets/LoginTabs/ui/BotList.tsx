@@ -15,11 +15,11 @@ const BotList: FC<BotListProps> = ({ onClickBotCard }) => {
   const { t } = useTranslation();
 
   return (
-    <Box>
+    <Box display={"flex"} flexDirection={"column"} height={"100%"}>
       <Typography variant={"h4"} align={"center"}>
         {t("auth.login.bot-list.title")}
       </Typography>
-      <Grid container mt={3} spacing={2}>
+      <Grid container mt={3} spacing={2} flexGrow={1}>
         <Grid item xs={4}>
           <BotCard title={"Script Alpha Bot"} icon={SmartToyOutlinedIcon} iconColor={"#81C784"}>
             <Button variant={"contained"} fullWidth onClick={() => onClickBotCard("alpha")}>
