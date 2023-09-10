@@ -14,7 +14,7 @@ export const createUserThunk = createAsyncThunk<CreateUserResponseDto, CreateUse
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );
@@ -27,7 +27,7 @@ export const getUsersThunk = createAsyncThunk<GetUsersResponseDto, GetUsersReque
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );
@@ -41,7 +41,7 @@ export const editUsersThunk = createAsyncThunk<EditUserResponseDto, EditUserRequ
       const { data } = await UsersService.editUsers(mappedData);
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );
@@ -54,7 +54,7 @@ export const removeUsersThunk = createAsyncThunk<RemoveUserResponseDto, RemoveUs
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );

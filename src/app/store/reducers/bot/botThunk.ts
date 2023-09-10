@@ -12,7 +12,7 @@ export const getBotThunk = createAsyncThunk<BotViewModel, GetBotRequestDto>(
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );
@@ -25,7 +25,7 @@ export const updateBotThunk = createAsyncThunk<BotViewModel, UpdateBotRequestDto
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );

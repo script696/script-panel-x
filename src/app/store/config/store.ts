@@ -4,6 +4,7 @@ import usersReducer from "../reducers/users/usersSlice";
 import userReducer from "../reducers/user/userSlice";
 import authReducer from "../reducers/auth/authSlice";
 import botReducer from "../reducers/bot/botSlice";
+import snackbarReducer from "../reducers/snackbar/snackbarSlice";
 
 const rootReducer = combineReducers({
   productReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   userReducer,
   authReducer,
   botReducer,
+  snackbarReducer,
 });
 
 export const store = configureStore({
