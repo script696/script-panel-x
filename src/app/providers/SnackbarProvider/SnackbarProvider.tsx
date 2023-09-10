@@ -1,73 +1,37 @@
-import Alert, { Color } from "@material-ui/core/Alert";
-import AlertTitle from "@material-ui/core/AlertTitle";
+import Alert from "@material-ui/core/Alert";
 import Snackbar from "@material-ui/core/Snackbar";
-import React, { createContext, useContext, useState } from "react";
-import { useTranslation } from "react-i18next";
-
-interface SnackbarContextInterface {
-  error: (newMessage: string) => void;
-  success: (newMessage: string) => void;
-}
-
-export const SnackbarContext = createContext({} as SnackbarContextInterface);
+import React from "react";
+import { useAppDispatch, useAppSelector } from "app/store";
+import { snackbarSlice } from "app/store/reducers/snackbar/snackbarSlice";
 
 type SnackbarProviderProps = {
   children: React.ReactNode;
 };
 
 const SnackbarProvider = ({ children }: SnackbarProviderProps) => {
-  const { t } = useTranslation();
-  const [open, setOpen] = useState(false);
-  const [message, setMessage] = useState("");
-  const [title, setTitle] = useState("");
-  const [severity, setSeverity] = useState<Color | undefined>(undefined);
-
-  const handleClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  const error = (newMessage: string) => {
-    setTitle(t("common.snackbar.error"));
-    setMessage(newMessage);
-    setSeverity("error");
-    setOpen(true);
-  };
-
-  const success = (newMessage: string) => {
-    setTitle(t("common.snackbar.success"));
-    setMessage(newMessage);
-    setSeverity("success");
-    setOpen(true);
-  };
+  const dispatch = useAppDispatch();
+  const { closeSnackbar } = snackbarSlice.actions;
+  const { severity, isOpen, message } = useAppSelector((state) => state.snackbarReducer);
 
   return (
-    <SnackbarContext.Provider value={{ error, success }}>
-      {children}
+    <>
       <Snackbar
-        key={message}
         anchorOrigin={{
-          vertical: "bottom",
+          vertical: "top",
           horizontal: "right",
         }}
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
+        open={isOpen}
+        transitionDuration={0}
+        autoHideDuration={3000}
+        onClose={() => dispatch(closeSnackbar())}
       >
-        <Alert onClose={handleClose} severity={severity}>
-          <AlertTitle>{title}</AlertTitle>
+        <Alert variant={"filled"} severity={severity}>
           {message}
         </Alert>
       </Snackbar>
-    </SnackbarContext.Provider>
+      {children}
+    </>
   );
 };
-
-export function useSnackbar() {
-  return useContext(SnackbarContext);
-}
 
 export default SnackbarProvider;

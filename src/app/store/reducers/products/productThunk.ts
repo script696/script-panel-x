@@ -21,7 +21,7 @@ export const getProductsThunk = createAsyncThunk<ProductsViewModel, GetProductsR
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );
@@ -34,7 +34,7 @@ export const createProductThunk = createAsyncThunk<ProductViewModel, ProductCrea
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );
@@ -47,7 +47,7 @@ export const removeProductsThunk = createAsyncThunk<RemoveProductResponseDto, Re
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );
@@ -62,7 +62,7 @@ export const updateProductMainInfoThunk = createAsyncThunk<ProductViewModel, Pro
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );
@@ -77,7 +77,7 @@ export const updateProductSecondaryInfoThunk = createAsyncThunk<ProductViewModel
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );
@@ -90,7 +90,7 @@ export const addImagesThunk = createAsyncThunk<ProductViewModel, AddProductImage
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );
@@ -103,7 +103,7 @@ export const removeImagesThunk = createAsyncThunk<ProductViewModel, RemoveProduc
 
       return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+      return thunkAPI.rejectWithValue("Unknown Error");
     }
   },
 );

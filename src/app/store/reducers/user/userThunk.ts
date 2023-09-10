@@ -8,6 +8,6 @@ export const getUserThunk = createAsyncThunk<GetUserDto>("user/get", async (_, t
 
     return data;
   } catch (e) {
-    return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+    return thunkAPI.rejectWithValue("Unknown Error");
   }
 });
