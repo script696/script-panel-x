@@ -5,6 +5,7 @@ import { useGalleryImages } from "../../hooks/useGalleryImages";
 import Button from "@material-ui/core/Button";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import DialogActions from "@material-ui/core/DialogActions";
+import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import { useTranslation } from "react-i18next";
 import { avatarSx, boxSx, deleteButtonSx } from "./stylesSx";
 import { ProductViewModel } from "app/store/reducers/products/types/typedef";
@@ -69,10 +70,15 @@ const Gallery: FC<GalleryDataProps> = (props) => {
                 </LoadingButton>
               </Box>
             ) : (
-              <Button type={"button"} variant={"text"} sx={{ cursor: "pointer" }}>
+              <Button type={"button"} variant={"outlined"} sx={{ cursor: "pointer", borderWidth: 3 }} key={source}>
                 <label className={"button"}>
                   <input multiple hidden accept=".png, .jpg, .jpeg" type="file" onChange={handleLoadImage} />
-                  <Avatar id={source} src={source} style={avatarSx} variant={"square"} />
+                  <AddAPhotoIcon
+                    style={{
+                      width: "50%",
+                      height: "50%",
+                    }}
+                  />
                 </label>
               </Button>
             );

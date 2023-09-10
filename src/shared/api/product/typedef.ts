@@ -11,5 +11,5 @@ export interface ProductApi {
   brand: string;
   price: number;
   discount: number;
-  currency: string;
+  currency: "$" | "€";
 }
