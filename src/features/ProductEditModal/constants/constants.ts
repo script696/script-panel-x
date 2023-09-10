@@ -21,4 +21,4 @@ export const PRODUCT_US_SIZES = [
   "16",
 ];
 
-export const AVAILABLE_CURRENCY = ["$", "@"];
+export const AVAILABLE_CURRENCY = ["$", "€"];

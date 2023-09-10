@@ -26,6 +26,8 @@ const Bot = () => {
     window.open(`https://t.me/${bot.name}`, "_blank");
   };
 
+  const iframeScr = `${process.env.REACT_APP_BOT_URL}?botName=${bot?.name}`;
+
   return (
     <React.Fragment>
       <AdminAppBar>
@@ -43,7 +45,7 @@ const Bot = () => {
           <IphoneTemplate>
             <iframe
               ref={botFrame}
-              src={`http://localhost:4000?botName=${bot?.name}`}
+              src={iframeScr}
               style={{
                 width: "100%",
                 height: "100%",

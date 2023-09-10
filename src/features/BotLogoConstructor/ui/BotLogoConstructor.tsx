@@ -15,6 +15,7 @@ const BotLogoConstructor: FC<BotLogoConstructorProps> = ({ reloadBotFrame }) => 
   const { isModalOpen, handleOpen, handleClose } = useModal();
 
   const { bot } = useAppSelector((state) => state.botReducer);
+
   const logo = bot?.logo ?? LOGO_FORM_DEFAULT_VALUES;
 
   return (
@@ -22,7 +23,7 @@ const BotLogoConstructor: FC<BotLogoConstructorProps> = ({ reloadBotFrame }) => 
       <Box display={"flex"} columnGap={3} alignItems={"center"}>
         <Typography variant={"h6"}>Logo</Typography>
         <Typography variant={"h6"}>-</Typography>
-        <img src={logo.source} style={{ maxHeight: "50px" }} alt={"bot logo"} />
+        {Boolean(logo.source) && <img src={logo.source} style={{ maxHeight: "50px" }} alt={"bot logo"} />}
       </Box>
       <UpdateLogoModal
         isModalOpen={isModalOpen}
