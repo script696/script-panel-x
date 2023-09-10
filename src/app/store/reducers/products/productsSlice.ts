@@ -166,6 +166,7 @@ export const productsSlice = createSlice({
     [addImagesThunk.fulfilled.type]: (state, { payload }: PayloadAction<ProductViewModel>) => {
       state.isLoading = false;
       state.error = "";
+      state.ui.isProductEditModalOpen = false;
       state.productsData.products = state.productsData.products.map((product) =>
         product.id === payload.id ? payload : product,
       );

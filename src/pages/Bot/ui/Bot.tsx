@@ -3,9 +3,11 @@ import { IphoneTemplate } from "shared/components/IphoneTemplate";
 import AdminToolbar from "shared/components/AdminToolbar/AdminToolbar";
 import { useTranslation } from "react-i18next";
 import AdminAppBar from "shared/components/AdminAppBar/AdminAppBar";
-import { Grid, Typography } from "@material-ui/core";
+import { Button, Grid, Typography } from "@material-ui/core";
 import { BotConstructor } from "widgets/BotConstructor";
 import { useAppSelector } from "app/store";
+import Box from "@material-ui/core/Box";
+import CallMadeIcon from "@material-ui/icons/CallMade";
 
 const Bot = () => {
   const { t } = useTranslation();
@@ -19,10 +21,21 @@ const Bot = () => {
     botFrame.current.src = botFrame.current.src;
   };
 
+  const openBotInTg = () => {
+    if (!bot) return;
+    window.open(`https://t.me/${bot.name}`, "_blank");
+  };
+
   return (
     <React.Fragment>
       <AdminAppBar>
-        <AdminToolbar title={t("admin.bot.toolbar.title")} />
+        <AdminToolbar title={`${t("admin.bot.toolbar.title")} - ${bot?.name}`}>
+          <Button variant={"outlined"} onClick={openBotInTg}>
+            <Box display={"flex"} alignItems={"center"} gap={2}>
+              Open bot <CallMadeIcon sx={{ width: "20px", height: "20px" }} />
+            </Box>
+          </Button>
+        </AdminToolbar>
       </AdminAppBar>
 
       <Grid container spacing={1} sx={{ mt: 3 }}>

@@ -12,6 +12,7 @@ import { AddProductImagesRequestDto } from "shared/api/product/dto/AddProductIma
 import { RemoveProductImageRequestDto } from "shared/api/product/dto/RemoveProductImagesDto";
 import { GetProductsRequestDto } from "shared/api/product/dto/GetProductsDto";
 import { ViewModelToApiMapper } from "./mappers/ViewModelToApiMapper";
+import { snackbarSlice } from "app/store/reducers/snackbar/snackbarSlice";
 
 export const getProductsThunk = createAsyncThunk<ProductsViewModel, GetProductsRequestDto>(
   "product/get",
@@ -32,6 +33,8 @@ export const createProductThunk = createAsyncThunk<ProductViewModel, ProductCrea
     try {
       const { data } = await ProductService.createProduct(reqData);
 
+      thunkAPI.dispatch(snackbarSlice.actions.openSnackbar({ message: "Product created", severity: "success" }));
+
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue("Unknown Error");
@@ -44,6 +47,8 @@ export const removeProductsThunk = createAsyncThunk<RemoveProductResponseDto, Re
   async (reqData, thunkAPI) => {
     try {
       const { data } = await ProductService.removeProducts(reqData);
+
+      thunkAPI.dispatch(snackbarSlice.actions.openSnackbar({ message: "Product removed", severity: "success" }));
 
       return data;
     } catch (e) {
@@ -60,6 +65,8 @@ export const updateProductMainInfoThunk = createAsyncThunk<ProductViewModel, Pro
     try {
       const { data } = await ProductService.updateProductMainInfo(mappedReqData);
 
+      thunkAPI.dispatch(snackbarSlice.actions.openSnackbar({ message: "Product updated", severity: "success" }));
+
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue("Unknown Error");
@@ -72,6 +79,8 @@ export const updateProductSecondaryInfoThunk = createAsyncThunk<ProductViewModel
   async (reqData, thunkAPI) => {
     try {
       const mappedReqData = ViewModelToApiMapper.updateSecondaryMainInfo(reqData);
+
+      thunkAPI.dispatch(snackbarSlice.actions.openSnackbar({ message: "Product updated", severity: "success" }));
 
       const { data } = await ProductService.updateProductSecondaryInfo(mappedReqData);
 
@@ -88,6 +97,8 @@ export const addImagesThunk = createAsyncThunk<ProductViewModel, AddProductImage
     try {
       const { data } = await ProductService.addImages(reqData);
 
+      thunkAPI.dispatch(snackbarSlice.actions.openSnackbar({ message: "Images added", severity: "success" }));
+
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue("Unknown Error");
@@ -100,6 +111,8 @@ export const removeImagesThunk = createAsyncThunk<ProductViewModel, RemoveProduc
   async (reqData, thunkAPI) => {
     try {
       const { data } = await ProductService.removeImages(reqData);
+
+      thunkAPI.dispatch(snackbarSlice.actions.openSnackbar({ message: "Images removed", severity: "success" }));
 
       return data;
     } catch (e) {
