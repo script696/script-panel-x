@@ -6,12 +6,14 @@ import React, { FC } from "react";
 import UpdateLogoModal from "features/BotLogoConstructor/ui/UpdateLogoModal";
 import { useAppSelector } from "app/store";
 import { LOGO_FORM_DEFAULT_VALUES } from "features/BotLogoConstructor/constants/constants";
+import { useTranslation } from "react-i18next";
 
 type BotLogoConstructorProps = {
   reloadBotFrame: () => void;
 };
 
 const BotLogoConstructor: FC<BotLogoConstructorProps> = ({ reloadBotFrame }) => {
+  const { t } = useTranslation();
   const { isModalOpen, handleOpen, handleClose } = useModal();
 
   const { bot } = useAppSelector((state) => state.botReducer);
@@ -19,9 +21,9 @@ const BotLogoConstructor: FC<BotLogoConstructorProps> = ({ reloadBotFrame }) => 
   const logo = bot?.logo ?? LOGO_FORM_DEFAULT_VALUES;
 
   return (
-    <EditableRow title={"Logo"} onEdit={handleOpen}>
+    <EditableRow title={t("admin.bot.constructor.logo.title")} onEdit={handleOpen}>
       <Box display={"flex"} columnGap={3} alignItems={"center"}>
-        <Typography variant={"h6"}>Logo</Typography>
+        <Typography variant={"h6"}>{t("admin.bot.constructor.logo.description")}</Typography>
         <Typography variant={"h6"}>-</Typography>
         {Boolean(logo.source) && <img src={logo.source} style={{ maxHeight: "50px" }} alt={"bot logo"} />}
       </Box>

@@ -11,16 +11,36 @@
 
     "bot" : {
       "toolbar" : {
-        "title" : "Your Bot"
+        "title" : "Your Bot",
+        "open-bot-button" : "Open bot"
       },
       "constructor" : {
+        "title" : "Control your bot !",
         "main-info" : {
           "title" : "Bot main info",
           "hello-text" : "Hello text",
           "shop-name" : "Shop name"
         },
         "logo" : {
-          "title" : "Logo"
+          "title" : "Logo",
+          "description" : "Shop logo"
+
+        },
+        "theme" : {
+          "title" : "Theme color",
+          "background" : {
+            "title" : "Background",
+            "bgMain" : "Main",
+            "bgLight" : "Light",
+            "bgDark" : "Dark"
+          },
+          "text" : {
+            "title" : "Text",
+            "primaryColor" : "Main",
+            "secondaryColor" : "Secondary",
+            "alternateColor" : "Alternate"
+          }
+
         }
       }
     },
