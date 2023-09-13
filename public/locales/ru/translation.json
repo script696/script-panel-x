@@ -10,13 +10,34 @@
     },
     "bot" : {
       "toolbar" : {
-        "title" : "Ваш бот"
+        "title" : "Ваш бот",
+        "open-bot-button" : "Открыть бота"
       },
       "constructor" : {
+        "title" : "Управляй своим ботом !",
         "main-info" : {
           "title" : "Главная информация",
           "hello-text" : "Текст приветствия",
           "shop-name" : "Название магазина"
+        },
+        "logo" : {
+          "title" : "Логотип",
+          "description" : "Лого магазина"
+        },
+        "theme" : {
+          "title" : "Цветовая палитра",
+          "background" : {
+            "title" : "Задний фон",
+            "bgMain" : "Главный",
+            "bgLight" : "Светлый",
+            "bgDark" : "Темный"
+          },
+          "text" : {
+            "title" : "Текст",
+            "primaryColor" : "Главый",
+            "secondaryColor" : "Вторичный",
+            "alternateColor" : "Альтернативный"
+          }
         }
       }
     },

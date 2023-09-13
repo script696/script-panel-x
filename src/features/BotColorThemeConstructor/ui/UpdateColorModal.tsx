@@ -43,12 +43,12 @@ const UpdateColorModal: FC<UpdateColorModalProps> = ({ isModalOpen, onCloseModal
         <DialogContent sx={{ minWidth: "500px" }}>
           <Box mb={5}>
             <Typography variant={"h5"} align={"center"} mb={2}>
-              Background
+              {t("admin.bot.constructor.theme.background.title")}
             </Typography>
             <Grid container spacing={5}>
               <Grid item xs={4} display={"flex"} flexDirection={"column"} alignItems={"center"} rowGap={1}>
                 <Typography variant={"h6"} noWrap>
-                  {BG_TO_LABEL_MAP["bgMain"]}
+                  {t(BG_TO_LABEL_MAP["bgMain"])}
                 </Typography>
                 <input
                   name={"bgMain"}
@@ -62,7 +62,7 @@ const UpdateColorModal: FC<UpdateColorModalProps> = ({ isModalOpen, onCloseModal
 
               <Grid item xs={4} display={"flex"} flexDirection={"column"} alignItems={"center"} rowGap={1}>
                 <Typography variant={"h6"} noWrap>
-                  {BG_TO_LABEL_MAP["bgDark"]}
+                  {t(BG_TO_LABEL_MAP["bgDark"])}
                 </Typography>
                 <input
                   name={"bgDark"}
@@ -75,7 +75,7 @@ const UpdateColorModal: FC<UpdateColorModalProps> = ({ isModalOpen, onCloseModal
               </Grid>
               <Grid item xs={4} display={"flex"} flexDirection={"column"} alignItems={"center"} rowGap={1}>
                 <Typography variant={"h6"} noWrap>
-                  {BG_TO_LABEL_MAP["bgLight"]}
+                  {t(BG_TO_LABEL_MAP["bgLight"])}
                 </Typography>
                 <input
                   type={"color"}
@@ -94,7 +94,7 @@ const UpdateColorModal: FC<UpdateColorModalProps> = ({ isModalOpen, onCloseModal
             <Grid container spacing={3}>
               <Grid item xs={4} display={"flex"} flexDirection={"column"} alignItems={"center"} rowGap={1}>
                 <Typography variant={"h6"} noWrap>
-                  {BG_TO_LABEL_MAP["primaryColor"]}
+                  {t(BG_TO_LABEL_MAP["primaryColor"])}
                 </Typography>
                 <input
                   name={"primaryColor"}
@@ -108,7 +108,7 @@ const UpdateColorModal: FC<UpdateColorModalProps> = ({ isModalOpen, onCloseModal
 
               <Grid item xs={4} display={"flex"} flexDirection={"column"} alignItems={"center"} rowGap={1}>
                 <Typography variant={"h6"} noWrap>
-                  {BG_TO_LABEL_MAP["secondaryColor"]}
+                  {t(BG_TO_LABEL_MAP["secondaryColor"])}
                 </Typography>
                 <input
                   name={"secondaryColor"}
@@ -121,7 +121,7 @@ const UpdateColorModal: FC<UpdateColorModalProps> = ({ isModalOpen, onCloseModal
               </Grid>
               <Grid item xs={4} display={"flex"} flexDirection={"column"} alignItems={"center"} rowGap={1}>
                 <Typography variant={"h6"} noWrap>
-                  {BG_TO_LABEL_MAP["alternateColor"]}
+                  {t(BG_TO_LABEL_MAP["alternateColor"])}
                 </Typography>
                 <input
                   name={"alternateColor"}

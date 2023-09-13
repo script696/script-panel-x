@@ -17,7 +17,7 @@ const BotMainInfoConstructor: FC<MainInfoProps> = ({ mainInfo, reloadBotFrame })
   const { isModalOpen, handleOpen, handleClose } = useModal();
 
   return (
-    <EditableRow title={"Main Info"} onEdit={handleOpen}>
+    <EditableRow title={t("admin.bot.constructor.main-info.title")} onEdit={handleOpen}>
       <Box display={"flex"} flexDirection={"column"} rowGap={1}>
         <Box display={"flex"} columnGap={3}>
           <Typography variant={"h6"}>{t("admin.bot.constructor.main-info.hello-text")}</Typography>

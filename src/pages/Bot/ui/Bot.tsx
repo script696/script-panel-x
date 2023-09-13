@@ -34,7 +34,7 @@ const Bot = () => {
         <AdminToolbar title={`${t("admin.bot.toolbar.title")} - ${bot?.name}`}>
           <Button variant={"outlined"} onClick={openBotInTg}>
             <Box display={"flex"} alignItems={"center"} gap={2}>
-              Open bot <CallMadeIcon sx={{ width: "20px", height: "20px" }} />
+              {t("admin.bot.toolbar.open-bot-button")} <CallMadeIcon sx={{ width: "20px", height: "20px" }} />
             </Box>
           </Button>
         </AdminToolbar>
@@ -56,7 +56,7 @@ const Bot = () => {
         </Grid>
         <Grid item xs={6}>
           <Typography variant={"h2"} align={"center"} mb={1}>
-            Control your bot !
+            {t("admin.bot.constructor.title")}
           </Typography>
           <BotConstructor reloadBotFrame={reloadBotFrame} />
         </Grid>
