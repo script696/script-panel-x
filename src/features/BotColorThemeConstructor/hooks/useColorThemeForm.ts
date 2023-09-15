@@ -24,8 +24,9 @@ export const useColorThemeForm = ({ botColorTheme, onSubmit, reloadBotFrame }: U
     setColorThemeForm((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const resetForm = () => {
-    setColorThemeForm(botColorTheme ?? COLOR_THEME_FORM_DEFAULT_VALUES);
+  const resetForm = (toDefault?: boolean) => {
+    const colorScheme = toDefault ? COLOR_THEME_FORM_DEFAULT_VALUES : botColorTheme ?? COLOR_THEME_FORM_DEFAULT_VALUES;
+    setColorThemeForm(colorScheme);
   };
 
   return { handleSubmit, handleChangeColor, colorThemeForm, resetForm };

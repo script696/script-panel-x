@@ -10,6 +10,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { BG_TO_LABEL_MAP } from "../constants/constants";
 import { useUpdateColorModalRdx } from "features/BotColorThemeConstructor/hooks/useUpdateColorModalRdx";
 import { useColorThemeForm } from "features/BotColorThemeConstructor/hooks/useColorThemeForm";
+import RestartAltIcon from "@material-ui/icons/RestartAlt";
 
 type UpdateColorModalProps = {
   isModalOpen: boolean;
@@ -78,6 +79,7 @@ const UpdateColorModal: FC<UpdateColorModalProps> = ({ isModalOpen, onCloseModal
                   {t(BG_TO_LABEL_MAP["bgLight"])}
                 </Typography>
                 <input
+                  name={"bgLight"}
                   type={"color"}
                   style={{ border: "none", cursor: "pointer" }}
                   value={colorThemeForm["bgLight"]}
@@ -89,7 +91,7 @@ const UpdateColorModal: FC<UpdateColorModalProps> = ({ isModalOpen, onCloseModal
           </Box>
           <Box>
             <Typography variant={"h5"} align={"center"} mb={2}>
-              Text
+              {t("admin.bot.constructor.theme.text.title")}
             </Typography>
             <Grid container spacing={3}>
               <Grid item xs={4} display={"flex"} flexDirection={"column"} alignItems={"center"} rowGap={1}>
@@ -134,6 +136,11 @@ const UpdateColorModal: FC<UpdateColorModalProps> = ({ isModalOpen, onCloseModal
               </Grid>
             </Grid>
           </Box>
+          <Button variant={"outlined"} sx={{ marginTop: 4 }} color={"inherit"} onClick={() => resetForm(true)}>
+            <Box display={"flex"} alignItems={"center"} gap={1}>
+              {t("admin.bot.constructor.theme.reset-btn")} <RestartAltIcon />
+            </Box>
+          </Button>
         </DialogContent>
         <Box sx={{ flexGrow: 1 }} />
         <DialogActions>

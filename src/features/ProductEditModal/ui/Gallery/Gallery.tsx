@@ -11,6 +11,7 @@ import { avatarSx, boxSx, deleteButtonSx } from "./stylesSx";
 import { ProductViewModel } from "app/store/reducers/products/types/typedef";
 import { AddProductImagesRequestDto } from "shared/api/product/dto/AddProductImagesDto";
 import { RemoveProductImageRequestDto } from "shared/api/product/dto/RemoveProductImagesDto";
+import { getStaticUrl } from "shared/utils";
 
 type GalleryDataProps = {
   onClose: () => void;
@@ -43,8 +44,6 @@ const Gallery: FC<GalleryDataProps> = (props) => {
     }
   };
 
-  const apiUrl = process.env["REACT_APP_API_URL"];
-
   return (
     <Box flexGrow={1} display={"flex"} flexDirection={"column"} overflow={"hidden"}>
       <DialogContent>
@@ -52,7 +51,7 @@ const Gallery: FC<GalleryDataProps> = (props) => {
           {withAddImage.map(({ source }, idx) => {
             const isLastElem = idx === withAddImage.length - 1;
 
-            const apiImgSource = source.startsWith("blob") ? source : `${apiUrl}/${source}`;
+            const apiImgSource = source.startsWith("blob") ? source : getStaticUrl(source);
 
             return !isLastElem ? (
               <Box position={"relative"} sx={boxSx} key={source}>

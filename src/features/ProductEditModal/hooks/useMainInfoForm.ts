@@ -27,6 +27,8 @@ export const useMainInfoForm = ({ product, t, onSubmit }: UseMainInfoFormParams)
       brand: Yup.string().min(3).max(40).required(t("common.validations.required")),
       availableSizes: Yup.array().of(Yup.string()),
       amount: Yup.number().min(0).required(t("common.validations.required")),
+      price: Yup.number().min(0).required(t("common.validations.required")),
+      discount: Yup.number().min(0).required(t("common.validations.required")),
       disabled: Yup.boolean().required(t("common.validations.required")),
     }),
     onSubmit,

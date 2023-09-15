@@ -37,7 +37,8 @@
             "primaryColor" : "Главый",
             "secondaryColor" : "Вторичный",
             "alternateColor" : "Альтернативный"
-          }
+          },
+          "reset-btn" : "Сбросить"
         }
       }
     },
