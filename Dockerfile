@@ -10,6 +10,7 @@ COPY . .
 
 ENV REACT_APP_API_URL=http://script-panel.ru
 ENV REACT_APP_BOT_URL=https://niksemenov.ru
+ENV REACT_APP_STATIC_URL=https://niksemenov.ru
 
 RUN npm run build
 
