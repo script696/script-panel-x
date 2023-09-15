@@ -1,0 +1,1 @@
+export { getStaticUrl } from "./getStaticUrl";
