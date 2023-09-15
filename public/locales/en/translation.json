@@ -39,8 +39,8 @@
             "primaryColor" : "Main",
             "secondaryColor" : "Secondary",
             "alternateColor" : "Alternate"
-          }
-
+          },
+          "reset-btn" : "Reset"
         }
       }
     },

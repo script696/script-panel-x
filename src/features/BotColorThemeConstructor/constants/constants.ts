@@ -10,10 +10,10 @@ export const BG_TO_LABEL_MAP = {
 } as const;
 
 export const COLOR_THEME_FORM_DEFAULT_VALUES: BotViewModel["colorTheme"] = {
-  bgMain: "#000000",
-  bgLight: "#000000",
+  bgMain: "#ff8800",
+  bgLight: "#ffffff",
   bgDark: "#000000",
   primaryColor: "#000000",
-  secondaryColor: "#000000",
-  alternateColor: "#000000",
+  secondaryColor: "#ffffff",
+  alternateColor: "#d9d9d9",
 } as const;
