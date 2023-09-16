@@ -37,7 +37,6 @@ export const useProductEditModalRdx = () => {
 
   const handleSubmitProductMainInfo = async (productMainInfo: ProductEditMainInfo | ProductCreateMainInfo) => {
     if (!user) return;
-
     if ("id" in productMainInfo && productMainInfo.id) {
       await dispatch(updateProductMainInfoThunk(productMainInfo));
     } else {
