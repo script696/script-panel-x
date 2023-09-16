@@ -13,6 +13,7 @@ import { RemoveProductImageRequestDto } from "shared/api/product/dto/RemoveProdu
 import { GetProductsRequestDto } from "shared/api/product/dto/GetProductsDto";
 import { ViewModelToApiMapper } from "./mappers/ViewModelToApiMapper";
 import { snackbarSlice } from "app/store/reducers/snackbar/snackbarSlice";
+import { ApiToViewModelMapper } from "app/store/reducers/products/mappers/ApiToViewModelMapper";
 
 export const getProductsThunk = createAsyncThunk<ProductsViewModel, GetProductsRequestDto>(
   "product/get",
@@ -20,7 +21,9 @@ export const getProductsThunk = createAsyncThunk<ProductsViewModel, GetProductsR
     try {
       const { data } = await ProductService.getProducts(reqParams);
 
-      return data;
+      const mappedResData = ApiToViewModelMapper.getProducts(data);
+
+      return mappedResData;
     } catch (e) {
       return thunkAPI.rejectWithValue("Unknown Error");
     }
@@ -31,7 +34,9 @@ export const createProductThunk = createAsyncThunk<ProductViewModel, ProductCrea
   "product/create",
   async (reqData, thunkAPI) => {
     try {
-      const { data } = await ProductService.createProduct(reqData);
+      const mappedReqData = ViewModelToApiMapper.createProduct(reqData);
+
+      const { data } = await ProductService.createProduct(mappedReqData);
 
       thunkAPI.dispatch(snackbarSlice.actions.openSnackbar({ message: "Product created", severity: "success" }));
 

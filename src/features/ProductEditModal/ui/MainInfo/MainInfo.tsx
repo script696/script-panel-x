@@ -14,8 +14,8 @@ import { ProductCreateMainInfo, ProductEditMainInfo } from "app/store/reducers/p
 import { Mode } from "../../types/typedef";
 import { useMainInfoForm } from "../../hooks/useMainInfoForm";
 import { MENU_PROPS } from "shared/components/ChipSelect/constants/constants";
-import { AVAILABLE_CURRENCY } from "features/ProductEditModal/constants/constants";
 import MenuItem from "@material-ui/core/MenuItem";
+import { AVAILABLE_CURRENCY } from "shared/utils/getPriceWithCurrency";
 
 type MainInfoProps = {
   mode: Mode;
@@ -28,7 +28,7 @@ type MainInfoProps = {
 export const MainInfo: FC<MainInfoProps> = (props) => {
   const { product, isLoading, onClose, onSubmit, mode } = props;
   const { t } = useTranslation();
-  const { formik } = useMainInfoForm({ product, t, onSubmit });
+  const { formik, handleChangeNumberInput } = useMainInfoForm({ product, t, onSubmit });
 
   return (
     <Box
@@ -77,13 +77,14 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           margin="normal"
           required
           fullWidth
+          type={"number"}
           id="price"
           label={t("admin.products.form-labels.price")}
           name="price"
           autoComplete="given-name"
           disabled={isLoading}
           value={formik.values.price}
-          onChange={formik.handleChange}
+          onChange={handleChangeNumberInput}
           error={formik.touched.price && Boolean(formik.errors.price)}
           helperText={formik.touched.price && formik.errors.price}
         />
@@ -91,13 +92,14 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           margin="normal"
           required
           fullWidth
+          type={"number"}
           id="discount"
           label={t("admin.products.form-labels.discount")}
           name="discount"
           autoComplete="given-name"
           disabled={isLoading}
           value={formik.values.discount}
-          onChange={formik.handleChange}
+          onChange={handleChangeNumberInput}
           error={formik.touched.discount && Boolean(formik.errors.discount)}
           helperText={formik.touched.discount && formik.errors.discount}
         />
@@ -111,7 +113,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
             value={formik.values.currency}
             MenuProps={MENU_PROPS}
           >
-            {AVAILABLE_CURRENCY.map((name) => (
+            {Object.values(AVAILABLE_CURRENCY).map((name) => (
               <MenuItem key={name} value={name}>
                 {name}
               </MenuItem>

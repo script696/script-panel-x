@@ -6,6 +6,8 @@ export interface UpdateProductMainInfoRequestDto {
   disabled: boolean;
   availableSizes: Array<string>;
   amount: number;
+  price: number;
+  discount: number;
   brand: string;
 }
 
