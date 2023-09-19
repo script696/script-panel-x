@@ -20,7 +20,7 @@ const AppFaq = () => {
               {t(question.title)}
             </Typography>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails sx={{ paddingTop: "0" }}>
             <Typography color="text.secondary">{t(question.answer)}</Typography>
           </AccordionDetails>
         </Accordion>

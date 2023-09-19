@@ -23,4 +23,8 @@ export const QUESTIONS = [
     title: "faq.questions.question_6.title",
     answer: "faq.questions.question_6.answer",
   },
+  {
+    title: "faq.questions.question_7.title",
+    answer: "faq.questions.question_7.answer",
+  },
 ];

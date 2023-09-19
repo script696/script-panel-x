@@ -203,27 +203,31 @@
     "questions" : {
       "question_1" : {
         "title" : "What kind of project is this?",
-        "answer" : "The project is a space where owners of bots (Telegram stores) can manage their bots, and Telegram users can view their products in Telegram"
+        "answer" : "The project is a space where people who want to open their own online store in Telegram can create it, manage its appearance and fill it with goods. Users, in turn, can open these stores in Telegram and make purchases in them."
       },
       "question_2" : {
         "title" : "What roles are there in this project?",
-        "answer" : "This project has the role of system administrator, administrator and user.\nThe system administrator creates administrators (owners of telegram bots).\nAdministrators manage their bots and products.\nUsers view bots on Telegram"
+        "answer" : "This project has the role of system administrator, administrator and user"
       },
       "question_3" : {
-        "title" : "Can I get my own bot?",
-        "answer" : "Yes, for this you need to send a request in telegram - https://t.me/script696://t.me/script696"
+        "title" : "What does a system administrator do?",
+        "answer" : "The system administrator creates/edits/deletes administrators. Let's consider an example... You are a system administrator, a person comes to you who wants to purchase a bot (shop in telegram). You create a bot in Telegram, register the user through the admin panel, linking the bot data and setting a password. Next, transfer access rights (login and password) to the administrator (owner of the bot, online store)"
       },
       "question_4" : {
-        "title" : "How many active bots are there at the moment?",
-        "answer" : "At the moment there are two test bots xomi and alpha."
+        "title" : "What does a administrator do?",
+        "answer" : "The administrator manages his store (bot in telegram), configuring its appearance and adding/editing/deleting products through the admin panel. Let's consider an example... You wanted your own online store in Telegram, for this you contacted the system administrator. The system administrator registered you in the system and issued you a login and password to enter the admin panel. You log into the admin panel and configure the appearance of your bot, add/edit/delete products in your store."
       },
       "question_5" : {
-        "title" : "Is it possible to test the functionality of bots?",
-        "answer" : "Yes! You can try yourself as an administrator by logging in with the name xomi or alpha, password 1111"
+        "title" : "What does a user do?",
+        "answer" : "The user is a third party using telegram. Let's look at an example... You surf the telegram and get to a page with a store that the administrator has configured, view and select the products you are interested in, and then pay for the ones you like"
       },
       "question_6" : {
-        "title" : "Is it possible to take part in the development?",
-        "answer" : "Yes, for this you need to send a request in telegram - https://t.me/script696://t.me/script696"
+        "title" : "Is it possible to test the functionality of the application?",
+        "answer" : "Yes! You can try yourself as an administrator and user. To test the administrator role, there are two test bots - xomi and alpha. On the login page, click on the card of one of the bots and then the login button. Once you log in, you can configure your bot and manage the composition of its products. To try yourself as a user, open the bot in telegram using one of the available links, try to view the products or make a test payment."
+      },
+      "question_7" : {
+        "title" : "Is it possible to get your own bot?",
+        "answer" : "Yes, for this you need to send a request in a telegram by clicking on the card 'Want your own?' on the login page"
       }
     }
   }

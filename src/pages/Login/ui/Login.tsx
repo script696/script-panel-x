@@ -22,7 +22,7 @@ const Login = () => {
         xs={false}
         sm={4}
         md={7}
-        sx={{ bgcolor: "background.default" }}
+        sx={{ bgcolor: "background.default", maxHeight: "100vh", overflowY: "auto" }}
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
