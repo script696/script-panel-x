@@ -81,6 +81,20 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
           error={formik.touched.botName && Boolean(formik.errors.botName)}
           helperText={formik.touched.botName && formik.errors.botName}
         />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="botToken"
+          label={"botToken"}
+          name="botToken"
+          autoFocus
+          disabled={isLoading}
+          value={formik.values.botToken}
+          onChange={formik.handleChange}
+          error={formik.touched.botToken && Boolean(formik.errors.botToken)}
+          helperText={formik.touched.botToken && formik.errors.botToken}
+        />
       </DialogContent>
       <Box sx={{ flexGrow: 1 }} />
       <DialogActions>
