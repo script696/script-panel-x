@@ -2,6 +2,8 @@ export interface CreateUserRequestDto {
   nikName: string;
   password: string;
   botName: string;
+  botToken: string;
+  appUrl: string;
 }
 
 export interface CreateUserResponseDto {

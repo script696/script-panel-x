@@ -17,11 +17,15 @@ export const useMainInfoForm = ({ user, t, onSubmit, mode }: UseMainInfoFormPara
       nikName: user ? user.nikName : "",
       password: mode === "edit" ? "****" : "",
       botName: user ? user.bot.name : "",
+      botToken: user ? user.bot.botToken : "",
+      appUrl: process.env.REACT_APP_STAGE === "local" ? "https://niksemenov.ru" : "https://niksemenov.ru",
     },
     validationSchema: Yup.object({
       nikName: Yup.string().min(3).max(40).required(t("common.validations.required")),
       password: Yup.string().min(3).max(40).required(t("common.validations.required")),
       botName: Yup.string().min(3).max(40).required(t("common.validations.required")),
+      botToken: Yup.string().required(t("common.validations.required")),
+      appUrl: Yup.string().required(t("common.validations.required")),
     }),
     onSubmit,
   });
