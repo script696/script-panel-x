@@ -106,6 +106,7 @@ export const MainInfo: FC<MainInfoProps> = (props) => {
         <FormControl margin="normal">
           <InputLabel id={"currency-label"}>{t("admin.products.form-labels.currency")}</InputLabel>
           <Select
+            disabled
             id={"currency"}
             label={t("admin.products.form-labels.currency")}
             name={"currency"}

@@ -103,6 +103,48 @@
     }
   },
   "auth": {
+    "registration" : {
+      "progress" : {
+        "one" : "Enter your details",
+        "two" : "Create a bot",
+        "three" : "Ready!"
+      },
+      "description" : {
+        "one" : "Enter your details",
+        "bot" : {
+          "title" : "Create a telegram bot",
+          "one" : "Go to Telegram and enter botFather in the search bar",
+          "two" : "Start a chat with him, click the 'Menu' button in the lower left corner and select the command '/newbot'",
+          "three" : "Come up with a name and username for the bot",
+          "four" : "As a result, you will receive a message like - 'Use this token to access the HTTP API: 6508360862:AAEmvHBwnlH_pfzSbjpsShDSN5vxAWfU_Ps'",
+          "five" : "6508360862:AAEmvHBwnlH_pfzSbjpsShDSN5vxAWfU_Ps is your bot token, paste it into the text field and click Continue"
+        }
+      },
+      "submitContinue": "Continue",
+      "title": "Registration",
+      "success" : {
+        "text" : "You have successfully registered",
+        "button" : "Go to bot"
+      },
+      "form": {
+        "nickName": {
+          "label": "Nickname"
+        },
+        "password": {
+          "label": "Password"
+        },
+        "passwordRepeat": {
+          "label": "Repeat password"
+        },
+        "token": {
+          "label": "Token"
+        }
+      },
+      "redirect" : {
+        "text" : "Already have a bot?",
+        "button" : "Login"
+      }
+    },
     "login": {
       "tabs" : {
         "tab_1" : "Roles",
@@ -110,7 +152,7 @@
       },
       "bot-list" : {
         "title" : "Choose one of the test bots or send request to create your own.",
-        "req-bot" : "Want your own?"
+        "req-bot" : "Support"
       },
       "form": {
         "nickname": {
@@ -122,6 +164,10 @@
       },
       "submit": "Sign in",
       "title": "Sign in"
+    },
+    "redirect" : {
+      "text" : "Don't have a bot yet?",
+      "button" : "Create a bot"
     }
   },
   "common": {
@@ -227,7 +273,7 @@
       },
       "question_7" : {
         "title" : "Is it possible to get your own bot?",
-        "answer" : "Yes, for this you need to send a request in a telegram by clicking on the card 'Want your own?' on the login page"
+        "answer" : "Yes, to do this you need to register, enter your credentials and bot token."
       }
     }
   }

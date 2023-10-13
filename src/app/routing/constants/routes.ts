@@ -3,6 +3,7 @@ export const ROUTES_BASE = {
   ADMIN: "admin",
   SYSTEM_ADMIN: "system-admin",
   LOGIN: "login",
+  REGISTRATION: "registration",
   UNDER_CONSTRUCTION: "under-construction",
 
   FORBIDDEN: "403",

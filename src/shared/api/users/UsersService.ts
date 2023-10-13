@@ -4,6 +4,7 @@ import { GetUsersRequestDto, GetUsersResponseDto } from "./dto/GetUsersDto";
 import { EditUserRequestDto, EditUserResponseDto } from "./dto/EditUserDto";
 import { RemoveUserRequestDto, RemoveUserResponseDto } from "./dto/RemoveUserDto";
 import { CreateUserRequestDto, CreateUserResponseDto } from "./dto/CreateUserDto";
+import { CheckUserExistRequestDto, CheckUserExistResponseDto } from "./dto/CheckUserExistDto";
 
 export class UsersService {
   static getUser() {
@@ -24,5 +25,9 @@ export class UsersService {
 
   static removeUsers(data: RemoveUserRequestDto) {
     return $apiClient.delete<RemoveUserResponseDto>("users/remove", { data });
+  }
+
+  static checkUserExist(data: CheckUserExistRequestDto) {
+    return $apiClient.post<CheckUserExistResponseDto>("users/check-user-exist", data);
   }
 }

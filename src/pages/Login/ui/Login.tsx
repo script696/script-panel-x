@@ -9,6 +9,8 @@ import BoxedLayout from "shared/components/BoxedLayout/BoxedLayout";
 import { useLoginRdx } from "../hooks/useLoginRdx";
 import { useLoginForm } from "../hooks/useLoginForm";
 import LoginTabs from "widgets/LoginTabs/ui/LoginTabs";
+import { Link } from "react-router-dom";
+import { ROUTES_BASE } from "app/routing";
 
 const Login = () => {
   const { t } = useTranslation();
@@ -71,6 +73,14 @@ const Login = () => {
               {t("auth.login.submit")}
             </LoadingButton>
           </Box>
+          <Typography marginTop={3} variant={"h6"}>
+            {t("auth.login.redirect.text")}
+            <Link to={`/${ROUTES_BASE.REGISTRATION}`} style={{ textDecoration: "none", marginLeft: "5px" }} replace>
+              <Typography color={"primary.main"} sx={{ display: "inline" }}>
+                {t("auth.login.redirect.button")}
+              </Typography>
+            </Link>
+          </Typography>
         </BoxedLayout>
       </Grid>
     </Grid>
