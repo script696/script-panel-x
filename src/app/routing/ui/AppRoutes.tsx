@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "shared/components/PrivateRoute/PrivateRoute";
 import { AdminLayoutLazy } from "shared/layouts/AdminLayout";
 import { FaqLazy } from "pages/Faq";
@@ -12,6 +12,8 @@ import { UnderConstructionsLazy } from "pages/UnderConstructions";
 import { ProductsLazy } from "pages/Products";
 import { UsersLazy } from "pages/Users";
 import { ROUTES_ADMIN, ROUTES_BASE, ROUTES_SYSTEM_ADMIN } from "../constants/routes";
+import { RegistrationLazy } from "../../../pages/Registration";
+import { Navigate } from "react-router";
 
 const AppRoutes = () => {
   return (
@@ -29,6 +31,7 @@ const AppRoutes = () => {
         <PrivateRoute path={ROUTES_ADMIN.PROFILE} element={<ProfileLazy />} />
       </PrivateRoute>
       <Route path={ROUTES_BASE.LOGIN} element={<LoginLazy />} />
+      <Route path={ROUTES_BASE.REGISTRATION} element={<RegistrationLazy />} />
       <Route path={ROUTES_BASE.UNDER_CONSTRUCTION} element={<UnderConstructionsLazy />} />
       <Route path={ROUTES_BASE.FORBIDDEN} element={<ForbiddenLazy />} />
       <Route path={ROUTES_BASE.NOT_FOUND} element={<NotFoundLazy />} />

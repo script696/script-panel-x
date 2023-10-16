@@ -19,7 +19,7 @@ const AdminLayout = () => {
     setSettingsOpen(!settingsOpen);
   };
 
-  const menuItems = user?.role === "admin" ? ADMIN_MENU_ITEMS : SYSTEM_ADMIN_MENU_ITEMS;
+  const menuItems = user?.role === "system-admin" ? SYSTEM_ADMIN_MENU_ITEMS : ADMIN_MENU_ITEMS;
 
   return (
     <Box sx={{ display: "flex" }}>
